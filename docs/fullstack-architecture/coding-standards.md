@@ -13,11 +13,11 @@
 
 ## Naming Conventions
 
-| Element | Frontend | Backend | Example |
-|---------|----------|---------|---------|
-| Components | PascalCase | - | `EmergencyButton.tsx` |
-| Hooks | camelCase with 'use' | - | `useOfflineSync.ts` |
-| API Routes | - | kebab-case | `/api/emergency-contacts` |
-| Database Tables | - | snake_case | `emergency_contacts` |
-| Constants | UPPER_SNAKE_CASE | UPPER_SNAKE_CASE | `MAX_RETRY_ATTEMPTS` |
-| Functions | camelCase | camelCase | `findNearbyHospitals()` |
+| Element         | Frontend             | Backend          | Example                   |
+| --------------- | -------------------- | ---------------- | ------------------------- |
+| Components      | PascalCase           | -                | `EmergencyButton.tsx`     |
+| Hooks           | camelCase with 'use' | -                | `useOfflineSync.ts`       |
+| API Routes      | -                    | kebab-case       | `/api/emergency-contacts` |
+| Database Tables | -                    | snake_case       | `emergency_contacts`      |
+| Constants       | UPPER_SNAKE_CASE     | UPPER_SNAKE_CASE | `MAX_RETRY_ATTEMPTS`      |
+| Functions       | camelCase            | camelCase        | `findNearbyHospitals()`   |

@@ -1,6 +1,7 @@
 # Architecture Patterns
 
 ## Client Architecture
+
 The mobile application follows a layered architecture:
 
 1. **Presentation Layer**: React components and screens
@@ -9,6 +10,7 @@ The mobile application follows a layered architecture:
 4. **Infrastructure Layer**: Platform-specific implementations
 
 ## Server Architecture
+
 The backend follows a microservices architecture:
 
 1. **API Gateway**: Routes requests to appropriate services

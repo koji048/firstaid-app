@@ -9,6 +9,7 @@
 - **Rate Limits:** 25,000 requests/day (free tier)
 
 **Key Endpoints Used:**
+
 - `GET /place/nearbysearch` - Find nearby hospitals
 - `GET /directions` - Get directions to hospital
 - `GET /geocode` - Convert addresses to coordinates
@@ -24,6 +25,7 @@
 - **Rate Limits:** 600k messages/minute per project
 
 **Key Endpoints Used:**
+
 - `POST /projects/{project_id}/messages:send` - Send push notification
 
 **Integration Notes:** Batch notifications when possible, implement retry logic for failed sends
@@ -37,6 +39,7 @@
 - **Rate Limits:** No hard limit, but throttling may occur
 
 **Key Endpoints Used:**
+
 - `POST /3/device/{device_token}` - Send notification to device
 
 **Integration Notes:** Use HTTP/2 connection pooling, handle token refresh

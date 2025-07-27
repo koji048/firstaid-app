@@ -1,0 +1,111 @@
+name: iOS Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  NODE_VERSION: '18.x'
+  XCODE_VERSION: '14.3'
+
+jobs:
+  build:
+    name: Build iOS
+    runs-on: macos-13
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode_${{ env.XCODE_VERSION }}.app
+      
+    - name: Install dependencies
+      run: |
+        npm ci
+        cd ios && pod install --repo-update
+        
+    - name: Lint code
+      run: npm run lint
+      
+    - name: Run tests
+      run: npm test -- --coverage --watchAll=false
+      
+    - name: Build iOS app
+      run: |
+        cd ios
+        xcodebuild -workspace FirstAidRoom.xcworkspace \
+          -scheme FirstAidRoom \
+          -configuration Debug \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.0' \
+          build \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_ALLOWED=NO
+          
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: ios-build-logs
+        path: |
+          ios/build/Build/Products/
+          ~/Library/Logs/DiagnosticReports/
+        retention-days: 7
+        
+    - name: Upload test coverage
+      uses: codecov/codecov-action@v3
+      if: always()
+      with:
+        file: ./coverage/lcov.info
+        flags: ios
+        name: ios-coverage
+
+  detox-test:
+    name: E2E Tests iOS
+    runs-on: macos-13
+    needs: build
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode_${{ env.XCODE_VERSION }}.app
+      
+    - name: Install dependencies
+      run: |
+        npm ci
+        cd ios && pod install
+        
+    - name: Install Detox CLI
+      run: npm install -g detox-cli
+      
+    - name: Build Detox
+      run: detox build --configuration ios.sim.debug
+      
+    - name: Run Detox tests
+      run: detox test --configuration ios.sim.debug --cleanup --headless --record-logs all
+      
+    - name: Upload Detox artifacts
+      uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: detox-artifacts-ios
+        path: artifacts/
+        retention-days: 7

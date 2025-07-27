@@ -29,6 +29,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** we have a solid foundation for building the MVP features.
 
 **Acceptance Criteria:**
+
 1. React Native project initialized with TypeScript support
 2. Development environment setup for iOS and Android
 3. Basic project structure following architecture guidelines
@@ -43,6 +44,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can quickly access them during emergencies.
 
 **Acceptance Criteria:**
+
 1. Emergency contact data model implemented
 2. Local storage setup using AsyncStorage
 3. Contact CRUD operations implemented
@@ -57,6 +59,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can easily add, edit, and organize my contacts.
 
 **Acceptance Criteria:**
+
 1. Contact list screen with search functionality
 2. Add/Edit contact form with validation
 3. Contact categorization (family, medical, work)
@@ -71,6 +74,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can get help as quickly as possible.
 
 **Acceptance Criteria:**
+
 1. One-tap calling from contact list
 2. Emergency mode with enlarged buttons
 3. Primary contact prominent display
@@ -85,6 +89,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** guides can be easily updated and maintained.
 
 **Acceptance Criteria:**
+
 1. Guide data model with versioning
 2. JSON-based content structure
 3. Image asset management system
@@ -99,6 +104,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can help in common emergency situations.
 
 **Acceptance Criteria:**
+
 1. 50 core first aid guides created
 2. Medical accuracy review completed
 3. Clear step-by-step instructions
@@ -113,6 +119,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can provide help without delay.
 
 **Acceptance Criteria:**
+
 1. Guide categories screen
 2. Search with auto-complete
 3. Recent/frequently accessed section
@@ -127,6 +134,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can confidently provide assistance.
 
 **Acceptance Criteria:**
+
 1. Clean, readable guide layout
 2. Step-by-step navigation
 3. Image zoom functionality
@@ -141,6 +149,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can get professional help immediately.
 
 **Acceptance Criteria:**
+
 1. One-tap 911 calling
 2. Location detection and display
 3. Emergency services screen
@@ -155,6 +164,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can access features quickly, especially in emergencies.
 
 **Acceptance Criteria:**
+
 1. Bottom tab navigation implemented
 2. Home screen with quick actions
 3. Emergency button always visible
@@ -169,6 +179,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I understand its features and grant necessary permissions.
 
 **Acceptance Criteria:**
+
 1. 3-4 screen onboarding flow
 2. Permission requests with explanations
 3. Skip option for returning users
@@ -183,6 +194,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can personalize my experience and understand the app better.
 
 **Acceptance Criteria:**
+
 1. Settings screen implementation
 2. App version and info display
 3. Terms and privacy policy links
@@ -197,6 +209,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** I can depend on it during emergencies.
 
 **Acceptance Criteria:**
+
 1. App launch time < 2 seconds
 2. Screen transition optimization
 3. Memory usage optimization
@@ -211,6 +224,7 @@ This epic covers the development of the First Aid Room App MVP (Minimum Viable P
 **So that** users can download and use our MVP.
 
 **Acceptance Criteria:**
+
 1. App store assets created
 2. App descriptions optimized
 3. Screenshots for all device sizes

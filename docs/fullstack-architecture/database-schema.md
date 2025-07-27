@@ -158,13 +158,13 @@ $$ language 'plpgsql';
 
 CREATE TRIGGER update_users_updated_at BEFORE UPDATE ON users
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-    
+
 CREATE TRIGGER update_user_profiles_updated_at BEFORE UPDATE ON user_profiles
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-    
+
 CREATE TRIGGER update_emergency_contacts_updated_at BEFORE UPDATE ON emergency_contacts
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-    
+
 CREATE TRIGGER update_first_aid_guides_updated_at BEFORE UPDATE ON first_aid_guides
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 ```

@@ -9,6 +9,7 @@ This unified approach combines what would traditionally be separate backend and 
 ### Starter Template or Existing Project
 
 **Decision**: Custom React Native architecture tailored for mobile-first emergency response
+
 - No specific starter template used due to specialized requirements
 - Native mobile app architecture (not web-based)
 - Custom offline-first design patterns required
@@ -16,9 +17,9 @@ This unified approach combines what would traditionally be separate backend and 
 
 ### Change Log
 
-| Date | Version | Description | Author |
-|------|---------|-------------|--------|
-| 2025-01-27 | 1.0 | Initial architecture document | System |
+| Date       | Version | Description                   | Author |
+| ---------- | ------- | ----------------------------- | ------ |
+| 2025-01-27 | 1.0     | Initial architecture document | System |
 
 ## High Level Architecture
 
@@ -49,17 +50,17 @@ graph TB
         Android[Android App]
         Watch[Apple Watch/Wear OS]
     end
-    
+
     subgraph "CDN Layer"
         CF[CloudFront CDN]
         S3[S3 Static Assets]
     end
-    
+
     subgraph "API Layer"
         APIG[API Gateway]
         ALB[Application Load Balancer]
     end
-    
+
     subgraph "Backend Services"
         Auth[Auth Service<br/>Lambda + Cognito]
         Content[Content Service<br/>Lambda]
@@ -67,33 +68,33 @@ graph TB
         Medical[Medical Profile Service<br/>Lambda]
         Notification[Notification Service<br/>Lambda + SNS]
     end
-    
+
     subgraph "Data Layer"
         RDS[(PostgreSQL<br/>RDS)]
         Redis[(Redis<br/>ElastiCache)]
         S3Storage[(S3<br/>Media Storage)]
     end
-    
+
     subgraph "External Services"
         Maps[Google Maps API]
         Hospital[Hospital APIs]
         Emergency911[911 Integration]
         Push[FCM/APNS]
     end
-    
+
     iOS --> CF
     Android --> CF
     Watch --> APIG
-    
+
     CF --> S3
     CF --> APIG
-    
+
     APIG --> Auth
     APIG --> Content
     APIG --> Emergency
     APIG --> Medical
     APIG --> Notification
-    
+
     Auth --> RDS
     Auth --> Redis
     Content --> RDS
@@ -118,29 +119,29 @@ graph TB
 
 ### Technology Stack Table
 
-| Category | Technology | Version | Purpose | Rationale |
-|----------|------------|---------|---------|-----------|
-| Frontend Language | TypeScript | 5.3+ | Type-safe mobile development | Catch errors at compile time for reliability |
-| Frontend Framework | React Native | 0.73+ | Cross-platform mobile apps | Single codebase for iOS/Android |
-| UI Component Library | React Native Elements | 4.0+ | Pre-built UI components | Consistent, accessible emergency UI |
-| State Management | Redux Toolkit | 2.0+ | Global state management | Predictable state with offline support |
-| Backend Language | TypeScript | 5.3+ | Type-safe backend development | Consistency with frontend |
-| Backend Framework | AWS Lambda + Express | 4.18+ | Serverless API endpoints | Scale automatically with demand |
-| API Style | REST | - | HTTP API design | Simple, well-understood patterns |
-| Database | PostgreSQL | 15+ | Primary data storage | ACID compliance for medical data |
-| Cache | Redis | 7.0+ | Session and data caching | Fast emergency data access |
-| File Storage | AWS S3 | - | Media and guide storage | Scalable, CDN-integrated storage |
-| Authentication | AWS Cognito | - | User authentication | HIPAA-compliant auth service |
-| Frontend Testing | Jest + React Native Testing Library | 29+ | Unit and integration tests | Comprehensive mobile testing |
-| Backend Testing | Jest + Supertest | 29+ | API and unit tests | Fast, reliable backend testing |
-| E2E Testing | Detox | 20+ | End-to-end mobile testing | Native mobile automation |
-| Build Tool | Metro | 0.80+ | React Native bundler | Optimized mobile builds |
-| Bundler | Metro | 0.80+ | JavaScript bundling | React Native default |
-| IaC Tool | AWS CDK | 2.100+ | Infrastructure as Code | Type-safe infrastructure |
-| CI/CD | GitHub Actions | - | Automated deployment | Integrated with repository |
-| Monitoring | AWS CloudWatch + Sentry | - | System and error monitoring | Comprehensive observability |
-| Logging | CloudWatch Logs | - | Centralized logging | AWS-native log aggregation |
-| CSS Framework | React Native StyleSheet | - | Native styling | Platform-optimized styles |
+| Category             | Technology                          | Version | Purpose                       | Rationale                                    |
+| -------------------- | ----------------------------------- | ------- | ----------------------------- | -------------------------------------------- |
+| Frontend Language    | TypeScript                          | 5.3+    | Type-safe mobile development  | Catch errors at compile time for reliability |
+| Frontend Framework   | React Native                        | 0.73+   | Cross-platform mobile apps    | Single codebase for iOS/Android              |
+| UI Component Library | React Native Elements               | 4.0+    | Pre-built UI components       | Consistent, accessible emergency UI          |
+| State Management     | Redux Toolkit                       | 2.0+    | Global state management       | Predictable state with offline support       |
+| Backend Language     | TypeScript                          | 5.3+    | Type-safe backend development | Consistency with frontend                    |
+| Backend Framework    | AWS Lambda + Express                | 4.18+   | Serverless API endpoints      | Scale automatically with demand              |
+| API Style            | REST                                | -       | HTTP API design               | Simple, well-understood patterns             |
+| Database             | PostgreSQL                          | 15+     | Primary data storage          | ACID compliance for medical data             |
+| Cache                | Redis                               | 7.0+    | Session and data caching      | Fast emergency data access                   |
+| File Storage         | AWS S3                              | -       | Media and guide storage       | Scalable, CDN-integrated storage             |
+| Authentication       | AWS Cognito                         | -       | User authentication           | HIPAA-compliant auth service                 |
+| Frontend Testing     | Jest + React Native Testing Library | 29+     | Unit and integration tests    | Comprehensive mobile testing                 |
+| Backend Testing      | Jest + Supertest                    | 29+     | API and unit tests            | Fast, reliable backend testing               |
+| E2E Testing          | Detox                               | 20+     | End-to-end mobile testing     | Native mobile automation                     |
+| Build Tool           | Metro                               | 0.80+   | React Native bundler          | Optimized mobile builds                      |
+| Bundler              | Metro                               | 0.80+   | JavaScript bundling           | React Native default                         |
+| IaC Tool             | AWS CDK                             | 2.100+  | Infrastructure as Code        | Type-safe infrastructure                     |
+| CI/CD                | GitHub Actions                      | -       | Automated deployment          | Integrated with repository                   |
+| Monitoring           | AWS CloudWatch + Sentry             | -       | System and error monitoring   | Comprehensive observability                  |
+| Logging              | CloudWatch Logs                     | -       | Centralized logging           | AWS-native log aggregation                   |
+| CSS Framework        | React Native StyleSheet             | -       | Native styling                | Platform-optimized styles                    |
 
 ## Data Models
 
@@ -149,6 +150,7 @@ graph TB
 **Purpose:** Core user identity and preferences management
 
 **Key Attributes:**
+
 - id: UUID - Unique user identifier
 - email: string - Login email
 - phone: string - Emergency contact number
@@ -156,6 +158,7 @@ graph TB
 - updatedAt: DateTime - Last modification
 
 **TypeScript Interface:**
+
 ```typescript
 interface User {
   id: string;
@@ -171,8 +174,9 @@ interface User {
 ```
 
 **Relationships:**
+
 - Has one UserProfile
-- Has one UserPreferences  
+- Has one UserPreferences
 - Has many EmergencyContacts
 - Has one optional MedicalProfile
 
@@ -181,6 +185,7 @@ interface User {
 **Purpose:** Store user's emergency contact information for quick access
 
 **Key Attributes:**
+
 - id: UUID - Unique identifier
 - name: string - Contact name
 - phone: string - Phone number
@@ -188,6 +193,7 @@ interface User {
 - isPrimary: boolean - Primary contact flag
 
 **TypeScript Interface:**
+
 ```typescript
 interface EmergencyContact {
   id: string;
@@ -209,18 +215,19 @@ enum ContactRelationship {
   SIBLING = 'sibling',
   FRIEND = 'friend',
   DOCTOR = 'doctor',
-  OTHER = 'other'
+  OTHER = 'other',
 }
 
 enum ContactCategory {
   FAMILY = 'family',
   MEDICAL = 'medical',
   WORK = 'work',
-  OTHER = 'other'
+  OTHER = 'other',
 }
 ```
 
 **Relationships:**
+
 - Belongs to User
 
 ### FirstAidGuide Model
@@ -228,6 +235,7 @@ enum ContactCategory {
 **Purpose:** Store first aid procedure content and metadata
 
 **Key Attributes:**
+
 - id: UUID - Unique identifier
 - title: string - Guide title
 - category: string - Medical category
@@ -235,6 +243,7 @@ enum ContactCategory {
 - version: number - Content version
 
 **TypeScript Interface:**
+
 ```typescript
 interface FirstAidGuide {
   id: string;
@@ -268,6 +277,7 @@ interface GuideStep {
 ```
 
 **Relationships:**
+
 - Has many MediaAssets
 - Has many UserBookmarks
 
@@ -276,6 +286,7 @@ interface GuideStep {
 **Purpose:** Store user's medical information for emergency access
 
 **Key Attributes:**
+
 - id: UUID - Unique identifier
 - bloodType: string - Blood type
 - allergies: Array - Known allergies
@@ -283,6 +294,7 @@ interface GuideStep {
 - conditions: Array - Medical conditions
 
 **TypeScript Interface:**
+
 ```typescript
 interface MedicalProfile {
   id: string;
@@ -317,6 +329,7 @@ interface Medication {
 ```
 
 **Relationships:**
+
 - Belongs to User
 - Has many Allergies
 - Has many Medications
@@ -359,7 +372,7 @@ paths:
       responses:
         '201':
           description: User created successfully
-          
+
   /auth/login:
     post:
       summary: User login
@@ -408,7 +421,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EmergencyContact'
-              
+
   # First Aid Guides
   /guides:
     get:
@@ -429,7 +442,7 @@ paths:
       responses:
         '200':
           description: List of guides
-          
+
   /guides/{guideId}:
     get:
       summary: Get specific guide details
@@ -442,7 +455,7 @@ paths:
       responses:
         '200':
           description: Guide details
-          
+
   # Medical Profile
   /medical-profile:
     get:
@@ -462,7 +475,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MedicalProfile'
-              
+
   # Emergency Services
   /emergency/hospitals:
     get:
@@ -502,6 +515,7 @@ components:
 **Responsibility:** Cross-platform mobile application providing emergency first aid access
 
 **Key Interfaces:**
+
 - User authentication and profile management
 - Emergency contact quick dial
 - First aid guide browser and viewer
@@ -517,6 +531,7 @@ components:
 **Responsibility:** Handle user authentication, registration, and token management
 
 **Key Interfaces:**
+
 - POST /auth/register
 - POST /auth/login
 - POST /auth/refresh
@@ -531,6 +546,7 @@ components:
 **Responsibility:** Manage first aid guides and media content delivery
 
 **Key Interfaces:**
+
 - GET /guides
 - GET /guides/:id
 - GET /guides/download
@@ -545,6 +561,7 @@ components:
 **Responsibility:** Handle emergency-related features and integrations
 
 **Key Interfaces:**
+
 - GET /emergency/hospitals
 - POST /emergency/alert
 - GET /emergency/services
@@ -559,6 +576,7 @@ components:
 **Responsibility:** Manage user medical information securely
 
 **Key Interfaces:**
+
 - GET /medical-profile
 - PUT /medical-profile
 - GET /medical-profile/card
@@ -573,6 +591,7 @@ components:
 **Responsibility:** Handle push notifications and alerts
 
 **Key Interfaces:**
+
 - POST /notifications/register-device
 - POST /notifications/send
 - PUT /notifications/preferences
@@ -592,7 +611,7 @@ graph LR
         Local[Local Storage]
         Sync[Sync Manager]
     end
-    
+
     subgraph "Backend Services"
         Gateway[API Gateway]
         Auth[Auth Service]
@@ -600,25 +619,25 @@ graph LR
         Emergency[Emergency Service]
         Medical[Medical Service]
     end
-    
+
     subgraph "Data Stores"
         PG[(PostgreSQL)]
         Redis[(Redis Cache)]
         S3[(S3 Storage)]
     end
-    
+
     UI --> Redux
     Redux --> API
     Redux --> Local
     API --> Gateway
     Local --> Sync
     Sync --> Gateway
-    
+
     Gateway --> Auth
     Gateway --> Content
     Gateway --> Emergency
     Gateway --> Medical
-    
+
     Auth --> PG
     Auth --> Redis
     Content --> PG
@@ -638,6 +657,7 @@ graph LR
 - **Rate Limits:** 25,000 requests/day (free tier)
 
 **Key Endpoints Used:**
+
 - `GET /place/nearbysearch` - Find nearby hospitals
 - `GET /directions` - Get directions to hospital
 - `GET /geocode` - Convert addresses to coordinates
@@ -653,6 +673,7 @@ graph LR
 - **Rate Limits:** 600k messages/minute per project
 
 **Key Endpoints Used:**
+
 - `POST /projects/{project_id}/messages:send` - Send push notification
 
 **Integration Notes:** Batch notifications when possible, implement retry logic for failed sends
@@ -666,6 +687,7 @@ graph LR
 - **Rate Limits:** No hard limit, but throttling may occur
 
 **Key Endpoints Used:**
+
 - `POST /3/device/{device_token}` - Send notification to device
 
 **Integration Notes:** Use HTTP/2 connection pooling, handle token refresh
@@ -682,10 +704,10 @@ sequenceDiagram
     participant Content Service
     participant Redis
     participant PostgreSQL
-    
+
     User->>App: Open App
     App->>Local DB: Check cached auth
-    
+
     alt Has valid cached token
         App->>App: Use cached token
     else No valid token
@@ -697,10 +719,10 @@ sequenceDiagram
         API Gateway-->>App: Auth tokens
         App->>Local DB: Cache tokens
     end
-    
+
     User->>App: Search "CPR"
     App->>Local DB: Check offline guides
-    
+
     alt Guide available offline
         Local DB-->>App: Return guide
     else Guide not offline
@@ -711,7 +733,7 @@ sequenceDiagram
         API Gateway-->>App: Guide results
         App->>Local DB: Cache guide
     end
-    
+
     App->>User: Display CPR guide
 ```
 
@@ -725,12 +747,12 @@ sequenceDiagram
     participant Emergency Service
     participant Maps API
     participant Phone
-    
+
     User->>App: Tap Emergency Button
     App->>App: Enter Emergency Mode
     App->>GPS: Get location
     GPS-->>App: Lat/Lng coordinates
-    
+
     par Find Hospitals
         App->>API Gateway: GET /emergency/hospitals
         API Gateway->>Emergency Service: Find hospitals
@@ -742,11 +764,11 @@ sequenceDiagram
         App->>Local DB: Get primary contact
         Local DB-->>App: Contact info
     end
-    
+
     App->>User: Show hospitals & contact
     User->>App: Call Emergency Contact
     App->>Phone: Initiate call
-    
+
     opt Share Location
         User->>App: Share location
         App->>API Gateway: POST /emergency/share-location
@@ -917,13 +939,13 @@ $$ language 'plpgsql';
 
 CREATE TRIGGER update_users_updated_at BEFORE UPDATE ON users
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-    
+
 CREATE TRIGGER update_user_profiles_updated_at BEFORE UPDATE ON user_profiles
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-    
+
 CREATE TRIGGER update_emergency_contacts_updated_at BEFORE UPDATE ON emergency_contacts
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-    
+
 CREATE TRIGGER update_first_aid_guides_updated_at BEFORE UPDATE ON first_aid_guides
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 ```
@@ -990,27 +1012,22 @@ interface ComponentNameProps {
   testID?: string;
 }
 
-export const ComponentName = memo<ComponentNameProps>(({
-  title,
-  onPress,
-  disabled = false,
-  testID = 'component-name'
-}) => {
-  const { colors } = useTheme();
-  
-  return (
-    <TouchableOpacity
-      style={[styles.container, disabled && styles.disabled]}
-      onPress={onPress}
-      disabled={disabled}
-      testID={testID}
-    >
-      <Text style={[styles.title, { color: colors.text }]}>
-        {title}
-      </Text>
-    </TouchableOpacity>
-  );
-});
+export const ComponentName = memo<ComponentNameProps>(
+  ({ title, onPress, disabled = false, testID = 'component-name' }) => {
+    const { colors } = useTheme();
+
+    return (
+      <TouchableOpacity
+        style={[styles.container, disabled && styles.disabled]}
+        onPress={onPress}
+        disabled={disabled}
+        testID={testID}
+      >
+        <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
+      </TouchableOpacity>
+    );
+  },
+);
 
 ComponentName.displayName = 'ComponentName';
 ```
@@ -1125,7 +1142,9 @@ interface ProtectedRouteProps {
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
-  const hasCompletedOnboarding = useSelector((state: RootState) => state.auth.user?.hasCompletedOnboarding);
+  const hasCompletedOnboarding = useSelector(
+    (state: RootState) => state.auth.user?.hasCompletedOnboarding,
+  );
 
   if (!isAuthenticated) {
     return <Navigate to="Login" />;
@@ -1139,12 +1158,9 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 };
 
 // Usage in navigator
-<Stack.Screen
-  name="Medical"
-  component={ProtectedRoute}
->
+<Stack.Screen name="Medical" component={ProtectedRoute}>
   <MedicalNavigator />
-</Stack.Screen>
+</Stack.Screen>;
 ```
 
 ### Frontend Services Layer
@@ -1163,7 +1179,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://api.firstaidroom.
 
 class ApiClient {
   private client: AxiosInstance;
-  
+
   constructor() {
     this.client = axios.create({
       baseURL: API_BASE_URL,
@@ -1172,10 +1188,10 @@ class ApiClient {
         'Content-Type': 'application/json',
       },
     });
-    
+
     this.setupInterceptors();
   }
-  
+
   private setupInterceptors() {
     // Request interceptor for auth
     this.client.interceptors.request.use(
@@ -1186,9 +1202,9 @@ class ApiClient {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
-    
+
     // Response interceptor for error handling
     this.client.interceptors.response.use(
       (response) => response,
@@ -1197,20 +1213,20 @@ class ApiClient {
           // Handle token refresh
           await this.refreshToken();
         }
-        
+
         if (!error.response && error.code === 'NETWORK_ERROR') {
           // Handle offline mode
           return this.handleOfflineRequest(error.config);
         }
-        
+
         return Promise.reject(error);
-      }
+      },
     );
   }
-  
+
   private async handleOfflineRequest(config: AxiosRequestConfig) {
     const { method, url, data } = config;
-    
+
     if (method === 'GET') {
       // Try to return cached data
       const cachedData = await this.getCachedData(url!);
@@ -1219,32 +1235,34 @@ class ApiClient {
       }
     } else {
       // Queue mutation for sync
-      store.dispatch(addToSyncQueue({
-        method: method!,
-        url: url!,
-        data,
-        timestamp: new Date().toISOString(),
-      }));
+      store.dispatch(
+        addToSyncQueue({
+          method: method!,
+          url: url!,
+          data,
+          timestamp: new Date().toISOString(),
+        }),
+      );
     }
-    
+
     throw new Error('No network connection');
   }
-  
+
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.get<T>(url, config);
     return response.data;
   }
-  
+
   async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.post<T>(url, data, config);
     return response.data;
   }
-  
+
   async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.put<T>(url, data, config);
     return response.data;
   }
-  
+
   async delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.delete<T>(url, config);
     return response.data;
@@ -1264,7 +1282,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class EmergencyService {
   private static CONTACTS_CACHE_KEY = 'emergency_contacts';
-  
+
   static async getEmergencyContacts(): Promise<EmergencyContact[]> {
     try {
       const contacts = await apiClient.get<EmergencyContact[]>('/emergency-contacts');
@@ -1280,10 +1298,12 @@ export class EmergencyService {
       throw error;
     }
   }
-  
-  static async addEmergencyContact(contact: Omit<EmergencyContact, 'id'>): Promise<EmergencyContact> {
+
+  static async addEmergencyContact(
+    contact: Omit<EmergencyContact, 'id'>,
+  ): Promise<EmergencyContact> {
     const newContact = await apiClient.post<EmergencyContact>('/emergency-contacts', contact);
-    
+
     // Update cache
     const cached = await AsyncStorage.getItem(this.CONTACTS_CACHE_KEY);
     if (cached) {
@@ -1291,14 +1311,18 @@ export class EmergencyService {
       contacts.push(newContact);
       await AsyncStorage.setItem(this.CONTACTS_CACHE_KEY, JSON.stringify(contacts));
     }
-    
+
     return newContact;
   }
-  
-  static async findNearbyHospitals(latitude: number, longitude: number, radius: number = 10): Promise<Hospital[]> {
+
+  static async findNearbyHospitals(
+    latitude: number,
+    longitude: number,
+    radius: number = 10,
+  ): Promise<Hospital[]> {
     try {
       const hospitals = await apiClient.get<Hospital[]>('/emergency/hospitals', {
-        params: { lat: latitude, lng: longitude, radius }
+        params: { lat: latitude, lng: longitude, radius },
       });
       return hospitals;
     } catch (error) {
@@ -1307,16 +1331,18 @@ export class EmergencyService {
       return [];
     }
   }
-  
+
   static async callEmergency(contactId: string, location?: { lat: number; lng: number }) {
     // Log the emergency call attempt
-    await apiClient.post('/emergency/call-log', {
-      contactId,
-      location,
-      timestamp: new Date().toISOString()
-    }).catch(() => {
-      // Don't block the call if logging fails
-    });
+    await apiClient
+      .post('/emergency/call-log', {
+        contactId,
+        location,
+        timestamp: new Date().toISOString(),
+      })
+      .catch(() => {
+        // Don't block the call if logging fails
+      });
   }
 }
 ```
@@ -1388,35 +1414,31 @@ export const handler: APIGatewayProxyHandler = async (event, context) => {
   try {
     // Validate request
     const body = validateRequest(event.body, loginSchema);
-    
+
     // Get user
     const userRepo = new UserRepository();
     const user = await userRepo.findByEmail(body.email);
-    
-    if (!user || !await bcrypt.compare(body.password, user.passwordHash)) {
+
+    if (!user || !(await bcrypt.compare(body.password, user.passwordHash))) {
       return createErrorResponse(401, 'Invalid credentials');
     }
-    
+
     // Generate tokens
-    const accessToken = jwt.sign(
-      { userId: user.id, email: user.email },
-      process.env.JWT_SECRET!,
-      { expiresIn: '15m' }
-    );
-    
-    const refreshToken = jwt.sign(
-      { userId: user.id },
-      process.env.JWT_REFRESH_SECRET!,
-      { expiresIn: '30d' }
-    );
-    
+    const accessToken = jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET!, {
+      expiresIn: '15m',
+    });
+
+    const refreshToken = jwt.sign({ userId: user.id }, process.env.JWT_REFRESH_SECRET!, {
+      expiresIn: '30d',
+    });
+
     // Cache session
     const cache = new CacheService();
     await cache.set(`session:${user.id}`, { refreshToken }, 30 * 24 * 60 * 60);
-    
+
     // Log successful login
     logger.info('User logged in', { userId: user.id });
-    
+
     return createResponse(200, {
       accessToken,
       refreshToken,
@@ -1453,7 +1475,7 @@ export abstract class BaseRepository<T> {
   protected pool: Pool;
   protected cache: CacheService;
   protected tableName: string;
-  
+
   constructor(tableName: string) {
     this.tableName = tableName;
     this.pool = new Pool({
@@ -1463,49 +1485,46 @@ export abstract class BaseRepository<T> {
     });
     this.cache = new CacheService();
   }
-  
+
   async findById(id: string): Promise<T | null> {
     // Check cache first
     const cacheKey = `${this.tableName}:${id}`;
     const cached = await this.cache.get<T>(cacheKey);
     if (cached) return cached;
-    
+
     // Query database
-    const result = await this.pool.query(
-      `SELECT * FROM ${this.tableName} WHERE id = $1`,
-      [id]
-    );
-    
+    const result = await this.pool.query(`SELECT * FROM ${this.tableName} WHERE id = $1`, [id]);
+
     if (result.rows.length === 0) return null;
-    
+
     const entity = this.mapRowToEntity(result.rows[0]);
-    
+
     // Cache for 5 minutes
     await this.cache.set(cacheKey, entity, 300);
-    
+
     return entity;
   }
-  
+
   async create(data: Partial<T>): Promise<T> {
     const columns = Object.keys(data);
     const values = Object.values(data);
     const placeholders = columns.map((_, i) => `$${i + 1}`);
-    
+
     const query = `
       INSERT INTO ${this.tableName} (${columns.join(', ')})
       VALUES (${placeholders.join(', ')})
       RETURNING *
     `;
-    
+
     const result = await this.pool.query(query, values);
     const entity = this.mapRowToEntity(result.rows[0]);
-    
+
     // Invalidate cache
     await this.cache.delete(`${this.tableName}:list`);
-    
+
     return entity;
   }
-  
+
   abstract mapRowToEntity(row: any): T;
 }
 
@@ -1517,27 +1536,27 @@ export class EmergencyContactRepository extends BaseRepository<EmergencyContact>
   constructor() {
     super('emergency_contacts');
   }
-  
+
   async findByUserId(userId: string): Promise<EmergencyContact[]> {
     const result = await this.pool.query(
       'SELECT * FROM emergency_contacts WHERE user_id = $1 ORDER BY is_primary DESC, created_at ASC',
-      [userId]
+      [userId],
     );
-    
-    return result.rows.map(row => this.mapRowToEntity(row));
+
+    return result.rows.map((row) => this.mapRowToEntity(row));
   }
-  
+
   async getPrimaryContact(userId: string): Promise<EmergencyContact | null> {
     const result = await this.pool.query(
       'SELECT * FROM emergency_contacts WHERE user_id = $1 AND is_primary = true LIMIT 1',
-      [userId]
+      [userId],
     );
-    
+
     if (result.rows.length === 0) return null;
-    
+
     return this.mapRowToEntity(result.rows[0]);
   }
-  
+
   mapRowToEntity(row: any): EmergencyContact {
     return {
       id: row.id,
@@ -1567,7 +1586,7 @@ sequenceDiagram
     participant Cognito
     participant Database
     participant Redis
-    
+
     Client->>API Gateway: POST /auth/register
     API Gateway->>Auth Lambda: Register request
     Auth Lambda->>Cognito: Create user
@@ -1575,7 +1594,7 @@ sequenceDiagram
     Auth Lambda->>Database: Store user profile
     Auth Lambda-->>API Gateway: Success
     API Gateway-->>Client: Registration complete
-    
+
     Client->>API Gateway: POST /auth/login
     API Gateway->>Auth Lambda: Login request
     Auth Lambda->>Cognito: Authenticate
@@ -1583,7 +1602,7 @@ sequenceDiagram
     Auth Lambda->>Redis: Cache session
     Auth Lambda-->>API Gateway: Tokens
     API Gateway-->>Client: Access + Refresh tokens
-    
+
     Client->>API Gateway: GET /api/resource
     API Gateway->>API Gateway: Validate JWT
     API Gateway->>Lambda: Authorized request
@@ -1610,38 +1629,38 @@ export interface AuthenticatedEvent extends APIGatewayProxyEvent {
 export const authMiddleware = async (
   event: APIGatewayProxyEvent,
   context: Context,
-  next: Function
+  next: Function,
 ) => {
   try {
     const token = event.headers.Authorization?.replace('Bearer ', '');
-    
+
     if (!token) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'No token provided' }),
       };
     }
-    
+
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
-    
+
     // Check if session is valid in cache
     const cache = new CacheService();
     const session = await cache.get(`session:${decoded.userId}`);
-    
+
     if (!session) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Session expired' }),
       };
     }
-    
+
     // Attach user to event
     (event as AuthenticatedEvent).user = {
       userId: decoded.userId,
       email: decoded.email,
     };
-    
+
     return next();
   } catch (error) {
     return {
@@ -1655,7 +1674,7 @@ export const authMiddleware = async (
 export const protectedHandler = authMiddleware(async (event: AuthenticatedEvent) => {
   // Access user from event.user
   const { userId } = event.user;
-  
+
   // Protected logic here
   return {
     statusCode: 200,
@@ -1830,12 +1849,14 @@ LOG_LEVEL=debug
 ### Deployment Strategy
 
 **Frontend Deployment:**
+
 - **Platform:** App Store (iOS) / Google Play Store (Android)
 - **Build Command:** `npm run build:mobile:ios` / `npm run build:mobile:android`
 - **Output Directory:** `apps/mobile/build`
 - **CDN/Edge:** CloudFront for API responses and static assets
 
 **Backend Deployment:**
+
 - **Platform:** AWS Lambda with API Gateway
 - **Build Command:** `npm run build:api`
 - **Deployment Method:** AWS CDK with GitHub Actions
@@ -1859,13 +1880,13 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run tests
         run: npm run test:ci
-      
+
       - name: Build packages
         run: npm run build
 
@@ -1874,14 +1895,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      
+
       - name: Deploy with CDK
         run: |
           npm ci
@@ -1893,17 +1914,17 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup React Native environment
         run: |
           npm ci
           cd apps/mobile/ios && pod install
-      
+
       - name: Build iOS
         run: |
           cd apps/mobile
           npx react-native build-ios --mode=Release
-      
+
       - name: Upload to TestFlight
         uses: apple-actions/upload-testflight-build@v1
         with:
@@ -1913,27 +1934,30 @@ jobs:
 
 ### Environments
 
-| Environment | Frontend URL | Backend URL | Purpose |
-|-------------|--------------|-------------|---------|
-| Development | http://localhost:8081 | http://localhost:3000 | Local development |
-| Staging | https://staging.firstaidroom.app | https://staging-api.firstaidroom.app | Pre-production testing |
-| Production | https://apps.apple.com/firstaidroom | https://api.firstaidroom.app | Live environment |
+| Environment | Frontend URL                        | Backend URL                          | Purpose                |
+| ----------- | ----------------------------------- | ------------------------------------ | ---------------------- |
+| Development | http://localhost:8081               | http://localhost:3000                | Local development      |
+| Staging     | https://staging.firstaidroom.app    | https://staging-api.firstaidroom.app | Pre-production testing |
+| Production  | https://apps.apple.com/firstaidroom | https://api.firstaidroom.app         | Live environment       |
 
 ## Security and Performance
 
 ### Security Requirements
 
 **Frontend Security:**
+
 - CSP Headers: `default-src 'self'; img-src 'self' data: https:; script-src 'self'`
 - XSS Prevention: React Native's built-in protections, input sanitization
 - Secure Storage: iOS Keychain / Android Keystore for sensitive data
 
 **Backend Security:**
+
 - Input Validation: Zod schemas for all API inputs
 - Rate Limiting: 100 requests per minute per IP
 - CORS Policy: Restricted to app domains only
 
 **Authentication Security:**
+
 - Token Storage: Secure device storage (Keychain/Keystore)
 - Session Management: 15-minute access tokens, 30-day refresh tokens
 - Password Policy: Minimum 8 characters, complexity requirements
@@ -1941,11 +1965,13 @@ jobs:
 ### Performance Optimization
 
 **Frontend Performance:**
+
 - Bundle Size Target: < 20MB initial download
 - Loading Strategy: Lazy loading for guides, progressive image loading
 - Caching Strategy: SQLite for offline data, 7-day image cache
 
 **Backend Performance:**
+
 - Response Time Target: < 200ms for critical endpoints
 - Database Optimization: Connection pooling, indexed queries
 - Caching Strategy: Redis for sessions, 5-minute API response cache
@@ -2021,25 +2047,21 @@ import { EmergencyButton } from '../../src/components/emergency/EmergencyButton'
 describe('EmergencyButton', () => {
   it('should trigger emergency mode on press', () => {
     const onPress = jest.fn();
-    const { getByTestId } = render(
-      <EmergencyButton onPress={onPress} />
-    );
-    
+    const { getByTestId } = render(<EmergencyButton onPress={onPress} />);
+
     const button = getByTestId('emergency-button');
     fireEvent.press(button);
-    
+
     expect(onPress).toHaveBeenCalledTimes(1);
   });
-  
+
   it('should show animation during emergency mode', () => {
-    const { getByTestId, rerender } = render(
-      <EmergencyButton isEmergencyMode={false} />
-    );
-    
+    const { getByTestId, rerender } = render(<EmergencyButton isEmergencyMode={false} />);
+
     expect(getByTestId('emergency-button')).not.toHaveStyle({ backgroundColor: 'red' });
-    
+
     rerender(<EmergencyButton isEmergencyMode={true} />);
-    
+
     expect(getByTestId('emergency-button')).toHaveStyle({ backgroundColor: 'red' });
   });
 });
@@ -2056,17 +2078,17 @@ import { createTestUser, cleanupDatabase } from '../helpers';
 describe('Emergency Contacts API', () => {
   let authToken: string;
   let userId: string;
-  
+
   beforeEach(async () => {
     const { user, token } = await createTestUser();
     authToken = token;
     userId = user.id;
   });
-  
+
   afterEach(async () => {
     await cleanupDatabase();
   });
-  
+
   describe('POST /emergency-contacts', () => {
     it('should create emergency contact', async () => {
       const contactData = {
@@ -2076,20 +2098,20 @@ describe('Emergency Contacts API', () => {
         category: 'family',
         isPrimary: true,
       };
-      
+
       const response = await request(app)
         .post('/v1/emergency-contacts')
         .set('Authorization', `Bearer ${authToken}`)
         .send(contactData)
         .expect(201);
-      
+
       expect(response.body).toMatchObject({
         id: expect.any(String),
         ...contactData,
         userId,
       });
     });
-    
+
     it('should validate phone number format', async () => {
       const response = await request(app)
         .post('/v1/emergency-contacts')
@@ -2101,7 +2123,7 @@ describe('Emergency Contacts API', () => {
           category: 'family',
         })
         .expect(400);
-      
+
       expect(response.body.error).toContain('Invalid phone number');
     });
   });
@@ -2118,27 +2140,27 @@ describe('Emergency Flow', () => {
   beforeAll(async () => {
     await device.launchApp();
   });
-  
+
   beforeEach(async () => {
     await device.reloadReactNative();
   });
-  
+
   it('should complete emergency contact flow', async () => {
     // Login
     await element(by.id('email-input')).typeText('test@example.com');
     await element(by.id('password-input')).typeText('password123');
     await element(by.id('login-button')).tap();
-    
+
     // Navigate to emergency screen
     await element(by.id('tab-emergency')).tap();
-    
+
     // Trigger emergency mode
     await element(by.id('emergency-button')).tap();
-    
+
     // Verify emergency mode UI
     await expect(element(by.id('emergency-mode-indicator'))).toBeVisible();
     await expect(element(by.id('primary-contact-dial'))).toBeVisible();
-    
+
     // Test location sharing
     await element(by.id('share-location-button')).tap();
     await expect(element(by.text('Location shared'))).toBeVisible();
@@ -2161,14 +2183,14 @@ describe('Emergency Flow', () => {
 
 ### Naming Conventions
 
-| Element | Frontend | Backend | Example |
-|---------|----------|---------|---------|
-| Components | PascalCase | - | `EmergencyButton.tsx` |
-| Hooks | camelCase with 'use' | - | `useOfflineSync.ts` |
-| API Routes | - | kebab-case | `/api/emergency-contacts` |
-| Database Tables | - | snake_case | `emergency_contacts` |
-| Constants | UPPER_SNAKE_CASE | UPPER_SNAKE_CASE | `MAX_RETRY_ATTEMPTS` |
-| Functions | camelCase | camelCase | `findNearbyHospitals()` |
+| Element         | Frontend             | Backend          | Example                   |
+| --------------- | -------------------- | ---------------- | ------------------------- |
+| Components      | PascalCase           | -                | `EmergencyButton.tsx`     |
+| Hooks           | camelCase with 'use' | -                | `useOfflineSync.ts`       |
+| API Routes      | -                    | kebab-case       | `/api/emergency-contacts` |
+| Database Tables | -                    | snake_case       | `emergency_contacts`      |
+| Constants       | UPPER_SNAKE_CASE     | UPPER_SNAKE_CASE | `MAX_RETRY_ATTEMPTS`      |
+| Functions       | camelCase            | camelCase        | `findNearbyHospitals()`   |
 
 ## Error Handling Strategy
 
@@ -2181,12 +2203,12 @@ sequenceDiagram
     participant API
     participant Service
     participant Database
-    
+
     User->>App: Perform action
     App->>API: API request
     API->>Service: Process request
     Service->>Database: Query data
-    
+
     alt Database error
         Database-->>Service: Error
         Service-->>API: Throw ServiceError
@@ -2226,37 +2248,32 @@ import * as Sentry from '@sentry/react-native';
 export class ErrorHandler {
   static handle(error: any, context?: string) {
     console.error(`Error in ${context}:`, error);
-    
+
     // Log to Sentry
     Sentry.captureException(error, {
       tags: { context },
     });
-    
+
     // User-friendly message
     const message = this.getUserMessage(error);
-    
+
     if (error.code === 'NETWORK_ERROR') {
       // Don't show alert for network errors in offline mode
       return;
     }
-    
-    Alert.alert(
-      'Error',
-      message,
-      [{ text: 'OK' }],
-      { cancelable: true }
-    );
+
+    Alert.alert('Error', message, [{ text: 'OK' }], { cancelable: true });
   }
-  
+
   private static getUserMessage(error: any): string {
     const errorMessages: Record<string, string> = {
-      'AUTH_FAILED': 'Invalid email or password',
-      'NETWORK_ERROR': 'No internet connection',
-      'VALIDATION_ERROR': 'Please check your input',
-      'PERMISSION_DENIED': 'You do not have permission',
-      'NOT_FOUND': 'Resource not found',
+      AUTH_FAILED: 'Invalid email or password',
+      NETWORK_ERROR: 'No internet connection',
+      VALIDATION_ERROR: 'Please check your input',
+      PERMISSION_DENIED: 'You do not have permission',
+      NOT_FOUND: 'Resource not found',
     };
-    
+
     return errorMessages[error.code] || 'Something went wrong. Please try again.';
   }
 }
@@ -2282,7 +2299,7 @@ export class AppError extends Error {
     public statusCode: number,
     public code: string,
     message: string,
-    public details?: any
+    public details?: any,
   ) {
     super(message);
     this.name = 'AppError';
@@ -2291,14 +2308,14 @@ export class AppError extends Error {
 
 export const errorHandler = (error: any): APIGatewayProxyResult => {
   const requestId = uuidv4();
-  
+
   // Log error
   logger.error('Request failed', {
     error: error.message,
     stack: error.stack,
     requestId,
   });
-  
+
   if (error instanceof AppError) {
     return {
       statusCode: error.statusCode,
@@ -2313,7 +2330,7 @@ export const errorHandler = (error: any): APIGatewayProxyResult => {
       }),
     };
   }
-  
+
   // Generic error
   return {
     statusCode: 500,
@@ -2335,7 +2352,7 @@ export const handler = async (event: APIGatewayProxyEvent) => {
     if (!event.body) {
       throw new AppError(400, 'VALIDATION_ERROR', 'Request body is required');
     }
-    
+
     // Process request...
   } catch (error) {
     return errorHandler(error);
@@ -2355,12 +2372,14 @@ export const handler = async (event: APIGatewayProxyEvent) => {
 ### Key Metrics
 
 **Frontend Metrics:**
+
 - Core Web Vitals
 - JavaScript errors
 - API response times
 - User interactions
 
 **Backend Metrics:**
+
 - Request rate
 - Error rate
 - Response time

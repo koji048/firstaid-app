@@ -5,6 +5,7 @@
 **Purpose:** Core user identity and preferences management
 
 **Key Attributes:**
+
 - id: UUID - Unique user identifier
 - email: string - Login email
 - phone: string - Emergency contact number
@@ -12,6 +13,7 @@
 - updatedAt: DateTime - Last modification
 
 **TypeScript Interface:**
+
 ```typescript
 interface User {
   id: string;
@@ -27,8 +29,9 @@ interface User {
 ```
 
 **Relationships:**
+
 - Has one UserProfile
-- Has one UserPreferences  
+- Has one UserPreferences
 - Has many EmergencyContacts
 - Has one optional MedicalProfile
 
@@ -37,6 +40,7 @@ interface User {
 **Purpose:** Store user's emergency contact information for quick access
 
 **Key Attributes:**
+
 - id: UUID - Unique identifier
 - name: string - Contact name
 - phone: string - Phone number
@@ -44,6 +48,7 @@ interface User {
 - isPrimary: boolean - Primary contact flag
 
 **TypeScript Interface:**
+
 ```typescript
 interface EmergencyContact {
   id: string;
@@ -65,18 +70,19 @@ enum ContactRelationship {
   SIBLING = 'sibling',
   FRIEND = 'friend',
   DOCTOR = 'doctor',
-  OTHER = 'other'
+  OTHER = 'other',
 }
 
 enum ContactCategory {
   FAMILY = 'family',
   MEDICAL = 'medical',
   WORK = 'work',
-  OTHER = 'other'
+  OTHER = 'other',
 }
 ```
 
 **Relationships:**
+
 - Belongs to User
 
 ## FirstAidGuide Model
@@ -84,6 +90,7 @@ enum ContactCategory {
 **Purpose:** Store first aid procedure content and metadata
 
 **Key Attributes:**
+
 - id: UUID - Unique identifier
 - title: string - Guide title
 - category: string - Medical category
@@ -91,6 +98,7 @@ enum ContactCategory {
 - version: number - Content version
 
 **TypeScript Interface:**
+
 ```typescript
 interface FirstAidGuide {
   id: string;
@@ -124,6 +132,7 @@ interface GuideStep {
 ```
 
 **Relationships:**
+
 - Has many MediaAssets
 - Has many UserBookmarks
 
@@ -132,6 +141,7 @@ interface GuideStep {
 **Purpose:** Store user's medical information for emergency access
 
 **Key Attributes:**
+
 - id: UUID - Unique identifier
 - bloodType: string - Blood type
 - allergies: Array - Known allergies
@@ -139,6 +149,7 @@ interface GuideStep {
 - conditions: Array - Medical conditions
 
 **TypeScript Interface:**
+
 ```typescript
 interface MedicalProfile {
   id: string;
@@ -173,6 +184,7 @@ interface Medication {
 ```
 
 **Relationships:**
+
 - Belongs to User
 - Has many Allergies
 - Has many Medications

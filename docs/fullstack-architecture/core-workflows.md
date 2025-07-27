@@ -10,10 +10,10 @@ sequenceDiagram
     participant Content Service
     participant Redis
     participant PostgreSQL
-    
+
     User->>App: Open App
     App->>Local DB: Check cached auth
-    
+
     alt Has valid cached token
         App->>App: Use cached token
     else No valid token
@@ -25,10 +25,10 @@ sequenceDiagram
         API Gateway-->>App: Auth tokens
         App->>Local DB: Cache tokens
     end
-    
+
     User->>App: Search "CPR"
     App->>Local DB: Check offline guides
-    
+
     alt Guide available offline
         Local DB-->>App: Return guide
     else Guide not offline
@@ -39,7 +39,7 @@ sequenceDiagram
         API Gateway-->>App: Guide results
         App->>Local DB: Cache guide
     end
-    
+
     App->>User: Display CPR guide
 ```
 
@@ -53,12 +53,12 @@ sequenceDiagram
     participant Emergency Service
     participant Maps API
     participant Phone
-    
+
     User->>App: Tap Emergency Button
     App->>App: Enter Emergency Mode
     App->>GPS: Get location
     GPS-->>App: Lat/Lng coordinates
-    
+
     par Find Hospitals
         App->>API Gateway: GET /emergency/hospitals
         API Gateway->>Emergency Service: Find hospitals
@@ -70,11 +70,11 @@ sequenceDiagram
         App->>Local DB: Get primary contact
         Local DB-->>App: Contact info
     end
-    
+
     App->>User: Show hospitals & contact
     User->>App: Call Emergency Contact
     App->>Phone: Initiate call
-    
+
     opt Share Location
         User->>App: Share location
         App->>API Gateway: POST /emergency/share-location

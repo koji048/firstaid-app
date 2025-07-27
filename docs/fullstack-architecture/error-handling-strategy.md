@@ -9,12 +9,12 @@ sequenceDiagram
     participant API
     participant Service
     participant Database
-    
+
     User->>App: Perform action
     App->>API: API request
     API->>Service: Process request
     Service->>Database: Query data
-    
+
     alt Database error
         Database-->>Service: Error
         Service-->>API: Throw ServiceError
@@ -54,37 +54,32 @@ import * as Sentry from '@sentry/react-native';
 export class ErrorHandler {
   static handle(error: any, context?: string) {
     console.error(`Error in ${context}:`, error);
-    
+
     // Log to Sentry
     Sentry.captureException(error, {
       tags: { context },
     });
-    
+
     // User-friendly message
     const message = this.getUserMessage(error);
-    
+
     if (error.code === 'NETWORK_ERROR') {
       // Don't show alert for network errors in offline mode
       return;
     }
-    
-    Alert.alert(
-      'Error',
-      message,
-      [{ text: 'OK' }],
-      { cancelable: true }
-    );
+
+    Alert.alert('Error', message, [{ text: 'OK' }], { cancelable: true });
   }
-  
+
   private static getUserMessage(error: any): string {
     const errorMessages: Record<string, string> = {
-      'AUTH_FAILED': 'Invalid email or password',
-      'NETWORK_ERROR': 'No internet connection',
-      'VALIDATION_ERROR': 'Please check your input',
-      'PERMISSION_DENIED': 'You do not have permission',
-      'NOT_FOUND': 'Resource not found',
+      AUTH_FAILED: 'Invalid email or password',
+      NETWORK_ERROR: 'No internet connection',
+      VALIDATION_ERROR: 'Please check your input',
+      PERMISSION_DENIED: 'You do not have permission',
+      NOT_FOUND: 'Resource not found',
     };
-    
+
     return errorMessages[error.code] || 'Something went wrong. Please try again.';
   }
 }
@@ -110,7 +105,7 @@ export class AppError extends Error {
     public statusCode: number,
     public code: string,
     message: string,
-    public details?: any
+    public details?: any,
   ) {
     super(message);
     this.name = 'AppError';
@@ -119,14 +114,14 @@ export class AppError extends Error {
 
 export const errorHandler = (error: any): APIGatewayProxyResult => {
   const requestId = uuidv4();
-  
+
   // Log error
   logger.error('Request failed', {
     error: error.message,
     stack: error.stack,
     requestId,
   });
-  
+
   if (error instanceof AppError) {
     return {
       statusCode: error.statusCode,
@@ -141,7 +136,7 @@ export const errorHandler = (error: any): APIGatewayProxyResult => {
       }),
     };
   }
-  
+
   // Generic error
   return {
     statusCode: 500,
@@ -163,7 +158,7 @@ export const handler = async (event: APIGatewayProxyEvent) => {
     if (!event.body) {
       throw new AppError(400, 'VALIDATION_ERROR', 'Request body is required');
     }
-    
+
     // Process request...
   } catch (error) {
     return errorHandler(error);

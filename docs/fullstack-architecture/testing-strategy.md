@@ -69,25 +69,21 @@ import { EmergencyButton } from '../../src/components/emergency/EmergencyButton'
 describe('EmergencyButton', () => {
   it('should trigger emergency mode on press', () => {
     const onPress = jest.fn();
-    const { getByTestId } = render(
-      <EmergencyButton onPress={onPress} />
-    );
-    
+    const { getByTestId } = render(<EmergencyButton onPress={onPress} />);
+
     const button = getByTestId('emergency-button');
     fireEvent.press(button);
-    
+
     expect(onPress).toHaveBeenCalledTimes(1);
   });
-  
+
   it('should show animation during emergency mode', () => {
-    const { getByTestId, rerender } = render(
-      <EmergencyButton isEmergencyMode={false} />
-    );
-    
+    const { getByTestId, rerender } = render(<EmergencyButton isEmergencyMode={false} />);
+
     expect(getByTestId('emergency-button')).not.toHaveStyle({ backgroundColor: 'red' });
-    
+
     rerender(<EmergencyButton isEmergencyMode={true} />);
-    
+
     expect(getByTestId('emergency-button')).toHaveStyle({ backgroundColor: 'red' });
   });
 });
@@ -104,17 +100,17 @@ import { createTestUser, cleanupDatabase } from '../helpers';
 describe('Emergency Contacts API', () => {
   let authToken: string;
   let userId: string;
-  
+
   beforeEach(async () => {
     const { user, token } = await createTestUser();
     authToken = token;
     userId = user.id;
   });
-  
+
   afterEach(async () => {
     await cleanupDatabase();
   });
-  
+
   describe('POST /emergency-contacts', () => {
     it('should create emergency contact', async () => {
       const contactData = {
@@ -124,20 +120,20 @@ describe('Emergency Contacts API', () => {
         category: 'family',
         isPrimary: true,
       };
-      
+
       const response = await request(app)
         .post('/v1/emergency-contacts')
         .set('Authorization', `Bearer ${authToken}`)
         .send(contactData)
         .expect(201);
-      
+
       expect(response.body).toMatchObject({
         id: expect.any(String),
         ...contactData,
         userId,
       });
     });
-    
+
     it('should validate phone number format', async () => {
       const response = await request(app)
         .post('/v1/emergency-contacts')
@@ -149,7 +145,7 @@ describe('Emergency Contacts API', () => {
           category: 'family',
         })
         .expect(400);
-      
+
       expect(response.body.error).toContain('Invalid phone number');
     });
   });
@@ -166,27 +162,27 @@ describe('Emergency Flow', () => {
   beforeAll(async () => {
     await device.launchApp();
   });
-  
+
   beforeEach(async () => {
     await device.reloadReactNative();
   });
-  
+
   it('should complete emergency contact flow', async () => {
     // Login
     await element(by.id('email-input')).typeText('test@example.com');
     await element(by.id('password-input')).typeText('password123');
     await element(by.id('login-button')).tap();
-    
+
     // Navigate to emergency screen
     await element(by.id('tab-emergency')).tap();
-    
+
     // Trigger emergency mode
     await element(by.id('emergency-button')).tap();
-    
+
     // Verify emergency mode UI
     await expect(element(by.id('emergency-mode-indicator'))).toBeVisible();
     await expect(element(by.id('primary-contact-dial'))).toBeVisible();
-    
+
     // Test location sharing
     await element(by.id('share-location-button')).tap();
     await expect(element(by.text('Location shared'))).toBeVisible();

@@ -7,6 +7,7 @@ This unified approach combines what would traditionally be separate backend and 
 ## Starter Template or Existing Project
 
 **Decision**: Custom React Native architecture tailored for mobile-first emergency response
+
 - No specific starter template used due to specialized requirements
 - Native mobile app architecture (not web-based)
 - Custom offline-first design patterns required
@@ -14,6 +15,6 @@ This unified approach combines what would traditionally be separate backend and 
 
 ## Change Log
 
-| Date | Version | Description | Author |
-|------|---------|-------------|--------|
-| 2025-01-27 | 1.0 | Initial architecture document | System |
+| Date       | Version | Description                   | Author |
+| ---------- | ------- | ----------------------------- | ------ |
+| 2025-01-27 | 1.0     | Initial architecture document | System |

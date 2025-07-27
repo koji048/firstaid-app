@@ -35,15 +35,15 @@ High Level Architecture Diagram
 
 Code snippet
 graph TD
-    A[User (Nurse)] --> B{Web Application (Browser)};
-    B --> C[API Gateway];
-    C --> D[Lambda: Auth];
-    C --> E[Lambda: Visit Logging];
-    C --> F[Lambda: Reporting];
-    E --> G[DynamoDB/Database];
-    F --> G;
-    H[S3: Health Data Excel File] --> I[Lambda: Data Import (Scheduled)];
-    I --> G;
+A[User (Nurse)] --> B{Web Application (Browser)};
+B --> C[API Gateway];
+C --> D[Lambda: Auth];
+C --> E[Lambda: Visit Logging];
+C --> F[Lambda: Reporting];
+E --> G[DynamoDB/Database];
+F --> G;
+H[S3: Health Data Excel File] --> I[Lambda: Data Import (Scheduled)];
+I --> G;
 Architectural Patterns
 
 Serverless Architecture: Using AWS Lambda for backend logic.
@@ -55,18 +55,18 @@ Component-Based UI: Building the frontend with reusable components, following th
 Repository Pattern (Data Access): Backend functions will access the database through a dedicated data access layer.
 
 Tech Stack
-Category	Technology	Version	Purpose	Rationale
-Frontend Language	TypeScript	~5.3.3	Main language for UI development	Provides strong typing to reduce errors.
-Frontend Framework	Next.js (React)	~14.1.0	Framework for building the user interface	High performance and great developer experience.
-UI Component Library	IBM Carbon Design	~11.0	Pre-built UI components	Directly implements the PRD requirement.
-Backend Language	TypeScript	~5.3.3	Main language for AWS Lambda functions	Keeps the language consistent across the stack.
-Backend Framework	AWS CDK	~2.127.0	Infrastructure as Code framework	Allows defining cloud architecture in TypeScript.
-API Style	REST	(via API Gateway)	Defines client-server communication	A well-understood and standard approach.
-Database	Amazon DynamoDB	(N/A)	Primary database for application data	Serverless NoSQL database that pairs with Lambda.
-Authentication	AWS Cognito	(N/A)	Manages user sign-in and security	Secure, managed service for authentication.
-Frontend Testing	Jest & RTL	~29.7.0	Unit and component testing	Industry standard for testing React/Next.js.
-Backend Testing	Jest	~29.7.0	Unit testing for Lambda functions	Keeps testing framework consistent.
-E2E Testing	Playwright	~1.41.2	Full application workflow testing	Modern and powerful end-to-end testing tool.
+Category Technology Version Purpose Rationale
+Frontend Language TypeScript ~5.3.3 Main language for UI development Provides strong typing to reduce errors.
+Frontend Framework Next.js (React) ~14.1.0 Framework for building the user interface High performance and great developer experience.
+UI Component Library IBM Carbon Design ~11.0 Pre-built UI components Directly implements the PRD requirement.
+Backend Language TypeScript ~5.3.3 Main language for AWS Lambda functions Keeps the language consistent across the stack.
+Backend Framework AWS CDK ~2.127.0 Infrastructure as Code framework Allows defining cloud architecture in TypeScript.
+API Style REST (via API Gateway) Defines client-server communication A well-understood and standard approach.
+Database Amazon DynamoDB (N/A) Primary database for application data Serverless NoSQL database that pairs with Lambda.
+Authentication AWS Cognito (N/A) Manages user sign-in and security Secure, managed service for authentication.
+Frontend Testing Jest & RTL ~29.7.0 Unit and component testing Industry standard for testing React/Next.js.
+Backend Testing Jest ~29.7.0 Unit testing for Lambda functions Keeps testing framework consistent.
+E2E Testing Playwright ~1.41.2 Full application workflow testing Modern and powerful end-to-end testing tool.
 Data Models
 Employee
 
@@ -76,12 +76,12 @@ TypeScript Interface:
 
 TypeScript
 interface Employee {
-  id: string;
-  rfidTag: string;
-  name: string;
-  department: string;
-  latestLeadLevel?: number;
-  createdAt: Date;
+id: string;
+rfidTag: string;
+name: string;
+department: string;
+latestLeadLevel?: number;
+createdAt: Date;
 }
 Relationships: An Employee can have many Visits.
 
@@ -93,13 +93,13 @@ TypeScript Interface:
 
 TypeScript
 interface Visit {
-  id: string;
-  employeeId: string;
-  timestamp: Date;
-  reasonForVisit: string;
-  vitals?: { bloodPressure?: string; temperature?: number; };
-  treatmentNotes?: string;
-  createdAt: Date;
+id: string;
+employeeId: string;
+timestamp: Date;
+reasonForVisit: string;
+vitals?: { bloodPressure?: string; temperature?: number; };
+treatmentNotes?: string;
+createdAt: Date;
 }
 Relationships: A Visit belongs to one Employee.
 
@@ -137,11 +137,11 @@ New Patient Visit
 
 Code snippet
 sequenceDiagram
-    participant Nurse as Nurse (User)
-    participant WebApp as Web Application (Browser)
-    participant APIGW as API Gateway
-    participant VisitSvc as Visit Management Service (Lambda)
-    participant DB as Database (DynamoDB)
+participant Nurse as Nurse (User)
+participant WebApp as Web Application (Browser)
+participant APIGW as API Gateway
+participant VisitSvc as Visit Management Service (Lambda)
+participant DB as Database (DynamoDB)
 
     Nurse->>+WebApp: 1. Taps Employee RFID Card
     WebApp->>+APIGW: 2. GET /employees/{rfid}
@@ -159,6 +159,7 @@ sequenceDiagram
     VisitSvc-->>-APIGW: 14. Return success confirmation
     APIGW-->>-WebApp: 15. Success confirmation
     WebApp-->>-Nurse: 16. Show "Visit Saved" message
+
 Database Schema
 We will use a single-table design in Amazon DynamoDB for performance and scalability.
 
@@ -222,10 +223,10 @@ Unified Project Structure
 Plaintext
 /factory-clinic-app/
 ├── /apps/
-│   ├── /api/
-│   └── /web/
+│ ├── /api/
+│ └── /web/
 ├── /packages/
-│   └── /shared/
+│ └── /shared/
 ├── /infrastructure/
 └── package.json
 Development Workflow
@@ -259,4 +260,3 @@ A unified error handling strategy will be used. The backend will return a standa
 
 Monitoring and Observability
 We will use Amazon CloudWatch for backend monitoring, logging, and alerting, and CloudWatch RUM for real-user monitoring of the frontend application.
-

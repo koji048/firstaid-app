@@ -35,7 +35,7 @@ paths:
       responses:
         '201':
           description: User created successfully
-          
+
   /auth/login:
     post:
       summary: User login
@@ -84,7 +84,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EmergencyContact'
-              
+
   # First Aid Guides
   /guides:
     get:
@@ -105,7 +105,7 @@ paths:
       responses:
         '200':
           description: List of guides
-          
+
   /guides/{guideId}:
     get:
       summary: Get specific guide details
@@ -118,7 +118,7 @@ paths:
       responses:
         '200':
           description: Guide details
-          
+
   # Medical Profile
   /medical-profile:
     get:
@@ -138,7 +138,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MedicalProfile'
-              
+
   # Emergency Services
   /emergency/hospitals:
     get:

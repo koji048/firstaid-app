@@ -60,27 +60,22 @@ interface ComponentNameProps {
   testID?: string;
 }
 
-export const ComponentName = memo<ComponentNameProps>(({
-  title,
-  onPress,
-  disabled = false,
-  testID = 'component-name'
-}) => {
-  const { colors } = useTheme();
-  
-  return (
-    <TouchableOpacity
-      style={[styles.container, disabled && styles.disabled]}
-      onPress={onPress}
-      disabled={disabled}
-      testID={testID}
-    >
-      <Text style={[styles.title, { color: colors.text }]}>
-        {title}
-      </Text>
-    </TouchableOpacity>
-  );
-});
+export const ComponentName = memo<ComponentNameProps>(
+  ({ title, onPress, disabled = false, testID = 'component-name' }) => {
+    const { colors } = useTheme();
+
+    return (
+      <TouchableOpacity
+        style={[styles.container, disabled && styles.disabled]}
+        onPress={onPress}
+        disabled={disabled}
+        testID={testID}
+      >
+        <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
+      </TouchableOpacity>
+    );
+  },
+);
 
 ComponentName.displayName = 'ComponentName';
 ```
@@ -195,7 +190,9 @@ interface ProtectedRouteProps {
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
-  const hasCompletedOnboarding = useSelector((state: RootState) => state.auth.user?.hasCompletedOnboarding);
+  const hasCompletedOnboarding = useSelector(
+    (state: RootState) => state.auth.user?.hasCompletedOnboarding,
+  );
 
   if (!isAuthenticated) {
     return <Navigate to="Login" />;
@@ -209,12 +206,9 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 };
 
 // Usage in navigator
-<Stack.Screen
-  name="Medical"
-  component={ProtectedRoute}
->
+<Stack.Screen name="Medical" component={ProtectedRoute}>
   <MedicalNavigator />
-</Stack.Screen>
+</Stack.Screen>;
 ```
 
 ## Frontend Services Layer
@@ -233,7 +227,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://api.firstaidroom.
 
 class ApiClient {
   private client: AxiosInstance;
-  
+
   constructor() {
     this.client = axios.create({
       baseURL: API_BASE_URL,
@@ -242,10 +236,10 @@ class ApiClient {
         'Content-Type': 'application/json',
       },
     });
-    
+
     this.setupInterceptors();
   }
-  
+
   private setupInterceptors() {
     // Request interceptor for auth
     this.client.interceptors.request.use(
@@ -256,9 +250,9 @@ class ApiClient {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
-    
+
     // Response interceptor for error handling
     this.client.interceptors.response.use(
       (response) => response,
@@ -267,20 +261,20 @@ class ApiClient {
           // Handle token refresh
           await this.refreshToken();
         }
-        
+
         if (!error.response && error.code === 'NETWORK_ERROR') {
           // Handle offline mode
           return this.handleOfflineRequest(error.config);
         }
-        
+
         return Promise.reject(error);
-      }
+      },
     );
   }
-  
+
   private async handleOfflineRequest(config: AxiosRequestConfig) {
     const { method, url, data } = config;
-    
+
     if (method === 'GET') {
       // Try to return cached data
       const cachedData = await this.getCachedData(url!);
@@ -289,32 +283,34 @@ class ApiClient {
       }
     } else {
       // Queue mutation for sync
-      store.dispatch(addToSyncQueue({
-        method: method!,
-        url: url!,
-        data,
-        timestamp: new Date().toISOString(),
-      }));
+      store.dispatch(
+        addToSyncQueue({
+          method: method!,
+          url: url!,
+          data,
+          timestamp: new Date().toISOString(),
+        }),
+      );
     }
-    
+
     throw new Error('No network connection');
   }
-  
+
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.get<T>(url, config);
     return response.data;
   }
-  
+
   async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.post<T>(url, data, config);
     return response.data;
   }
-  
+
   async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.put<T>(url, data, config);
     return response.data;
   }
-  
+
   async delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.client.delete<T>(url, config);
     return response.data;
@@ -334,7 +330,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class EmergencyService {
   private static CONTACTS_CACHE_KEY = 'emergency_contacts';
-  
+
   static async getEmergencyContacts(): Promise<EmergencyContact[]> {
     try {
       const contacts = await apiClient.get<EmergencyContact[]>('/emergency-contacts');
@@ -350,10 +346,12 @@ export class EmergencyService {
       throw error;
     }
   }
-  
-  static async addEmergencyContact(contact: Omit<EmergencyContact, 'id'>): Promise<EmergencyContact> {
+
+  static async addEmergencyContact(
+    contact: Omit<EmergencyContact, 'id'>,
+  ): Promise<EmergencyContact> {
     const newContact = await apiClient.post<EmergencyContact>('/emergency-contacts', contact);
-    
+
     // Update cache
     const cached = await AsyncStorage.getItem(this.CONTACTS_CACHE_KEY);
     if (cached) {
@@ -361,14 +359,18 @@ export class EmergencyService {
       contacts.push(newContact);
       await AsyncStorage.setItem(this.CONTACTS_CACHE_KEY, JSON.stringify(contacts));
     }
-    
+
     return newContact;
   }
-  
-  static async findNearbyHospitals(latitude: number, longitude: number, radius: number = 10): Promise<Hospital[]> {
+
+  static async findNearbyHospitals(
+    latitude: number,
+    longitude: number,
+    radius: number = 10,
+  ): Promise<Hospital[]> {
     try {
       const hospitals = await apiClient.get<Hospital[]>('/emergency/hospitals', {
-        params: { lat: latitude, lng: longitude, radius }
+        params: { lat: latitude, lng: longitude, radius },
       });
       return hospitals;
     } catch (error) {
@@ -377,16 +379,18 @@ export class EmergencyService {
       return [];
     }
   }
-  
+
   static async callEmergency(contactId: string, location?: { lat: number; lng: number }) {
     // Log the emergency call attempt
-    await apiClient.post('/emergency/call-log', {
-      contactId,
-      location,
-      timestamp: new Date().toISOString()
-    }).catch(() => {
-      // Don't block the call if logging fails
-    });
+    await apiClient
+      .post('/emergency/call-log', {
+        contactId,
+        location,
+        timestamp: new Date().toISOString(),
+      })
+      .catch(() => {
+        // Don't block the call if logging fails
+      });
   }
 }
 ```

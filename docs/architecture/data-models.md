@@ -1,6 +1,7 @@
 # Data Models
 
 ## User Model
+
 ```typescript
 interface User {
   id: string;
@@ -12,6 +13,7 @@ interface User {
 ```
 
 ## Emergency Contact Model
+
 ```typescript
 interface EmergencyContact {
   id: string;
@@ -23,6 +25,7 @@ interface EmergencyContact {
 ```
 
 ## First Aid Guide Model
+
 ```typescript
 interface FirstAidGuide {
   id: string;

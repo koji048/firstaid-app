@@ -27,17 +27,17 @@ graph TB
         Android[Android App]
         Watch[Apple Watch/Wear OS]
     end
-    
+
     subgraph "CDN Layer"
         CF[CloudFront CDN]
         S3[S3 Static Assets]
     end
-    
+
     subgraph "API Layer"
         APIG[API Gateway]
         ALB[Application Load Balancer]
     end
-    
+
     subgraph "Backend Services"
         Auth[Auth Service<br/>Lambda + Cognito]
         Content[Content Service<br/>Lambda]
@@ -45,33 +45,33 @@ graph TB
         Medical[Medical Profile Service<br/>Lambda]
         Notification[Notification Service<br/>Lambda + SNS]
     end
-    
+
     subgraph "Data Layer"
         RDS[(PostgreSQL<br/>RDS)]
         Redis[(Redis<br/>ElastiCache)]
         S3Storage[(S3<br/>Media Storage)]
     end
-    
+
     subgraph "External Services"
         Maps[Google Maps API]
         Hospital[Hospital APIs]
         Emergency911[911 Integration]
         Push[FCM/APNS]
     end
-    
+
     iOS --> CF
     Android --> CF
     Watch --> APIG
-    
+
     CF --> S3
     CF --> APIG
-    
+
     APIG --> Auth
     APIG --> Content
     APIG --> Emergency
     APIG --> Medical
     APIG --> Notification
-    
+
     Auth --> RDS
     Auth --> Redis
     Content --> RDS

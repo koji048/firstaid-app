@@ -65,35 +65,31 @@ export const handler: APIGatewayProxyHandler = async (event, context) => {
   try {
     // Validate request
     const body = validateRequest(event.body, loginSchema);
-    
+
     // Get user
     const userRepo = new UserRepository();
     const user = await userRepo.findByEmail(body.email);
-    
-    if (!user || !await bcrypt.compare(body.password, user.passwordHash)) {
+
+    if (!user || !(await bcrypt.compare(body.password, user.passwordHash))) {
       return createErrorResponse(401, 'Invalid credentials');
     }
-    
+
     // Generate tokens
-    const accessToken = jwt.sign(
-      { userId: user.id, email: user.email },
-      process.env.JWT_SECRET!,
-      { expiresIn: '15m' }
-    );
-    
-    const refreshToken = jwt.sign(
-      { userId: user.id },
-      process.env.JWT_REFRESH_SECRET!,
-      { expiresIn: '30d' }
-    );
-    
+    const accessToken = jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET!, {
+      expiresIn: '15m',
+    });
+
+    const refreshToken = jwt.sign({ userId: user.id }, process.env.JWT_REFRESH_SECRET!, {
+      expiresIn: '30d',
+    });
+
     // Cache session
     const cache = new CacheService();
     await cache.set(`session:${user.id}`, { refreshToken }, 30 * 24 * 60 * 60);
-    
+
     // Log successful login
     logger.info('User logged in', { userId: user.id });
-    
+
     return createResponse(200, {
       accessToken,
       refreshToken,
@@ -130,7 +126,7 @@ export abstract class BaseRepository<T> {
   protected pool: Pool;
   protected cache: CacheService;
   protected tableName: string;
-  
+
   constructor(tableName: string) {
     this.tableName = tableName;
     this.pool = new Pool({
@@ -140,49 +136,46 @@ export abstract class BaseRepository<T> {
     });
     this.cache = new CacheService();
   }
-  
+
   async findById(id: string): Promise<T | null> {
     // Check cache first
     const cacheKey = `${this.tableName}:${id}`;
     const cached = await this.cache.get<T>(cacheKey);
     if (cached) return cached;
-    
+
     // Query database
-    const result = await this.pool.query(
-      `SELECT * FROM ${this.tableName} WHERE id = $1`,
-      [id]
-    );
-    
+    const result = await this.pool.query(`SELECT * FROM ${this.tableName} WHERE id = $1`, [id]);
+
     if (result.rows.length === 0) return null;
-    
+
     const entity = this.mapRowToEntity(result.rows[0]);
-    
+
     // Cache for 5 minutes
     await this.cache.set(cacheKey, entity, 300);
-    
+
     return entity;
   }
-  
+
   async create(data: Partial<T>): Promise<T> {
     const columns = Object.keys(data);
     const values = Object.values(data);
     const placeholders = columns.map((_, i) => `$${i + 1}`);
-    
+
     const query = `
       INSERT INTO ${this.tableName} (${columns.join(', ')})
       VALUES (${placeholders.join(', ')})
       RETURNING *
     `;
-    
+
     const result = await this.pool.query(query, values);
     const entity = this.mapRowToEntity(result.rows[0]);
-    
+
     // Invalidate cache
     await this.cache.delete(`${this.tableName}:list`);
-    
+
     return entity;
   }
-  
+
   abstract mapRowToEntity(row: any): T;
 }
 
@@ -194,27 +187,27 @@ export class EmergencyContactRepository extends BaseRepository<EmergencyContact>
   constructor() {
     super('emergency_contacts');
   }
-  
+
   async findByUserId(userId: string): Promise<EmergencyContact[]> {
     const result = await this.pool.query(
       'SELECT * FROM emergency_contacts WHERE user_id = $1 ORDER BY is_primary DESC, created_at ASC',
-      [userId]
+      [userId],
     );
-    
-    return result.rows.map(row => this.mapRowToEntity(row));
+
+    return result.rows.map((row) => this.mapRowToEntity(row));
   }
-  
+
   async getPrimaryContact(userId: string): Promise<EmergencyContact | null> {
     const result = await this.pool.query(
       'SELECT * FROM emergency_contacts WHERE user_id = $1 AND is_primary = true LIMIT 1',
-      [userId]
+      [userId],
     );
-    
+
     if (result.rows.length === 0) return null;
-    
+
     return this.mapRowToEntity(result.rows[0]);
   }
-  
+
   mapRowToEntity(row: any): EmergencyContact {
     return {
       id: row.id,
@@ -244,7 +237,7 @@ sequenceDiagram
     participant Cognito
     participant Database
     participant Redis
-    
+
     Client->>API Gateway: POST /auth/register
     API Gateway->>Auth Lambda: Register request
     Auth Lambda->>Cognito: Create user
@@ -252,7 +245,7 @@ sequenceDiagram
     Auth Lambda->>Database: Store user profile
     Auth Lambda-->>API Gateway: Success
     API Gateway-->>Client: Registration complete
-    
+
     Client->>API Gateway: POST /auth/login
     API Gateway->>Auth Lambda: Login request
     Auth Lambda->>Cognito: Authenticate
@@ -260,7 +253,7 @@ sequenceDiagram
     Auth Lambda->>Redis: Cache session
     Auth Lambda-->>API Gateway: Tokens
     API Gateway-->>Client: Access + Refresh tokens
-    
+
     Client->>API Gateway: GET /api/resource
     API Gateway->>API Gateway: Validate JWT
     API Gateway->>Lambda: Authorized request
@@ -287,38 +280,38 @@ export interface AuthenticatedEvent extends APIGatewayProxyEvent {
 export const authMiddleware = async (
   event: APIGatewayProxyEvent,
   context: Context,
-  next: Function
+  next: Function,
 ) => {
   try {
     const token = event.headers.Authorization?.replace('Bearer ', '');
-    
+
     if (!token) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'No token provided' }),
       };
     }
-    
+
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
-    
+
     // Check if session is valid in cache
     const cache = new CacheService();
     const session = await cache.get(`session:${decoded.userId}`);
-    
+
     if (!session) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Session expired' }),
       };
     }
-    
+
     // Attach user to event
     (event as AuthenticatedEvent).user = {
       userId: decoded.userId,
       email: decoded.email,
     };
-    
+
     return next();
   } catch (error) {
     return {
@@ -332,7 +325,7 @@ export const authMiddleware = async (
 export const protectedHandler = authMiddleware(async (event: AuthenticatedEvent) => {
   // Access user from event.user
   const { userId } = event.user;
-  
+
   // Protected logic here
   return {
     statusCode: 200,

@@ -6,15 +6,21 @@ prd:
   prdShardedLocation: docs/prd
   epicFilePattern: epic-{n}*.md
 architecture:
-  architectureFile: docs/architecture.md
+  architectureFile: docs/fullstack-architecture.md
   architectureVersion: v4
   architectureSharded: true
-  architectureShardedLocation: docs/architecture
+  architectureShardedLocation: docs/fullstack-architecture
 customTechnicalDocuments: null
 devLoadAlwaysFiles:
-  - docs/architecture/coding-standards.md
-  - docs/architecture/tech-stack.md
-  - docs/architecture/source-tree.md
+  - docs/fullstack-architecture/coding-standards.md
+  - docs/fullstack-architecture/tech-stack.md
+  - docs/fullstack-architecture/api-specification.md
+  - docs/fullstack-architecture/backend-architecture.md
+  - docs/fullstack-architecture/frontend-architecture.md
+  - docs/fullstack-architecture/database-schema.md
+  - docs/fullstack-architecture/unified-project-structure.md
+  - docs/fullstack-architecture/testing-strategy.md
+  - docs/fullstack-architecture/ui-guideline.md  
 devDebugLog: .ai/debug-log.md
 devStoryLocation: docs/stories
 slashPrefix: BMad

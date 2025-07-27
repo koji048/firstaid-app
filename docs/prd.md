@@ -17,8 +17,8 @@ This document outlines the requirements for a new digital application that will 
 
 Change Log
 
-Date	Version	Description	Author
-2025-07-25	1.0	Initial PRD draft created from Project Brief.	John (PM)
+Date Version Description Author
+2025-07-25 1.0 Initial PRD draft created from Project Brief. John (PM)
 Requirements
 
 Functional

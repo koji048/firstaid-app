@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+android/build/
+android/app/build/
+ios/build/
+ios/Pods/
+.gradle/
+
+# IDE
+.idea/
+.vscode/
+
+# React Native
+android/
+ios/
+
+# Metro
+.metro-health-check-result
+
+# Testing
+coverage/
+
+# Misc
+*.log
+.DS_Store
+*.swp
+*.swo
