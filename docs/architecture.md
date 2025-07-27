@@ -1,179 +1,262 @@
-# First Aid Room App Architecture
+Factory Hospital Room Application Fullstack Architecture Document
+Introduction
 
-This document describes the technical architecture of the First Aid Room mobile application.
+This document outlines the complete fullstack architecture for the Factory Hospital Room Application, including backend systems, frontend implementation, and their integration. It serves as the single source of truth for AI-driven development, ensuring consistency across the entire technology stack. This unified approach combines what would traditionally be separate backend and frontend architecture documents, streamlining the development process.
 
-## System Overview
+Starter Template or Existing Project: N/A - Greenfield project.
 
-The First Aid Room App is a mobile application designed to provide quick access to first aid information and emergency assistance. The system consists of a mobile client application, backend services, and integration with emergency services.
+Change Log:
+| Date | Version | Description | Author |
+| :--- | :--- | :--- | :--- |
+| 2025-07-26 | 1.0 | Initial draft created interactively. | Winston (Architect)|
 
-### Key Features
-- Emergency contact management
-- First aid guide database
-- Location-based services
-- Offline capability
-- Multi-language support
+High Level Architecture
+Technical Summary
 
-## Technical Stack
+The architecture for the Factory Hospital Room Application will be a modern, cloud-native system deployed on AWS, following a Serverless pattern. It will feature a responsive web frontend that communicates with backend services via a secure API layer. The system will be developed within a Monorepo to streamline development and code sharing. This architecture prioritizes security, scalability, and cost-efficiency, ensuring compliance with Thailand's PDPA while delivering the real-time data collection and reporting capabilities outlined in the PRD.
 
-### Frontend
-- **Framework**: React Native for cross-platform mobile development
-- **State Management**: Redux Toolkit for application state
-- **UI Components**: React Native Elements
-- **Navigation**: React Navigation
-- **Offline Storage**: AsyncStorage and SQLite
+Platform and Infrastructure Choice
 
-### Backend
-- **API Server**: Node.js with Express.js
-- **Database**: PostgreSQL for relational data
-- **Cache**: Redis for session management and caching
-- **File Storage**: AWS S3 for media assets
-- **Authentication**: JWT tokens with refresh token rotation
+Platform: AWS (Amazon Web Services)
 
-### Infrastructure
-- **Cloud Provider**: AWS
-- **Container Orchestration**: ECS with Fargate
-- **CI/CD**: GitHub Actions
-- **Monitoring**: CloudWatch and Sentry
-- **API Gateway**: AWS API Gateway
+Key Services: We will primarily use AWS Lambda for backend logic, Amazon API Gateway for the API layer, Amazon DynamoDB for our database, Amazon S3 for data storage, and AWS Cognito for user authentication.
 
-## Architecture Patterns
+Rationale: This serverless stack is highly scalable, requires no server management, and is extremely cost-effective.
 
-### Client Architecture
-The mobile application follows a layered architecture:
+Repository Structure
 
-1. **Presentation Layer**: React components and screens
-2. **Business Logic Layer**: Redux actions and reducers
-3. **Data Access Layer**: API clients and local storage
-4. **Infrastructure Layer**: Platform-specific implementations
+The project will use a Monorepo structure.
 
-### Server Architecture
-The backend follows a microservices architecture:
+Monorepo Tool: A standard tool like npm workspaces or Turborepo will be used.
 
-1. **API Gateway**: Routes requests to appropriate services
-2. **Authentication Service**: Handles user authentication and authorization
-3. **Content Service**: Manages first aid guides and medical information
-4. **Emergency Service**: Handles emergency contacts and alerts
-5. **Notification Service**: Manages push notifications
+Package Organization: The monorepo will contain separate packages for the frontend application (apps/web), the backend services (apps/api), and a shared library (packages/shared).
 
-## Data Models
+High Level Architecture Diagram
 
-### User Model
-```typescript
-interface User {
+Code snippet
+graph TD
+    A[User (Nurse)] --> B{Web Application (Browser)};
+    B --> C[API Gateway];
+    C --> D[Lambda: Auth];
+    C --> E[Lambda: Visit Logging];
+    C --> F[Lambda: Reporting];
+    E --> G[DynamoDB/Database];
+    F --> G;
+    H[S3: Health Data Excel File] --> I[Lambda: Data Import (Scheduled)];
+    I --> G;
+Architectural Patterns
+
+Serverless Architecture: Using AWS Lambda for backend logic.
+
+API Gateway Pattern: Using Amazon API Gateway as a single entry point for all client requests.
+
+Component-Based UI: Building the frontend with reusable components, following the IBM design language.
+
+Repository Pattern (Data Access): Backend functions will access the database through a dedicated data access layer.
+
+Tech Stack
+Category	Technology	Version	Purpose	Rationale
+Frontend Language	TypeScript	~5.3.3	Main language for UI development	Provides strong typing to reduce errors.
+Frontend Framework	Next.js (React)	~14.1.0	Framework for building the user interface	High performance and great developer experience.
+UI Component Library	IBM Carbon Design	~11.0	Pre-built UI components	Directly implements the PRD requirement.
+Backend Language	TypeScript	~5.3.3	Main language for AWS Lambda functions	Keeps the language consistent across the stack.
+Backend Framework	AWS CDK	~2.127.0	Infrastructure as Code framework	Allows defining cloud architecture in TypeScript.
+API Style	REST	(via API Gateway)	Defines client-server communication	A well-understood and standard approach.
+Database	Amazon DynamoDB	(N/A)	Primary database for application data	Serverless NoSQL database that pairs with Lambda.
+Authentication	AWS Cognito	(N/A)	Manages user sign-in and security	Secure, managed service for authentication.
+Frontend Testing	Jest & RTL	~29.7.0	Unit and component testing	Industry standard for testing React/Next.js.
+Backend Testing	Jest	~29.7.0	Unit testing for Lambda functions	Keeps testing framework consistent.
+E2E Testing	Playwright	~1.41.2	Full application workflow testing	Modern and powerful end-to-end testing tool.
+Data Models
+Employee
+
+Purpose: Represents a factory employee who can be a patient at the on-site clinic.
+
+TypeScript Interface:
+
+TypeScript
+interface Employee {
   id: string;
-  email: string;
-  profile: UserProfile;
-  preferences: UserPreferences;
-  emergencyContacts: EmergencyContact[];
-}
-```
-
-### Emergency Contact Model
-```typescript
-interface EmergencyContact {
-  id: string;
+  rfidTag: string;
   name: string;
-  phoneNumber: string;
-  relationship: string;
-  isPrimary: boolean;
+  department: string;
+  latestLeadLevel?: number;
+  createdAt: Date;
 }
-```
+Relationships: An Employee can have many Visits.
 
-### First Aid Guide Model
-```typescript
-interface FirstAidGuide {
+Visit
+
+Purpose: Represents a single visit by an employee to the factory clinic.
+
+TypeScript Interface:
+
+TypeScript
+interface Visit {
   id: string;
-  title: string;
-  category: string;
-  content: string;
-  media: MediaAsset[];
-  translations: Translation[];
+  employeeId: string;
+  timestamp: Date;
+  reasonForVisit: string;
+  vitals?: { bloodPressure?: string; temperature?: number; };
+  treatmentNotes?: string;
+  createdAt: Date;
 }
-```
+Relationships: A Visit belongs to one Employee.
 
-## Security Architecture
+API Specification
+The API will expose the following main endpoints:
 
-### Authentication Flow
-1. User registers with email/password or social login
-2. Server generates JWT access token (15 min expiry) and refresh token (30 days)
-3. Tokens stored securely in device keychain
-4. Access token used for API requests
-5. Refresh token used to obtain new access token
+GET /employees/{rfid}: Retrieves an employee's profile by their RFID tag.
 
-### Data Security
-- **Encryption at Rest**: All sensitive data encrypted using AES-256
-- **Encryption in Transit**: TLS 1.3 for all API communications
-- **API Security**: Rate limiting, input validation, SQL injection prevention
-- **HIPAA Compliance**: Medical data handled according to HIPAA guidelines
+POST /visits: Creates a new visit record for an employee.
 
-## Integration Architecture
+GET /employees/{employeeId}/visits: Retrieves the list of all past visits for a specific employee.
 
-### Emergency Services Integration
-- **911 Integration**: Direct dial capability with location sharing
-- **Hospital API**: Real-time hospital availability and wait times
-- **Ambulance Tracking**: Real-time ambulance location updates
+GET /reports/statistics: Retrieves aggregated data for the management dashboard.
 
-### Third-Party Services
-- **Maps Integration**: Google Maps for location services
-- **Payment Gateway**: Stripe for premium features
-- **Analytics**: Firebase Analytics for usage tracking
-- **Push Notifications**: Firebase Cloud Messaging
+GET /reports/recommendations: Retrieves actionable recommendations for management.
 
-## Performance Architecture
+Components
+Frontend Application (Web UI): Provides the user interface for staff and managers.
 
-### Mobile Performance
-- **Code Splitting**: Lazy loading of features
-- **Image Optimization**: WebP format with responsive sizing
-- **Caching Strategy**: Aggressive caching of static content
-- **Bundle Size**: Target < 20MB initial download
+API Gateway: The single, secure entry point for all API requests.
 
-### Backend Performance
-- **Database Optimization**: Indexed queries, connection pooling
-- **Caching Layer**: Redis for frequently accessed data
-- **CDN**: CloudFront for static assets
-- **Auto-scaling**: Based on CPU and memory metrics
+Visit Management Service: Lambda functions handling the core clinic workflow.
 
-## Deployment Architecture
+Reporting Service: Lambda functions for data analysis for the dashboard and reports.
 
-### Development Environment
-- Local development with Docker Compose
-- Feature branch deployments for testing
-- Automated testing pipeline
+Data Import Service: A scheduled Lambda function to process the health data Excel file from S3.
 
-### Staging Environment
-- Mirrors production infrastructure
-- Used for QA and user acceptance testing
-- Data anonymization from production
+Database: Amazon DynamoDB providing persistent storage.
 
-### Production Environment
-- Blue-green deployment strategy
-- Rolling updates with zero downtime
-- Automated rollback capability
-- Multi-region deployment for high availability
+External APIs
+Based on our requirements, the application does not need to connect to any third-party external APIs.
 
-## Monitoring and Observability
+Core Workflows
+New Patient Visit
 
-### Application Monitoring
-- **Error Tracking**: Sentry for error monitoring
-- **Performance Monitoring**: New Relic APM
-- **Log Aggregation**: ELK stack (Elasticsearch, Logstash, Kibana)
-- **Uptime Monitoring**: Pingdom for endpoint monitoring
+Code snippet
+sequenceDiagram
+    participant Nurse as Nurse (User)
+    participant WebApp as Web Application (Browser)
+    participant APIGW as API Gateway
+    participant VisitSvc as Visit Management Service (Lambda)
+    participant DB as Database (DynamoDB)
 
-### Infrastructure Monitoring
-- **CloudWatch**: AWS resource monitoring
-- **Custom Metrics**: Business-specific KPIs
-- **Alerting**: PagerDuty integration for critical alerts
-- **Dashboards**: Grafana for visualization
+    Nurse->>+WebApp: 1. Taps Employee RFID Card
+    WebApp->>+APIGW: 2. GET /employees/{rfid}
+    APIGW->>+VisitSvc: 3. Invoke GetEmployee function
+    VisitSvc->>+DB: 4. Query for employee by rfidTag
+    DB-->>-VisitSvc: 5. Return Employee data
+    VisitSvc-->>-APIGW: 6. Return Employee profile
+    APIGW-->>-WebApp: 7. Employee profile data
+    WebApp-->>-Nurse: 8. Display Employee Profile & Visit Form
+    Nurse->>+WebApp: 9. Enters visit details and clicks Save
+    WebApp->>+APIGW: 10. POST /visits with visit data
+    APIGW->>+VisitSvc: 11. Invoke CreateVisit function
+    VisitSvc->>+DB: 12. Save new visit record
+    DB-->>-VisitSvc: 13. Confirm save
+    VisitSvc-->>-APIGW: 14. Return success confirmation
+    APIGW-->>-WebApp: 15. Success confirmation
+    WebApp-->>-Nurse: 16. Show "Visit Saved" message
+Database Schema
+We will use a single-table design in Amazon DynamoDB for performance and scalability.
 
-## Disaster Recovery
+Employee Record:
 
-### Backup Strategy
-- **Database**: Daily automated backups with 30-day retention
-- **File Storage**: S3 versioning and cross-region replication
-- **Configuration**: Infrastructure as Code in Git
+PK: EMP#<employee_id>
 
-### Recovery Procedures
-- **RTO**: 4 hours for critical services
-- **RPO**: 1 hour maximum data loss
-- **Failover**: Automated failover to secondary region
-- **Testing**: Quarterly disaster recovery drills
+SK: PROFILE
+
+Visit Record:
+
+PK: EMP#<employee_id>
+
+SK: VISIT#<timestamp>
+
+Frontend Architecture
+Component Architecture
+
+Folder Structure: Components will be organized into /ui, /common, and /features directories.
+
+Component Template: All components will follow a standard React functional component template with TypeScript props.
+
+State Management Architecture
+
+Library: We will use Zustand for its simplicity and performance.
+
+Structure: State will be organized into feature-specific stores (e.g., useVisitStore.ts).
+
+Routing Architecture
+
+System: We will use the file-based routing provided by the Next.js framework.
+
+Security: A withAuth wrapper (Higher-Order Component) will be used to protect sensitive pages.
+
+Frontend Services Layer
+
+Library: We will use Axios for all API communication.
+
+Pattern: A dedicated service layer will abstract all API calls, keeping components clean.
+
+Backend Architecture
+Service Architecture
+
+Pattern: We will use a Serverless architecture with AWS Lambda.
+
+Organization: Lambda handlers will be organized by resource and will call separate business logic services.
+
+Database Architecture
+
+Schema: The approved single-table design in DynamoDB will be used.
+
+Access Pattern: The Repository Pattern will be used to abstract all database interactions.
+
+Authentication and Authorization Architecture
+
+Flow: We will use AWS Cognito federated with Microsoft 365 (Entra ID) for Single Sign-On (SSO).
+
+Authorization: A Lambda Authorizer will secure all protected API endpoints.
+
+Unified Project Structure
+Plaintext
+/factory-clinic-app/
+├── /apps/
+│   ├── /api/
+│   └── /web/
+├── /packages/
+│   └── /shared/
+├── /infrastructure/
+└── package.json
+Development Workflow
+Prerequisites: Node.js, Git, AWS CLI.
+
+Setup: npm install.
+
+Commands: npm run dev, npm run test.
+
+Environment Configuration
+Environment variables will be used for both frontend and backend to manage configuration for API URLs, Cognito IDs, and database table names.
+
+Deployment Architecture
+Strategy: A CI/CD pipeline using GitHub Actions will deploy the frontend to AWS S3/CloudFront and the backend to AWS Lambda via the AWS CDK.
+
+Environments: We will use Development, Staging, and Production environments.
+
+Security and Performance
+Security: All communication will be over HTTPS. The system will be designed to be compliant with Thailand's PDPA. User authentication will be handled by AWS Cognito with Microsoft 365 SSO.
+
+Performance: The application will be optimized for speed using serverless functions, a CDN (CloudFront), and Next.js performance features.
+
+Testing Strategy
+The Full Testing Pyramid (Unit, Integration, E2E) will be implemented. Tests will be co-located with the source code and run automatically in our CI/CD pipeline.
+
+Coding Standards
+A set of critical rules and naming conventions will be enforced to ensure code quality and consistency, including the mandatory use of shared types and service layers.
+
+Error Handling Strategy
+A unified error handling strategy will be used. The backend will return a standard JSON error format, and the frontend will display user-friendly notifications in Thai while logging technical details.
+
+Monitoring and Observability
+We will use Amazon CloudWatch for backend monitoring, logging, and alerting, and CloudWatch RUM for real-user monitoring of the frontend application.
+

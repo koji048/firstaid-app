@@ -1,294 +1,263 @@
-# First Aid Room App - Product Requirements Document
+Factory Hospital Room Application Product Requirements Document (PRD)
+Goals and Background Context
 
-Version 1.0 | Last Updated: January 2025
+Goals
 
-## Executive Summary
+To replace the inefficient, paper-based patient logging system with a streamlined digital workflow.
 
-The First Aid Room App is a comprehensive mobile application designed to provide immediate access to first aid information, emergency contacts, and medical guidance during critical situations. This app aims to bridge the gap between medical emergencies and professional help by empowering users with knowledge and tools to respond effectively to health crises.
+To provide data-driven insights into employee health and safety, with a specific focus on analyzing the correlation with lead exposure.
 
-### Vision Statement
-To create a universally accessible, intuitive mobile application that saves lives by providing instant access to first aid information and emergency resources.
+To enable timely, accurate, and automated reporting for factory management to support proactive decision-making.
 
-### Mission Statement
-Empower individuals worldwide with the knowledge and tools to respond confidently to medical emergencies, reducing response time and improving outcomes through technology.
+Background Context
 
-## Product Overview
+The factory currently relies on a manual, paper-based system for managing its hospital room. This process hinders the ability to analyze health data efficiently, creating a significant blind spot in occupational health and safety monitoring.
 
-### Problem Statement
-Every year, millions of people face medical emergencies where immediate first aid could make the difference between life and death. However, most people lack:
-- Quick access to reliable first aid information
-- Knowledge of proper emergency procedures
-- Organized emergency contact information
-- Ability to communicate effectively with emergency services
+This document outlines the requirements for a new digital application that will address these challenges. The application will feature a fast, RFID-enabled, Thai-language interface for data collection and an integrated reporting module for management. The goal is to transform the factory's health monitoring from a reactive process into a proactive, data-driven program.
 
-### Solution
-The First Aid Room App provides:
-- Comprehensive, easy-to-follow first aid guides
-- Quick access to emergency contacts
-- Location-based emergency services
-- Offline functionality for remote areas
-- Multi-language support for global accessibility
+Change Log
 
-### Target Audience
-- **Primary Users**: General public aged 16-65
-- **Secondary Users**: Parents, teachers, coaches, outdoor enthusiasts
-- **Tertiary Users**: Healthcare professionals, first responders
+Date	Version	Description	Author
+2025-07-25	1.0	Initial PRD draft created from Project Brief.	John (PM)
+Requirements
 
-## User Personas
+Functional
 
-### Persona 1: Sarah the Parent
-- **Age**: 35
-- **Occupation**: Marketing Manager
-- **Tech Savvy**: Moderate
-- **Needs**: Quick access to child-specific first aid, poison control contacts
-- **Pain Points**: Panics during emergencies, forgets important steps
+FR1: The system must identify an employee by reading their existing RFID employee card.
 
-### Persona 2: Mike the Outdoor Enthusiast
-- **Age**: 28
-- **Occupation**: Software Developer
-- **Tech Savvy**: High
-- **Needs**: Offline access, wilderness first aid, GPS location sharing
-- **Pain Points**: No cell service in remote areas, heavy gear limitations
+FR2: The system must allow staff to log a "Reason for Visit" by either selecting from a pre-defined list of common symptoms or entering custom text.
 
-### Persona 3: Elena the Teacher
-- **Age**: 45
-- **Occupation**: High School Teacher
-- **Tech Savvy**: Low-Moderate
-- **Needs**: Student allergy information, school emergency protocols
-- **Pain Points**: Managing multiple student medical conditions, quick response needed
+FR3: The system must automatically display an employee's latest lead level data on their profile, sourced from the integrated annual health dataset (Excel file).
 
-## Feature Requirements
+FR4: The system must provide a live dashboard for management to view key statistics, concerns, and improvements.
 
-### Core Features
+FR5: The system must have the capability to generate a monthly incident report.
 
-#### Emergency Contacts Management
-- Add unlimited emergency contacts
-- Set primary and secondary contacts
-- Quick dial functionality
-- Contact categorization (family, medical, work)
-- Share location with contacts
+FR6: The system should analyze collected data to provide actionable recommendations to management.
 
-#### First Aid Guide Library
-- Comprehensive guides for 100+ conditions
-- Step-by-step instructions with visuals
-- Video demonstrations for critical procedures
-- Search and filter functionality
-- Bookmark frequently used guides
+Non-Functional
 
-#### Emergency Services Integration
-- One-tap 911/emergency calling
-- Automatic location sharing with dispatchers
-- Hospital finder with directions
-- Urgent care locator
-- Pharmacy finder
+NFR1: The entire user interface must be in the Thai language.
 
-#### Offline Functionality
-- Download guides for offline access
-- Offline emergency contact access
-- Cached hospital/pharmacy locations
-- Sync when connection restored
+NFR2: The application must be responsive and fully functional on desktop, tablet, and mobile devices.
 
-### Advanced Features
+NFR3: The application's performance must be fast and responsive, in line with modern SaaS standards.
 
-#### Medical Profile
-- Personal medical information storage
-- Allergy and medication tracking
-- Medical history summary
-- Insurance information
-- Emergency medical card generation
+NFR4: The application must be fully compliant with Thailand's Personal Data Protection Act (PDPA) for handling sensitive health data.
 
-#### Emergency Mode
-- Simplified UI for crisis situations
-- Large buttons and text
-- Voice-guided instructions
-- Automatic emergency contact notification
-- Continuous location sharing
+NFR5: The application's backend infrastructure must be hosted on AWS Cloud.
 
-#### Multi-language Support
-- 10 initial languages
-- Auto-detection based on device settings
-- In-app language switching
-- Localized emergency numbers
-- Cultural considerations for procedures
+User Interface Design Goals
 
-## User Experience Requirements
+Overall UX Vision
 
-### Information Architecture
-- Maximum 3 taps to any critical feature
-- Clear navigation with bottom tab bar
-- Contextual help throughout
-- Progressive disclosure for complex procedures
-- Intuitive iconography
+The user experience must be extremely simple, fast, and error-proof. The design should prioritize speed and clarity for a busy nurse who may be under pressure. The entire experience must feel intuitive to a native Thai speaker.
 
-### Visual Design
-- High contrast for visibility
-- Large, readable fonts
-- Clear visual hierarchy
-- Accessibility compliant (WCAG 2.1 AA)
-- Dark mode support
+Key Interaction Paradigms
 
-### Interaction Design
-- Gesture-based navigation
-- Voice command support
-- Haptic feedback for critical actions
-- Shake-to-activate emergency mode
-- One-handed operation optimization
+The primary interaction will be "tap and select." The workflow will be initiated by a physical action (tapping an RFID card), followed by selections from clear, pre-defined lists, with free-text typing used as a secondary option, not the primary one.
 
-## Technical Requirements
+Core Screens and Views
 
-### Platform Support
-- iOS 13+ (iPhone and iPad)
-- Android 8+ (phones and tablets)
-- Responsive design for various screen sizes
-- Apple Watch companion app (Phase 2)
-- Android Wear support (Phase 2)
+Conceptually, the application will be built around these key views:
 
-### Performance Requirements
-- App launch time < 2 seconds
-- Guide load time < 500ms
-- Offline mode activation < 100ms
-- Emergency call initiation < 1 second
-- Battery usage < 5% per hour active use
+Check-in Screen: An initial screen prompting the nurse to tap the employee's RFID card.
 
-### Security Requirements
-- End-to-end encryption for medical data
-- Biometric authentication option
-- Secure cloud backup
-- HIPAA compliance
-- GDPR compliance
+Patient Visit Screen: The main screen for logging a new visit, showing the patient's details, lead level, and fields for data entry.
 
-## Business Requirements
+Patient History View: A simple view to see a list of an employee's past visits.
 
-### Monetization Strategy
-- Freemium model with basic features free
-- Premium subscription ($4.99/month):
-  - Advanced medical profiles
-  - Unlimited guide downloads
-  - Priority support
-  - Family sharing (up to 6 members)
-- Enterprise plans for schools/organizations
+Management Dashboard: A read-only view for managers displaying key charts and statistics.
 
-### Success Metrics
-- Daily Active Users (DAU): 100K by Year 1
-- Monthly Active Users (MAU): 500K by Year 1
-- User retention rate: 60% after 3 months
-- Emergency response time reduction: 30%
-- User satisfaction score: 4.5+ stars
+Accessibility: WCAG AA
 
-### Marketing Strategy
-- Partnership with Red Cross and similar organizations
-- Social media awareness campaigns
-- Influencer partnerships with health professionals
-- App store optimization (ASO)
-- Content marketing through health blogs
+The application should meet the WCAG 2.1 AA accessibility standard.
 
-## Compliance and Legal
+Branding
 
-### Regulatory Compliance
-- FDA medical device classification review
-- HIPAA compliance for health information
-- GDPR for European users
-- CCPA for California users
-- ADA compliance for accessibility
+The visual design should be inspired by the IBM Carbon Design System (ibm.com). The style should be clean, professional, and utilitarian, with a focus on clarity and ease of use. The color palette should be simple, using blues, whites, and grays.
 
-### Legal Considerations
-- Medical disclaimer prominently displayed
-- Terms of service and privacy policy
-- Liability limitations
-- Data retention policies
-- International law compliance
+Target Device and Platforms: Web Responsive
 
-### Content Guidelines
-- Medical content reviewed by certified professionals
-- Regular updates based on latest guidelines
-- Clear source attribution
-- Version control for medical procedures
-- User-generated content moderation
+The application will be a responsive web application, designed to be fully functional on desktops, tablets, and mobile phones.
 
-## Development Roadmap
+Technical Assumptions
 
-### Phase 1: MVP (Months 1-3)
-- Core emergency features
-- Basic first aid guides (50)
-- Emergency contacts
-- iOS and Android apps
-- English language only
+Repository Structure: Monorepo.
 
-### Phase 2: Enhancement (Months 4-6)
-- Offline functionality
-- Medical profiles
-- 5 additional languages
-- Hospital integration
-- Premium features
+Service Architecture: To be recommended by the Architect (e.g., Monolith, Microservices, or Serverless).
 
-### Phase 3: Expansion (Months 7-9)
-- Video content
-- Voice commands
-- Wearable support
-- Enterprise features
-- 5 more languages
+Testing Requirements: Full Testing Pyramid (Unit, Integration, and End-to-End testing).
 
-### Phase 4: Innovation (Months 10-12)
-- AI-powered diagnosis assistance
-- AR guided procedures
-- Telemedicine integration
-- Community features
-- Global emergency network
+Epic List
 
-## Risk Management
+Epic 1: Foundation & Core Visit Logging
 
-### Technical Risks
-- **Platform Updates**: Mitigation through regular testing
-- **Data Loss**: Cloud backup and redundancy
-- **Security Breaches**: Regular security audits
-- **Performance Issues**: Continuous monitoring
+Goal: Establish the project's technical foundation on AWS and deliver the core MVP workflow, allowing clinic staff to check-in employees via RFID and log the reason for their visit.
 
-### Business Risks
-- **Competition**: Unique features and partnerships
-- **User Adoption**: Aggressive marketing campaign
-- **Regulatory Changes**: Legal team monitoring
-- **Liability Issues**: Comprehensive insurance
+Epic 2: Management Reporting & Dashboard
 
-### Operational Risks
-- **Content Accuracy**: Medical review board
-- **Scaling Issues**: Cloud infrastructure
-- **Support Volume**: AI chatbot and FAQ
-- **Localization Quality**: Native speaker reviews
+Goal: Empower the management team with insights by delivering the live dashboard and the automated monthly reporting features.
 
-## Success Criteria
+Epic 3: Advanced Health Tracking & Analytics
 
-### Launch Criteria
-- 95% crash-free rate
-- All core features functional
-- Medical content reviewed and approved
-- Security audit passed
-- App store approval obtained
+Goal: Enhance the application's capabilities by adding detailed vitals tracking, treatment logging, and the intelligent "Actionable Recommendations" engine.
 
-### Post-Launch Success
-- 50K downloads in first month
-- 4.0+ app store rating
-- < 2% crash rate
-- 50% D7 retention
-- 10K premium subscribers by Month 6
+Epic 1: Foundation & Core Visit Logging
 
-## Appendices
+Expanded Goal: The objective of this epic is to establish the complete technical foundation for the application and deliver the core, end-to-end workflow for the clinic staff. By the end of this epic, the essential paper-based workflow for patient check-in and visit logging will be fully replaced.
 
-### Competitor Analysis
-- First Aid by Red Cross: Free, comprehensive, offline
-- St John Ambulance First Aid: UK focused, training integration
-- WebMD: Medical information, symptom checker
-- MySOS: Emergency app with location sharing
+Story 1.1: Project & Repository Setup
 
-### User Research Summary
-- 500 survey responses
-- 50 user interviews
-- 10 focus groups
-- Key finding: Speed and simplicity are critical
-- Main request: Offline access and visual guides
+As a Developer, I want a new monorepo with the basic frontend and backend project structures set up, so that I have a foundation to start building features.
+Acceptance Criteria:
 
-### Technical Specifications
-- Backend: Node.js, PostgreSQL, Redis
-- Frontend: React Native
-- Infrastructure: AWS
-- Analytics: Firebase, Mixpanel
-- Monitoring: Sentry, New Relic
+A new monorepo is created and configured.
+
+A placeholder backend service is created within the monorepo.
+
+A placeholder frontend application is created within the monorepo.
+
+The project is configured to support the Thai language from the beginning.
+
+Story 1.2: Database Schema & Connection
+
+As a Developer, I want the initial database schema for patients and visits to be created and connected to the backend, so that we can store and retrieve application data.
+Acceptance Criteria:
+
+The initial database tables/models for Employees and Visits are defined.
+
+The backend service can successfully connect to the database.
+
+The service has basic functions to read and write to the new tables.
+
+Story 1.3: Employee Check-in via RFID
+
+As a Nurse, I want to tap an employee's RFID card to instantly open their profile, so that the check-in process is fast and error-free.
+Acceptance Criteria:
+
+The application's main screen is ready to receive input from an RFID reader.
+
+When a valid RFID is read, the system correctly identifies the corresponding employee from the database.
+
+The application navigates to a patient-specific screen showing the employee's name and basic details.
+
+Story 1.4: Display Lead Level from Health Dataset
+
+As a Nurse, I want to see the employee's latest lead level displayed on their profile, so that I have immediate context about their potential health risks.
+Acceptance Criteria:
+
+When an employee's profile is loaded, the system reads from the integrated Excel health dataset.
+
+The employee's most recent lead level from the dataset is clearly displayed on their profile screen.
+
+If no lead level data is found, a "Data Not Available" message is displayed.
+
+Story 1.5: Log Reason for Visit
+
+As a Nurse, I want to log the reason for an employee's visit by selecting from a list or typing a custom note, so that the visit is accurately recorded.
+Acceptance Criteria:
+
+The visit logging interface is present on the employee's screen.
+
+The nurse can select one or more symptoms from a pre-defined list.
+
+The nurse can select an "Other" option, which allows them to type a custom note.
+
+Submitting the log successfully saves a new visit record to the database.
+
+Epic 2: Management Reporting & Dashboard
+
+Expanded Goal: The objective of this epic is to build the features that provide value to the factory management team. By the end of this epic, managers will have access to a real-time health dashboard and on-demand monthly reports, enabling them to make data-driven health and safety decisions.
+
+Story 2.1: Create Reporting Data API
+
+As a Developer, I want secure API endpoints that provide aggregated visit data, so that the frontend dashboard can display the required statistics.
+Acceptance Criteria:
+
+An API endpoint is created that returns key statistics for a given time period.
+
+An API endpoint is created that returns a list of the most frequently logged symptoms.
+
+The endpoints are secure and can only be accessed by users with a "Manager" role.
+
+Story 2.2: Management Dashboard UI
+
+As a Manager, I want a dedicated dashboard page within the application, so that I have a central place to view clinic activity and health trends.
+Acceptance Criteria:
+
+A new, secure "Dashboard" page is created, accessible only to "Manager" roles.
+
+The page layout is clean, professional, and inspired by the IBM design system.
+
+The page includes a date range filter.
+
+Story 2.3: Display Live Statistics on Dashboard
+
+As a Manager, I want to see live charts and statistics on the dashboard, so that I can understand real-time health trends at a glance.
+Acceptance Criteria:
+
+The dashboard widgets successfully call the reporting APIs.
+
+Widgets display key statistics (e.g., total visits, top symptoms, visits by department).
+
+The data on the dashboard updates when the date range filter is changed.
+
+Story 2.4: Generate Monthly PDF Report
+
+As a Manager, I want to download a PDF of the monthly clinic report, so that I can easily share it or archive it.
+Acceptance Criteria:
+
+A "Download Report" button is present on the dashboard.
+
+When clicked, the system generates a professional-looking PDF containing the key dashboard statistics.
+
+The generated PDF is downloaded to the user's computer.
+
+Epic 3: Advanced Health Tracking & Analytics
+
+Expanded Goal: The objective of this epic is to significantly enhance the application's data collection and analysis capabilities. By the end of this epic, the clinic staff will be able to record more detailed patient information, and the system will provide intelligent recommendations to management.
+
+Story 3.1: Record Detailed Patient Vitals
+
+As a Nurse, I want to record an employee's blood pressure and temperature during a visit, so that I can maintain a more complete health record.
+Acceptance Criteria:
+
+The "Log Visit" interface is updated to include optional fields for Blood Pressure and Temperature.
+
+The entered values are correctly saved with the visit record.
+
+The saved vitals are visible when viewing a past visit's details.
+
+Story 3.2: Log Treatment and Medication Given
+
+As a Nurse, I want to log the treatment or medication I provided during a visit, so that there is a clear record of actions taken.
+Acceptance Criteria:
+
+The "Log Visit" interface is updated to include an optional text field for Treatment/Medication Given.
+
+The entered text is correctly saved with the visit record.
+
+The saved treatment information is visible when viewing a past visit's details.
+
+Story 3.3: Develop Data Analysis for Recommendations
+
+As a Developer, I want a backend service that analyzes health data to identify trends, so that it can generate recommendations for management.
+Acceptance Criteria:
+
+A new backend service is created that can process historical visit data.
+
+The service implements logic to identify basic patterns.
+
+The service exposes a secure API endpoint that returns a list of generated insights or alerts.
+
+Story 3.4: Display Actionable Recommendations
+
+As a Manager, I want to see a list of actionable recommendations on my dashboard, so that I can be guided on where to focus my health and safety efforts.
+Acceptance Criteria:
+
+A new "Actionable Recommendations" widget is added to the Management Dashboard.
+
+The widget calls the recommendations API endpoint.
+
+It clearly displays the list of generated recommendations.
