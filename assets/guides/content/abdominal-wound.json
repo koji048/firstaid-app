@@ -1,0 +1,80 @@
+{
+  "id": "abdominal-wound",
+  "title": "Abdominal Wound",
+  "category": "wounds_bleeding",
+  "severity": "critical",
+  "summary": "Emergency care for open abdominal wounds, including those with exposed internal organs (evisceration).",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Call 911 Immediately",
+        "description": "This is a life-threatening emergency. Call emergency services immediately. Keep the person as still as possible and do not give them anything to eat or drink.",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Position the Person",
+        "description": "Help the person lie on their back. If conscious and no spinal injury is suspected, place a pillow or rolled blanket under their knees to reduce tension on the abdomen. Keep them still.",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Do Not Push Organs Back In",
+        "description": "If internal organs are visible outside the body (evisceration), do not attempt to push them back inside. Do not touch the exposed organs directly.",
+        "duration": 10
+      },
+      {
+        "order": 4,
+        "title": "Cover the Wound",
+        "description": "Cover exposed organs with a moist, sterile dressing or clean cloth soaked in clean water. If no sterile materials available, use the cleanest material you have. Then cover with plastic wrap or aluminum foil to retain moisture.",
+        "duration": 120
+      },
+      {
+        "order": 5,
+        "title": "Secure the Covering",
+        "description": "Tape or bandage the covering in place without applying pressure to the wound or organs. The goal is to protect the organs from drying out and further contamination. Ensure the covering is secure but not tight.",
+        "duration": 120
+      },
+      {
+        "order": 6,
+        "title": "Treat for Shock and Monitor",
+        "description": "Cover the person with blankets to maintain body temperature. Monitor breathing and pulse. Keep them calm and reassure them help is coming. Do not raise their legs as this increases abdominal pressure.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never attempt to push exposed organs back into the body",
+      "Do not apply direct pressure to exposed organs",
+      "Do not give the person anything to eat or drink",
+      "Do not remove any impaled objects from the abdomen"
+    ],
+    "whenToSeekHelp": [
+      "This is always a critical emergency requiring immediate professional help",
+      "Call 911 immediately - this requires emergency surgery",
+      "Keep the person as still as possible until help arrives"
+    ],
+    "preventionTips": [
+      "Wear seat belts properly positioned across the hips",
+      "Use appropriate safety equipment when using tools or machinery",
+      "Store knives and sharp objects safely",
+      "Maintain good lighting and clear pathways to prevent falls"
+    ]
+  },
+  "searchTags": [
+    "abdominal wound",
+    "evisceration",
+    "open abdomen",
+    "exposed organs",
+    "gut wound",
+    "stomach injury",
+    "intestines exposed",
+    "belly wound"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "carbon-monoxide",
+  "title": "Carbon Monoxide Poisoning",
+  "category": "poisoning_overdose",
+  "severity": "critical",
+  "summary": "Silent killer - colorless, odorless gas. Get everyone out immediately and call 911. Do not re-enter area.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Evacuate Immediately",
+        "description": "Get everyone out of area immediately, including pets. Do not waste time opening windows. Carbon monoxide is invisible and odorless. Move to fresh air. Call 911 from outside.",
+        "imageUrl": "guides/images/carbon_monoxide_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Call 911",
+        "description": "Call 911 and report suspected carbon monoxide poisoning. Tell them number of victims and symptoms. Do NOT re-enter building until emergency services say it's safe. Fire department will test air.",
+        "imageUrl": "guides/images/carbon_monoxide_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Check for Symptoms",
+        "description": "Symptoms: headache, dizziness, weakness, nausea, confusion, chest pain. Advanced: loss of consciousness, seizures. Multiple people with flu-like symptoms suggests CO poisoning. Pets affected first.",
+        "imageUrl": "guides/images/carbon_monoxide_3.png",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Give Oxygen if Available",
+        "description": "If trained and oxygen available, administer high-flow oxygen. Hospital treatment with 100% oxygen or hyperbaric chamber may be needed. Keep victims calm and still to reduce oxygen demand.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Monitor Victims",
+        "description": "Even if feeling better in fresh air, all exposed need medical evaluation. Effects can be delayed. Watch for confusion, chest pain, vision problems. Begin CPR if anyone stops breathing.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Never use generators, grills, or gas appliances indoors",
+      "CO poisoning can cause permanent brain damage or death",
+      "Victims may not realize they're being poisoned"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for any suspected CO exposure",
+      "All exposed persons need medical evaluation",
+      "Seek care even if symptoms improve in fresh air"
+    ],
+    "preventionTips": [
+      "Install CO detectors on every level of home",
+      "Never run vehicles in closed garage",
+      "Have heating systems inspected annually"
+    ]
+  },
+  "searchTags": [
+    "carbon monoxide",
+    "CO poisoning",
+    "gas poisoning",
+    "silent killer",
+    "exhaust fumes",
+    "generator safety"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

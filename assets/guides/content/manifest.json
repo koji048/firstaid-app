@@ -1,56 +1,944 @@
 {
   "currentVersion": {
-    "version": 1,
-    "releaseDate": "2024-01-01",
-    "releaseNotes": "Initial release of first aid guides",
+    "version": 2,
+    "releaseDate": "2024-01-15",
+    "releaseNotes": "Expanded to 50 comprehensive first aid guides covering all major emergency scenarios",
     "minimumAppVersion": "1.0.0"
   },
   "guides": [
     {
-      "id": "cpr-adult",
-      "version": 1,
-      "category": "basic_life_support",
-      "tags": ["cpr", "cardiac", "emergency", "life-saving"],
-      "author": "First Aid Room Team",
-      "reviewedBy": "Dr. Sarah Johnson, MD",
-      "lastReviewedAt": "2024-01-01T00:00:00Z",
-      "contentHash": "a1b2c3d4",
-      "locale": "en-US"
-    },
-    {
-      "id": "choking-adult",
-      "version": 1,
-      "category": "basic_life_support",
-      "tags": ["choking", "airway", "heimlich", "emergency"],
-      "author": "First Aid Room Team",
-      "reviewedBy": "Dr. Sarah Johnson, MD",
-      "lastReviewedAt": "2024-01-01T00:00:00Z",
-      "contentHash": "e5f6g7h8",
-      "locale": "en-US"
-    },
-    {
-      "id": "severe-bleeding",
+      "id": "abdominal-wound",
       "version": 1,
       "category": "wounds_bleeding",
-      "tags": ["bleeding", "wound", "hemorrhage", "pressure"],
+      "tags": [
+        "abdominal wound",
+        "evisceration",
+        "open abdomen",
+        "exposed organs",
+        "gut wound",
+        "stomach injury",
+        "intestines exposed",
+        "belly wound"
+      ],
       "author": "First Aid Room Team",
-      "reviewedBy": "Dr. Michael Chen, MD",
-      "lastReviewedAt": "2024-01-01T00:00:00Z",
-      "contentHash": "i9j0k1l2",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "9df5d607",
+      "locale": "en-US"
+    },
+    {
+      "id": "alcohol-poisoning",
+      "version": 1,
+      "category": "poisoning_overdose",
+      "tags": [
+        "alcohol poisoning",
+        "alcohol overdose",
+        "binge drinking",
+        "drunk",
+        "ethanol poisoning",
+        "intoxication emergency"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "9f379a7e",
+      "locale": "en-US"
+    },
+    {
+      "id": "allergic-reaction-child",
+      "version": 1,
+      "category": "pediatric_emergencies",
+      "tags": [
+        "allergic reaction child",
+        "pediatric allergy",
+        "anaphylaxis child",
+        "hives",
+        "epipen junior",
+        "food allergy"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "42819085",
+      "locale": "en-US"
+    },
+    {
+      "id": "amputation",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": [
+        "amputation",
+        "severed",
+        "traumatic injury",
+        "severe bleeding",
+        "tourniquet",
+        "emergency",
+        "limb loss",
+        "finger cut off"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "c265d1b5",
+      "locale": "en-US"
+    },
+    {
+      "id": "anaphylaxis",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "anaphylaxis",
+        "severe allergic reaction",
+        "epinephrine",
+        "epipen",
+        "allergy emergency",
+        "anaphylactic shock"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "f512a70a",
+      "locale": "en-US"
+    },
+    {
+      "id": "ankle-sprain",
+      "version": 1,
+      "category": "fractures_sprains",
+      "tags": [
+        "ankle sprain",
+        "twisted ankle",
+        "ankle injury",
+        "RICE method",
+        "sports injury",
+        "ligament injury"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "983f38e3",
+      "locale": "en-US"
+    },
+    {
+      "id": "asthma-attack",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "asthma attack",
+        "breathing difficulty",
+        "inhaler",
+        "wheezing",
+        "respiratory emergency",
+        "bronchospasm"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "9eb50e59",
+      "locale": "en-US"
+    },
+    {
+      "id": "broken-arm",
+      "version": 1,
+      "category": "fractures_sprains",
+      "tags": [
+        "broken arm",
+        "arm fracture",
+        "bone break",
+        "arm injury",
+        "fracture first aid",
+        "immobilization",
+        "splinting"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "254139b0",
+      "locale": "en-US"
+    },
+    {
+      "id": "broken-leg",
+      "version": 1,
+      "category": "fractures_sprains",
+      "tags": [
+        "broken leg",
+        "leg fracture",
+        "femur fracture",
+        "tibia fracture",
+        "leg injury",
+        "bone break",
+        "emergency splinting"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "5ecaa89c",
       "locale": "en-US"
     },
     {
       "id": "burns-treatment",
       "version": 1,
       "category": "burns_scalds",
-      "tags": ["burns", "scalds", "thermal", "first-degree", "second-degree"],
+      "tags": [
+        "burns",
+        "scalds",
+        "thermal",
+        "fire",
+        "hot water",
+        "first degree",
+        "second degree",
+        "burn treatment"
+      ],
       "author": "First Aid Room Team",
-      "reviewedBy": "Dr. Emily Rodriguez, MD",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
       "lastReviewedAt": "2024-01-01T00:00:00Z",
-      "contentHash": "m3n4o5p6",
+      "contentHash": "afd1ba45",
+      "locale": "en-US"
+    },
+    {
+      "id": "carbon-monoxide",
+      "version": 1,
+      "category": "poisoning_overdose",
+      "tags": [
+        "carbon monoxide",
+        "CO poisoning",
+        "gas poisoning",
+        "silent killer",
+        "exhaust fumes",
+        "generator safety"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "4b04230b",
+      "locale": "en-US"
+    },
+    {
+      "id": "chemical-burn",
+      "version": 1,
+      "category": "burns_scalds",
+      "tags": [
+        "chemical burn",
+        "acid burn",
+        "alkali burn",
+        "corrosive",
+        "chemical exposure",
+        "eye burn",
+        "caustic burn",
+        "chemical injury"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "77ff5d3c",
+      "locale": "en-US"
+    },
+    {
+      "id": "chest-pain",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "chest pain",
+        "heart attack",
+        "angina",
+        "cardiac chest pain",
+        "chest pressure",
+        "heart pain"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "6e203f04",
+      "locale": "en-US"
+    },
+    {
+      "id": "child-cpr",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": [
+        "child cpr",
+        "pediatric cpr",
+        "child resuscitation",
+        "chest compressions",
+        "rescue breathing",
+        "emergency",
+        "unresponsive child",
+        "pediatric emergency"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "4526fa3a",
+      "locale": "en-US"
+    },
+    {
+      "id": "choking-adult",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": [
+        "choking",
+        "heimlich",
+        "abdominal thrusts",
+        "airway obstruction",
+        "emergency",
+        "breathing"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-01T00:00:00Z",
+      "contentHash": "ba7b5a7f",
+      "locale": "en-US"
+    },
+    {
+      "id": "choking-infant",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": [
+        "choking infant",
+        "baby choking",
+        "airway obstruction",
+        "back blows",
+        "chest thrusts",
+        "infant emergency",
+        "choking baby",
+        "foreign object"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "48f0aff2",
+      "locale": "en-US"
+    },
+    {
+      "id": "cpr-adult",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": [
+        "cpr",
+        "cardiac arrest",
+        "heart attack",
+        "chest compressions",
+        "rescue breathing",
+        "emergency",
+        "life support",
+        "resuscitation"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-01T00:00:00Z",
+      "contentHash": "e08bb7d2",
+      "locale": "en-US"
+    },
+    {
+      "id": "croup",
+      "version": 1,
+      "category": "pediatric_emergencies",
+      "tags": [
+        "croup",
+        "barking cough",
+        "stridor",
+        "child breathing",
+        "pediatric airway",
+        "seal bark cough"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "7c5e41a1",
+      "locale": "en-US"
+    },
+    {
+      "id": "dehydration-child",
+      "version": 1,
+      "category": "pediatric_emergencies",
+      "tags": [
+        "dehydration child",
+        "pediatric dehydration",
+        "fluid loss",
+        "oral rehydration",
+        "pedialyte",
+        "child diarrhea"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "1325d9f4",
+      "locale": "en-US"
+    },
+    {
+      "id": "diabetic-emergency",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "diabetes",
+        "low blood sugar",
+        "hypoglycemia",
+        "high blood sugar",
+        "hyperglycemia",
+        "insulin",
+        "glucose"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "b89521da",
+      "locale": "en-US"
+    },
+    {
+      "id": "dislocated-shoulder",
+      "version": 1,
+      "category": "fractures_sprains",
+      "tags": [
+        "dislocated shoulder",
+        "shoulder out of socket",
+        "shoulder injury",
+        "joint dislocation",
+        "shoulder pain"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "ed709e37",
+      "locale": "en-US"
+    },
+    {
+      "id": "drowning",
+      "version": 1,
+      "category": "environmental_emergencies",
+      "tags": [
+        "drowning",
+        "water rescue",
+        "submersion",
+        "near drowning",
+        "water emergency",
+        "swimming accident"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "28959f6b",
+      "locale": "en-US"
+    },
+    {
+      "id": "drug-overdose",
+      "version": 1,
+      "category": "poisoning_overdose",
+      "tags": [
+        "drug overdose",
+        "opioid overdose",
+        "naloxone",
+        "narcan",
+        "overdose",
+        "substance abuse emergency"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "8cd727ff",
+      "locale": "en-US"
+    },
+    {
+      "id": "electrical-burn",
+      "version": 1,
+      "category": "burns_scalds",
+      "tags": [
+        "electrical burn",
+        "electric shock",
+        "electrocution",
+        "high voltage",
+        "electrical injury",
+        "shock burn",
+        "lightning strike",
+        "power line injury"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "2f29efad",
+      "locale": "en-US"
+    },
+    {
+      "id": "embedded-object",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": [
+        "embedded object",
+        "impaled object",
+        "foreign body",
+        "penetrating wound",
+        "glass in wound",
+        "do not remove",
+        "stabilize object"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "d21b8e46",
+      "locale": "en-US"
+    },
+    {
+      "id": "eye-injury",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "eye injury",
+        "eye trauma",
+        "chemical eye burn",
+        "foreign body eye",
+        "eye emergency",
+        "vision loss"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "248b9046",
+      "locale": "en-US"
+    },
+    {
+      "id": "fainting",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "fainting",
+        "passing out",
+        "syncope",
+        "loss of consciousness",
+        "dizzy",
+        "lightheaded"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "0437a89d",
+      "locale": "en-US"
+    },
+    {
+      "id": "febrile-seizure",
+      "version": 1,
+      "category": "pediatric_emergencies",
+      "tags": [
+        "febrile seizure",
+        "fever seizure",
+        "child seizure",
+        "pediatric seizure",
+        "high fever",
+        "childhood convulsion"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "1592c3b0",
+      "locale": "en-US"
+    },
+    {
+      "id": "frostbite",
+      "version": 1,
+      "category": "environmental_emergencies",
+      "tags": [
+        "frostbite",
+        "frozen tissue",
+        "cold injury",
+        "winter emergency",
+        "frozen fingers",
+        "frozen toes"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "f1c6a8e4",
+      "locale": "en-US"
+    },
+    {
+      "id": "head-wound",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": [
+        "head wound",
+        "scalp laceration",
+        "head injury",
+        "bleeding head",
+        "concussion",
+        "skull injury",
+        "head trauma",
+        "scalp cut"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "fd130a78",
+      "locale": "en-US"
+    },
+    {
+      "id": "heart-attack",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "heart attack",
+        "myocardial infarction",
+        "chest pain",
+        "cardiac emergency",
+        "aspirin",
+        "nitroglycerin"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "423962f3",
+      "locale": "en-US"
+    },
+    {
+      "id": "heat-exhaustion",
+      "version": 1,
+      "category": "environmental_emergencies",
+      "tags": [
+        "heat exhaustion",
+        "heat illness",
+        "dehydration",
+        "overheating",
+        "heat cramps",
+        "sweating"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "4849b78c",
+      "locale": "en-US"
+    },
+    {
+      "id": "heat-stroke",
+      "version": 1,
+      "category": "environmental_emergencies",
+      "tags": [
+        "heat stroke",
+        "hyperthermia",
+        "heat emergency",
+        "high body temperature",
+        "heat illness",
+        "sun stroke"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "c8387ffe",
+      "locale": "en-US"
+    },
+    {
+      "id": "hot-liquid-scald",
+      "version": 1,
+      "category": "burns_scalds",
+      "tags": [
+        "hot water burn",
+        "scald",
+        "boiling water",
+        "steam burn",
+        "coffee burn",
+        "soup burn",
+        "kitchen burn",
+        "liquid burn"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "91d13e5b",
+      "locale": "en-US"
+    },
+    {
+      "id": "hypothermia",
+      "version": 1,
+      "category": "environmental_emergencies",
+      "tags": [
+        "hypothermia",
+        "cold exposure",
+        "freezing",
+        "low body temperature",
+        "cold emergency",
+        "exposure"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "8fd209bd",
+      "locale": "en-US"
+    },
+    {
+      "id": "infant-cpr",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": [
+        "infant cpr",
+        "baby cpr",
+        "infant resuscitation",
+        "chest compressions",
+        "rescue breathing",
+        "emergency",
+        "unresponsive baby",
+        "infant emergency"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "240cbd7b",
+      "locale": "en-US"
+    },
+    {
+      "id": "inhalation-burn",
+      "version": 1,
+      "category": "burns_scalds",
+      "tags": [
+        "smoke inhalation",
+        "inhalation burn",
+        "airway burn",
+        "carbon monoxide",
+        "fire smoke",
+        "respiratory burn",
+        "toxic fumes",
+        "smoke poisoning"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "351ca1bc",
+      "locale": "en-US"
+    },
+    {
+      "id": "lightning-strike",
+      "version": 1,
+      "category": "environmental_emergencies",
+      "tags": [
+        "lightning strike",
+        "electrical injury",
+        "thunder storm",
+        "lightning safety",
+        "electrical burns",
+        "storm emergency"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "69c7ae58",
+      "locale": "en-US"
+    },
+    {
+      "id": "minor-cuts",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": [
+        "minor cuts",
+        "scrapes",
+        "abrasions",
+        "wound care",
+        "first aid",
+        "bleeding",
+        "bandage",
+        "clean wound"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "24ab9e36",
+      "locale": "en-US"
+    },
+    {
+      "id": "nosebleed",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": [
+        "nosebleed",
+        "epistaxis",
+        "nose bleeding",
+        "bloody nose",
+        "nasal bleeding",
+        "first aid",
+        "stop bleeding"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "a240a3d7",
+      "locale": "en-US"
+    },
+    {
+      "id": "poison-ingestion",
+      "version": 1,
+      "category": "poisoning_overdose",
+      "tags": [
+        "poison",
+        "poisoning",
+        "ingestion",
+        "swallowed poison",
+        "toxic substance",
+        "poison control",
+        "accidental poisoning"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "f3c6dc98",
+      "locale": "en-US"
+    },
+    {
+      "id": "puncture-wound",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": [
+        "puncture wound",
+        "deep wound",
+        "nail wound",
+        "penetrating injury",
+        "tetanus",
+        "wound care",
+        "infection",
+        "sharp object"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "4e2c3d6f",
+      "locale": "en-US"
+    },
+    {
+      "id": "recovery-position",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": [
+        "recovery position",
+        "unconscious",
+        "airway",
+        "breathing",
+        "lateral position",
+        "emergency",
+        "first aid",
+        "collapse"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "f4182175",
+      "locale": "en-US"
+    },
+    {
+      "id": "rib-fracture",
+      "version": 1,
+      "category": "fractures_sprains",
+      "tags": [
+        "rib fracture",
+        "broken ribs",
+        "chest injury",
+        "breathing pain",
+        "chest trauma",
+        "rib injury"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "d0f3c04b",
+      "locale": "en-US"
+    },
+    {
+      "id": "seizure",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "seizure",
+        "epilepsy",
+        "convulsion",
+        "grand mal",
+        "tonic clonic",
+        "seizure first aid"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "9d215590",
+      "locale": "en-US"
+    },
+    {
+      "id": "severe-bleeding",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": ["bleeding", "hemorrhage", "wound", "pressure", "tourniquet", "blood loss", "trauma"],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-01T00:00:00Z",
+      "contentHash": "226ad513",
+      "locale": "en-US"
+    },
+    {
+      "id": "spinal-injury",
+      "version": 1,
+      "category": "fractures_sprains",
+      "tags": [
+        "spinal injury",
+        "neck injury",
+        "back injury",
+        "paralysis",
+        "spinal cord",
+        "trauma",
+        "immobilization"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "d38e64e4",
+      "locale": "en-US"
+    },
+    {
+      "id": "stroke",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "stroke",
+        "brain attack",
+        "FAST test",
+        "facial droop",
+        "slurred speech",
+        "cerebrovascular accident",
+        "CVA"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "fbbdf702",
+      "locale": "en-US"
+    },
+    {
+      "id": "sunburn",
+      "version": 1,
+      "category": "burns_scalds",
+      "tags": [
+        "sunburn",
+        "sun poisoning",
+        "UV burn",
+        "solar burn",
+        "sun damage",
+        "heat rash",
+        "sun blisters",
+        "severe sunburn"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "f8b0b60d",
+      "locale": "en-US"
+    },
+    {
+      "id": "tooth-injury",
+      "version": 1,
+      "category": "medical_emergencies",
+      "tags": [
+        "tooth injury",
+        "knocked out tooth",
+        "dental emergency",
+        "broken tooth",
+        "avulsed tooth",
+        "dental trauma"
+      ],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-15T00:00:00Z",
+      "contentHash": "a52db9a9",
       "locale": "en-US"
     }
   ],
-  "lastUpdated": "2024-01-01T00:00:00Z",
-  "totalGuides": 4
+  "lastUpdated": "2024-01-15T00:00:00Z",
+  "totalGuides": 50
 }

@@ -1,0 +1,73 @@
+{
+  "id": "chest-pain",
+  "title": "Chest Pain",
+  "category": "medical_emergencies",
+  "severity": "high",
+  "summary": "Evaluating and responding to chest pain, which can indicate heart attack or other serious conditions requiring immediate medical attention.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Take Chest Pain Seriously",
+        "description": "All chest pain should be evaluated urgently. Heart attack pain: pressure, squeezing, fullness in center of chest lasting >15 minutes. May radiate to arms, back, neck, jaw. Call 911 immediately.",
+        "imageUrl": "guides/images/chest_pain_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Call 911 and Give Aspirin",
+        "description": "Call 911 for emergency transport. While waiting, give adult aspirin (325mg) if not allergic - have them chew it. This helps prevent blood clots. Do not drive person to hospital yourself.",
+        "imageUrl": "guides/images/chest_pain_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Position Comfortably",
+        "description": "Help person to comfortable position - usually sitting up or semi-reclined. Loosen tight clothing. Keep calm and reassure them. If prescribed nitroglycerin, help them take it.",
+        "imageUrl": "guides/images/chest_pain_3.png",
+        "duration": 180
+      },
+      {
+        "order": 4,
+        "title": "Monitor Symptoms",
+        "description": "Note: time pain started, what they were doing, pain description (sharp, dull, crushing), other symptoms (nausea, sweating, shortness of breath). This helps emergency responders.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Prepare for Emergency Care",
+        "description": "Gather medications list and insurance information if available. Stay with person. If they become unconscious and stop breathing, begin CPR. Have someone wait outside to direct ambulance.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never ignore chest pain - it's better to be safe",
+      "Women, elderly, and diabetics may have atypical symptoms",
+      "Do not delay calling 911 to 'see if it gets better'"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for any unexplained chest pain",
+      "Call 911 urgently for chest pain with shortness of breath, sweating, or nausea",
+      "Any chest pain lasting more than a few minutes needs evaluation"
+    ],
+    "preventionTips": [
+      "Know your heart disease risk factors",
+      "Don't ignore warning signs like chest discomfort with exertion",
+      "Keep aspirin accessible at home and work"
+    ]
+  },
+  "searchTags": [
+    "chest pain",
+    "heart attack",
+    "angina",
+    "cardiac chest pain",
+    "chest pressure",
+    "heart pain"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "heat-exhaustion",
+  "title": "Heat Exhaustion",
+  "category": "environmental_emergencies",
+  "severity": "high",
+  "summary": "Heat-related illness that can progress to heat stroke if untreated. Requires prompt cooling and rehydration.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Identify Heat Exhaustion",
+        "description": "Heavy sweating, weakness, nausea, headache, muscle cramps, cool clammy skin, fast weak pulse, dizziness. Body temperature elevated but below 104°F. Person is usually still alert.",
+        "imageUrl": "guides/images/heat_exhaustion_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Move to Cool Environment",
+        "description": "Get person to air-conditioned room or shady area immediately. Lay them down and elevate legs slightly. Loosen or remove tight clothing. If symptoms worsen or last >1 hour, call 911.",
+        "imageUrl": "guides/images/heat_exhaustion_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Cool the Person",
+        "description": "Apply cool wet cloths to skin or have them take cool shower if able. Fan while misting with cool water. Place cool compresses on neck, armpits, and groin. Monitor temperature if possible.",
+        "imageUrl": "guides/images/heat_exhaustion_3.png",
+        "duration": 600
+      },
+      {
+        "order": 4,
+        "title": "Rehydrate Slowly",
+        "description": "If fully alert and not nauseous, give cool water or sports drinks. Have them sip slowly - about 4 ounces every 15 minutes. Do not give if vomiting. Avoid alcohol or caffeine.",
+        "duration": 900
+      },
+      {
+        "order": 5,
+        "title": "Monitor for Improvement",
+        "description": "Symptoms should improve within 30-60 minutes. If person becomes confused, stops sweating, or temperature rises above 104°F, treat as heat stroke and call 911. Keep person resting in cool area.",
+        "duration": 1800
+      }
+    ],
+    "warnings": [
+      "Heat exhaustion can quickly progress to life-threatening heat stroke",
+      "Do not give salt tablets - these can worsen condition",
+      "If person has heart problems or is on low-sodium diet, seek medical care"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if symptoms worsen or don't improve within 1 hour",
+      "Seek immediate care if person becomes confused or stops sweating",
+      "Get medical help for severe symptoms or chronic medical conditions"
+    ],
+    "preventionTips": [
+      "Drink water before feeling thirsty in hot weather",
+      "Take frequent breaks in shade or air conditioning",
+      "Wear lightweight, light-colored, loose-fitting clothing"
+    ]
+  },
+  "searchTags": [
+    "heat exhaustion",
+    "heat illness",
+    "dehydration",
+    "overheating",
+    "heat cramps",
+    "sweating"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

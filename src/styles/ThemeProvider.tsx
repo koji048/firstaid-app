@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { useColorScheme } from 'react-native';
 import { ThemeProvider as ElementsThemeProvider } from 'react-native-elements';
-import { theme, Colors } from './theme';
+import { Colors, theme } from './theme';
 
 interface ThemeContextType {
   isDarkMode: boolean;

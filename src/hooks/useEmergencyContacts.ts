@@ -9,22 +9,22 @@ import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../store/hooks';
 import {
+  addContactWithStorage,
+  deleteContactWithStorage,
+  loadContactsFromStorage,
+  saveContactsToStorage,
   selectAllContacts,
-  selectPrimaryContact,
   selectContactById,
   selectContactsByCategory,
-  selectIsLoading,
   selectError,
   selectIsInitialized,
-  loadContactsFromStorage,
-  addContactWithStorage,
-  updateContactWithStorage,
-  deleteContactWithStorage,
+  selectIsLoading,
+  selectPrimaryContact,
   setPrimaryContact,
-  saveContactsToStorage,
+  updateContactWithStorage,
 } from '../store/slices/emergencyContactsSlice';
 import { RootState } from '../store/store';
-import { NewEmergencyContact, UpdateEmergencyContact, ContactCategory } from '../types';
+import { ContactCategory, NewEmergencyContact, UpdateEmergencyContact } from '../types';
 
 /**
  * Hook to get all emergency contacts
@@ -46,13 +46,15 @@ export const useEmergencyContacts = () => {
   }, [dispatch, isInitialized, userId]);
 
   const refreshContacts = useCallback(async () => {
-    if (!userId) return;
+    if (!userId) {
+      return;
+    }
 
     setRefreshing(true);
     try {
       await dispatch(loadContactsFromStorage(userId)).unwrap();
-    } catch (error) {
-      console.error('Failed to refresh contacts:', error);
+    } catch (err) {
+      console.error('Failed to refresh contacts:', err);
     } finally {
       setRefreshing(false);
     }
@@ -99,9 +101,9 @@ export const useAddContact = () => {
       try {
         const result = await dispatch(addContactWithStorage({ userId, contact })).unwrap();
         return result;
-      } catch (error) {
-        console.error('Failed to add contact:', error);
-        throw error;
+      } catch (err) {
+        console.error('Failed to add contact:', err);
+        throw err;
       }
     },
     [dispatch, userId],
@@ -132,9 +134,9 @@ export const useUpdateContact = () => {
       try {
         const result = await dispatch(updateContactWithStorage({ userId, id, updates })).unwrap();
         return result;
-      } catch (error) {
-        console.error('Failed to update contact:', error);
-        throw error;
+      } catch (err) {
+        console.error('Failed to update contact:', err);
+        throw err;
       }
     },
     [dispatch, userId],
@@ -165,9 +167,9 @@ export const useDeleteContact = () => {
       try {
         const result = await dispatch(deleteContactWithStorage({ userId, contactId })).unwrap();
         return result;
-      } catch (error) {
-        console.error('Failed to delete contact:', error);
-        throw error;
+      } catch (err) {
+        console.error('Failed to delete contact:', err);
+        throw err;
       }
     },
     [dispatch, userId],
@@ -199,9 +201,9 @@ export const useSetPrimaryContact = () => {
       // Save to storage
       try {
         await dispatch(saveContactsToStorage({ userId, contacts })).unwrap();
-      } catch (error) {
-        console.error('Failed to save primary contact change:', error);
-        throw error;
+      } catch (err) {
+        console.error('Failed to save primary contact change:', err);
+        throw err;
       }
     },
     [dispatch, contacts, userId],
@@ -246,9 +248,9 @@ export const useSyncContacts = () => {
 
     try {
       await dispatch(saveContactsToStorage({ userId, contacts })).unwrap();
-    } catch (error) {
-      console.error('Failed to sync contacts:', error);
-      throw error;
+    } catch (err) {
+      console.error('Failed to sync contacts:', err);
+      throw err;
     }
   }, [dispatch, contacts, userId]);
 

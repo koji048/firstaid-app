@@ -1,0 +1,83 @@
+{
+  "id": "sunburn",
+  "title": "Severe Sunburn",
+  "category": "burns_scalds",
+  "severity": "medium",
+  "summary": "Treatment for severe sunburn including sun poisoning symptoms and prevention of complications.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Get Out of the Sun",
+        "description": "Move to a shaded area or indoors immediately. Further sun exposure will worsen the burn. Remove any tight clothing or jewelry before swelling begins.",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Cool the Skin",
+        "description": "Take a cool (not cold) bath or shower, or apply cool, damp cloths to burned areas for 10-15 minutes several times a day. Avoid ice or very cold water which can cause additional skin damage.",
+        "duration": 900
+      },
+      {
+        "order": 3,
+        "title": "Hydrate Inside and Out",
+        "description": "Drink plenty of water to prevent dehydration. Sunburn draws fluid to the skin's surface. Apply aloe vera gel or moisturizer to damp skin to lock in moisture. Avoid petroleum-based products which trap heat.",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Manage Pain and Inflammation",
+        "description": "Take over-the-counter pain relievers like ibuprofen or aspirin to reduce pain, swelling, and inflammation. Follow package directions. These also help reduce fever if present.",
+        "duration": 60
+      },
+      {
+        "order": 5,
+        "title": "Protect Blistered Skin",
+        "description": "If blisters form, don't pop them - they protect against infection. If blisters break on their own, gently clean with mild soap and water, apply antibiotic ointment, and cover with a loose bandage.",
+        "duration": 300
+      },
+      {
+        "order": 6,
+        "title": "Monitor for Sun Poisoning",
+        "description": "Watch for severe symptoms: fever, chills, nausea, rapid pulse, dizziness, or confusion. These indicate sun poisoning and require medical attention. Continue hydrating and stay in cool environment.",
+        "duration": 1800
+      }
+    ],
+    "warnings": [
+      "Severe sunburn in children requires medical evaluation",
+      "Do not use benzocaine or lidocaine products - they can cause allergic reactions",
+      "Avoid butter, oil, or petroleum jelly on sunburns",
+      "Sun-damaged skin is vulnerable to infection"
+    ],
+    "whenToSeekHelp": [
+      "Blistering over a large area of the body",
+      "Fever, chills, or signs of heat exhaustion",
+      "Signs of infection: increased pain, pus, red streaks",
+      "Severe pain not relieved by over-the-counter medications",
+      "Confusion, fainting, or dehydration symptoms"
+    ],
+    "preventionTips": [
+      "Use broad-spectrum sunscreen SPF 30+ and reapply every 2 hours",
+      "Wear protective clothing and wide-brimmed hats",
+      "Avoid sun exposure between 10 AM and 4 PM",
+      "Seek shade, especially during peak sun hours",
+      "Remember that water, sand, and snow reflect UV rays"
+    ]
+  },
+  "searchTags": [
+    "sunburn",
+    "sun poisoning",
+    "UV burn",
+    "solar burn",
+    "sun damage",
+    "heat rash",
+    "sun blisters",
+    "severe sunburn"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

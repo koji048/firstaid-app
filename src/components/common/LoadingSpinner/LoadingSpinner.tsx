@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { View, ActivityIndicator, Text, StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { Overlay } from 'react-native-elements';
 import { useAppTheme } from '@styles/ThemeProvider';
 
@@ -37,7 +37,9 @@ export const LoadingSpinner = memo<LoadingSpinnerProps>(
       );
     }
 
-    if (!visible) return null;
+    if (!visible) {
+      return null;
+    }
 
     return content;
   },

@@ -1,7 +1,7 @@
 import {
   formatPhoneNumber,
-  validatePhoneNumber,
   getPhoneDisplay,
+  validatePhoneNumber,
 } from '../../src/utils/phoneNumber';
 
 describe('phoneNumber utils', () => {

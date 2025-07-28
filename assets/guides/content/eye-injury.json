@@ -1,0 +1,73 @@
+{
+  "id": "eye-injury",
+  "title": "Eye Injury",
+  "category": "medical_emergencies",
+  "severity": "high",
+  "summary": "Proper first aid for eye injuries including foreign objects, chemicals, and trauma. Quick action can prevent permanent vision loss.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Assess the Injury",
+        "description": "Determine injury type: foreign object, chemical splash, blow to eye, or penetrating injury. Do NOT rub eye or try to remove embedded objects. For chemicals, begin flushing immediately.",
+        "imageUrl": "guides/images/eye_injury_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "For Chemical Splash",
+        "description": "Immediately flush eye with clean water for 15-20 minutes. Hold eyelid open, pour water from inner corner outward. Remove contact lenses after flushing begins. Call Poison Control and seek immediate medical care.",
+        "imageUrl": "guides/images/eye_injury_2.png",
+        "duration": 1200
+      },
+      {
+        "order": 3,
+        "title": "For Foreign Objects",
+        "description": "If object is floating (dust, eyelash), flush with clean water or saline. Blink several times. Pull upper eyelid over lower. Do NOT use tweezers or rub. If embedded, do NOT remove - cover both eyes and seek care.",
+        "imageUrl": "guides/images/eye_injury_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "For Blows to Eye",
+        "description": "Apply cold compress (not ice directly) for 15 minutes to reduce swelling. Do not press on eye. Watch for vision changes, blood in eye, or irregular pupil shape. Seek care for severe pain or vision problems.",
+        "duration": 900
+      },
+      {
+        "order": 5,
+        "title": "Protect and Seek Care",
+        "description": "For serious injuries, cover both eyes (to prevent movement) with clean cloth or eye shields. Do not use cotton. Keep person calm. Seek immediate medical care for all but minor irritations.",
+        "duration": 300
+      }
+    ],
+    "warnings": [
+      "Never try to remove embedded objects from eye",
+      "Do not use eye drops unless specifically directed",
+      "Both eyes move together - cover both for serious injuries"
+    ],
+    "whenToSeekHelp": [
+      "Seek immediate care for chemical splashes or embedded objects",
+      "Go to ER for severe pain, vision changes, or blood in eye",
+      "See eye doctor same day for persistent irritation"
+    ],
+    "preventionTips": [
+      "Wear safety glasses during hazardous activities",
+      "Keep chemicals properly labeled and stored",
+      "Teach children not to run with sharp objects"
+    ]
+  },
+  "searchTags": [
+    "eye injury",
+    "eye trauma",
+    "chemical eye burn",
+    "foreign body eye",
+    "eye emergency",
+    "vision loss"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

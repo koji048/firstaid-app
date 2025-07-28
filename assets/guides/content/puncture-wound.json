@@ -1,0 +1,84 @@
+{
+  "id": "puncture-wound",
+  "title": "Puncture Wound Care",
+  "category": "wounds_bleeding",
+  "severity": "medium",
+  "summary": "Treatment for deep puncture wounds from nails, needles, or other sharp objects that penetrate the skin.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Assess the Wound",
+        "description": "Check the depth and location of the puncture. Do not remove any object that is still embedded in the wound - stabilize it and seek immediate medical attention. Note what caused the puncture for tetanus risk assessment.",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Control Bleeding",
+        "description": "Apply gentle direct pressure around the wound with a clean cloth. Avoid pressing directly on the puncture site. Most puncture wounds don't bleed heavily externally, but may bleed internally.",
+        "duration": 300
+      },
+      {
+        "order": 3,
+        "title": "Clean the Wound Area",
+        "description": "Once bleeding is controlled, clean around the wound with soap and water. Do not attempt to clean deep inside the puncture as this may push bacteria deeper. Let clean water run over the wound.",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Apply Antibiotic Ointment",
+        "description": "Apply antibiotic ointment around the wound opening only. Do not attempt to insert ointment deep into the puncture wound.",
+        "duration": 30
+      },
+      {
+        "order": 5,
+        "title": "Cover the Wound",
+        "description": "Cover with a sterile adhesive bandage or gauze pad. Change the dressing daily and watch for signs of infection. Keep the wound dry for the first 24-48 hours.",
+        "duration": 60
+      },
+      {
+        "order": 6,
+        "title": "Monitor and Follow Up",
+        "description": "Watch closely for signs of infection over the next few days: increasing pain, redness, swelling, warmth, pus, or red streaks. Puncture wounds have high infection risk. Verify tetanus vaccination status.",
+        "duration": 30
+      }
+    ],
+    "warnings": [
+      "Never remove an embedded object - seek immediate medical care",
+      "Puncture wounds have high risk of infection due to depth",
+      "Tetanus is a serious risk with dirty or rusty objects",
+      "Deep punctures may damage underlying tissues not visible from surface"
+    ],
+    "whenToSeekHelp": [
+      "Object is still embedded in the wound",
+      "Puncture is deep (more than 1/4 inch) or in a joint, hand, foot, or face",
+      "Caused by dirty, rusty, or contaminated object",
+      "Last tetanus shot was more than 5 years ago",
+      "Signs of infection develop within 24-48 hours",
+      "Numbness, tingling, or loss of function near the wound"
+    ],
+    "preventionTips": [
+      "Wear appropriate footwear in construction areas or around debris",
+      "Keep work areas clear of nails and sharp objects",
+      "Store needles and sharp tools safely",
+      "Keep tetanus vaccinations up to date",
+      "Use protective gloves when handling sharp objects"
+    ]
+  },
+  "searchTags": [
+    "puncture wound",
+    "deep wound",
+    "nail wound",
+    "penetrating injury",
+    "tetanus",
+    "wound care",
+    "infection",
+    "sharp object"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

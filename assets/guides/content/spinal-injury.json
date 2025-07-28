@@ -1,0 +1,74 @@
+{
+  "id": "spinal-injury",
+  "title": "Spinal Injury",
+  "category": "fractures_sprains",
+  "severity": "critical",
+  "summary": "Critical first aid for suspected spinal injuries. Focus on preventing movement and maintaining airway while awaiting emergency services.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Do Not Move - Call 911",
+        "description": "Do NOT move the person unless in immediate danger (fire, drowning). Call 911 immediately. Assume spinal injury after any serious trauma, fall from height, or vehicle accident.",
+        "imageUrl": "guides/images/spinal_injury_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Stabilize Head and Neck",
+        "description": "Kneel behind the person's head. Place your hands on both sides of their head with fingers spread. Hold the head in line with the spine in the position found. Do not twist or bend.",
+        "imageUrl": "guides/images/spinal_injury_2.png",
+        "duration": 600
+      },
+      {
+        "order": 3,
+        "title": "Maintain Airway if Needed",
+        "description": "If person is unconscious and not breathing, use jaw thrust maneuver instead of head tilt. Place fingers behind angle of jaw and lift forward without moving neck. Begin rescue breathing if trained.",
+        "imageUrl": "guides/images/spinal_injury_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Immobilize the Body",
+        "description": "If others are available, have them place rolled towels, blankets, or clothing on both sides of the body to prevent movement. Continue holding the head steady. Do not use a cervical collar unless trained.",
+        "duration": 480
+      },
+      {
+        "order": 5,
+        "title": "Monitor Vital Signs",
+        "description": "Check breathing and consciousness regularly. Note any loss of sensation or movement in limbs. Keep person warm. Continue stabilization until paramedics arrive and take over.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Any movement can cause permanent paralysis or death",
+      "Never move someone with suspected spinal injury unless life is in immediate danger",
+      "Do not remove helmets unless absolutely necessary for airway access"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for all suspected spinal injuries",
+      "Never attempt to transport someone with spinal injury yourself",
+      "Multiple trained responders are needed for safe movement"
+    ],
+    "preventionTips": [
+      "Always wear seatbelts and use proper car seats",
+      "Never dive into unknown or shallow water",
+      "Use proper technique when lifting heavy objects"
+    ]
+  },
+  "searchTags": [
+    "spinal injury",
+    "neck injury",
+    "back injury",
+    "paralysis",
+    "spinal cord",
+    "trauma",
+    "immobilization"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

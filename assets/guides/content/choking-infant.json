@@ -1,0 +1,81 @@
+{
+  "id": "choking-infant",
+  "title": "Choking Infant",
+  "category": "basic_life_support",
+  "severity": "critical",
+  "summary": "Emergency procedure for clearing airway obstruction in conscious infants under 1 year old who are choking.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Assess the Situation",
+        "description": "If the infant is coughing forcefully, let them continue. If they cannot cough, cry, or breathe, or their cough is weak and ineffective, they need immediate help. Look for signs of severe choking: inability to cry, weak or no cough, bluish skin color.",
+        "duration": 5
+      },
+      {
+        "order": 2,
+        "title": "Position the Infant for Back Blows",
+        "description": "Sit or kneel and rest your forearm on your thigh. Place the infant face-down along your forearm, supporting their head and neck with your hand. Keep the infant's head lower than their body.",
+        "duration": 5
+      },
+      {
+        "order": 3,
+        "title": "Give 5 Back Blows",
+        "description": "Using the heel of your free hand, give 5 firm back blows between the infant's shoulder blades. Each blow should be separate and deliberate, attempting to dislodge the object.",
+        "duration": 10
+      },
+      {
+        "order": 4,
+        "title": "Turn Infant for Chest Thrusts",
+        "description": "If the object doesn't come out, carefully turn the infant face-up on your other forearm, keeping their head lower than their body. Support the head and neck.",
+        "duration": 5
+      },
+      {
+        "order": 5,
+        "title": "Give 5 Chest Thrusts",
+        "description": "Place 2 fingers in the center of the chest just below the nipple line. Give 5 quick chest thrusts, pushing straight down about 1.5 inches. Each thrust should be separate, like a mini chest compression.",
+        "duration": 10
+      },
+      {
+        "order": 6,
+        "title": "Repeat Cycles and Check Mouth",
+        "description": "Continue alternating 5 back blows and 5 chest thrusts. After each cycle, look in the infant's mouth. If you see the object, remove it with your little finger. Never do blind finger sweeps. If the infant becomes unconscious, begin infant CPR.",
+        "duration": 60
+      }
+    ],
+    "warnings": [
+      "Never do blind finger sweeps - you might push the object deeper",
+      "Do not use abdominal thrusts (Heimlich maneuver) on infants",
+      "Support the infant's head and neck at all times",
+      "If the infant becomes unconscious, start CPR immediately"
+    ],
+    "whenToSeekHelp": [
+      "Have someone call 911 immediately while you help the infant",
+      "If alone and the infant becomes unconscious, do 2 minutes of CPR then call 911",
+      "Even if the object comes out, seek medical attention to ensure no injury occurred"
+    ],
+    "preventionTips": [
+      "Keep small objects away from infants",
+      "Cut food into tiny pieces appropriate for infant's age",
+      "Never leave infants alone while eating",
+      "Avoid giving infants hard foods like nuts, popcorn, or hard candy",
+      "Check toys for small parts that could break off"
+    ]
+  },
+  "searchTags": [
+    "choking infant",
+    "baby choking",
+    "airway obstruction",
+    "back blows",
+    "chest thrusts",
+    "infant emergency",
+    "choking baby",
+    "foreign object"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

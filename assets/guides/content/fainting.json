@@ -1,0 +1,73 @@
+{
+  "id": "fainting",
+  "title": "Fainting",
+  "category": "medical_emergencies",
+  "severity": "medium",
+  "summary": "Managing fainting episodes and helping someone who has lost consciousness briefly due to reduced blood flow to the brain.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Catch or Ease to Ground",
+        "description": "If person is about to faint (dizzy, pale, sweating), help them lie down immediately. If already falling, try to guide them down gently to prevent injury. Clear area of dangerous objects.",
+        "imageUrl": "guides/images/fainting_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Position for Blood Flow",
+        "description": "Lay person on back and elevate legs 12 inches to improve blood flow to brain. Loosen tight clothing especially around neck. If vomiting, turn on side. Most people recover within a minute.",
+        "imageUrl": "guides/images/fainting_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Check Responsiveness",
+        "description": "Check if person is breathing normally. They should regain consciousness within 1-2 minutes. If not responding after 1 minute, call 911. If not breathing, begin CPR immediately.",
+        "imageUrl": "guides/images/fainting_3.png",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Recovery Care",
+        "description": "Once conscious, keep lying down for 10-15 minutes. Give sips of water if fully alert. Check for injuries from fall. Person may feel confused or nauseated. Cool compress on forehead may help.",
+        "duration": 900
+      },
+      {
+        "order": 5,
+        "title": "Monitor Before Standing",
+        "description": "Help person sit up slowly after 10-15 minutes. Wait several minutes before standing. Stand slowly and sit immediately if dizzy. Stay with them until fully recovered. Seek medical evaluation for cause.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Fainting can be sign of serious condition - always seek medical evaluation",
+      "Do not give anything by mouth until fully conscious",
+      "Repeated fainting episodes require immediate medical attention"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if person doesn't regain consciousness within 2 minutes",
+      "Seek immediate care for fainting with chest pain or irregular heartbeat",
+      "Get medical evaluation after any fainting episode to determine cause"
+    ],
+    "preventionTips": [
+      "Stay hydrated and don't skip meals",
+      "Stand up slowly from sitting or lying positions",
+      "Avoid standing still for long periods in hot weather"
+    ]
+  },
+  "searchTags": [
+    "fainting",
+    "passing out",
+    "syncope",
+    "loss of consciousness",
+    "dizzy",
+    "lightheaded"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

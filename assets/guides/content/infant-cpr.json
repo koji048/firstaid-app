@@ -1,0 +1,80 @@
+{
+  "id": "infant-cpr",
+  "title": "CPR for Infants",
+  "category": "basic_life_support",
+  "severity": "critical",
+  "summary": "Life-saving technique for performing CPR on infants (under 1 year old) who are unresponsive and not breathing normally.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Check Responsiveness and Call for Help",
+        "description": "Tap the infant's foot and call their name loudly. If unresponsive, have someone call 911 immediately. If alone with no phone, perform 2 minutes of CPR before leaving to call 911.",
+        "duration": 10
+      },
+      {
+        "order": 2,
+        "title": "Position the Infant",
+        "description": "Place the infant on a firm, flat surface. Tilt their head back slightly to a neutral position (not as far as for adults). The infant's head should be in a 'sniffing' position to open the airway.",
+        "duration": 5
+      },
+      {
+        "order": 3,
+        "title": "Check for Breathing",
+        "description": "Look, listen, and feel for normal breathing for no more than 10 seconds. Occasional gasps are not normal breathing. If not breathing normally, begin chest compressions immediately.",
+        "duration": 10
+      },
+      {
+        "order": 4,
+        "title": "Perform Chest Compressions",
+        "description": "Place 2 fingers in the center of the chest just below the nipple line. Press down about 1.5 inches (4 cm) at a rate of 100-120 compressions per minute. Allow complete chest recoil between compressions. Count aloud: '1, 2, 3... 30'.",
+        "duration": 15
+      },
+      {
+        "order": 5,
+        "title": "Give Rescue Breaths",
+        "description": "After 30 compressions, cover the infant's mouth and nose with your mouth, creating a seal. Give 2 gentle puffs of air, each lasting 1 second. Watch for the chest to rise with each breath. If the chest doesn't rise, reposition the head and try again.",
+        "duration": 5
+      },
+      {
+        "order": 6,
+        "title": "Continue CPR Cycles",
+        "description": "Continue cycles of 30 chest compressions followed by 2 rescue breaths. Do not stop until emergency services arrive, the infant starts breathing normally, or you become too exhausted to continue.",
+        "duration": 120
+      }
+    ],
+    "warnings": [
+      "Use only 2 fingers for compressions, not the whole hand",
+      "Be gentle with rescue breaths - infant lungs are small and delicate",
+      "Do not shake the infant to check responsiveness",
+      "Never perform CPR on an infant who is conscious and breathing"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for any unresponsive infant",
+      "If alone, perform 2 minutes of CPR before calling 911",
+      "Continue CPR until professional help arrives"
+    ],
+    "preventionTips": [
+      "Always supervise infants, especially during feeding and sleep",
+      "Learn infant CPR from a certified instructor",
+      "Keep small objects away from infants to prevent choking",
+      "Follow safe sleep guidelines to reduce SIDS risk"
+    ]
+  },
+  "searchTags": [
+    "infant cpr",
+    "baby cpr",
+    "infant resuscitation",
+    "chest compressions",
+    "rescue breathing",
+    "emergency",
+    "unresponsive baby",
+    "infant emergency"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

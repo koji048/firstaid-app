@@ -1,0 +1,73 @@
+{
+  "id": "ankle-sprain",
+  "title": "Ankle Sprain",
+  "category": "fractures_sprains",
+  "severity": "medium",
+  "summary": "First aid for ankle sprains using the R.I.C.E. method - Rest, Ice, Compression, and Elevation to reduce pain and swelling.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Stop Activity and Assess",
+        "description": "Stop all activity immediately. Check for severe pain, inability to bear weight, numbness, or obvious deformity. If ankle looks deformed or person cannot move toes, suspect fracture and seek emergency care.",
+        "imageUrl": "guides/images/ankle_sprain_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Rest the Ankle",
+        "description": "Help person to a comfortable position. Avoid putting weight on the injured ankle. Use crutches or support from others if movement is necessary. Rest is crucial for the first 48 hours.",
+        "imageUrl": "guides/images/ankle_sprain_2.png",
+        "duration": 180
+      },
+      {
+        "order": 3,
+        "title": "Apply Ice",
+        "description": "Apply ice pack wrapped in thin towel to the ankle for 20 minutes. Repeat every 2-3 hours for the first 48 hours. Never apply ice directly to skin. Ice reduces swelling and numbs pain.",
+        "imageUrl": "guides/images/ankle_sprain_3.png",
+        "duration": 1200
+      },
+      {
+        "order": 4,
+        "title": "Apply Compression",
+        "description": "Wrap ankle with elastic bandage starting at toes and working up. Wrap firmly but not so tight that it cuts off circulation. Toes should remain pink and warm. Re-wrap if toes turn blue or numb.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Elevate the Ankle",
+        "description": "Raise the ankle above heart level when possible. Prop on pillows when sitting or lying down. Elevation helps reduce swelling by improving drainage. Continue R.I.C.E. for 48-72 hours.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Severe sprains can be as serious as fractures",
+      "Do not apply heat for the first 48 hours as it increases swelling",
+      "Numbness or inability to move toes may indicate nerve damage"
+    ],
+    "whenToSeekHelp": [
+      "Seek immediate care if ankle appears deformed",
+      "See doctor if unable to bear any weight after 24 hours",
+      "Get medical attention for severe pain or numbness"
+    ],
+    "preventionTips": [
+      "Warm up before physical activity",
+      "Wear proper supportive footwear",
+      "Strengthen ankles with balance exercises"
+    ]
+  },
+  "searchTags": [
+    "ankle sprain",
+    "twisted ankle",
+    "ankle injury",
+    "RICE method",
+    "sports injury",
+    "ligament injury"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "frostbite",
+  "title": "Frostbite",
+  "category": "environmental_emergencies",
+  "severity": "high",
+  "summary": "Freezing of body tissues, usually affecting fingers, toes, nose, and ears. Requires careful rewarming to prevent permanent damage.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Identify Frostbite",
+        "description": "Skin appears white/grayish, is hard or waxy looking, and numb. First degree: skin is cold and red. Second degree: blisters form. Third degree: deep tissue involvement, skin appears white/blotchy.",
+        "imageUrl": "guides/images/frostbite_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Get to Warm Area",
+        "description": "Move to warm room immediately. Handle affected areas gently. Do NOT walk on frostbitten feet unless necessary. Remove wet clothing and jewelry. Call 911 for severe frostbite.",
+        "imageUrl": "guides/images/frostbite_2.png",
+        "duration": 180
+      },
+      {
+        "order": 3,
+        "title": "Protect the Area",
+        "description": "Do NOT thaw if refreezing is possible. Cover area with loose, dry dressings. Place gauze between affected fingers/toes. Don't disturb blisters. Wrap area loosely to protect from contact.",
+        "imageUrl": "guides/images/frostbite_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Begin Rewarming if Safe",
+        "description": "If medical care is not available within 2 hours, rewarm in warm (not hot) water 98-102°F for 15-30 minutes. Test temperature with unaffected hand. Severe pain during rewarming is normal.",
+        "duration": 1800
+      },
+      {
+        "order": 5,
+        "title": "After Rewarming",
+        "description": "Apply loose bandages. Give over-the-counter pain medicine. Give warm liquids if conscious. Do NOT: rub area, use direct heat, smoke (reduces circulation), or disturb blisters. Seek medical care.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never rub frostbitten areas - this causes more damage",
+      "Do not use direct heat like fires, heating pads, or stoves",
+      "Thawing and refreezing causes severe tissue damage"
+    ],
+    "whenToSeekHelp": [
+      "Seek medical care for all but minor frostbite",
+      "Call 911 for large areas or if skin is hard and doesn't move",
+      "Get immediate care if area remains numb after 30 minutes of rewarming"
+    ],
+    "preventionTips": [
+      "Dress in layers and keep dry in cold weather",
+      "Cover exposed skin and wear appropriate winter gear",
+      "Learn to recognize early warning signs like numbness"
+    ]
+  },
+  "searchTags": [
+    "frostbite",
+    "frozen tissue",
+    "cold injury",
+    "winter emergency",
+    "frozen fingers",
+    "frozen toes"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

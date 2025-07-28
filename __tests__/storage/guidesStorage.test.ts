@@ -66,7 +66,7 @@ describe('GuidesStorage', () => {
       await GuidesStorage.saveGuides(mockGuides);
 
       expect(StorageService.saveData).toHaveBeenCalledTimes(2);
-      
+
       // Check main data save
       const mainDataCall = (StorageService.saveData as jest.Mock).mock.calls[0];
       expect(mainDataCall[0]).toBe('first_aid_guides');
@@ -102,7 +102,7 @@ describe('GuidesStorage', () => {
       };
 
       await expect(GuidesStorage.saveGuides([largeGuide])).rejects.toThrow(
-        'Failed to save guide data'
+        'Failed to save guide data',
       );
     });
   });
@@ -119,7 +119,7 @@ describe('GuidesStorage', () => {
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(storedData);
 
       const result = await GuidesStorage.loadGuides();
-      
+
       expect(result).toEqual(storedData);
       expect(StorageService.getData).toHaveBeenCalledWith('first_aid_guides');
     });
@@ -141,7 +141,7 @@ describe('GuidesStorage', () => {
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(oldData);
 
       const result = await GuidesStorage.loadGuides();
-      
+
       expect(result?.version).toBe(1);
       expect(StorageService.saveData).toHaveBeenCalled();
     });
@@ -157,7 +157,7 @@ describe('GuidesStorage', () => {
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(versionInfo);
 
       const versionMap = await GuidesStorage.getVersionInfo();
-      
+
       expect(versionMap.get('guide-1')).toBe(1);
       expect(versionMap.get('guide-2')).toBe(2);
     });
@@ -222,7 +222,7 @@ describe('GuidesStorage', () => {
       });
 
       const guides = await GuidesStorage.getGuidesByCategory(GuideCategory.BASIC_LIFE_SUPPORT);
-      
+
       expect(guides).toHaveLength(1);
       expect(guides[0].id).toBe('guide-1');
     });
@@ -243,32 +243,32 @@ describe('GuidesStorage', () => {
   describe('downloaded guides management', () => {
     it('should save and load downloaded guides', async () => {
       const guideIds = ['guide-1', 'guide-2'];
-      
+
       await GuidesStorage.saveDownloadedGuides(guideIds);
       expect(StorageService.saveData).toHaveBeenCalledWith('downloaded_guides', guideIds);
 
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(guideIds);
       const loaded = await GuidesStorage.getDownloadedGuides();
-      
+
       expect(loaded).toEqual(guideIds);
     });
 
     it('should mark guide as downloaded', async () => {
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(['guide-1']);
-      
+
       await GuidesStorage.markGuideAsDownloaded('guide-2');
-      
-      expect(StorageService.saveData).toHaveBeenCalledWith(
-        'downloaded_guides',
-        ['guide-1', 'guide-2']
-      );
+
+      expect(StorageService.saveData).toHaveBeenCalledWith('downloaded_guides', [
+        'guide-1',
+        'guide-2',
+      ]);
     });
 
     it('should not duplicate downloaded guides', async () => {
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(['guide-1']);
-      
+
       await GuidesStorage.markGuideAsDownloaded('guide-1');
-      
+
       expect(StorageService.saveData).not.toHaveBeenCalled();
     });
   });
@@ -276,38 +276,35 @@ describe('GuidesStorage', () => {
   describe('bookmark management', () => {
     it('should save and load bookmarked guides', async () => {
       const guideIds = ['guide-1', 'guide-2'];
-      
+
       await GuidesStorage.saveBookmarkedGuides(guideIds);
       expect(StorageService.saveData).toHaveBeenCalledWith('bookmarked_guides', guideIds);
 
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(guideIds);
       const loaded = await GuidesStorage.getBookmarkedGuides();
-      
+
       expect(loaded).toEqual(guideIds);
     });
 
     it('should toggle bookmark on', async () => {
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(['guide-1']);
-      
+
       const isBookmarked = await GuidesStorage.toggleBookmark('guide-2');
-      
+
       expect(isBookmarked).toBe(true);
-      expect(StorageService.saveData).toHaveBeenCalledWith(
-        'bookmarked_guides',
-        ['guide-1', 'guide-2']
-      );
+      expect(StorageService.saveData).toHaveBeenCalledWith('bookmarked_guides', [
+        'guide-1',
+        'guide-2',
+      ]);
     });
 
     it('should toggle bookmark off', async () => {
       (StorageService.getData as jest.Mock).mockResolvedValueOnce(['guide-1', 'guide-2']);
-      
+
       const isBookmarked = await GuidesStorage.toggleBookmark('guide-1');
-      
+
       expect(isBookmarked).toBe(false);
-      expect(StorageService.saveData).toHaveBeenCalledWith(
-        'bookmarked_guides',
-        ['guide-2']
-      );
+      expect(StorageService.saveData).toHaveBeenCalledWith('bookmarked_guides', ['guide-2']);
     });
   });
 
@@ -324,19 +321,19 @@ describe('GuidesStorage', () => {
       (AsyncStorage.getAllKeys as jest.Mock).mockResolvedValueOnce(mockKeys);
       (AsyncStorage.getItem as jest.Mock)
         .mockResolvedValueOnce('x'.repeat(1000)) // first_aid_guides
-        .mockResolvedValueOnce('x'.repeat(500))  // guide_versions
-        .mockResolvedValueOnce('x'.repeat(200))  // downloaded_guides
+        .mockResolvedValueOnce('x'.repeat(500)) // guide_versions
+        .mockResolvedValueOnce('x'.repeat(200)) // downloaded_guides
         .mockResolvedValueOnce('x'.repeat(100)); // bookmarked_guides
 
       const size = await GuidesStorage.getStorageSize();
-      
+
       expect(size).toBe(1800);
       expect(AsyncStorage.getItem).toHaveBeenCalledTimes(4);
     });
 
     it('should clear all guide storage', async () => {
       await GuidesStorage.clearGuideStorage();
-      
+
       expect(AsyncStorage.multiRemove).toHaveBeenCalledWith([
         'first_aid_guides',
         'guide_versions',

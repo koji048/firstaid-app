@@ -1,0 +1,81 @@
+{
+  "id": "amputation",
+  "title": "Amputation Emergency Care",
+  "category": "wounds_bleeding",
+  "severity": "critical",
+  "summary": "Immediate emergency care for traumatic amputation of fingers, toes, hands, feet, or limbs to save life and preserve severed parts.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Call 911 Immediately",
+        "description": "Call emergency services immediately. This is a life-threatening emergency. Have someone else call if possible while you provide care. Request immediate ambulance transport.",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Control Severe Bleeding",
+        "description": "Apply direct pressure to the wound with sterile gauze or clean cloth. If bleeding soaks through, add more material without removing the first layer. Elevate the injured area above the heart if possible.",
+        "duration": 300
+      },
+      {
+        "order": 3,
+        "title": "Apply Pressure Points if Needed",
+        "description": "If direct pressure doesn't control bleeding, apply pressure to the nearest pressure point between the wound and heart. For arm injuries, press the brachial artery. For leg injuries, press the femoral artery in the groin.",
+        "duration": 180
+      },
+      {
+        "order": 4,
+        "title": "Apply Tourniquet if Necessary",
+        "description": "Only use a tourniquet if bleeding is life-threatening and cannot be controlled by direct pressure. Apply 2-3 inches above the wound, tighten until bleeding stops, and note the time. Never loosen once applied.",
+        "duration": 120
+      },
+      {
+        "order": 5,
+        "title": "Care for the Severed Part",
+        "description": "Gently rinse the severed part with clean water if dirty. Wrap in moist sterile gauze, place in a watertight plastic bag, then place that bag on ice. Do not put the part directly on ice or in water.",
+        "duration": 180
+      },
+      {
+        "order": 6,
+        "title": "Treat for Shock and Monitor",
+        "description": "Have the person lie down with feet elevated unless head/chest injury is suspected. Cover with a blanket to maintain body temperature. Monitor breathing and consciousness. Reassure the person and keep them still.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never put severed body parts directly on ice or in water",
+      "Do not give the person food or drink",
+      "Once a tourniquet is applied, only medical professionals should remove it",
+      "Time is critical - severed parts may be reattached if preserved properly"
+    ],
+    "whenToSeekHelp": [
+      "This is always a medical emergency requiring immediate professional help",
+      "Call 911 immediately - do not attempt to drive the person yourself",
+      "Ensure the severed part goes with the person to the hospital"
+    ],
+    "preventionTips": [
+      "Follow proper safety procedures when using power tools",
+      "Ensure machinery has proper guards and safety devices",
+      "Never bypass safety features on equipment",
+      "Wear appropriate protective equipment",
+      "Keep work areas well-lit and organized"
+    ]
+  },
+  "searchTags": [
+    "amputation",
+    "severed",
+    "traumatic injury",
+    "severe bleeding",
+    "tourniquet",
+    "emergency",
+    "limb loss",
+    "finger cut off"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

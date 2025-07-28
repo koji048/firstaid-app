@@ -1,11 +1,11 @@
 import {
-  ContactRelationship,
   ContactCategory,
+  ContactRelationship,
   EmergencyContact,
-  NewEmergencyContact,
-  UpdateEmergencyContact,
-  StoredEmergencyContacts,
   EmergencyContactsState,
+  NewEmergencyContact,
+  StoredEmergencyContacts,
+  UpdateEmergencyContact,
 } from '../../src/types';
 
 describe('Emergency Contact Types', () => {

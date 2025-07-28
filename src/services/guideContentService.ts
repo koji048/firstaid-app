@@ -13,7 +13,9 @@ export class GuideContentService {
   private manifest: GuideContentManifest | null = null;
   private guides: Map<string, FirstAidGuide> = new Map();
 
-  private constructor() {}
+  private constructor() {
+    // Empty constructor for singleton pattern
+  }
 
   static getInstance(): GuideContentService {
     if (!GuideContentService.instance) {
@@ -26,7 +28,7 @@ export class GuideContentService {
     try {
       // Clear existing guides before loading new ones
       this.guides.clear();
-      
+
       const manifestModule = await import('../../assets/guides/content/manifest.json');
       this.manifest = manifestModule.default as GuideContentManifest;
 
@@ -36,16 +38,14 @@ export class GuideContentService {
 
       const guidePromises = this.manifest.guides.map(async (metadata) => {
         try {
-          const guideModule = await import(
-            `../../assets/guides/content/${metadata.id}.json`
-          );
+          const guideModule = await import(`../../assets/guides/content/${metadata.id}.json`);
           const guide = guideModule.default as FirstAidGuide;
-          
+
           // Validate guide has required fields
           if (!guide.id || !guide.title || !guide.content) {
             throw new Error(`Invalid guide structure for ${metadata.id}`);
           }
-          
+
           this.guides.set(guide.id, guide);
           return guide;
         } catch (error) {
@@ -58,7 +58,9 @@ export class GuideContentService {
       return guides;
     } catch (error) {
       console.error('Failed to load guides from JSON:', error);
-      throw new Error(`Failed to load guide content: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new Error(
+        `Failed to load guide content: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      );
     }
   }
 
@@ -69,7 +71,7 @@ export class GuideContentService {
 
     const updates: GuideContentUpdate[] = [];
 
-    for (const metadata of this.manifest!.guides) {
+    for (const metadata of this.manifest.guides) {
       const currentVersion = currentVersions.get(metadata.id) || 0;
       if (metadata.version > currentVersion) {
         updates.push({
@@ -89,9 +91,7 @@ export class GuideContentService {
   }
 
   getGuidesByCategory(category: GuideCategory): FirstAidGuide[] {
-    return Array.from(this.guides.values()).filter(
-      (guide) => guide.category === category
-    );
+    return Array.from(this.guides.values()).filter((guide) => guide.category === category);
   }
 
   getAllCategories(): GuideCategory[] {
@@ -135,12 +135,14 @@ export class GuideContentService {
       content: guide.content,
       version: guide.version,
     });
-    
+
     // Simple DJB2 hash implementation
     let hash = 5381;
     for (let i = 0; i < content.length; i++) {
       const char = content.charCodeAt(i);
-      hash = ((hash << 5) + hash) + char; // hash * 33 + char
+      // eslint-disable-next-line no-bitwise
+      hash = (hash << 5) + hash + char; // hash * 33 + char
+      // eslint-disable-next-line no-bitwise
       hash = hash >>> 0; // Convert to unsigned 32-bit integer
     }
     return hash.toString(16).padStart(8, '0');
@@ -173,15 +175,15 @@ export class GuideContentService {
     return `guides/images/${guideId}_${stepOrder}.png`;
   }
 
-  static resolveImageReference(imageUrl: string): any {
+  static resolveImageReference(imageUrl: string): number | null {
     const imageName = imageUrl.split('/').pop();
     if (!imageName) {
       return null;
     }
-    
+
     try {
       // Map of image names to require statements
-      const imageMap: Record<string, any> = {
+      const imageMap: Record<string, number> = {
         'cpr_1.png': require('../../assets/guides/images/cpr_1.png'),
         'cpr_2.png': require('../../assets/guides/images/cpr_2.png'),
         'cpr_3.png': require('../../assets/guides/images/cpr_3.png'),
@@ -229,8 +231,9 @@ export class GuideContentService {
   }
 
   validateImageDimensions(width: number, height: number): boolean {
-    return width <= GuideContentService.MAX_IMAGE_WIDTH && 
-           height <= GuideContentService.MAX_IMAGE_HEIGHT;
+    return (
+      width <= GuideContentService.MAX_IMAGE_WIDTH && height <= GuideContentService.MAX_IMAGE_HEIGHT
+    );
   }
 
   validateImageSize(sizeInBytes: number): boolean {
@@ -243,7 +246,7 @@ export class GuideContentService {
     url: string,
     altText: string,
     size: number,
-    dimensions?: { width: number; height: number }
+    dimensions?: { width: number; height: number },
   ): MediaAsset {
     const asset: MediaAsset = {
       id,
@@ -264,9 +267,9 @@ export class GuideContentService {
   getImageAssetInfo(imageUrl: string): Partial<MediaAsset> {
     const imageName = imageUrl.split('/').pop() || '';
     const matches = imageName.match(GuideContentService.IMAGE_NAMING_PATTERN);
-    
+
     if (matches) {
-      const [, guideId, stepOrder, extension] = matches;
+      const [, guideId, stepOrder] = matches;
       return {
         id: `${guideId}_${stepOrder}`,
         type: 'image',

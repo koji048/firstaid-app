@@ -17,7 +17,7 @@ export class ValidationError extends Error {
     public code: ValidationErrorCode,
     public field: string,
     message: string,
-    public recovery?: string
+    public recovery?: string,
   ) {
     super(message);
     this.name = 'ValidationError';
@@ -68,7 +68,7 @@ export class GuideValidator {
 
   private static validateRequiredFields(
     guide: Partial<FirstAidGuide>,
-    errors: ValidationError[]
+    errors: ValidationError[],
   ): void {
     for (const field of this.REQUIRED_FIELDS) {
       if (!(field in guide) || guide[field as keyof FirstAidGuide] === undefined) {
@@ -77,8 +77,8 @@ export class GuideValidator {
             ValidationErrorCode.MISSING_REQUIRED_FIELD,
             field,
             `Required field '${field}' is missing`,
-            `Ensure the guide JSON includes a '${field}' field`
-          )
+            `Ensure the guide JSON includes a '${field}' field`,
+          ),
         );
       }
     }
@@ -91,8 +91,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'title',
           'Title must be a non-empty string',
-          'Provide a descriptive title for the guide'
-        )
+          'Provide a descriptive title for the guide',
+        ),
       );
     }
   }
@@ -103,9 +103,11 @@ export class GuideValidator {
         new ValidationError(
           ValidationErrorCode.INVALID_SEVERITY_LEVEL,
           'severity',
-          `Severity level '${severity}' is invalid. Must be one of: ${this.SEVERITY_LEVELS.join(', ')}`,
-          'Use a valid severity level: low, medium, high, or critical'
-        )
+          `Severity level '${severity}' is invalid. Must be one of: ${this.SEVERITY_LEVELS.join(
+            ', ',
+          )}`,
+          'Use a valid severity level: low, medium, high, or critical',
+        ),
       );
     }
   }
@@ -117,8 +119,8 @@ export class GuideValidator {
           ValidationErrorCode.EMPTY_CONTENT,
           'content.steps',
           'Guide content must include a steps array',
-          'Add at least one step to the guide'
-        )
+          'Add at least one step to the guide',
+        ),
       );
       return;
     }
@@ -129,8 +131,8 @@ export class GuideValidator {
           ValidationErrorCode.EMPTY_CONTENT,
           'content.steps',
           'Guide must have at least one step',
-          'Add at least one step with instructions'
-        )
+          'Add at least one step with instructions',
+        ),
       );
     }
 
@@ -145,8 +147,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'content.warnings',
           'Warnings must be an array of strings',
-          'Ensure warnings is an array'
-        )
+          'Ensure warnings is an array',
+        ),
       );
     }
 
@@ -156,8 +158,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'content.whenToSeekHelp',
           'whenToSeekHelp must be an array of strings',
-          'Ensure whenToSeekHelp is an array'
-        )
+          'Ensure whenToSeekHelp is an array',
+        ),
       );
     }
 
@@ -167,15 +169,15 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'content.preventionTips',
           'preventionTips must be an array of strings',
-          'Ensure preventionTips is an array'
-        )
+          'Ensure preventionTips is an array',
+        ),
       );
     }
   }
 
   private static validateStepOrdering(steps: GuideStep[], errors: ValidationError[]): void {
     const orders = steps.map((step) => step.order).sort((a, b) => a - b);
-    
+
     for (let i = 0; i < orders.length; i++) {
       if (orders[i] !== i + 1) {
         errors.push(
@@ -183,8 +185,8 @@ export class GuideValidator {
             ValidationErrorCode.INVALID_STEP_ORDER,
             'content.steps',
             `Step ordering is not sequential. Expected order ${i + 1} but found ${orders[i]}`,
-            'Ensure steps are numbered sequentially starting from 1'
-          )
+            'Ensure steps are numbered sequentially starting from 1',
+          ),
         );
         break;
       }
@@ -198,8 +200,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           `content.steps[${index}].title`,
           `Step ${index + 1} must have a title`,
-          'Add a title to each step'
-        )
+          'Add a title to each step',
+        ),
       );
     }
 
@@ -209,8 +211,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           `content.steps[${index}].description`,
           `Step ${index + 1} must have a description`,
-          'Add a description to each step'
-        )
+          'Add a description to each step',
+        ),
       );
     }
 
@@ -220,8 +222,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           `content.steps[${index}].duration`,
           `Step ${index + 1} duration must be a positive number`,
-          'Use a positive number for duration in seconds'
-        )
+          'Use a positive number for duration in seconds',
+        ),
       );
     }
 
@@ -232,8 +234,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_MEDIA_REFERENCE,
           `content.steps[${index}].imageUrl`,
           `Step ${index + 1} image URL must be a string`,
-          'Provide a valid image URL or remove the field'
-        )
+          'Provide a valid image URL or remove the field',
+        ),
       );
     }
 
@@ -243,8 +245,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_MEDIA_REFERENCE,
           `content.steps[${index}].videoUrl`,
           `Step ${index + 1} video URL must be a string`,
-          'Provide a valid video URL or remove the field'
-        )
+          'Provide a valid video URL or remove the field',
+        ),
       );
     }
   }
@@ -256,8 +258,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_SEARCH_TAGS,
           'searchTags',
           'Search tags must be an array of strings',
-          'Provide an array of search keywords'
-        )
+          'Provide an array of search keywords',
+        ),
       );
       return;
     }
@@ -268,8 +270,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_SEARCH_TAGS,
           'searchTags',
           'At least one search tag is required',
-          'Add relevant search keywords for the guide'
-        )
+          'Add relevant search keywords for the guide',
+        ),
       );
     }
 
@@ -280,8 +282,8 @@ export class GuideValidator {
             ValidationErrorCode.INVALID_SEARCH_TAGS,
             `searchTags[${index}]`,
             'Each search tag must be a non-empty string',
-            'Remove empty tags or provide valid keywords'
-          )
+            'Remove empty tags or provide valid keywords',
+          ),
         );
       }
     });
@@ -294,8 +296,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_VERSION,
           'version',
           'Version must be a positive integer',
-          'Use a positive integer for version number (e.g., 1, 2, 3)'
-        )
+          'Use a positive integer for version number (e.g., 1, 2, 3)',
+        ),
       );
     }
   }
@@ -309,8 +311,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'asset.id',
           'Media asset must have a valid ID',
-          'Provide a unique identifier for the asset'
-        )
+          'Provide a unique identifier for the asset',
+        ),
       );
     }
 
@@ -320,8 +322,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'asset.type',
           'Media asset type must be either "image" or "video"',
-          'Specify the correct asset type'
-        )
+          'Specify the correct asset type',
+        ),
       );
     }
 
@@ -331,8 +333,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'asset.url',
           'Media asset must have a valid URL',
-          'Provide a valid URL for the asset'
-        )
+          'Provide a valid URL for the asset',
+        ),
       );
     }
 
@@ -342,8 +344,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'asset.altText',
           'Media asset must have alt text for accessibility',
-          'Add descriptive alt text for the asset'
-        )
+          'Add descriptive alt text for the asset',
+        ),
       );
     }
 
@@ -353,8 +355,8 @@ export class GuideValidator {
           ValidationErrorCode.INVALID_FIELD_TYPE,
           'asset.size',
           'Media asset size must be a positive number',
-          'Provide the file size in bytes'
-        )
+          'Provide the file size in bytes',
+        ),
       );
     }
 

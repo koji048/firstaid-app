@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import { ContactListItem } from '../../../src/components/emergency/ContactListItem';
 import {
-  EmergencyContact,
   ContactCategory,
   ContactRelationship,
+  EmergencyContact,
 } from '../../../src/types/emergencyContact';
 
 const mockContact: EmergencyContact = {

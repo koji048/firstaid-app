@@ -1,0 +1,78 @@
+{
+  "id": "recovery-position",
+  "title": "Recovery Position",
+  "category": "basic_life_support",
+  "severity": "high",
+  "summary": "How to place an unconscious but breathing person in the recovery position to maintain their airway and prevent choking.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Check for Danger and Responsiveness",
+        "description": "Ensure the area is safe. Check if the person is conscious by gently shaking their shoulders and asking loudly 'Are you okay?' If they respond, help them into a comfortable position and monitor them.",
+        "duration": 10
+      },
+      {
+        "order": 2,
+        "title": "Check Breathing",
+        "description": "If unresponsive, tilt their head back gently and lift their chin to open the airway. Look, listen, and feel for normal breathing for no more than 10 seconds. If not breathing normally, begin CPR immediately.",
+        "duration": 10
+      },
+      {
+        "order": 3,
+        "title": "Remove Hazards and Position Arms",
+        "description": "Remove glasses and bulky items from pockets. Kneel beside the person. Place the arm nearest to you at a right angle to their body with the elbow bent and palm facing up.",
+        "duration": 15
+      },
+      {
+        "order": 4,
+        "title": "Position Far Arm and Leg",
+        "description": "Bring the far arm across the chest and hold the back of their hand against their nearest cheek. With your other hand, grasp the far leg just above the knee and pull it up, keeping the foot flat on the ground.",
+        "duration": 10
+      },
+      {
+        "order": 5,
+        "title": "Roll Into Recovery Position",
+        "description": "Keeping their hand pressed against their cheek, pull on the far leg to roll the person towards you onto their side. Adjust the upper leg so both hip and knee are bent at right angles.",
+        "duration": 15
+      },
+      {
+        "order": 6,
+        "title": "Open Airway and Monitor",
+        "description": "Tilt their head back to ensure the airway remains open. Adjust the hand under their cheek if necessary to maintain head position. Check breathing regularly while waiting for help to arrive.",
+        "duration": 300
+      }
+    ],
+    "warnings": [
+      "Do not use recovery position if you suspect a spinal injury unless airway management takes priority",
+      "Do not leave the person unattended - monitor breathing continuously",
+      "If breathing stops, immediately roll them onto their back and begin CPR"
+    ],
+    "whenToSeekHelp": [
+      "Call emergency services immediately for any unconscious person",
+      "If the person remains unconscious for more than a few minutes",
+      "If there are signs of injury, especially head or spinal injuries"
+    ],
+    "preventionTips": [
+      "Learn to recognize conditions that may lead to unconsciousness",
+      "Take a first aid course to practice the recovery position technique",
+      "Always prioritize calling for professional medical help"
+    ]
+  },
+  "searchTags": [
+    "recovery position",
+    "unconscious",
+    "airway",
+    "breathing",
+    "lateral position",
+    "emergency",
+    "first aid",
+    "collapse"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

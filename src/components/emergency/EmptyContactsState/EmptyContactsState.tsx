@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '../../../navigation/types';
 import { styles } from './EmptyContactsState.styles';
 
-export interface EmptyContactsStateProps {}
+export type EmptyContactsStateProps = Record<string, never>;
 
 export const EmptyContactsState: React.FC<EmptyContactsStateProps> = () => {
   const navigation = useNavigation<NavigationProp>();
@@ -40,9 +40,7 @@ export const EmptyContactsState: React.FC<EmptyContactsStateProps> = () => {
         onPress={handleAddContact}
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
-        icon={
-          <Icon name="add" type="material" size={20} color="#ffffff" style={{ marginRight: 8 }} />
-        }
+        icon={<Icon name="add" type="material" size={20} color="#ffffff" />}
       />
     </View>
   );

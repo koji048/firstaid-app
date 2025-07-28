@@ -1,0 +1,74 @@
+{
+  "id": "diabetic-emergency",
+  "title": "Diabetic Emergency",
+  "category": "medical_emergencies",
+  "severity": "high",
+  "summary": "Managing low blood sugar (hypoglycemia) and high blood sugar (hyperglycemia) emergencies in people with diabetes.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize the Emergency",
+        "description": "Low blood sugar: shaking, sweating, confusion, irritability, hunger, fast heartbeat. High blood sugar: extreme thirst, frequent urination, fruity breath, nausea, confusion. When in doubt, give sugar.",
+        "imageUrl": "guides/images/diabetic_emergency_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "For Low Blood Sugar - Give Sugar",
+        "description": "If conscious, give 15-20 grams fast-acting sugar: 4 glucose tablets, 1/2 cup juice or regular soda, 1 tablespoon honey, or 5-6 hard candies. Do NOT use diet/sugar-free products.",
+        "imageUrl": "guides/images/diabetic_emergency_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Wait and Recheck",
+        "description": "Wait 15 minutes then recheck blood sugar if meter available. If still low or symptoms persist, give more sugar. Once improving, give protein snack like peanut butter crackers to stabilize.",
+        "imageUrl": "guides/images/diabetic_emergency_3.png",
+        "duration": 900
+      },
+      {
+        "order": 4,
+        "title": "If Unconscious",
+        "description": "Do NOT give anything by mouth. Turn on side to prevent choking. Call 911 immediately. If available and trained, give glucagon injection. Check for medical ID bracelet for instructions.",
+        "duration": 180
+      },
+      {
+        "order": 5,
+        "title": "For High Blood Sugar",
+        "description": "Encourage water if conscious (no juice or soda). Help them check blood sugar and take insulin if prescribed. Call 911 if vomiting, very confused, or unconscious. This requires hospital treatment.",
+        "duration": 300
+      }
+    ],
+    "warnings": [
+      "Never give insulin unless person directs you - wrong dose can be fatal",
+      "Do not give anything by mouth if unconscious",
+      "When unsure if high or low blood sugar, give sugar - high blood sugar harms slowly, low kills quickly"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if person is unconscious or having seizure",
+      "Seek immediate help if confused and not improving with treatment",
+      "Call 911 for persistent vomiting or signs of diabetic ketoacidosis"
+    ],
+    "preventionTips": [
+      "Check blood sugar regularly as directed",
+      "Always carry quick-acting sugar source",
+      "Wear medical ID indicating diabetes"
+    ]
+  },
+  "searchTags": [
+    "diabetes",
+    "low blood sugar",
+    "hypoglycemia",
+    "high blood sugar",
+    "hyperglycemia",
+    "insulin",
+    "glucose"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

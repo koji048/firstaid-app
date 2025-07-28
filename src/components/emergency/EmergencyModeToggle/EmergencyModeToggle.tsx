@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { styles } from './EmergencyModeToggle.styles';
 

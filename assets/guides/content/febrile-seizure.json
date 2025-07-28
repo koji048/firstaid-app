@@ -1,0 +1,73 @@
+{
+  "id": "febrile-seizure",
+  "title": "Febrile Seizure (Child)",
+  "category": "pediatric_emergencies",
+  "severity": "high",
+  "summary": "Seizures in young children caused by rapid temperature rise. Frightening but usually harmless. Stay calm and protect child from injury.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Stay Calm and Time Seizure",
+        "description": "Note time seizure starts. Most febrile seizures last 1-2 minutes. Stay calm - your child needs you composed. Do not restrain child or put anything in mouth. Clear area of hard objects.",
+        "imageUrl": "guides/images/febrile_seizure_1.png",
+        "duration": 120
+      },
+      {
+        "order": 2,
+        "title": "Position Child Safely",
+        "description": "Place child on soft surface (bed, carpet) on their side. This prevents choking on saliva. Loosen tight clothing around neck. Do not try to stop movements. Stay with child.",
+        "imageUrl": "guides/images/febrile_seizure_2.png",
+        "duration": 180
+      },
+      {
+        "order": 3,
+        "title": "Call for Help if Needed",
+        "description": "Call 911 if: first seizure, lasts over 5 minutes, child has breathing problems, repeated seizures, or you're concerned. Most febrile seizures don't require emergency care but first ones should be evaluated.",
+        "imageUrl": "guides/images/febrile_seizure_3.png",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "After Seizure Care",
+        "description": "Child may be sleepy or confused. Keep on side until fully awake. Check temperature. Remove extra clothing to help cool. Comfort and reassure - child won't remember seizure.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Reduce Fever",
+        "description": "Give age-appropriate dose of acetaminophen or ibuprofen when child is alert. Lukewarm sponge bath may help. Do NOT use cold water or alcohol. See doctor even if child seems fine.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Never leave child alone during or immediately after seizure",
+      "Do not give fever medicine during seizure - wait until after",
+      "Febrile seizures don't cause brain damage but need medical evaluation"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 for first febrile seizure or if lasting over 5 minutes",
+      "See doctor same day for all febrile seizures",
+      "Call 911 if child has difficulty breathing or multiple seizures"
+    ],
+    "preventionTips": [
+      "Treat fevers promptly in children prone to febrile seizures",
+      "Know family history - febrile seizures can run in families",
+      "Keep fever reducers at appropriate doses on hand"
+    ]
+  },
+  "searchTags": [
+    "febrile seizure",
+    "fever seizure",
+    "child seizure",
+    "pediatric seizure",
+    "high fever",
+    "childhood convulsion"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

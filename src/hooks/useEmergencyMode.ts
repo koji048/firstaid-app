@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { toggleEmergencyMode, setEmergencyMode } from '@store/slices/emergencySlice';
+import { setEmergencyMode, toggleEmergencyMode } from '@store/slices/emergencySlice';
 
 export const useEmergencyMode = () => {
   const dispatch = useAppDispatch();

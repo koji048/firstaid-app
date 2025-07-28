@@ -1,5 +1,9 @@
-import { GuideValidator, ValidationError, ValidationErrorCode } from '../../src/utils/guideValidator';
-import { FirstAidGuide, GuideContent, GuideStep } from '../../src/types';
+import {
+  GuideValidator,
+  ValidationError,
+  ValidationErrorCode,
+} from '../../src/utils/guideValidator';
+import { FirstAidGuide } from '../../src/types';
 import { MediaAsset } from '../../src/types/guideContent';
 
 describe('GuideValidator', () => {
@@ -40,7 +44,7 @@ describe('GuideValidator', () => {
 
       const errors = GuideValidator.validate(invalidGuide);
       const missingFieldErrors = errors.filter(
-        (e) => e.code === ValidationErrorCode.MISSING_REQUIRED_FIELD
+        (e) => e.code === ValidationErrorCode.MISSING_REQUIRED_FIELD,
       );
 
       expect(missingFieldErrors.length).toBeGreaterThan(0);
@@ -56,7 +60,10 @@ describe('GuideValidator', () => {
     });
 
     it('should validate severity levels', () => {
-      const guideWithInvalidSeverity = { ...validGuide, severity: 'invalid' as any };
+      const guideWithInvalidSeverity = {
+        ...validGuide,
+        severity: 'invalid',
+      } as unknown as FirstAidGuide;
       const errors = GuideValidator.validate(guideWithInvalidSeverity);
 
       const severityError = errors.find((e) => e.field === 'severity');
@@ -86,9 +93,7 @@ describe('GuideValidator', () => {
       };
 
       const errors = GuideValidator.validate(guideWithBadOrdering);
-      const orderError = errors.find(
-        (e) => e.code === ValidationErrorCode.INVALID_STEP_ORDER
-      );
+      const orderError = errors.find((e) => e.code === ValidationErrorCode.INVALID_STEP_ORDER);
       expect(orderError).toBeDefined();
     });
 
@@ -131,9 +136,9 @@ describe('GuideValidator', () => {
         ...validGuide,
         content: {
           ...validGuide.content,
-          warnings: 'not an array' as any,
-          whenToSeekHelp: {} as any,
-          preventionTips: 123 as any,
+          warnings: 'not an array' as unknown as string[],
+          whenToSeekHelp: {} as unknown as string[],
+          preventionTips: 123 as unknown as string[],
         },
       };
 
@@ -185,7 +190,7 @@ describe('GuideValidator', () => {
     });
 
     it('should validate asset type', () => {
-      const assetWithInvalidType = { ...validAsset, type: 'audio' as any };
+      const assetWithInvalidType = { ...validAsset, type: 'audio' } as unknown as MediaAsset;
       const errors = GuideValidator.validateMediaAsset(assetWithInvalidType);
 
       expect(errors.some((e) => e.field === 'asset.type')).toBe(true);
@@ -219,7 +224,7 @@ describe('GuideValidator', () => {
         ValidationErrorCode.MISSING_REQUIRED_FIELD,
         'title',
         'Title is required',
-        'Add a title to the guide'
+        'Add a title to the guide',
       );
 
       expect(error.code).toBe(ValidationErrorCode.MISSING_REQUIRED_FIELD);

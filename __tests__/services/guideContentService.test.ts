@@ -1,5 +1,4 @@
 import { GuideContentService } from '../../src/services/guideContentService';
-import { FirstAidGuide } from '../../src/types';
 import { GuideCategory } from '../../src/types/guideContent';
 
 // Mock dynamic imports
@@ -38,59 +37,71 @@ const mockManifest = {
   totalGuides: 2,
 };
 
-jest.mock('../../assets/guides/content/manifest.json', () => ({
-  default: mockManifest
-}), { virtual: true });
+jest.mock(
+  '../../assets/guides/content/manifest.json',
+  () => ({
+    default: mockManifest,
+  }),
+  { virtual: true },
+);
 
-jest.mock('../../assets/guides/content/test-guide-1.json', () => ({
-  default: {
-    id: 'test-guide-1',
-    title: 'Test Guide 1',
-    category: 'basic_life_support',
-    severity: 'high',
-    summary: 'Test summary 1',
-    content: {
-      steps: [
-        {
-          order: 1,
-          title: 'Step 1',
-          description: 'Do this first',
-        },
-      ],
+jest.mock(
+  '../../assets/guides/content/test-guide-1.json',
+  () => ({
+    default: {
+      id: 'test-guide-1',
+      title: 'Test Guide 1',
+      category: 'basic_life_support',
+      severity: 'high',
+      summary: 'Test summary 1',
+      content: {
+        steps: [
+          {
+            order: 1,
+            title: 'Step 1',
+            description: 'Do this first',
+          },
+        ],
+      },
+      searchTags: ['test', 'guide'],
+      version: 1,
+      isOfflineAvailable: true,
+      viewCount: 0,
+      createdAt: '2024-01-01T00:00:00Z',
+      updatedAt: '2024-01-01T00:00:00Z',
     },
-    searchTags: ['test', 'guide'],
-    version: 1,
-    isOfflineAvailable: true,
-    viewCount: 0,
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z',
-  }
-}), { virtual: true });
+  }),
+  { virtual: true },
+);
 
-jest.mock('../../assets/guides/content/test-guide-2.json', () => ({
-  default: {
-    id: 'test-guide-2',
-    title: 'Test Guide 2',
-    category: 'wounds_bleeding',
-    severity: 'medium',
-    summary: 'Test summary 2',
-    content: {
-      steps: [
-        {
-          order: 1,
-          title: 'Step 1',
-          description: 'Do this first',
-        },
-      ],
+jest.mock(
+  '../../assets/guides/content/test-guide-2.json',
+  () => ({
+    default: {
+      id: 'test-guide-2',
+      title: 'Test Guide 2',
+      category: 'wounds_bleeding',
+      severity: 'medium',
+      summary: 'Test summary 2',
+      content: {
+        steps: [
+          {
+            order: 1,
+            title: 'Step 1',
+            description: 'Do this first',
+          },
+        ],
+      },
+      searchTags: ['bleeding', 'wound'],
+      version: 2,
+      isOfflineAvailable: true,
+      viewCount: 0,
+      createdAt: '2024-01-01T00:00:00Z',
+      updatedAt: '2024-01-01T00:00:00Z',
     },
-    searchTags: ['bleeding', 'wound'],
-    version: 2,
-    isOfflineAvailable: true,
-    viewCount: 0,
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z',
-  }
-}), { virtual: true });
+  }),
+  { virtual: true },
+);
 
 describe('GuideContentService', () => {
   let service: GuideContentService;
@@ -111,7 +122,7 @@ describe('GuideContentService', () => {
   describe('loadGuidesFromJSON', () => {
     it('should load guides from JSON files', async () => {
       const guides = await service.loadGuidesFromJSON();
-      
+
       expect(guides).toHaveLength(2);
       expect(guides[0]).toMatchObject({
         id: 'test-guide-1',
@@ -128,7 +139,7 @@ describe('GuideContentService', () => {
     it('should cache loaded guides', async () => {
       await service.loadGuidesFromJSON();
       const guide = service.getGuideById('test-guide-1');
-      
+
       expect(guide).toBeDefined();
       expect(guide?.title).toBe('Test Guide 1');
     });
@@ -151,7 +162,7 @@ describe('GuideContentService', () => {
       ]);
 
       const updates = await service.checkForUpdates(currentVersions);
-      
+
       expect(updates).toHaveLength(2);
       expect(updates[0]).toMatchObject({
         guideId: 'test-guide-1',
@@ -183,7 +194,7 @@ describe('GuideContentService', () => {
 
     it('should return guides for specific category', () => {
       const guides = service.getGuidesByCategory(GuideCategory.BASIC_LIFE_SUPPORT);
-      
+
       expect(guides).toHaveLength(1);
       expect(guides[0].id).toBe('test-guide-1');
     });
@@ -201,7 +212,7 @@ describe('GuideContentService', () => {
 
     it('should return guides grouped by category', () => {
       const categorized = service.getCategorizedGuides();
-      
+
       expect(categorized.size).toBe(2);
       expect(categorized.get(GuideCategory.BASIC_LIFE_SUPPORT)).toHaveLength(1);
       expect(categorized.get(GuideCategory.WOUNDS_BLEEDING)).toHaveLength(1);
@@ -212,35 +223,44 @@ describe('GuideContentService', () => {
     it('should extract metadata from guide', async () => {
       await service.loadGuidesFromJSON();
       const guide = service.getGuideById('test-guide-1');
-      
-      if (guide) {
-        const metadata = service.extractMetadata(guide);
-        
-        expect(metadata).toMatchObject({
-          id: 'test-guide-1',
-          version: 1,
-          category: GuideCategory.BASIC_LIFE_SUPPORT,
-          tags: ['test', 'guide'],
-          author: 'First Aid Room Team',
-          locale: 'en-US',
-        });
-        expect(metadata.contentHash).toBeDefined();
+
+      expect(guide).toBeDefined();
+      if (!guide) {
+        return;
       }
+
+      const metadata = service.extractMetadata(guide);
+
+      expect(metadata).toMatchObject({
+        id: 'test-guide-1',
+        version: 1,
+        category: GuideCategory.BASIC_LIFE_SUPPORT,
+        tags: ['test', 'guide'],
+        author: 'First Aid Room Team',
+        locale: 'en-US',
+      });
+      expect(metadata.contentHash).toBeDefined();
     });
   });
 
   describe('Image Asset Management', () => {
     describe('validateImageNaming', () => {
       it('should validate correct image names', () => {
-        expect(GuideContentService.validateImageNaming('cpr_1.png')).toBe(true);
-        expect(GuideContentService.validateImageNaming('guide-name_123.jpg')).toBe(true);
-        expect(GuideContentService.validateImageNaming('test_1.jpeg')).toBe(true);
+        const valid1 = GuideContentService.validateImageNaming('cpr_1.png');
+        expect(valid1).toBe(true);
+        const valid2 = GuideContentService.validateImageNaming('guide-name_123.jpg');
+        expect(valid2).toBe(true);
+        const valid3 = GuideContentService.validateImageNaming('test_1.jpeg');
+        expect(valid3).toBe(true);
       });
 
       it('should reject invalid image names', () => {
-        expect(GuideContentService.validateImageNaming('invalid.png')).toBe(false);
-        expect(GuideContentService.validateImageNaming('no_number.png')).toBe(false);
-        expect(GuideContentService.validateImageNaming('test_1.gif')).toBe(false);
+        const invalid1 = GuideContentService.validateImageNaming('invalid.png');
+        expect(invalid1).toBe(false);
+        const invalid2 = GuideContentService.validateImageNaming('no_number.png');
+        expect(invalid2).toBe(false);
+        const invalid3 = GuideContentService.validateImageNaming('test_1.gif');
+        expect(invalid3).toBe(false);
       });
     });
 
@@ -276,7 +296,7 @@ describe('GuideContentService', () => {
           'guides/images/test_1.png',
           'Test image',
           100000,
-          { width: 400, height: 300 }
+          { width: 400, height: 300 },
         );
 
         expect(asset).toMatchObject({
@@ -293,7 +313,7 @@ describe('GuideContentService', () => {
     describe('getImageAssetInfo', () => {
       it('should extract asset info from image URL', () => {
         const info = service.getImageAssetInfo('guides/images/cpr-adult_1.png');
-        
+
         expect(info).toMatchObject({
           id: 'cpr-adult_1',
           type: 'image',
@@ -304,7 +324,7 @@ describe('GuideContentService', () => {
 
       it('should handle invalid image URLs', () => {
         const info = service.getImageAssetInfo('invalid-url');
-        
+
         expect(info).toMatchObject({
           type: 'image',
           url: 'invalid-url',

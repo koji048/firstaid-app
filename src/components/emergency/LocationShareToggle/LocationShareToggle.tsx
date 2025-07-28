@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { LocationService } from '../../../services/location';
 import { styles } from './LocationShareToggle.styles';
@@ -16,7 +16,12 @@ export interface LocationShareToggleProps {
   error: string | null;
   isEmergencyMode: boolean;
   onToggle: (enabled: boolean) => void;
-  onLocationUpdate: (location: any) => void;
+  onLocationUpdate: (location: {
+    latitude: number;
+    longitude: number;
+    accuracy?: number;
+    timestamp: number;
+  }) => void;
   onTrackingChange: (tracking: boolean) => void;
   onError: (error: string | null) => void;
   testID?: string;

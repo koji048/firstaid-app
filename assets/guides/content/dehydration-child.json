@@ -1,0 +1,73 @@
+{
+  "id": "dehydration-child",
+  "title": "Dehydration in Children",
+  "category": "pediatric_emergencies",
+  "severity": "high",
+  "summary": "Children dehydrate quickly from vomiting, diarrhea, or fever. Requires prompt fluid replacement to prevent serious complications.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Dehydration Signs",
+        "description": "Mild: dry mouth, few tears when crying, decreased urination. Moderate: sunken eyes, lethargy, no tears. Severe: very sleepy, sunken fontanel (baby), no wet diapers for 8+ hours.",
+        "imageUrl": "guides/images/dehydration_child_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Start Oral Rehydration",
+        "description": "For mild dehydration, give oral rehydration solution (Pedialyte) or clear fluids. Start with 1 teaspoon every 5 minutes. Gradually increase amount. Avoid juice and soda. Breast milk is best for infants.",
+        "imageUrl": "guides/images/dehydration_child_2.png",
+        "duration": 1800
+      },
+      {
+        "order": 3,
+        "title": "Use Proper Fluids",
+        "description": "Best: oral rehydration solutions, breast milk. Good: clear broth, popsicles, diluted apple juice. Avoid: full-strength juice, soda, sports drinks (too much sugar). Give small amounts frequently.",
+        "imageUrl": "guides/images/dehydration_child_3.png",
+        "duration": 900
+      },
+      {
+        "order": 4,
+        "title": "Monitor Hydration Status",
+        "description": "Count wet diapers or bathroom trips. Check if tears present when crying. Pinch skin - should snap back quickly. Weigh child if possible - weight loss indicates fluid loss.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Know When to Seek Help",
+        "description": "Call doctor if: no improvement after 4 hours, blood in stool/vomit, high fever, signs worsen. Go to ER for: extreme sleepiness, no urination for 8+ hours, dry mouth with no saliva.",
+        "duration": 300
+      }
+    ],
+    "warnings": [
+      "Infants and toddlers dehydrate much faster than older children",
+      "Never force fluids if child is actively vomiting - wait 30-60 minutes",
+      "Severe dehydration can cause seizures and shock"
+    ],
+    "whenToSeekHelp": [
+      "See doctor for moderate dehydration signs",
+      "Go to ER if child is very lethargic or not urinating",
+      "Call 911 if child is unresponsive or having seizures"
+    ],
+    "preventionTips": [
+      "Offer fluids frequently during illness",
+      "Continue breastfeeding during diarrhea",
+      "Keep oral rehydration solution at home"
+    ]
+  },
+  "searchTags": [
+    "dehydration child",
+    "pediatric dehydration",
+    "fluid loss",
+    "oral rehydration",
+    "pedialyte",
+    "child diarrhea"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

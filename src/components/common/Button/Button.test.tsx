@@ -1,10 +1,17 @@
 import React from 'react';
-import { render, fireEvent } from '@utils/test/test-utils';
+import { fireEvent, render } from '@utils/test/test-utils';
 import { Button } from './Button';
 
 describe('Button Component', () => {
   it('renders correctly with title', () => {
-    const { getByText } = render(<Button title="Press Me" onPress={() => {}} />);
+    const { getByText } = render(
+      <Button
+        title="Press Me"
+        onPress={() => {
+          // Handle press
+        }}
+      />,
+    );
 
     expect(getByText('Press Me')).toBeTruthy();
   });
@@ -31,7 +38,13 @@ describe('Button Component', () => {
 
   it('shows loading indicator when loading', () => {
     const { queryByText, UNSAFE_getByType } = render(
-      <Button title="Press Me" onPress={() => {}} loading={true} />,
+      <Button
+        title="Press Me"
+        onPress={() => {
+          // Handle press
+        }}
+        loading={true}
+      />,
     );
 
     expect(queryByText('Press Me')).toBeNull();
@@ -40,7 +53,14 @@ describe('Button Component', () => {
 
   it('applies variant styles correctly', () => {
     const { getByTestId, rerender } = render(
-      <Button title="Danger" onPress={() => {}} variant="danger" testID="test-button" />,
+      <Button
+        title="Danger"
+        onPress={() => {
+          // Handle press
+        }}
+        variant="danger"
+        testID="test-button"
+      />,
     );
 
     const button = getByTestId('test-button');
@@ -49,7 +69,14 @@ describe('Button Component', () => {
     );
 
     rerender(
-      <Button title="Secondary" onPress={() => {}} variant="secondary" testID="test-button" />,
+      <Button
+        title="Secondary"
+        onPress={() => {
+          // Handle press
+        }}
+        variant="secondary"
+        testID="test-button"
+      />,
     );
 
     expect(button.props.style).toContainEqual(
@@ -59,7 +86,14 @@ describe('Button Component', () => {
 
   it('applies size styles correctly', () => {
     const { getByTestId } = render(
-      <Button title="Large Button" onPress={() => {}} size="large" testID="test-button" />,
+      <Button
+        title="Large Button"
+        onPress={() => {
+          // Handle press
+        }}
+        size="large"
+        testID="test-button"
+      />,
     );
 
     const button = getByTestId('test-button');

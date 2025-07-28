@@ -1,4 +1,4 @@
-import { FirstAidGuide, GuideContent, GuideStep } from '../types';
+import { FirstAidGuide, GuideContent } from '../types';
 
 export interface SearchIndex {
   id: string;
@@ -10,7 +10,7 @@ export interface SearchIndex {
 }
 
 export interface SearchResult {
-  guide: FirstAidGuide;
+  id: string;
   score: number;
   matches: {
     field: string;
@@ -19,9 +19,20 @@ export interface SearchResult {
   }[];
 }
 
+export interface SearchOptions {
+  maxResults?: number;
+  fuzzyThreshold?: number;
+}
+
 export class SearchIndexer {
   private index: Map<string, SearchIndex> = new Map();
   private termFrequency: Map<string, number> = new Map();
+  private guides: FirstAidGuide[] = [];
+
+  async indexGuides(guides: FirstAidGuide[]): Promise<void> {
+    this.guides = guides;
+    this.buildIndex(guides);
+  }
 
   buildIndex(guides: FirstAidGuide[]): void {
     this.clearIndex();
@@ -144,7 +155,8 @@ export class SearchIndexer {
     return score;
   }
 
-  search(query: string, guides: FirstAidGuide[]): SearchResult[] {
+  async search(query: string, options: SearchOptions = {}): Promise<SearchResult[]> {
+    const { maxResults = 20 } = options;
     const queryTerms = this.tokenize(query);
     if (queryTerms.length === 0) {
       return [];
@@ -152,17 +164,17 @@ export class SearchIndexer {
 
     const results: SearchResult[] = [];
 
-    guides.forEach((guide) => {
+    this.guides.forEach((guide) => {
       const indexEntry = this.index.get(guide.id);
       if (!indexEntry) {
         return;
       }
 
-      const matches = this.findMatches(queryTerms, indexEntry, guide);
+      const matches = this.findMatches(queryTerms, indexEntry);
       if (matches.length > 0) {
         const score = this.calculateSearchScore(matches, indexEntry, queryTerms);
         results.push({
-          guide,
+          id: guide.id,
           score,
           matches,
         });
@@ -172,14 +184,10 @@ export class SearchIndexer {
     // Sort by score in descending order
     results.sort((a, b) => b.score - a.score);
 
-    return results;
+    return results.slice(0, maxResults);
   }
 
-  private findMatches(
-    queryTerms: string[],
-    indexEntry: SearchIndex,
-    guide: FirstAidGuide
-  ): SearchResult['matches'] {
+  private findMatches(queryTerms: string[], indexEntry: SearchIndex): SearchResult['matches'] {
     const matches: SearchResult['matches'] = [];
 
     queryTerms.forEach((queryTerm) => {
@@ -234,7 +242,7 @@ export class SearchIndexer {
 
     // Word boundary match (e.g., "burn" matches "burns" or "burned")
     const words = targetLower.split(/\s+/);
-    if (words.some(word => word.startsWith(queryLower) || queryLower.startsWith(word))) {
+    if (words.some((word) => word.startsWith(queryLower) || queryLower.startsWith(word))) {
       return true;
     }
 
@@ -268,11 +276,7 @@ export class SearchIndexer {
         if (s1[i - 1] === s2[j - 1]) {
           dp[i][j] = dp[i - 1][j - 1];
         } else {
-          dp[i][j] = Math.min(
-            dp[i - 1][j] + 1,
-            dp[i][j - 1] + 1,
-            dp[i - 1][j - 1] + 1
-          );
+          dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + 1);
         }
       }
     }
@@ -283,7 +287,7 @@ export class SearchIndexer {
   private calculateSearchScore(
     matches: SearchResult['matches'],
     indexEntry: SearchIndex,
-    queryTerms: string[]
+    queryTerms: string[],
   ): number {
     let score = indexEntry.relevanceScore;
 
@@ -317,7 +321,7 @@ export class SearchIndexer {
     return Math.round(score);
   }
 
-  getTopSearchTerms(limit: number = 10): Array<{ term: string; frequency: number }> {
+  getTopSearchTerms(limit = 10): Array<{ term: string; frequency: number }> {
     const sortedTerms = Array.from(this.termFrequency.entries())
       .sort((a, b) => b[1] - a[1])
       .slice(0, limit)
@@ -326,7 +330,7 @@ export class SearchIndexer {
     return sortedTerms;
   }
 
-  getSuggestedSearches(partialQuery: string, limit: number = 5): string[] {
+  getSuggestedSearches(partialQuery: string, limit = 5): string[] {
     const partialLower = partialQuery.toLowerCase();
     const suggestions: string[] = [];
 
@@ -340,6 +344,13 @@ export class SearchIndexer {
     return suggestions
       .sort((a, b) => (this.termFrequency.get(b) || 0) - (this.termFrequency.get(a) || 0))
       .slice(0, limit);
+  }
+
+  getSuggestions(query: string): string[] {
+    if (!query || query.length < 2) {
+      return [];
+    }
+    return this.getSuggestedSearches(query, 5);
   }
 
   clearIndex(): void {

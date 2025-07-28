@@ -1,0 +1,84 @@
+{
+  "id": "hot-liquid-scald",
+  "title": "Hot Liquid Scalds",
+  "category": "burns_scalds",
+  "severity": "high",
+  "summary": "Immediate care for burns caused by hot liquids like water, coffee, soup, or steam, especially common in kitchen accidents.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Remove From Heat Source",
+        "description": "Move the person away from the hot liquid source immediately. Turn off heat sources if safe to do so. Be careful of slippery surfaces from spilled liquids.",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Cool the Burn Immediately",
+        "description": "Run cool (not ice cold) water over the burned area for 10-20 minutes. This must be done within the first 20 minutes after injury to be effective. If running water isn't available, immerse in cool water or apply cool, wet cloths.",
+        "duration": 1200
+      },
+      {
+        "order": 3,
+        "title": "Remove Clothing and Jewelry",
+        "description": "Quickly and gently remove any clothing or jewelry near the burned area before swelling begins. If clothing is stuck to the burn, do not pull it off - cut around it. Remove rings, watches, and belts.",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Assess Burn Severity",
+        "description": "Check the size and depth of the burn. First-degree: red, painful, no blisters. Second-degree: blisters, severe pain, red and splotchy. Third-degree: white or charred, may be painless due to nerve damage.",
+        "duration": 60
+      },
+      {
+        "order": 5,
+        "title": "Cover the Burn",
+        "description": "After cooling, cover the burn with a sterile, non-adhesive dressing or clean cloth. Do not use fluffy cotton or material that may stick. Wrap loosely to avoid pressure. Do not apply creams, butter, or ice.",
+        "duration": 180
+      },
+      {
+        "order": 6,
+        "title": "Manage Pain and Monitor",
+        "description": "Give over-the-counter pain relief if needed. Elevate burned arms or legs. Watch for signs of shock. For facial burns, monitor breathing. Keep the person warm with blankets over unburned areas.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never use ice directly on burns - it can cause tissue damage",
+      "Do not break blisters - they protect against infection",
+      "Avoid home remedies like butter, oil, or toothpaste",
+      "Scalds can be deeper than they initially appear"
+    ],
+    "whenToSeekHelp": [
+      "Burns larger than 3 inches or covering joints",
+      "All full-thickness (third-degree) burns",
+      "Burns on face, hands, feet, genitals, or major joints",
+      "Burns in children under 5 or adults over 60",
+      "Burns that circle around a limb",
+      "Signs of infection: increased pain, pus, fever"
+    ],
+    "preventionTips": [
+      "Set water heater temperature to 120°F (49°C) or below",
+      "Turn pot handles toward the center of the stove",
+      "Keep hot liquids away from table and counter edges",
+      "Test bath water before placing children in tub",
+      "Use splash guards when cooking with hot oil"
+    ]
+  },
+  "searchTags": [
+    "hot water burn",
+    "scald",
+    "boiling water",
+    "steam burn",
+    "coffee burn",
+    "soup burn",
+    "kitchen burn",
+    "liquid burn"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

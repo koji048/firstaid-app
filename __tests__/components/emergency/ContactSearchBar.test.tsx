@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, act } from '@testing-library/react-native';
+import { act, fireEvent, render } from '@testing-library/react-native';
 import { ContactSearchBar } from '../../../src/components/emergency/ContactSearchBar';
 
 describe('ContactSearchBar', () => {
@@ -53,7 +53,7 @@ describe('ContactSearchBar', () => {
   });
 
   it('shows clear button when text is entered', () => {
-    const { getByPlaceholderText, queryByTestId } = render(
+    const { queryByTestId } = render(
       <ContactSearchBar value="John" onChangeText={mockOnChangeText} />,
     );
 
@@ -61,7 +61,7 @@ describe('ContactSearchBar', () => {
   });
 
   it('clears search when clear button is pressed', () => {
-    const { getByPlaceholderText, getByTestId } = render(
+    const { getByTestId } = render(
       <ContactSearchBar value="John" onChangeText={mockOnChangeText} />,
     );
 

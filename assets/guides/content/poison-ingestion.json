@@ -1,0 +1,74 @@
+{
+  "id": "poison-ingestion",
+  "title": "Poison Ingestion",
+  "category": "poisoning_overdose",
+  "severity": "critical",
+  "summary": "Emergency response for swallowed poisons. Call Poison Control (1-800-222-1222) immediately for specific guidance.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Call Poison Control",
+        "description": "Call Poison Control at 1-800-222-1222 (US) immediately. Have container of poison ready to read label. They will guide specific treatment. If person is unconscious or having seizures, call 911 instead.",
+        "imageUrl": "guides/images/poison_ingestion_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Identify the Poison",
+        "description": "Find container if possible. Note: substance name, amount taken, time ingested, person's age and weight. Take container to hospital. Do not smell container to identify - may be harmful.",
+        "imageUrl": "guides/images/poison_ingestion_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Do NOT Induce Vomiting",
+        "description": "Never make person vomit unless specifically told by Poison Control. Some poisons cause more damage coming back up. Do not give ipecac syrup. Remove any remaining poison from mouth.",
+        "imageUrl": "guides/images/poison_ingestion_3.png",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "Follow Poison Control Instructions",
+        "description": "They may recommend: water or milk to dilute (if conscious), activated charcoal, or specific antidotes. Only give what they specifically recommend. Keep person calm and still.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Monitor and Support",
+        "description": "Watch for: difficulty breathing, seizures, unconsciousness, severe vomiting. If symptoms worsen, call 911. Save any vomit for analysis. Stay with person until help arrives or symptoms resolve.",
+        "duration": 1800
+      }
+    ],
+    "warnings": [
+      "Never give anything by mouth if person is unconscious",
+      "Do not try home remedies or induce vomiting without instruction",
+      "Some poisons have delayed effects - always seek guidance"
+    ],
+    "whenToSeekHelp": [
+      "Call Poison Control immediately for all poisonings",
+      "Call 911 if person is unconscious, seizing, or not breathing",
+      "Go to ER if Poison Control recommends or symptoms are severe"
+    ],
+    "preventionTips": [
+      "Store all chemicals and medications locked and out of reach",
+      "Keep products in original containers with labels",
+      "Post Poison Control number near all phones"
+    ]
+  },
+  "searchTags": [
+    "poison",
+    "poisoning",
+    "ingestion",
+    "swallowed poison",
+    "toxic substance",
+    "poison control",
+    "accidental poisoning"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

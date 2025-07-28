@@ -1,0 +1,73 @@
+{
+  "id": "rib-fracture",
+  "title": "Rib Fracture",
+  "category": "fractures_sprains",
+  "severity": "high",
+  "summary": "First aid for suspected broken ribs, including breathing support, pain management, and recognizing serious complications.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Assess the Injury",
+        "description": "Look for sharp pain when breathing, tenderness over ribs, pain with movement or coughing. Check for difficulty breathing, coughing blood, or signs of punctured lung. Call 911 if breathing is severely affected.",
+        "imageUrl": "guides/images/rib_fracture_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Position for Comfort",
+        "description": "Help the person sit in a semi-upright position leaning slightly toward the injured side. This reduces pain and makes breathing easier. Support with pillows if available.",
+        "imageUrl": "guides/images/rib_fracture_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Support Breathing",
+        "description": "Encourage slow, deep breaths to prevent pneumonia. Have person hold a pillow against injured ribs when coughing. Do NOT bind or wrap ribs tightly as this restricts breathing.",
+        "imageUrl": "guides/images/rib_fracture_3.png",
+        "duration": 180
+      },
+      {
+        "order": 4,
+        "title": "Manage Pain",
+        "description": "Apply ice pack wrapped in cloth to injured area for 20 minutes at a time. Give over-the-counter pain medication if able to swallow. Pain control is important to allow proper breathing.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Monitor for Complications",
+        "description": "Watch for worsening breathing, blue lips or fingernails, increasing pain, or coughing blood. These may indicate punctured lung or other serious injury requiring immediate medical care.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Do NOT tightly wrap or bind the chest as this impairs breathing",
+      "Multiple rib fractures can be life-threatening",
+      "Broken ribs can puncture lungs or other organs"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if person has severe difficulty breathing",
+      "Seek immediate care for coughing up blood",
+      "Get medical evaluation for all suspected rib fractures"
+    ],
+    "preventionTips": [
+      "Wear seatbelts properly positioned across chest",
+      "Use protective gear in contact sports",
+      "Maintain bone health to reduce fracture risk"
+    ]
+  },
+  "searchTags": [
+    "rib fracture",
+    "broken ribs",
+    "chest injury",
+    "breathing pain",
+    "chest trauma",
+    "rib injury"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

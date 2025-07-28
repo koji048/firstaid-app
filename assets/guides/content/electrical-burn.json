@@ -1,0 +1,83 @@
+{
+  "id": "electrical-burn",
+  "title": "Electrical Burns",
+  "category": "burns_scalds",
+  "severity": "critical",
+  "summary": "Emergency care for burns and injuries caused by electrical shock, including both entry and exit wounds.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Scene Safety",
+        "description": "Do not touch the person if they are still in contact with the electrical source. Turn off the power at the circuit breaker or fuse box. If you cannot turn off power, use a non-conductive object like dry wood or plastic to move the source away.",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Call 911 Immediately",
+        "description": "All electrical injuries require emergency medical evaluation. Internal damage may be severe even if external burns appear minor. The person needs cardiac monitoring and assessment.",
+        "duration": 30
+      },
+      {
+        "order": 3,
+        "title": "Check Responsiveness and Breathing",
+        "description": "Once safe, check if the person is conscious and breathing. Electrical shock can cause cardiac arrest. If unconscious and not breathing normally, begin CPR immediately.",
+        "duration": 30
+      },
+      {
+        "order": 4,
+        "title": "Look for Entry and Exit Wounds",
+        "description": "Electrical burns often have an entry point where electricity entered the body and an exit point where it left. Check hands, feet, and any area that may have contacted the source or ground. Internal damage occurs along the path between these points.",
+        "duration": 60
+      },
+      {
+        "order": 5,
+        "title": "Cover Visible Burns",
+        "description": "Cover electrical burns with dry, sterile dressings or clean cloths. Do not use water on electrical burns. Do not apply creams, ointments, or ice. Keep dressings loose and dry.",
+        "duration": 120
+      },
+      {
+        "order": 6,
+        "title": "Monitor and Prevent Shock",
+        "description": "Have the person lie down with feet elevated unless head injury is suspected. Cover with blankets to maintain body temperature. Monitor breathing and pulse continuously. Watch for irregular heartbeat or difficulty breathing.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never touch someone who may still be in contact with electricity",
+      "Water conducts electricity - ensure area is dry before approaching",
+      "Internal injuries may be severe even with minor external burns",
+      "Cardiac problems may develop hours after electrical shock"
+    ],
+    "whenToSeekHelp": [
+      "All electrical injuries require immediate medical attention",
+      "Any loss of consciousness, even briefly",
+      "Burns from high voltage sources",
+      "Lightning strike victims",
+      "Any cardiac symptoms or breathing difficulties"
+    ],
+    "preventionTips": [
+      "Never work on electrical equipment without proper training",
+      "Use ground fault circuit interrupters (GFCIs) in wet areas",
+      "Keep electrical devices away from water",
+      "Replace frayed or damaged electrical cords immediately",
+      "Teach children about electrical safety"
+    ]
+  },
+  "searchTags": [
+    "electrical burn",
+    "electric shock",
+    "electrocution",
+    "high voltage",
+    "electrical injury",
+    "shock burn",
+    "lightning strike",
+    "power line injury"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

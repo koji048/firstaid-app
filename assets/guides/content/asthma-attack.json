@@ -1,0 +1,73 @@
+{
+  "id": "asthma-attack",
+  "title": "Asthma Attack",
+  "category": "medical_emergencies",
+  "severity": "high",
+  "summary": "Managing acute asthma attacks with rescue inhalers and recognizing when emergency help is needed.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Asthma Attack",
+        "description": "Signs include: severe wheezing, persistent coughing, difficulty speaking in full sentences, chest tightness, blue lips/fingernails, anxiety. Person may be hunched over struggling to breathe.",
+        "imageUrl": "guides/images/asthma_attack_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Help with Rescue Inhaler",
+        "description": "Help person use their quick-relief inhaler (usually blue). Shake well, exhale fully, seal lips around mouthpiece, press down while inhaling deeply, hold breath 10 seconds. Use spacer if available.",
+        "imageUrl": "guides/images/asthma_attack_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Position for Easier Breathing",
+        "description": "Sit person upright, leaning slightly forward with arms supported on table or knees. Loosen tight clothing. Keep calm - anxiety worsens breathing. Open windows for fresh air if not triggered by outdoor allergens.",
+        "imageUrl": "guides/images/asthma_attack_3.png",
+        "duration": 180
+      },
+      {
+        "order": 4,
+        "title": "Continue Inhaler as Directed",
+        "description": "Give 2-6 puffs of rescue inhaler every 20 minutes for up to 1 hour. If person has asthma action plan, follow it. Call 911 if not improving after first treatment or getting worse.",
+        "duration": 1200
+      },
+      {
+        "order": 5,
+        "title": "Monitor and Seek Help",
+        "description": "Call 911 if: lips/fingernails turning blue, cannot speak in short phrases, inhaler not helping, peak flow below 50% of normal, extreme anxiety or drowsiness. Continue inhaler while waiting.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Severe asthma can be fatal - don't delay calling 911 if person is in distress",
+      "Blue lips or extreme difficulty breathing requires immediate emergency care",
+      "Never leave person alone during severe attack"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if rescue inhaler isn't helping after 15-20 minutes",
+      "Seek immediate help for blue lips or inability to speak",
+      "Call 911 if person becomes drowsy or stops wheezing suddenly (airways closing)"
+    ],
+    "preventionTips": [
+      "Always carry rescue inhaler and check expiration dates",
+      "Take controller medications daily as prescribed",
+      "Identify and avoid personal asthma triggers"
+    ]
+  },
+  "searchTags": [
+    "asthma attack",
+    "breathing difficulty",
+    "inhaler",
+    "wheezing",
+    "respiratory emergency",
+    "bronchospasm"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

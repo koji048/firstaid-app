@@ -1,0 +1,73 @@
+{
+  "id": "hypothermia",
+  "title": "Hypothermia",
+  "category": "environmental_emergencies",
+  "severity": "critical",
+  "summary": "Dangerous drop in body temperature below 95°F (35°C). Requires gentle rewarming and medical care to prevent cardiac arrest.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Hypothermia",
+        "description": "Shivering (may stop in severe cases), confusion, slurred speech, drowsiness, weak pulse, slow shallow breathing, loss of coordination. In severe cases, person may appear dead. Call 911.",
+        "imageUrl": "guides/images/hypothermia_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Move to Warm Area",
+        "description": "Get person indoors or to shelter. Handle very gently - rough movement can trigger cardiac arrest. Remove wet clothing by cutting away if necessary. Call 911 for moderate to severe cases.",
+        "imageUrl": "guides/images/hypothermia_2.png",
+        "duration": 180
+      },
+      {
+        "order": 3,
+        "title": "Insulate Entire Body",
+        "description": "Cover with blankets, leaving only face exposed. Cover head and neck. Put blankets under person too. If outdoors, insulate from ground. Use body heat - lie next to person if necessary.",
+        "imageUrl": "guides/images/hypothermia_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Provide Warm Beverages",
+        "description": "If fully conscious and able to swallow, give warm sweet drinks. No alcohol or caffeine. No hot drinks - warm only. If unconscious, do not give anything by mouth.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Monitor and Warm Gradually",
+        "description": "Apply warm compresses to center of body - chest, neck, head, groin. Do NOT warm arms/legs first or use direct heat. Monitor breathing. Begin CPR if needed but continue even if person seems dead.",
+        "duration": 1800
+      }
+    ],
+    "warnings": [
+      "Do NOT rub or massage person - this can cause cardiac arrest",
+      "Do NOT use direct heat like heating pads or hot water",
+      "Continue CPR longer than normal - people can survive severe hypothermia"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 for all moderate to severe hypothermia",
+      "Seek immediate care if person is confused or shivering stops",
+      "Any hypothermia in children or elderly requires emergency care"
+    ],
+    "preventionTips": [
+      "Dress in layers and stay dry in cold weather",
+      "Recognize early signs and seek shelter immediately",
+      "Avoid alcohol which increases heat loss"
+    ]
+  },
+  "searchTags": [
+    "hypothermia",
+    "cold exposure",
+    "freezing",
+    "low body temperature",
+    "cold emergency",
+    "exposure"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

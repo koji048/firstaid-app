@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { ContactList } from '../../../src/components/emergency/ContactList';
 import {
-  EmergencyContact,
   ContactCategory,
   ContactRelationship,
+  EmergencyContact,
 } from '../../../src/types/emergencyContact';
 import emergencyContactsReducer, {
   setSearchQuery,
@@ -45,7 +45,7 @@ describe('ContactList', () => {
   const mockOnEditPress = jest.fn();
   const mockOnDeletePress = jest.fn();
   const mockRefreshContacts = jest.fn();
-  let store: any;
+  let store: ReturnType<typeof configureStore>;
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -62,6 +62,13 @@ describe('ContactList', () => {
           error: null,
           isInitialized: true,
           searchQuery: '',
+          isEmergencyMode: false,
+          locationSharing: {
+            isEnabled: false,
+            currentLocation: null,
+            isTracking: false,
+            error: null,
+          },
         },
       },
     });
@@ -104,6 +111,13 @@ describe('ContactList', () => {
           error: null,
           isInitialized: true,
           searchQuery: '',
+          isEmergencyMode: false,
+          locationSharing: {
+            isEnabled: false,
+            currentLocation: null,
+            isTracking: false,
+            error: null,
+          },
         },
       },
     });

@@ -1,0 +1,73 @@
+{
+  "id": "alcohol-poisoning",
+  "title": "Alcohol Poisoning",
+  "category": "poisoning_overdose",
+  "severity": "critical",
+  "summary": "Dangerous consequence of drinking large amounts of alcohol quickly. Can be fatal - requires emergency medical care.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Alcohol Poisoning",
+        "description": "Signs: confusion, vomiting, seizures, slow breathing (less than 8/minute), irregular breathing, blue-tinged skin, unconsciousness. Person cannot be roused. This is NOT normal drunkenness - call 911.",
+        "imageUrl": "guides/images/alcohol_poisoning_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Call 911",
+        "description": "Call 911 immediately. Do not wait for all symptoms to appear. Tell dispatcher person has alcohol poisoning. Do not assume person will 'sleep it off' - alcohol levels can continue rising.",
+        "imageUrl": "guides/images/alcohol_poisoning_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Keep Person Awake",
+        "description": "Try to keep person awake and sitting up if possible. If they must lie down, place in recovery position (on side) to prevent choking on vomit. Never leave them alone.",
+        "imageUrl": "guides/images/alcohol_poisoning_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Do NOT Use Remedies",
+        "description": "Do NOT: give coffee (doesn't sober up), make them vomit (choking risk), give food or water (choking risk), put in cold shower (shock risk), let them 'walk it off'. These can make things worse.",
+        "duration": 180
+      },
+      {
+        "order": 5,
+        "title": "Monitor Vital Signs",
+        "description": "Watch breathing closely. Be prepared to perform CPR. Keep person warm with blankets - alcohol lowers body temperature. Turn head to side if vomiting. Stay until emergency help arrives.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Alcohol poisoning can cause permanent brain damage or death",
+      "Blood alcohol can continue rising even after person stops drinking",
+      "Never leave an unconscious person alone"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately if person is unconscious or semi-conscious",
+      "Seek emergency care for slow or irregular breathing",
+      "Call 911 if person is confused, vomiting repeatedly, or having seizures"
+    ],
+    "preventionTips": [
+      "Pace drinking - no more than one standard drink per hour",
+      "Eat before and while drinking",
+      "Know the signs and intervene early"
+    ]
+  },
+  "searchTags": [
+    "alcohol poisoning",
+    "alcohol overdose",
+    "binge drinking",
+    "drunk",
+    "ethanol poisoning",
+    "intoxication emergency"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

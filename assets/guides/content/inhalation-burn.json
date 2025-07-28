@@ -1,0 +1,83 @@
+{
+  "id": "inhalation-burn",
+  "title": "Smoke Inhalation",
+  "category": "burns_scalds",
+  "severity": "critical",
+  "summary": "Emergency care for smoke inhalation and airway burns from fires, which can be life-threatening even without visible burns.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Move to Fresh Air Immediately",
+        "description": "Get the person away from smoke and fumes to fresh air immediately. Do not put yourself at risk - let firefighters rescue people from burning buildings. Call 911 immediately for all smoke inhalation cases.",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Check Breathing and Consciousness",
+        "description": "Check if the person is conscious and breathing normally. Look for signs of respiratory distress: coughing, wheezing, difficulty breathing, or hoarse voice. If unconscious or not breathing, begin CPR.",
+        "duration": 30
+      },
+      {
+        "order": 3,
+        "title": "Look for Warning Signs",
+        "description": "Check for singed nasal hairs, soot around nose or mouth, burns on face, or coughing up black sputum. These indicate airway burns. Listen for hoarse voice or stridor (high-pitched breathing sound).",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "Position for Easier Breathing",
+        "description": "If conscious, help the person sit upright or in a position that makes breathing easier. Loosen any tight clothing around the neck and chest. Do not lay them flat unless performing CPR.",
+        "duration": 60
+      },
+      {
+        "order": 5,
+        "title": "Give Oxygen if Available",
+        "description": "If trained and oxygen is available, administer 100% oxygen. Carbon monoxide poisoning is a major concern with smoke inhalation. Continue oxygen until emergency services arrive.",
+        "duration": 600
+      },
+      {
+        "order": 6,
+        "title": "Monitor Continuously",
+        "description": "Watch breathing closely - airways can swell shut hours after exposure. Monitor for confusion, headache, or cherry-red skin color (signs of carbon monoxide poisoning). Keep the person calm and still.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Airway swelling can occur hours after smoke exposure",
+      "Carbon monoxide poisoning may not show immediate symptoms",
+      "Never re-enter a burning building to rescue someone",
+      "Smoke inhalation can be fatal even without visible burns"
+    ],
+    "whenToSeekHelp": [
+      "All cases of smoke inhalation require immediate medical evaluation",
+      "Any difficulty breathing or change in voice",
+      "Loss of consciousness or confusion",
+      "Persistent coughing or coughing up dark sputum",
+      "Any burns to face or signs of airway involvement"
+    ],
+    "preventionTips": [
+      "Install smoke detectors on every level of your home",
+      "Practice fire escape plans with all family members",
+      "Sleep with bedroom doors closed to slow smoke spread",
+      "Stay low to the ground when escaping through smoke",
+      "Never use grills or generators indoors"
+    ]
+  },
+  "searchTags": [
+    "smoke inhalation",
+    "inhalation burn",
+    "airway burn",
+    "carbon monoxide",
+    "fire smoke",
+    "respiratory burn",
+    "toxic fumes",
+    "smoke poisoning"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

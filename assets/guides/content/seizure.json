@@ -1,0 +1,73 @@
+{
+  "id": "seizure",
+  "title": "Seizure",
+  "category": "medical_emergencies",
+  "severity": "high",
+  "summary": "How to protect someone during a seizure and provide care afterward. Focus on preventing injury and monitoring breathing.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Keep Person Safe",
+        "description": "Move furniture or objects away from person. Do NOT restrain them or put anything in their mouth. Guide them gently to floor if standing. Place something soft under head.",
+        "imageUrl": "guides/images/seizure_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Time the Seizure",
+        "description": "Note what time seizure started. Most seizures last 1-3 minutes. Call 911 if seizure lasts more than 5 minutes, if person has multiple seizures, or if this is their first seizure.",
+        "imageUrl": "guides/images/seizure_2.png",
+        "duration": 180
+      },
+      {
+        "order": 3,
+        "title": "Protect from Injury",
+        "description": "Stay with person but don't hold them down. Remove glasses and loosen tight clothing around neck. Clear area of hard or sharp objects. Do NOT put anything in mouth - they cannot swallow their tongue.",
+        "imageUrl": "guides/images/seizure_3.png",
+        "duration": 180
+      },
+      {
+        "order": 4,
+        "title": "After Seizure Stops",
+        "description": "Turn person onto their side (recovery position) to keep airway clear. Check for injuries. Person may be confused, sleepy, or agitated. Stay with them until fully alert. Speak calmly and reassure them.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Monitor Recovery",
+        "description": "Person may not remember seizure. Explain what happened. They may have headache or muscle soreness. Do not give food or drink until fully alert. Note details for medical provider.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Never put anything in mouth during seizure - this can cause injury",
+      "Do not restrain person - let seizure run its course",
+      "Person may lose bladder control - maintain their dignity"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if seizure lasts longer than 5 minutes",
+      "Call 911 for first-time seizures or if person is injured",
+      "Seek help if person has difficulty breathing after seizure"
+    ],
+    "preventionTips": [
+      "Take seizure medications exactly as prescribed",
+      "Get adequate sleep and manage stress",
+      "Avoid seizure triggers like flashing lights if photosensitive"
+    ]
+  },
+  "searchTags": [
+    "seizure",
+    "epilepsy",
+    "convulsion",
+    "grand mal",
+    "tonic clonic",
+    "seizure first aid"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

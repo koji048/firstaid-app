@@ -1,0 +1,73 @@
+{
+  "id": "heat-stroke",
+  "title": "Heat Stroke",
+  "category": "environmental_emergencies",
+  "severity": "critical",
+  "summary": "Life-threatening condition when body temperature rises above 104°F (40°C). Requires immediate cooling and emergency medical care.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Heat Stroke",
+        "description": "High body temperature (104°F+), altered mental state or confusion, hot dry skin OR profuse sweating, rapid strong pulse, throbbing headache, nausea. This is a medical emergency - call 911 immediately.",
+        "imageUrl": "guides/images/heat_stroke_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Move to Cool Area",
+        "description": "Move person to air-conditioned area or shade immediately. Remove unnecessary clothing. Begin cooling while waiting for ambulance. Every minute counts to prevent organ damage.",
+        "imageUrl": "guides/images/heat_stroke_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Cool Rapidly",
+        "description": "Immerse in cool water if possible, or spray with water and fan vigorously. Apply ice packs to neck, armpits, and groin. Continue cooling efforts until emergency services arrive.",
+        "imageUrl": "guides/images/heat_stroke_3.png",
+        "duration": 900
+      },
+      {
+        "order": 4,
+        "title": "Monitor Vital Signs",
+        "description": "If conscious, give cool water to sip. Monitor breathing and consciousness. If person vomits, turn on side. Be prepared to perform CPR if needed. Do not give fever-reducing medications.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Continue Cooling",
+        "description": "Continue aggressive cooling until body temperature drops to 101-102°F or emergency services arrive. Person may shiver - this is normal. Stay with them and keep cooling.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Heat stroke can cause permanent organ damage or death within minutes",
+      "Do NOT give fever medications like aspirin or acetaminophen",
+      "Person may have seizures - protect from injury but don't restrain"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for all suspected heat stroke",
+      "This is always a medical emergency requiring hospital care",
+      "Do not attempt to drive person yourself - they need ambulance care"
+    ],
+    "preventionTips": [
+      "Never leave anyone in a parked car",
+      "Avoid strenuous activity during hottest parts of day",
+      "Stay hydrated and take cooling breaks in hot weather"
+    ]
+  },
+  "searchTags": [
+    "heat stroke",
+    "hyperthermia",
+    "heat emergency",
+    "high body temperature",
+    "heat illness",
+    "sun stroke"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

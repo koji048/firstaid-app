@@ -1,0 +1,80 @@
+{
+  "id": "child-cpr",
+  "title": "CPR for Children",
+  "category": "basic_life_support",
+  "severity": "critical",
+  "summary": "Step-by-step guide for performing CPR on children (ages 1-8 years) who are unresponsive and not breathing normally.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Safety and Check Responsiveness",
+        "description": "Check the scene for safety. Tap the child's shoulders and shout their name. If unresponsive, have someone call 911. If alone, perform 2 minutes of CPR before leaving to call 911.",
+        "duration": 10
+      },
+      {
+        "order": 2,
+        "title": "Position the Child",
+        "description": "Place the child on their back on a firm surface. Tilt their head back and lift the chin to open the airway. For small children, use a gentle head tilt to avoid overextension.",
+        "duration": 5
+      },
+      {
+        "order": 3,
+        "title": "Check for Breathing",
+        "description": "Look, listen, and feel for breathing for no more than 10 seconds. Watch for chest movement, listen for breath sounds, and feel for air on your cheek. If not breathing normally, start CPR.",
+        "duration": 10
+      },
+      {
+        "order": 4,
+        "title": "Perform Chest Compressions",
+        "description": "Place the heel of one hand (or two hands for larger children) on the center of the chest between the nipples. Press down about 2 inches (5 cm) at a rate of 100-120 compressions per minute. Allow complete chest recoil.",
+        "duration": 15
+      },
+      {
+        "order": 5,
+        "title": "Give Rescue Breaths",
+        "description": "After 30 compressions, pinch the nose closed and cover their mouth with yours. Give 2 rescue breaths, each lasting 1 second. Watch for chest rise. If no chest rise, reposition the head and try again.",
+        "duration": 5
+      },
+      {
+        "order": 6,
+        "title": "Continue CPR Cycles",
+        "description": "Continue with 30 compressions followed by 2 breaths. If an AED becomes available, turn it on and follow the voice prompts. Use pediatric pads if available. Continue until help arrives or the child starts breathing.",
+        "duration": 120
+      }
+    ],
+    "warnings": [
+      "Use appropriate force - compressions should be about 1/3 the depth of the chest",
+      "For small children, one hand may be sufficient for compressions",
+      "Be prepared that the child may vomit - turn their head to the side if this happens",
+      "Never practice CPR on a conscious child"
+    ],
+    "whenToSeekHelp": [
+      "Always call 911 for an unresponsive child",
+      "If alone, do 2 minutes of CPR before calling 911",
+      "Have someone get an AED if available while you continue CPR"
+    ],
+    "preventionTips": [
+      "Supervise children around water at all times",
+      "Ensure children wear appropriate safety gear during activities",
+      "Teach children basic water safety",
+      "Keep medications and toxic substances out of reach"
+    ]
+  },
+  "searchTags": [
+    "child cpr",
+    "pediatric cpr",
+    "child resuscitation",
+    "chest compressions",
+    "rescue breathing",
+    "emergency",
+    "unresponsive child",
+    "pediatric emergency"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

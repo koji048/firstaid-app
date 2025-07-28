@@ -1,0 +1,73 @@
+{
+  "id": "lightning-strike",
+  "title": "Lightning Strike",
+  "category": "environmental_emergencies",
+  "severity": "critical",
+  "summary": "Emergency care for lightning strike victims. Lightning victims do not carry electrical charge and need immediate medical attention.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Safety",
+        "description": "Move victim to safe area if lightning is still occurring. Lightning can strike same place twice. It is safe to touch lightning victims - they do not carry electrical charge. Call 911 immediately.",
+        "imageUrl": "guides/images/lightning_strike_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Check Responsiveness",
+        "description": "Lightning often causes cardiac arrest. Check if person is conscious and breathing. Look for burns, especially at entry and exit points. Multiple victims: treat non-breathing victims first (reverse triage).",
+        "imageUrl": "guides/images/lightning_strike_2.png",
+        "duration": 30
+      },
+      {
+        "order": 3,
+        "title": "Begin CPR if Needed",
+        "description": "If not breathing, begin CPR immediately. Lightning victims have good chance of recovery with prompt CPR. Continue even if person appears dead - lightning victims can be resuscitated after prolonged CPR.",
+        "imageUrl": "guides/images/lightning_strike_3.png",
+        "duration": 600
+      },
+      {
+        "order": 4,
+        "title": "Treat Burns and Injuries",
+        "description": "Look for burns at entry/exit points (head, shoulders, feet). Cover burns with dry, loose dressing. Check for fractures from being thrown. Treat other injuries but prioritize breathing and circulation.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Monitor and Stabilize",
+        "description": "Even if conscious, monitor closely - cardiac arrest can occur later. Watch for confusion, memory loss, personality changes. Keep person warm and still. Document all symptoms for medical team.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Lightning victims may have delayed cardiac arrest",
+      "Internal injuries may not be immediately apparent",
+      "Temporary paralysis is common but usually resolves"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for all lightning strikes",
+      "All lightning victims need medical evaluation",
+      "Seek care even for indirect strikes or minor symptoms"
+    ],
+    "preventionTips": [
+      "When thunder roars, go indoors - wait 30 minutes after last thunder",
+      "Avoid tall objects, metal, and water during storms",
+      "If caught outside, crouch low with feet together"
+    ]
+  },
+  "searchTags": [
+    "lightning strike",
+    "electrical injury",
+    "thunder storm",
+    "lightning safety",
+    "electrical burns",
+    "storm emergency"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

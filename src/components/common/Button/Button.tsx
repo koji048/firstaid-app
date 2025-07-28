@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { TouchableOpacity, Text, ActivityIndicator, ViewStyle, TextStyle } from 'react-native';
+import { ActivityIndicator, Text, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { styles } from './Button.styles';
 

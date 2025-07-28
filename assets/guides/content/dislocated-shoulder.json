@@ -1,0 +1,72 @@
+{
+  "id": "dislocated-shoulder",
+  "title": "Dislocated Shoulder",
+  "category": "fractures_sprains",
+  "severity": "high",
+  "summary": "First aid for shoulder dislocation focusing on immobilization and pain relief. Do not attempt to relocate the shoulder.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Dislocation",
+        "description": "Look for shoulder appearing out of place, severe pain, inability to move arm, visible bump or depression. Person often holds arm slightly away from body. Do NOT attempt to pop shoulder back in place.",
+        "imageUrl": "guides/images/dislocated_shoulder_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Support the Arm",
+        "description": "Help person support injured arm in most comfortable position. Usually this is with elbow bent and arm across chest. Use pillows or folded blankets to maintain this position.",
+        "imageUrl": "guides/images/dislocated_shoulder_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Immobilize with Sling",
+        "description": "Apply sling to support arm weight. Use triangular bandage or improvise with shirt or jacket. Tie sling around neck. Add swathe (band around chest and arm) to prevent movement.",
+        "imageUrl": "guides/images/dislocated_shoulder_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Apply Ice for Pain",
+        "description": "Apply ice pack wrapped in cloth to shoulder area. Ice for 15-20 minutes to reduce pain and swelling. Do not apply ice directly to skin. Reapply every hour if needed.",
+        "duration": 1200
+      },
+      {
+        "order": 5,
+        "title": "Seek Medical Care",
+        "description": "Transport to emergency room immediately. Shoulder must be relocated by medical professional. Check fingers for circulation (color, warmth, ability to move). Remove rings before swelling increases.",
+        "duration": 180
+      }
+    ],
+    "warnings": [
+      "Never attempt to relocate a dislocated shoulder - this can cause nerve and blood vessel damage",
+      "Repeated dislocations can occur more easily",
+      "May have associated fractures that aren't visible"
+    ],
+    "whenToSeekHelp": [
+      "Always seek immediate medical care for dislocated shoulder",
+      "Call 911 if person shows signs of shock",
+      "Seek urgent care if fingers are numb or blue"
+    ],
+    "preventionTips": [
+      "Strengthen shoulder muscles with regular exercise",
+      "Avoid arm positions that previously caused dislocation",
+      "Use proper technique in sports and lifting"
+    ]
+  },
+  "searchTags": [
+    "dislocated shoulder",
+    "shoulder out of socket",
+    "shoulder injury",
+    "joint dislocation",
+    "shoulder pain"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

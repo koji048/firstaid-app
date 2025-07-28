@@ -3,7 +3,7 @@ import { FirstAidGuide } from '../../src/types';
 
 describe('SearchIndexer', () => {
   let indexer: SearchIndexer;
-  
+
   const mockGuides: FirstAidGuide[] = [
     {
       id: 'cpr-guide',
@@ -72,7 +72,7 @@ describe('SearchIndexer', () => {
 
     it('should extract terms from all relevant fields', () => {
       indexer.buildIndex(mockGuides);
-      
+
       const results = indexer.search('cpr', mockGuides);
       expect(results.length).toBeGreaterThan(0);
       expect(results[0].guide.id).toBe('cpr-guide');
@@ -80,7 +80,7 @@ describe('SearchIndexer', () => {
 
     it('should include category and severity in searchable terms', () => {
       indexer.buildIndex(mockGuides);
-      
+
       const categoryResults = indexer.search('basic_life_support', mockGuides);
       expect(categoryResults.length).toBe(1);
       expect(categoryResults[0].guide.id).toBe('cpr-guide');
@@ -127,7 +127,7 @@ describe('SearchIndexer', () => {
 
     it('should rank results by relevance', () => {
       const results = indexer.search('emergency', mockGuides);
-      
+
       // CPR guide should rank higher due to critical severity
       expect(results[0].guide.id).toBe('cpr-guide');
       expect(results[0].score).toBeGreaterThan(0);
@@ -135,7 +135,7 @@ describe('SearchIndexer', () => {
 
     it('should provide match details', () => {
       const results = indexer.search('cpr', mockGuides);
-      
+
       expect(results[0].matches.length).toBeGreaterThan(0);
       expect(results[0].matches.some((m) => m.field === 'title')).toBe(true);
     });
@@ -167,7 +167,7 @@ describe('SearchIndexer', () => {
 
     it('should return most frequent terms', () => {
       const topTerms = indexer.getTopSearchTerms(5);
-      
+
       expect(topTerms.length).toBeLessThanOrEqual(5);
       expect(topTerms[0]).toHaveProperty('term');
       expect(topTerms[0]).toHaveProperty('frequency');
@@ -182,7 +182,7 @@ describe('SearchIndexer', () => {
 
     it('should suggest completions for partial queries', () => {
       const suggestions = indexer.getSuggestedSearches('ble', 3);
-      
+
       expect(suggestions).toContain('bleeding');
       expect(suggestions.length).toBeLessThanOrEqual(3);
     });
@@ -203,18 +203,19 @@ describe('SearchIndexer', () => {
       const highGuide = mockGuides[1]; // Bleeding - high
 
       const results = indexer.search('emergency', mockGuides);
-      
-      if (results.length === 2) {
-        const criticalResult = results.find((r) => r.guide.id === criticalGuide.id);
-        const highResult = results.find((r) => r.guide.id === highGuide.id);
-        
-        expect(criticalResult!.score).toBeGreaterThan(highResult!.score);
-      }
+
+      expect(results.length).toBe(2);
+      const criticalResult = results.find((r) => r.guide.id === criticalGuide.id);
+      const highResult = results.find((r) => r.guide.id === highGuide.id);
+
+      expect(criticalResult).toBeDefined();
+      expect(highResult).toBeDefined();
+      expect(criticalResult!.score).toBeGreaterThan(highResult!.score);
     });
 
     it('should boost score for title matches', () => {
       const results = indexer.search('cpr', mockGuides);
-      
+
       expect(results[0].matches.some((m) => m.field === 'title')).toBe(true);
       expect(results[0].score).toBeGreaterThan(50); // Title matches get high scores
     });
@@ -223,7 +224,7 @@ describe('SearchIndexer', () => {
       // CPR guide has 1500 views, should get bonus points
       const results = indexer.search('emergency', mockGuides);
       const cprResult = results.find((r) => r.guide.id === 'cpr-guide');
-      
+
       expect(cprResult).toBeDefined();
       expect(cprResult!.score).toBeGreaterThan(0);
     });

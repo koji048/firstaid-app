@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { EmergencyContact } from '../../../types/emergencyContact';
 import { QuickDialButton } from '../QuickDialButton';

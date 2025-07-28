@@ -1,0 +1,83 @@
+{
+  "id": "chemical-burn",
+  "title": "Chemical Burns",
+  "category": "burns_scalds",
+  "severity": "high",
+  "summary": "Emergency treatment for burns caused by acids, alkalis, or other corrosive chemicals on skin or in eyes.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Safety First",
+        "description": "Protect yourself from the chemical. Wear gloves and protective equipment if available. Ensure the area is well-ventilated. Remove the person from the chemical source. Call 911 for severe burns.",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Remove Contaminated Clothing",
+        "description": "Quickly and carefully remove any clothing or jewelry that has been contaminated with the chemical. Cut clothing off rather than pulling it over the head. Be careful not to spread the chemical to unaffected areas.",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Flush with Water Immediately",
+        "description": "Rinse the burned area with cool running water for at least 20 minutes. Use a gentle stream to avoid spreading the chemical. For dry chemicals, brush off excess powder before flushing with water.",
+        "duration": 1200
+      },
+      {
+        "order": 4,
+        "title": "Special Care for Eye Burns",
+        "description": "If chemicals are in the eyes, flush immediately with water for at least 20 minutes. Have the person remove contact lenses if possible. Hold eyelids open and flush from inner corner outward.",
+        "duration": 1200
+      },
+      {
+        "order": 5,
+        "title": "Cover the Burn",
+        "description": "After thorough flushing, loosely cover the burn with a dry, sterile dressing or clean cloth. Do not apply creams, ointments, or home remedies. Keep the dressing loose to avoid pressure on burned skin.",
+        "duration": 120
+      },
+      {
+        "order": 6,
+        "title": "Monitor and Document",
+        "description": "Monitor for shock symptoms. Try to identify the chemical involved and save the container or take a photo of the label for medical personnel. Note the time of exposure and duration of flushing.",
+        "duration": 300
+      }
+    ],
+    "warnings": [
+      "Some chemicals react with water - only brush off dry chemicals if you know water is safe",
+      "Never neutralize acids with bases or vice versa",
+      "Do not apply ice directly to chemical burns",
+      "Chemical burns may appear minor at first but worsen over hours"
+    ],
+    "whenToSeekHelp": [
+      "All chemical burns require medical evaluation",
+      "Burns to eyes, face, hands, feet, or genitals",
+      "Large burns or burns that appear deep",
+      "Difficulty breathing or signs of inhalation injury",
+      "Unknown chemical or industrial exposure"
+    ],
+    "preventionTips": [
+      "Always wear appropriate protective equipment when handling chemicals",
+      "Read and follow all chemical safety labels",
+      "Keep chemicals in original containers with labels intact",
+      "Have emergency eyewash stations in areas where chemicals are used",
+      "Know the location of safety showers in work areas"
+    ]
+  },
+  "searchTags": [
+    "chemical burn",
+    "acid burn",
+    "alkali burn",
+    "corrosive",
+    "chemical exposure",
+    "eye burn",
+    "caustic burn",
+    "chemical injury"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

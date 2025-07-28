@@ -1,0 +1,73 @@
+{
+  "id": "drowning",
+  "title": "Drowning",
+  "category": "environmental_emergencies",
+  "severity": "critical",
+  "summary": "Emergency response for drowning victims. Focus on safe rescue, immediate CPR, and calling for emergency help.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Your Safety First",
+        "description": "Do not become another victim. Only enter water if trained in water rescue. Use reaching or throwing assists: poles, ropes, life rings. Call 911 immediately. Drowning is silent and fast.",
+        "imageUrl": "guides/images/drowning_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Remove from Water",
+        "description": "Once safely removed, place on firm surface. Support head and neck if spinal injury suspected (diving accident). Turn on side briefly to allow water to drain from mouth. Call 911 if not already done.",
+        "imageUrl": "guides/images/drowning_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Check Breathing",
+        "description": "Check for breathing for no more than 10 seconds. Drowning victims often have water in lungs but do NOT waste time trying to remove it. Begin CPR immediately if not breathing normally.",
+        "imageUrl": "guides/images/drowning_3.png",
+        "duration": 10
+      },
+      {
+        "order": 4,
+        "title": "Begin CPR",
+        "description": "Give 2 rescue breaths first (unlike standard CPR). Then 30 chest compressions followed by 2 breaths. Continue this cycle. CPR is effective even with water in lungs. Use AED when available.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Continue Until Help Arrives",
+        "description": "Continue CPR until emergency services arrive or person starts breathing. Drowning victims can survive long periods without oxygen in cold water. If person vomits, turn head to side, clear mouth, continue CPR.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Do not endanger yourself - drowning people can pull rescuers under",
+      "All drowning victims need medical evaluation even if they seem fine",
+      "Secondary drowning can occur hours later"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for all drowning incidents",
+      "Seek medical care even if person recovers quickly",
+      "Watch for breathing problems up to 72 hours after incident"
+    ],
+    "preventionTips": [
+      "Never swim alone and supervise children constantly",
+      "Learn to swim and teach children water safety",
+      "Use proper life jackets when boating"
+    ]
+  },
+  "searchTags": [
+    "drowning",
+    "water rescue",
+    "submersion",
+    "near drowning",
+    "water emergency",
+    "swimming accident"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

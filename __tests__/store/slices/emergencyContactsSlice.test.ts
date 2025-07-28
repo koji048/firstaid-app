@@ -1,21 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
 import emergencyContactsReducer, {
   addContact,
-  updateContact,
-  deleteContact,
-  setContacts,
-  setPrimaryContact,
-  setLoading,
-  setError,
   clearContacts,
+  deleteContact,
   selectAllContacts,
   selectContactById,
-  selectPrimaryContact,
   selectContactsByCategory,
   selectContactsCount,
   selectHasPrimaryContact,
+  selectPrimaryContact,
+  setContacts,
+  setError,
+  setLoading,
+  setPrimaryContact,
+  updateContact,
 } from '../../../src/store/slices/emergencyContactsSlice';
-import { EmergencyContact, ContactRelationship, ContactCategory } from '../../../src/types';
+import { ContactCategory, ContactRelationship, EmergencyContact } from '../../../src/types';
 
 // Helper function to create a mock contact
 const createMockContact = (overrides?: Partial<EmergencyContact>): EmergencyContact => ({
@@ -151,8 +151,8 @@ describe('emergencyContactsSlice', () => {
       store.dispatch(setPrimaryContact('contact_2'));
 
       const state = store.getState().emergencyContacts;
-      expect(state.contacts['contact_1'].isPrimary).toBe(false);
-      expect(state.contacts['contact_2'].isPrimary).toBe(true);
+      expect(state.contacts.contact_1.isPrimary).toBe(false);
+      expect(state.contacts.contact_2.isPrimary).toBe(true);
       expect(state.primaryContactId).toBe('contact_2');
     });
 

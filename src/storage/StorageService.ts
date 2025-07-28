@@ -33,7 +33,9 @@ export class StorageService {
   }
 
   private static async createTables(): Promise<void> {
-    if (!this.db) throw new Error('Database not initialized');
+    if (!this.db) {
+      throw new Error('Database not initialized');
+    }
 
     const queries = [
       `CREATE TABLE IF NOT EXISTS offline_guides (
@@ -106,7 +108,9 @@ export class StorageService {
 
   // SQLite methods for offline guides
   static async saveOfflineGuide(guide: any): Promise<void> {
-    if (!this.db) throw new Error('Database not initialized');
+    if (!this.db) {
+      throw new Error('Database not initialized');
+    }
 
     const query = `
       INSERT OR REPLACE INTO offline_guides (id, title, category, content, last_updated)
@@ -123,7 +127,9 @@ export class StorageService {
   }
 
   static async getOfflineGuide(id: string): Promise<any | null> {
-    if (!this.db) throw new Error('Database not initialized');
+    if (!this.db) {
+      throw new Error('Database not initialized');
+    }
 
     const [result] = await this.db.executeSql('SELECT * FROM offline_guides WHERE id = ?', [id]);
 
@@ -142,7 +148,9 @@ export class StorageService {
   }
 
   static async getAllOfflineGuides(): Promise<any[]> {
-    if (!this.db) throw new Error('Database not initialized');
+    if (!this.db) {
+      throw new Error('Database not initialized');
+    }
 
     const [result] = await this.db.executeSql(
       'SELECT * FROM offline_guides ORDER BY last_updated DESC',
@@ -164,7 +172,9 @@ export class StorageService {
   }
 
   static async deleteOfflineGuide(id: string): Promise<void> {
-    if (!this.db) throw new Error('Database not initialized');
+    if (!this.db) {
+      throw new Error('Database not initialized');
+    }
 
     await this.db.executeSql('DELETE FROM offline_guides WHERE id = ?', [id]);
     await this.db.executeSql('DELETE FROM guide_media WHERE guide_id = ?', [id]);

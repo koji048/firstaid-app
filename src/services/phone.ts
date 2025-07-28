@@ -1,6 +1,6 @@
-import { Linking, Alert } from 'react-native';
+import { Alert, Linking } from 'react-native';
 import { validatePhoneNumber } from '../utils/phoneNumber';
-import { captureException, addBreadcrumb } from './sentry';
+import { addBreadcrumb, captureException } from './sentry';
 
 export interface CallResult {
   success: boolean;

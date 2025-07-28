@@ -1,23 +1,23 @@
 import guidesReducer, {
-  setGuides,
-  setCurrentGuide,
   addBookmark,
-  removeBookmark,
-  markAsDownloaded,
-  setSearchQuery,
-  setSelectedCategory,
-  setLoading,
-  setError,
-  loadGuidesFromContent,
-  updateGuideVersion,
-  setGuideCategories,
-  searchGuides,
   clearSearchResults,
+  loadGuidesFromContent,
+  markAsDownloaded,
+  removeBookmark,
+  searchGuides,
+  selectBookmarkedGuides,
+  selectDownloadedGuides,
   selectGuidesByCategory,
   selectGuidesByVersion,
   selectSearchResults,
-  selectBookmarkedGuides,
-  selectDownloadedGuides,
+  setCurrentGuide,
+  setError,
+  setGuideCategories,
+  setGuides,
+  setLoading,
+  setSearchQuery,
+  setSelectedCategory,
+  updateGuideVersion,
 } from '../../../src/store/slices/guidesSlice';
 import type { FirstAidGuide } from '../../../src/types';
 import { GuideCategory } from '../../../src/types/guideContent';
@@ -66,7 +66,7 @@ describe('guidesSlice', () => {
     it('should handle setGuides', () => {
       const guides = [mockGuide];
       const state = guidesReducer(initialState, setGuides(guides));
-      
+
       expect(state.guides).toEqual(guides);
       expect(state.error).toBeNull();
     });
@@ -109,7 +109,7 @@ describe('guidesSlice', () => {
     it('should handle setSelectedCategory', () => {
       const state = guidesReducer(
         initialState,
-        setSelectedCategory(GuideCategory.BASIC_LIFE_SUPPORT)
+        setSelectedCategory(GuideCategory.BASIC_LIFE_SUPPORT),
       );
       expect(state.selectedCategory).toBe(GuideCategory.BASIC_LIFE_SUPPORT);
     });
@@ -130,12 +130,9 @@ describe('guidesSlice', () => {
     it('should handle loadGuidesFromContent', () => {
       const guides = [mockGuide];
       const categories = [GuideCategory.BASIC_LIFE_SUPPORT];
-      
-      const state = guidesReducer(
-        initialState,
-        loadGuidesFromContent({ guides, categories })
-      );
-      
+
+      const state = guidesReducer(initialState, loadGuidesFromContent({ guides, categories }));
+
       expect(state.guides).toEqual(guides);
       expect(state.categories).toEqual(categories);
       expect(state.contentLoaded).toBe(true);
@@ -157,19 +154,16 @@ describe('guidesSlice', () => {
           guideId: 'test-guide',
           version: 2,
           guide: updatedGuide,
-        })
+        }),
       );
-      
+
       expect(state.guides[0].version).toBe(2);
       expect(state.guideVersions['test-guide']).toBe(2);
     });
 
     it('should handle setGuideCategories', () => {
-      const categories = [
-        GuideCategory.BASIC_LIFE_SUPPORT,
-        GuideCategory.WOUNDS_BLEEDING,
-      ];
-      
+      const categories = [GuideCategory.BASIC_LIFE_SUPPORT, GuideCategory.WOUNDS_BLEEDING];
+
       const state = guidesReducer(initialState, setGuideCategories(categories));
       expect(state.categories).toEqual(categories);
     });
@@ -179,17 +173,15 @@ describe('guidesSlice', () => {
         {
           guide: mockGuide,
           score: 100,
-          matches: [
-            { field: 'title', term: 'test', position: 0 },
-          ],
+          matches: [{ field: 'title', term: 'test', position: 0 }],
         },
       ];
 
       const state = guidesReducer(
         initialState,
-        searchGuides({ query: 'test', results: mockSearchResults })
+        searchGuides({ query: 'test', results: mockSearchResults }),
       );
-      
+
       expect(state.searchQuery).toBe('test');
       expect(state.searchResults).toEqual(mockSearchResults);
     });
@@ -208,7 +200,7 @@ describe('guidesSlice', () => {
       };
 
       const state = guidesReducer(stateWithSearch, clearSearchResults());
-      
+
       expect(state.searchQuery).toBe('');
       expect(state.searchResults).toEqual([]);
     });
@@ -241,18 +233,15 @@ describe('guidesSlice', () => {
     };
 
     it('selectGuidesByCategory should filter guides by category', () => {
-      const guides = selectGuidesByCategory(
-        stateWithGuides,
-        GuideCategory.BASIC_LIFE_SUPPORT
-      );
-      
+      const guides = selectGuidesByCategory(stateWithGuides, GuideCategory.BASIC_LIFE_SUPPORT);
+
       expect(guides).toHaveLength(1);
       expect(guides[0].id).toBe('test-guide');
     });
 
     it('selectGuidesByVersion should filter guides by minimum version', () => {
       const guides = selectGuidesByVersion(stateWithGuides, 2);
-      
+
       expect(guides).toHaveLength(1);
       expect(guides[0].id).toBe('guide-2');
     });
@@ -278,14 +267,14 @@ describe('guidesSlice', () => {
 
     it('selectBookmarkedGuides should return bookmarked guides', () => {
       const bookmarked = selectBookmarkedGuides(stateWithGuides);
-      
+
       expect(bookmarked).toHaveLength(1);
       expect(bookmarked[0].id).toBe('test-guide');
     });
 
     it('selectDownloadedGuides should return downloaded guides', () => {
       const downloaded = selectDownloadedGuides(stateWithGuides);
-      
+
       expect(downloaded).toHaveLength(1);
       expect(downloaded[0].id).toBe('guide-2');
     });

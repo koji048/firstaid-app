@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
@@ -8,9 +8,9 @@ import authReducer from '../../../src/store/slices/authSlice';
 import emergencyContactsReducer from '../../../src/store/slices/emergencyContactsSlice';
 import * as hooks from '../../../src/hooks/useEmergencyContacts';
 import {
-  EmergencyContact,
   ContactCategory,
   ContactRelationship,
+  EmergencyContact,
 } from '../../../src/types/emergencyContact';
 
 jest.mock('../../../src/hooks/useEmergencyContacts');
@@ -61,6 +61,13 @@ const createTestStore = () => {
         error: null,
         isInitialized: true,
         searchQuery: '',
+        isEmergencyMode: false,
+        locationSharing: {
+          isEnabled: false,
+          currentLocation: null,
+          isTracking: false,
+          error: null,
+        },
       },
     },
   });
@@ -152,7 +159,7 @@ describe('EmergencyContactsScreen', () => {
 
   it('filters contacts based on search query', async () => {
     const store = createTestStore();
-    const { getByPlaceholderText, getByText, queryByText } = render(
+    const { getByPlaceholderText, queryByText } = render(
       <Provider store={store}>
         <NavigationContainer>
           <EmergencyContactsScreen />

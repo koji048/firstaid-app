@@ -54,9 +54,7 @@ describe('LocationService', () => {
   describe('requestLocationPermission', () => {
     it('should request iOS permissions correctly', async () => {
       Platform.OS = 'ios';
-      (Geolocation.requestAuthorization as jest.Mock).mockImplementation(
-        (success) => success()
-      );
+      (Geolocation.requestAuthorization as jest.Mock).mockImplementation((success) => success());
 
       const result = await LocationService.requestLocationPermission();
 
@@ -66,9 +64,7 @@ describe('LocationService', () => {
 
     it('should handle iOS permission denial', async () => {
       Platform.OS = 'ios';
-      (Geolocation.requestAuthorization as jest.Mock).mockImplementation(
-        (_, error) => error()
-      );
+      (Geolocation.requestAuthorization as jest.Mock).mockImplementation((_, error) => error());
 
       const result = await LocationService.requestLocationPermission();
 
@@ -78,7 +74,7 @@ describe('LocationService', () => {
     it('should request Android permissions correctly', async () => {
       Platform.OS = 'android';
       (PermissionsAndroid.request as jest.Mock).mockResolvedValue(
-        PermissionsAndroid.RESULTS.GRANTED
+        PermissionsAndroid.RESULTS.GRANTED,
       );
 
       const result = await LocationService.requestLocationPermission();
@@ -89,14 +85,14 @@ describe('LocationService', () => {
         expect.objectContaining({
           title: 'Location Permission',
           message: expect.any(String),
-        })
+        }),
       );
     });
 
     it('should handle Android permission denial', async () => {
       Platform.OS = 'android';
       (PermissionsAndroid.request as jest.Mock).mockResolvedValue(
-        PermissionsAndroid.RESULTS.DENIED
+        PermissionsAndroid.RESULTS.DENIED,
       );
 
       const result = await LocationService.requestLocationPermission();
@@ -112,17 +108,16 @@ describe('LocationService', () => {
       const result = await LocationService.requestLocationPermission();
 
       expect(result).toBe(false);
-      expect(sentry.captureException).toHaveBeenCalledWith(
-        error,
-        { context: 'location_permission' }
-      );
+      expect(sentry.captureException).toHaveBeenCalledWith(error, {
+        context: 'location_permission',
+      });
     });
   });
 
   describe('getCurrentLocation', () => {
     it('should get current location successfully', async () => {
-      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation(
-        (success) => success(mockPosition)
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((success) =>
+        success(mockPosition),
       );
 
       const result = await LocationService.getCurrentLocation();
@@ -155,8 +150,8 @@ describe('LocationService', () => {
 
     it('should handle permission denied error', async () => {
       const error = { code: 1, message: 'Permission denied' };
-      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation(
-        (_, errorCallback) => errorCallback(error)
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((_, errorCallback) =>
+        errorCallback(error),
       );
 
       const result = await LocationService.getCurrentLocation();
@@ -168,20 +163,22 @@ describe('LocationService', () => {
 
     it('should handle position unavailable error', async () => {
       const error = { code: 2, message: 'Position unavailable' };
-      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation(
-        (_, errorCallback) => errorCallback(error)
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((_, errorCallback) =>
+        errorCallback(error),
       );
 
       const result = await LocationService.getCurrentLocation();
 
       expect(result.success).toBe(false);
-      expect(result.error).toBe('Location is currently unavailable. Please check your GPS settings.');
+      expect(result.error).toBe(
+        'Location is currently unavailable. Please check your GPS settings.',
+      );
     });
 
     it('should handle unknown errors', async () => {
       const error = { code: 99, message: 'Unknown error' };
-      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation(
-        (_, errorCallback) => errorCallback(error)
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((_, errorCallback) =>
+        errorCallback(error),
       );
 
       const result = await LocationService.getCurrentLocation();
@@ -191,8 +188,8 @@ describe('LocationService', () => {
     });
 
     it('should store last known location', async () => {
-      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation(
-        (success) => success(mockPosition)
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((success) =>
+        success(mockPosition),
       );
 
       await LocationService.getCurrentLocation();
@@ -210,9 +207,7 @@ describe('LocationService', () => {
   describe('startLocationWatch', () => {
     it('should start watching location successfully', async () => {
       Platform.OS = 'ios';
-      (Geolocation.requestAuthorization as jest.Mock).mockImplementation(
-        (success) => success()
-      );
+      (Geolocation.requestAuthorization as jest.Mock).mockImplementation((success) => success());
       (Geolocation.watchPosition as jest.Mock).mockReturnValue(123);
 
       const callback = jest.fn();
@@ -226,21 +221,17 @@ describe('LocationService', () => {
           enableHighAccuracy: true,
           timeout: 15000,
           maximumAge: 10000,
-        })
+        }),
       );
     });
 
     it('should handle location updates', async () => {
       Platform.OS = 'ios';
-      (Geolocation.requestAuthorization as jest.Mock).mockImplementation(
-        (success) => success()
-      );
-      (Geolocation.watchPosition as jest.Mock).mockImplementation(
-        (success) => {
-          success(mockPosition);
-          return 123;
-        }
-      );
+      (Geolocation.requestAuthorization as jest.Mock).mockImplementation((success) => success());
+      (Geolocation.watchPosition as jest.Mock).mockImplementation((success) => {
+        success(mockPosition);
+        return 123;
+      });
 
       const callback = jest.fn();
       await LocationService.startLocationWatch(callback);
@@ -256,9 +247,7 @@ describe('LocationService', () => {
 
     it('should handle permission denial', async () => {
       Platform.OS = 'ios';
-      (Geolocation.requestAuthorization as jest.Mock).mockImplementation(
-        (_, error) => error()
-      );
+      (Geolocation.requestAuthorization as jest.Mock).mockImplementation((_, error) => error());
 
       const callback = jest.fn();
       const watchId = await LocationService.startLocationWatch(callback);
@@ -272,15 +261,11 @@ describe('LocationService', () => {
 
     it('should handle watch errors', async () => {
       Platform.OS = 'ios';
-      (Geolocation.requestAuthorization as jest.Mock).mockImplementation(
-        (success) => success()
-      );
-      (Geolocation.watchPosition as jest.Mock).mockImplementation(
-        (_, error) => {
-          error({ code: 2, message: 'Position unavailable' });
-          return 123;
-        }
-      );
+      (Geolocation.requestAuthorization as jest.Mock).mockImplementation((success) => success());
+      (Geolocation.watchPosition as jest.Mock).mockImplementation((_, error) => {
+        error({ code: 2, message: 'Position unavailable' });
+        return 123;
+      });
 
       const callback = jest.fn();
       await LocationService.startLocationWatch(callback);
@@ -295,9 +280,7 @@ describe('LocationService', () => {
   describe('stopLocationWatch', () => {
     it('should stop watching location', async () => {
       Platform.OS = 'ios';
-      (Geolocation.requestAuthorization as jest.Mock).mockImplementation(
-        (success) => success()
-      );
+      (Geolocation.requestAuthorization as jest.Mock).mockImplementation((success) => success());
       (Geolocation.watchPosition as jest.Mock).mockReturnValue(123);
 
       const callback = jest.fn();
@@ -372,14 +355,14 @@ describe('LocationService', () => {
         expect.arrayContaining([
           expect.objectContaining({ text: 'Cancel' }),
           expect.objectContaining({ text: 'Settings' }),
-        ])
+        ]),
       );
     });
 
     it('should clear location data', () => {
       LocationService.clearLocationData();
       const lastKnown = LocationService.getLastKnownLocation();
-      
+
       expect(lastKnown).toBeNull();
       expect(Geolocation.clearWatch).not.toHaveBeenCalled(); // No watch was active
     });

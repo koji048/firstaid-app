@@ -1,4 +1,4 @@
-import authReducer, { setUser, clearAuth, setError } from '../slices/authSlice';
+import authReducer, { clearAuth, setError, setUser } from '../slices/authSlice';
 import type { User } from '@types';
 
 describe('authSlice', () => {

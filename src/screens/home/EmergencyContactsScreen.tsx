@@ -1,5 +1,5 @@
-import React, { useCallback, useLayoutEffect, useState, useRef } from 'react';
-import { Alert, SafeAreaView, StyleSheet, View, ScrollView } from 'react-native';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
+import { Alert, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { Icon } from 'react-native-elements';
@@ -10,20 +10,20 @@ import { EmergencyModeToggle } from '../../components/emergency/EmergencyModeTog
 import { LocationShareToggle } from '../../components/emergency/LocationShareToggle';
 import { PrimaryContactCard } from '../../components/emergency/PrimaryContactCard';
 import { CallConfirmationModal } from '../../components/emergency/CallConfirmationModal';
-import { QuickDialButtonRef } from '../../components/emergency/QuickDialButton';
+// import { QuickDialButtonRef } from '../../components/emergency/QuickDialButton';
 import { useDeleteContact } from '../../hooks/useEmergencyContacts';
 import { useAppDispatch } from '../../store/hooks';
 import {
-  selectSearchQuery,
   selectIsEmergencyMode,
-  selectPrimaryContact,
   selectLocationSharing,
+  selectPrimaryContact,
+  selectSearchQuery,
+  setLocationSharingEnabled,
+  setLocationSharingError,
+  setLocationTracking,
   setSearchQuery,
   toggleEmergencyMode,
-  setLocationSharingEnabled,
-  setLocationTracking,
   updateCurrentLocation,
-  setLocationSharingError,
 } from '../../store/slices/emergencyContactsSlice';
 import { EmergencyContact } from '../../types/emergencyContact';
 import { PhoneService } from '../../services/phone';
@@ -46,7 +46,7 @@ const EmergencyContactsScreen = () => {
     contact: null,
   });
 
-  const quickDialRef = useRef<QuickDialButtonRef>(null);
+  // const quickDialRef = useRef<QuickDialButtonRef>(null);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -86,11 +86,12 @@ const EmergencyContactsScreen = () => {
         );
       }
     },
-    [isEmergencyMode],
+    [isEmergencyMode, handleCallRequest, handleEditPress, handleQuickCall],
   );
 
   // Emergency mode and calling handlers
   const handleEmergencyToggle = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (enabled: boolean) => {
       dispatch(toggleEmergencyMode());
     },
@@ -220,8 +221,12 @@ const EmergencyContactsScreen = () => {
         <PrimaryContactCard
           primaryContact={primaryContact}
           isEmergencyMode={isEmergencyMode}
-          onCallInitiated={(contact) => {}}
-          onCallCompleted={(contact, success) => {}}
+          onCallInitiated={() => {
+            // Handle call initiated
+          }}
+          onCallCompleted={() => {
+            // Handle call completed
+          }}
           onNoPrimaryContactPress={handleNoPrimaryContactPress}
         />
 

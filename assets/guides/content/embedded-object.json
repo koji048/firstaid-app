@@ -1,0 +1,79 @@
+{
+  "id": "embedded-object",
+  "title": "Embedded Object Wound",
+  "category": "wounds_bleeding",
+  "severity": "high",
+  "summary": "Emergency care for wounds with embedded objects like glass, metal, or wood that should not be removed by first aiders.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Do Not Remove the Object",
+        "description": "Leave the embedded object in place. Removing it may cause severe bleeding or further damage. The object may be plugging damaged blood vessels. Call 911 immediately for professional removal.",
+        "duration": 10
+      },
+      {
+        "order": 2,
+        "title": "Control Bleeding Around Object",
+        "description": "Apply direct pressure around the embedded object, not on it. Use sterile gauze or clean cloths to apply firm pressure on either side of the object to control bleeding.",
+        "duration": 300
+      },
+      {
+        "order": 3,
+        "title": "Stabilize the Object",
+        "description": "Place bulky dressings or clean cloths around the object to support and stabilize it. Build up padding around the object to the same height as the object to prevent movement.",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Secure the Dressing",
+        "description": "Use bandages or tape to secure the padding in place without putting pressure on the object. Create a 'doughnut' ring of bandaging around the object if needed. Ensure the object cannot move.",
+        "duration": 180
+      },
+      {
+        "order": 5,
+        "title": "Monitor for Shock",
+        "description": "Have the person lie still in a comfortable position. If no spinal injury is suspected, elevate their legs. Cover with a blanket to maintain body temperature. Monitor breathing and consciousness.",
+        "duration": 300
+      },
+      {
+        "order": 6,
+        "title": "Reassure and Wait for Help",
+        "description": "Keep the person calm and still to prevent further injury. Do not give food or water in case surgery is needed. Document the time of injury and type of object if known for medical personnel.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never attempt to remove an embedded object",
+      "Do not probe or explore the wound",
+      "Avoid direct pressure on the embedded object",
+      "Movement may cause the object to cause more damage internally"
+    ],
+    "whenToSeekHelp": [
+      "Always seek immediate emergency medical help for embedded objects",
+      "This is a 911 emergency - do not attempt to transport yourself",
+      "Professional medical removal is required to prevent further injury"
+    ],
+    "preventionTips": [
+      "Wear safety glasses when working with tools or machinery",
+      "Keep work areas clean and free of debris",
+      "Use proper protective equipment for the task",
+      "Be aware of your surroundings to avoid trips and falls onto sharp objects"
+    ]
+  },
+  "searchTags": [
+    "embedded object",
+    "impaled object",
+    "foreign body",
+    "penetrating wound",
+    "glass in wound",
+    "do not remove",
+    "stabilize object"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

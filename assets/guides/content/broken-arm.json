@@ -1,0 +1,74 @@
+{
+  "id": "broken-arm",
+  "title": "Broken Arm",
+  "category": "fractures_sprains",
+  "severity": "high",
+  "summary": "Guide for providing first aid to someone with a suspected broken arm, including immobilization techniques and pain management.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Assess the Injury",
+        "description": "Check for signs of a fracture: severe pain, swelling, deformity, inability to move the arm, or bone protruding through skin. Do not move the arm unnecessarily. Call 911 if bone is visible or circulation is compromised.",
+        "imageUrl": "guides/images/broken_arm_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Immobilize the Arm",
+        "description": "Support the injured arm in the position found. Do not try to straighten it. Use a sling made from a triangular bandage or improvised from clothing. Support the arm against the body.",
+        "imageUrl": "guides/images/broken_arm_2.png",
+        "duration": 180
+      },
+      {
+        "order": 3,
+        "title": "Apply a Splint if Trained",
+        "description": "If trained, apply a splint using rigid material (cardboard, magazines, boards) padded with soft material. Secure with bandages above and below the fracture site, but not directly over it.",
+        "imageUrl": "guides/images/broken_arm_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Manage Pain and Swelling",
+        "description": "Apply ice wrapped in a cloth to reduce swelling - never directly on skin. Give over-the-counter pain medication if conscious and able to swallow. Keep the arm elevated if possible.",
+        "duration": 120
+      },
+      {
+        "order": 5,
+        "title": "Monitor and Transport",
+        "description": "Check fingers for circulation (color, warmth, sensation) every 15 minutes. Remove rings or jewelry before swelling increases. Transport to emergency care or wait for ambulance.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never try to realign or straighten a broken bone",
+      "Do not give food or drink if surgery may be needed",
+      "Watch for signs of shock: pale skin, rapid pulse, shallow breathing"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately if bone is visible through skin",
+      "Seek emergency care for all suspected fractures",
+      "Call 911 if person shows signs of shock or has multiple injuries"
+    ],
+    "preventionTips": [
+      "Use proper safety equipment during sports and activities",
+      "Maintain good bone health with calcium and vitamin D",
+      "Remove fall hazards from home environment"
+    ]
+  },
+  "searchTags": [
+    "broken arm",
+    "arm fracture",
+    "bone break",
+    "arm injury",
+    "fracture first aid",
+    "immobilization",
+    "splinting"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

@@ -1,0 +1,74 @@
+{
+  "id": "broken-leg",
+  "title": "Broken Leg",
+  "category": "fractures_sprains",
+  "severity": "high",
+  "summary": "Emergency first aid for suspected leg fractures, focusing on stabilization, pain management, and preventing further injury.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Safety and Call for Help",
+        "description": "Do not move the person unless in immediate danger. Call 911 immediately. Look for deformity, swelling, inability to bear weight, or bone through skin. Keep the person still and calm.",
+        "imageUrl": "guides/images/broken_leg_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Stabilize the Leg",
+        "description": "Keep the leg in the position found. Place padding (blankets, towels) around the leg to prevent movement. Do not attempt to realign the leg. Support joints above and below the injury.",
+        "imageUrl": "guides/images/broken_leg_2.png",
+        "duration": 180
+      },
+      {
+        "order": 3,
+        "title": "Apply Splint if Necessary",
+        "description": "If help is delayed and you must move the person, splint the leg. Use rigid objects (boards, rolled newspapers) on both sides of the leg. Pad well and secure with bandages above and below the fracture, not over it.",
+        "imageUrl": "guides/images/broken_leg_3.png",
+        "duration": 480
+      },
+      {
+        "order": 4,
+        "title": "Control Bleeding if Present",
+        "description": "For open fractures with bleeding, apply direct pressure around (not on) the wound with clean cloth. Do not push on exposed bone. Cover wound with sterile dressing if available.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Treat for Shock",
+        "description": "Keep person warm with blankets. Elevate uninjured leg slightly if possible. Monitor breathing and consciousness. Do not give food or water. Reassure and keep talking to the person.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Never move someone with a suspected hip, pelvis, or thigh fracture unless absolutely necessary",
+      "Do not attempt to straighten or realign the leg",
+      "Watch for signs of shock which can be life-threatening"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for all suspected leg fractures",
+      "Call 911 urgently if bone is visible or leg is severely deformed",
+      "Seek immediate help if person loses feeling in foot or toes"
+    ],
+    "preventionTips": [
+      "Use proper footwear for activities",
+      "Keep walkways clear and well-lit",
+      "Build bone strength with weight-bearing exercise"
+    ]
+  },
+  "searchTags": [
+    "broken leg",
+    "leg fracture",
+    "femur fracture",
+    "tibia fracture",
+    "leg injury",
+    "bone break",
+    "emergency splinting"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

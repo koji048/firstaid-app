@@ -1,0 +1,73 @@
+{
+  "id": "heart-attack",
+  "title": "Heart Attack",
+  "category": "medical_emergencies",
+  "severity": "critical",
+  "summary": "Recognizing and responding to heart attack symptoms. Quick action saves lives - call 911 immediately and give aspirin if available.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Call 911 Immediately",
+        "description": "Call 911 at first sign of heart attack. Common symptoms: chest pain or pressure, pain spreading to arm/jaw/back, shortness of breath, nausea, cold sweat, lightheadedness. Women may have subtler symptoms.",
+        "imageUrl": "guides/images/heart_attack_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Give Aspirin",
+        "description": "If conscious and not allergic, give one adult aspirin (325mg) or four baby aspirin (81mg each). Have them chew it slowly. Aspirin helps prevent blood clotting. Do not give if allergic or bleeding.",
+        "imageUrl": "guides/images/heart_attack_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Position for Comfort",
+        "description": "Help person to comfortable position, usually sitting up and leaning slightly forward. Loosen tight clothing. Keep them calm and reassure them help is coming. Do not let them walk around.",
+        "imageUrl": "guides/images/heart_attack_3.png",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Give Nitroglycerin if Prescribed",
+        "description": "If person has prescribed nitroglycerin, help them take it as directed (usually under tongue). Do not give someone else's medication. Wait 5 minutes between doses if directed.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Prepare for CPR",
+        "description": "If person becomes unconscious and stops breathing normally, begin CPR immediately. Continue until emergency services arrive. If available, have someone get an AED (automated external defibrillator).",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Time is critical - heart muscle dies quickly without oxygen",
+      "Do not drive person to hospital yourself unless no other option",
+      "Heart attack symptoms can be different in women and diabetics"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for any suspected heart attack",
+      "Do not wait to see if symptoms improve",
+      "Call 911 even if person insists they're fine"
+    ],
+    "preventionTips": [
+      "Know your risk factors and family history",
+      "Maintain healthy blood pressure and cholesterol",
+      "Exercise regularly and eat heart-healthy diet"
+    ]
+  },
+  "searchTags": [
+    "heart attack",
+    "myocardial infarction",
+    "chest pain",
+    "cardiac emergency",
+    "aspirin",
+    "nitroglycerin"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "croup",
+  "title": "Croup",
+  "category": "pediatric_emergencies",
+  "severity": "medium",
+  "summary": "Viral infection causing barking cough and breathing difficulty in children. Steam and cool air can help relieve symptoms.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Croup",
+        "description": "Distinctive barking seal-like cough, hoarse voice, noisy breathing (stridor), worse at night. Child may have mild fever and cold symptoms. Most common in children 6 months to 3 years.",
+        "imageUrl": "guides/images/croup_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Keep Child Calm",
+        "description": "Comfort and calm child - crying makes breathing worse. Hold child upright in your lap. Speak softly and reassuringly. Anxiety worsens airway constriction. Stay calm yourself.",
+        "imageUrl": "guides/images/croup_2.png",
+        "duration": 300
+      },
+      {
+        "order": 3,
+        "title": "Use Steam or Cool Air",
+        "description": "Run hot shower to create steam bathroom. Sit with child for 10-15 minutes. OR take child outside in cool night air for 10 minutes. Both can reduce airway swelling. Repeat as needed.",
+        "imageUrl": "guides/images/croup_3.png",
+        "duration": 900
+      },
+      {
+        "order": 4,
+        "title": "Keep Child Hydrated",
+        "description": "Offer cool fluids frequently - water, popsicles, or juice. Avoid dairy which can thicken mucus. Use humidifier in child's room. Prop child up with pillows for easier breathing during sleep.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Monitor Breathing",
+        "description": "Watch for: severe breathing difficulty, blue lips/face, drooling or unable to swallow, high fever, dehydration. Call 911 if child struggles to breathe, makes whistling sound, or seems very ill.",
+        "duration": 1800
+      }
+    ],
+    "warnings": [
+      "Severe croup can block airway - monitor breathing closely",
+      "Never give cough medicine to children under 4",
+      "Symptoms often worse at night for several nights"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if child has severe breathing difficulty or blue color",
+      "See doctor same day for persistent barking cough",
+      "Seek immediate care if child is drooling or can't swallow"
+    ],
+    "preventionTips": [
+      "Wash hands frequently to prevent viral infections",
+      "Keep child away from cigarette smoke",
+      "Use humidifier during cold season"
+    ]
+  },
+  "searchTags": [
+    "croup",
+    "barking cough",
+    "stridor",
+    "child breathing",
+    "pediatric airway",
+    "seal bark cough"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

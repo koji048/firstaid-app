@@ -1,7 +1,7 @@
-import React, { memo, useState, useImperativeHandle, forwardRef } from 'react';
-import { TouchableOpacity, Text, View, ActivityIndicator } from 'react-native';
+import React, { forwardRef, memo, useImperativeHandle, useState } from 'react';
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { EmergencyContact, ContactRelationship } from '../../../types/emergencyContact';
+import { ContactRelationship, EmergencyContact } from '../../../types/emergencyContact';
 import { PhoneService } from '../../../services/phone';
 import { styles } from './QuickDialButton.styles';
 

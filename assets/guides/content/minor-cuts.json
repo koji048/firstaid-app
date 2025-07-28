@@ -1,0 +1,81 @@
+{
+  "id": "minor-cuts",
+  "title": "Minor Cuts and Scrapes",
+  "category": "wounds_bleeding",
+  "severity": "low",
+  "summary": "How to properly clean and dress minor cuts, scrapes, and abrasions to prevent infection and promote healing.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Stop the Bleeding",
+        "description": "Apply gentle pressure with a clean cloth or bandage for 5-10 minutes. Most minor cuts will stop bleeding on their own. Elevate the wound above the heart if possible.",
+        "duration": 300
+      },
+      {
+        "order": 2,
+        "title": "Clean Your Hands",
+        "description": "Wash your hands thoroughly with soap and water before touching the wound. If soap and water aren't available, use an alcohol-based hand sanitizer.",
+        "duration": 30
+      },
+      {
+        "order": 3,
+        "title": "Clean the Wound",
+        "description": "Rinse the wound with clean water to remove dirt and debris. Avoid using hydrogen peroxide or iodine, which can damage tissue. Use tweezers cleaned with alcohol to remove any visible debris.",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "Apply Antibiotic Ointment",
+        "description": "If available, apply a thin layer of antibiotic ointment to help prevent infection and keep the wound moist. Skip this step if you're allergic to the ingredients.",
+        "duration": 30
+      },
+      {
+        "order": 5,
+        "title": "Cover the Wound",
+        "description": "Cover the wound with an adhesive bandage or sterile gauze held in place with tape. Change the dressing daily and whenever it becomes wet or dirty.",
+        "duration": 60
+      },
+      {
+        "order": 6,
+        "title": "Monitor for Infection",
+        "description": "Check the wound daily for signs of infection: increased redness, warmth, swelling, pus, red streaks, or fever. Keep the wound clean and dry. Most minor cuts heal within a week.",
+        "duration": 30
+      }
+    ],
+    "warnings": [
+      "Seek medical attention if the cut is deep, gaping, or won't stop bleeding",
+      "Watch for signs of infection in the following days",
+      "Update tetanus shot if wound was caused by dirty or rusty object and vaccination is not current"
+    ],
+    "whenToSeekHelp": [
+      "Bleeding doesn't stop after 10 minutes of direct pressure",
+      "Cut is deep, long, or gaping open",
+      "Signs of infection develop (pus, red streaks, fever)",
+      "Wound is on the face, joints, hands, or genitals",
+      "Object or debris can't be completely removed"
+    ],
+    "preventionTips": [
+      "Keep knives and sharp objects properly stored",
+      "Wear protective gloves when handling sharp objects",
+      "Keep walkways clear to prevent trips and falls",
+      "Ensure good lighting in work areas"
+    ]
+  },
+  "searchTags": [
+    "minor cuts",
+    "scrapes",
+    "abrasions",
+    "wound care",
+    "first aid",
+    "bleeding",
+    "bandage",
+    "clean wound"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

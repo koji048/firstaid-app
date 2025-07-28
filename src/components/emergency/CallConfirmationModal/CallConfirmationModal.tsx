@@ -1,15 +1,15 @@
 import React, { memo, useEffect, useRef } from 'react';
 import {
+  Animated,
   Modal,
-  View,
   Text,
   TouchableOpacity,
-  Animated,
   TouchableWithoutFeedback,
   Vibration,
+  View,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { EmergencyContact, ContactRelationship } from '../../../types/emergencyContact';
+import { ContactRelationship, EmergencyContact } from '../../../types/emergencyContact';
 import { getPhoneDisplay } from '../../../utils/phoneNumber';
 import { styles } from './CallConfirmationModal.styles';
 

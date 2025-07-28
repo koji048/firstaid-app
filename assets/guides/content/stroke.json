@@ -1,0 +1,74 @@
+{
+  "id": "stroke",
+  "title": "Stroke",
+  "category": "medical_emergencies",
+  "severity": "critical",
+  "summary": "Use F.A.S.T. to recognize stroke symptoms. Time is brain - immediate medical treatment can minimize permanent damage.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Use F.A.S.T. Test",
+        "description": "Face: Ask to smile - look for one side drooping. Arms: Ask to raise both arms - does one drift down? Speech: Ask to repeat simple phrase - is it slurred or strange? Time: If any signs, call 911 immediately.",
+        "imageUrl": "guides/images/stroke_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Call 911 and Note Time",
+        "description": "Call 911 immediately. Tell dispatcher you suspect stroke. Note exact time symptoms started - this is crucial for treatment decisions. Some treatments only work within 3-4 hours.",
+        "imageUrl": "guides/images/stroke_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Position Safely",
+        "description": "Help person lie down with head and shoulders slightly raised (about 30 degrees) on pillows. Turn head to side if vomiting. Do not give food, drink, or medication - swallowing may be affected.",
+        "imageUrl": "guides/images/stroke_3.png",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Monitor and Reassure",
+        "description": "Stay with person and monitor breathing and consciousness. Keep them calm and still. Loosen tight clothing. If conscious, reassure them help is coming. Note any changes in symptoms.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Gather Information",
+        "description": "Prepare information for paramedics: time symptoms started, medications they take, medical conditions, what they were doing when symptoms began. If unconscious and not breathing, begin CPR.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Do NOT give aspirin - strokes can be caused by bleeding",
+      "Do not let person 'sleep it off' - immediate treatment is critical",
+      "Even if symptoms improve, still seek emergency care"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for any stroke symptoms",
+      "Time is critical - every minute counts",
+      "Call 911 even if symptoms seem to improve"
+    ],
+    "preventionTips": [
+      "Control high blood pressure and diabetes",
+      "Stop smoking and limit alcohol",
+      "Exercise regularly and maintain healthy weight"
+    ]
+  },
+  "searchTags": [
+    "stroke",
+    "brain attack",
+    "FAST test",
+    "facial droop",
+    "slurred speech",
+    "cerebrovascular accident",
+    "CVA"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

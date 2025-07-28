@@ -55,7 +55,7 @@ export class GuidesStorage {
   static async loadGuides(): Promise<StoredGuides | null> {
     try {
       const jsonData = await AsyncStorage.getItem(this.STORAGE_KEY);
-      const data = jsonData ? JSON.parse(jsonData) as StoredGuides : null;
+      const data = jsonData ? (JSON.parse(jsonData) as StoredGuides) : null;
       if (!data) {
         return null;
       }
@@ -89,7 +89,7 @@ export class GuidesStorage {
   static async getVersionInfo(): Promise<Map<string, number>> {
     try {
       const jsonData = await AsyncStorage.getItem(this.VERSION_KEY);
-      const versionInfo = jsonData ? JSON.parse(jsonData) as GuideVersionInfo[] : null;
+      const versionInfo = jsonData ? (JSON.parse(jsonData) as GuideVersionInfo[]) : null;
       const versionMap = new Map<string, number>();
 
       if (versionInfo) {
@@ -107,7 +107,7 @@ export class GuidesStorage {
 
   static async detectUpdates(
     currentGuides: FirstAidGuide[],
-    savedVersions: Map<string, number>
+    savedVersions: Map<string, number>,
   ): Promise<GuideContentUpdate[]> {
     const updates: GuideContentUpdate[] = [];
 
@@ -155,7 +155,7 @@ export class GuidesStorage {
   static async getDownloadedGuides(): Promise<string[]> {
     try {
       const jsonData = await AsyncStorage.getItem(this.DOWNLOADED_KEY);
-      const downloaded = jsonData ? JSON.parse(jsonData) as string[] : null;
+      const downloaded = jsonData ? (JSON.parse(jsonData) as string[]) : null;
       return downloaded || [];
     } catch (error) {
       console.error('Failed to get downloaded guides:', error);
@@ -186,7 +186,7 @@ export class GuidesStorage {
   static async getBookmarkedGuides(): Promise<string[]> {
     try {
       const jsonData = await AsyncStorage.getItem(this.BOOKMARKS_KEY);
-      const bookmarks = jsonData ? JSON.parse(jsonData) as string[] : null;
+      const bookmarks = jsonData ? (JSON.parse(jsonData) as string[]) : null;
       return bookmarks || [];
     } catch (error) {
       console.error('Failed to get bookmarked guides:', error);
@@ -198,7 +198,7 @@ export class GuidesStorage {
     try {
       const bookmarks = await this.getBookmarkedGuides();
       const index = bookmarks.indexOf(guideId);
-      
+
       if (index > -1) {
         bookmarks.splice(index, 1);
         await this.saveBookmarkedGuides(bookmarks);
@@ -222,7 +222,7 @@ export class GuidesStorage {
           key.includes(this.STORAGE_KEY) ||
           key.includes(this.VERSION_KEY) ||
           key.includes(this.DOWNLOADED_KEY) ||
-          key.includes(this.BOOKMARKS_KEY)
+          key.includes(this.BOOKMARKS_KEY),
       );
 
       let totalSize = 0;

@@ -29,7 +29,6 @@ jest.mock('react-native-keychain', () => ({
 
 // Mock react-native-gesture-handler
 jest.mock('react-native-gesture-handler', () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const View = require('react-native').View;
   return {
     Swipeable: View,
@@ -63,7 +62,6 @@ jest.mock('react-native-gesture-handler', () => {
 
 // Mock react-native-reanimated
 jest.mock('react-native-reanimated', () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const Reanimated = require('react-native-reanimated/mock');
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   Reanimated.default.call = () => {};
@@ -87,6 +85,40 @@ jest.mock('react-native-safe-area-context', () => ({
 jest.mock('react-native-vector-icons/MaterialIcons', () => 'Icon');
 jest.mock('react-native-vector-icons/FontAwesome', () => 'Icon');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
+
+// Mock react-native-haptic-feedback
+jest.mock('react-native-haptic-feedback', () => ({
+  trigger: jest.fn(),
+}));
+
+// Mock @react-native-voice/voice
+jest.mock('@react-native-voice/voice', () => ({
+  start: jest.fn(),
+  stop: jest.fn(),
+  destroy: jest.fn().mockResolvedValue(undefined),
+  removeAllListeners: jest.fn(),
+  onSpeechStart: jest.fn(),
+  onSpeechEnd: jest.fn(),
+  onSpeechError: jest.fn(),
+  onSpeechResults: jest.fn(),
+}));
+
+// Mock react-native-shake
+jest.mock('react-native-shake', () => ({
+  addListener: jest.fn(() => ({ remove: jest.fn() })),
+}));
+
+// Mock @react-native-community/geolocation
+jest.mock('@react-native-community/geolocation', () => ({
+  getCurrentPosition: jest.fn(),
+  watchPosition: jest.fn(),
+  clearWatch: jest.fn(),
+}));
+
+// Mock react-native-share
+jest.mock('react-native-share', () => ({
+  open: jest.fn(),
+}));
 
 // Silence the warning: Animated: `useNativeDriver` is not supported
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');

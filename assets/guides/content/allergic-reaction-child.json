@@ -1,0 +1,73 @@
+{
+  "id": "allergic-reaction-child",
+  "title": "Allergic Reaction in Children",
+  "category": "pediatric_emergencies",
+  "severity": "high",
+  "summary": "Managing allergic reactions in children from mild symptoms to severe anaphylaxis. Quick action with antihistamines or epinephrine can be life-saving.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Identify Reaction Severity",
+        "description": "Mild: hives, itching, sneezing. Moderate: widespread rash, mild swelling, vomiting. Severe (anaphylaxis): difficulty breathing, throat/tongue swelling, wheezing, rapid pulse. For severe, use EpiPen immediately.",
+        "imageUrl": "guides/images/allergic_reaction_child_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "For Severe Reactions - Use EpiPen",
+        "description": "Give epinephrine auto-injector immediately for severe symptoms. Remove cap, press firmly into outer thigh, hold 10 seconds. Call 911 even if child improves. Give through clothing if needed.",
+        "imageUrl": "guides/images/allergic_reaction_child_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "For Mild-Moderate - Give Antihistamine",
+        "description": "Give age-appropriate dose of antihistamine (Benadryl). Liquid works faster than tablets. Follow package dosing. Remove allergen source. Apply cool compresses to itchy areas. Monitor for worsening.",
+        "imageUrl": "guides/images/allergic_reaction_child_3.png",
+        "duration": 300
+      },
+      {
+        "order": 4,
+        "title": "Monitor and Comfort Child",
+        "description": "Keep child calm - anxiety worsens symptoms. Remove or avoid allergen. Loosen tight clothing. If wheezing, let child sit upright. Watch for symptom progression. Note time of exposure and symptoms.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Follow-Up Care",
+        "description": "Even mild reactions need medical follow-up to identify allergen. Severe reactions require ER visit even if resolved. Get allergy testing. Obtain EpiPen prescription if needed. Create allergy action plan.",
+        "duration": 900
+      }
+    ],
+    "warnings": [
+      "Reactions can worsen quickly - monitor continuously",
+      "Second wave of symptoms can occur hours later",
+      "Never leave allergic child alone during reaction"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 for any breathing difficulty or throat swelling",
+      "Use EpiPen and call 911 for known severe allergies",
+      "See doctor same day for first-time reactions"
+    ],
+    "preventionTips": [
+      "Identify and avoid known allergens",
+      "Teach child not to share food",
+      "Always carry prescribed medications"
+    ]
+  },
+  "searchTags": [
+    "allergic reaction child",
+    "pediatric allergy",
+    "anaphylaxis child",
+    "hives",
+    "epipen junior",
+    "food allergy"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

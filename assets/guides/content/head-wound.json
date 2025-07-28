@@ -1,0 +1,84 @@
+{
+  "id": "head-wound",
+  "title": "Head Wound Management",
+  "category": "wounds_bleeding",
+  "severity": "high",
+  "summary": "Care for scalp lacerations and head wounds, with attention to potential brain injury and proper bleeding control.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Assess Consciousness and Call for Help",
+        "description": "Check if the person is conscious and alert. Ask their name, where they are, and what happened. If unconscious, confused, or the wound is severe, call 911 immediately. Head wounds often bleed heavily but may not be as serious as they appear.",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Control Bleeding with Direct Pressure",
+        "description": "Apply firm, direct pressure to the wound using a sterile gauze or clean cloth. Head wounds tend to bleed profusely due to many blood vessels in the scalp. Maintain pressure for 10 minutes without peeking.",
+        "duration": 600
+      },
+      {
+        "order": 3,
+        "title": "Check for Other Injuries",
+        "description": "While maintaining pressure, check for other injuries, especially neck or spine injuries. Do not move the person if you suspect spinal injury. Look for clear fluid from nose or ears which may indicate skull fracture.",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "Apply a Dressing",
+        "description": "Once bleeding is controlled, apply a sterile dressing. If the wound is large, you may need to hold the edges together. Secure with a bandage wrapped around the head, being careful not to wrap too tightly.",
+        "duration": 180
+      },
+      {
+        "order": 5,
+        "title": "Monitor for Concussion Signs",
+        "description": "Watch for signs of concussion: confusion, dizziness, nausea, vomiting, severe headache, unequal pupils, or difficulty staying awake. These may appear immediately or hours later.",
+        "duration": 300
+      },
+      {
+        "order": 6,
+        "title": "Keep Person Calm and Still",
+        "description": "Have the person sit or lie down comfortably with head and shoulders slightly elevated if no spinal injury is suspected. Apply ice pack wrapped in cloth to reduce swelling. Continue monitoring until help arrives.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Head wounds can bleed heavily even when not serious",
+      "Never ignore signs of concussion or brain injury",
+      "Clear fluid from ears or nose may indicate skull fracture",
+      "Do not give pain medication that may mask symptoms"
+    ],
+    "whenToSeekHelp": [
+      "Loss of consciousness, even briefly",
+      "Confusion, memory loss, or behavior changes",
+      "Severe or worsening headache",
+      "Repeated vomiting",
+      "Weakness, numbness, or problems with coordination",
+      "Deep cut that may need stitches"
+    ],
+    "preventionTips": [
+      "Wear appropriate helmets for sports and cycling",
+      "Use proper head protection in construction areas",
+      "Install grab bars in bathrooms to prevent falls",
+      "Keep walkways clear and well-lit",
+      "Address slippery surfaces promptly"
+    ]
+  },
+  "searchTags": [
+    "head wound",
+    "scalp laceration",
+    "head injury",
+    "bleeding head",
+    "concussion",
+    "skull injury",
+    "head trauma",
+    "scalp cut"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

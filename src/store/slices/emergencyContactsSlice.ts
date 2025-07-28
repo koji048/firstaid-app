@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
 import {
+  ContactCategory,
   EmergencyContact,
   EmergencyContactsState,
   NewEmergencyContact,
   UpdateEmergencyContact,
-  ContactCategory,
 } from '../../types';
 import { RootState } from '../store';
 import { emergencyContactsStorage } from '../../storage/emergencyContactsStorage';

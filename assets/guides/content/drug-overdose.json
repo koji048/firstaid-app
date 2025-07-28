@@ -1,0 +1,73 @@
+{
+  "id": "drug-overdose",
+  "title": "Drug Overdose",
+  "category": "poisoning_overdose",
+  "severity": "critical",
+  "summary": "Life-threatening emergency requiring immediate medical care. Give naloxone if available for opioid overdose.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Call 911 Immediately",
+        "description": "Call 911. Most states have Good Samaritan laws protecting those who call for overdoses. Tell dispatcher it's an overdose. Signs: unconsciousness, slow/no breathing, blue lips/fingernails, gurgling sounds.",
+        "imageUrl": "guides/images/drug_overdose_1.png",
+        "duration": 60
+      },
+      {
+        "order": 2,
+        "title": "Check Breathing",
+        "description": "Check if person is breathing. If not breathing or breathing very slowly (less than 8 breaths/minute), begin rescue breathing or CPR. Try to wake person by calling name and rubbing knuckles on breastbone.",
+        "imageUrl": "guides/images/drug_overdose_2.png",
+        "duration": 60
+      },
+      {
+        "order": 3,
+        "title": "Give Naloxone if Available",
+        "description": "For suspected opioid overdose, give naloxone (Narcan) if available. Spray in nostril or inject as directed. May need multiple doses every 2-3 minutes. Person may wake agitated - keep them calm.",
+        "imageUrl": "guides/images/drug_overdose_3.png",
+        "duration": 180
+      },
+      {
+        "order": 4,
+        "title": "Position Safely",
+        "description": "If breathing but unconscious, place in recovery position (on side) to prevent choking. Stay with person. If they wake, do not let them use more drugs - overdose can return when naloxone wears off.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Provide Information",
+        "description": "Tell paramedics: what drugs taken (if known), when taken, how much, if naloxone was given. Collect any drug containers or paraphernalia safely. Person needs hospital monitoring even if naloxone worked.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Overdose can return after naloxone wears off (30-90 minutes)",
+      "Never try to make person vomit",
+      "Mixing drugs, especially with alcohol, increases overdose risk"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for all suspected overdoses",
+      "Even if person recovers with naloxone, they need hospital care",
+      "Call 911 if you're unsure - better safe than sorry"
+    ],
+    "preventionTips": [
+      "Never use alone - have someone who can call for help",
+      "Keep naloxone available if using opioids",
+      "Don't mix drugs or use with alcohol"
+    ]
+  },
+  "searchTags": [
+    "drug overdose",
+    "opioid overdose",
+    "naloxone",
+    "narcan",
+    "overdose",
+    "substance abuse emergency"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

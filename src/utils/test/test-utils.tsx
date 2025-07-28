@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react-native';
+import { RenderOptions, render } from '@testing-library/react-native';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@styles/ThemeProvider';
 import { configureStore } from '@reduxjs/toolkit';
-import { store as defaultStore, RootState } from '@store/store';
+import { RootState, store as defaultStore } from '@store/store';
 import authReducer from '@store/slices/authSlice';
 import guidesReducer from '@store/slices/guidesSlice';
 import emergencyReducer from '@store/slices/emergencySlice';

@@ -1,10 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  emergencyContactsStorage,
-  EmergencyContactsStorage,
-} from '../../src/storage/emergencyContactsStorage';
+import { EmergencyContactsStorage } from '../../src/storage/emergencyContactsStorage';
 import { encryptionService } from '../../src/services/encryption';
-import { EmergencyContact, ContactRelationship, ContactCategory } from '../../src/types';
+import { ContactCategory, ContactRelationship, EmergencyContact } from '../../src/types';
 
 // Mock AsyncStorage
 jest.mock('@react-native-async-storage/async-storage', () => ({

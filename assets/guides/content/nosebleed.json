@@ -1,0 +1,82 @@
+{
+  "id": "nosebleed",
+  "title": "Nosebleed Treatment",
+  "category": "wounds_bleeding",
+  "severity": "low",
+  "summary": "Proper technique to stop a nosebleed and when to seek medical attention for persistent or severe bleeding.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Stay Calm and Sit Upright",
+        "description": "Have the person sit upright and lean slightly forward. This prevents blood from flowing down the throat, which can cause nausea or vomiting. Do not tilt the head back.",
+        "duration": 10
+      },
+      {
+        "order": 2,
+        "title": "Pinch the Soft Part of the Nose",
+        "description": "Using your thumb and index finger, firmly pinch the soft part of the nose just below the bony bridge. Breathe through your mouth while holding the nose.",
+        "duration": 10
+      },
+      {
+        "order": 3,
+        "title": "Hold Pressure for 10-15 Minutes",
+        "description": "Maintain continuous pressure for 10-15 minutes without checking if bleeding has stopped. Use a clock to time this. Checking too early may disrupt clot formation.",
+        "duration": 900
+      },
+      {
+        "order": 4,
+        "title": "Apply Cold Compress",
+        "description": "While holding the nose, apply a cold compress or ice pack wrapped in a towel to the bridge of the nose. This helps constrict blood vessels and reduce bleeding.",
+        "duration": 600
+      },
+      {
+        "order": 5,
+        "title": "Check if Bleeding Has Stopped",
+        "description": "After 10-15 minutes, gently release the nose. If bleeding continues, repeat the pressure for another 10-15 minutes. Most nosebleeds stop within 20-30 minutes.",
+        "duration": 30
+      },
+      {
+        "order": 6,
+        "title": "Aftercare Instructions",
+        "description": "Once bleeding stops, don't blow your nose for several hours. Avoid strenuous activity for the rest of the day. Keep your head elevated when lying down. Use saline spray to keep nasal passages moist.",
+        "duration": 60
+      }
+    ],
+    "warnings": [
+      "Do not pack the nose with tissues or cotton unless directed by a healthcare provider",
+      "Avoid aspirin or blood thinners if you have frequent nosebleeds",
+      "Don't blow your nose for at least 12 hours after a nosebleed",
+      "Frequent nosebleeds may indicate an underlying condition"
+    ],
+    "whenToSeekHelp": [
+      "Bleeding continues after 30 minutes of direct pressure",
+      "Nosebleed follows a head injury or trauma",
+      "Blood loss is heavy or the person feels dizzy or weak",
+      "Frequent nosebleeds (more than once a week)",
+      "Person is on blood thinners or has a bleeding disorder"
+    ],
+    "preventionTips": [
+      "Keep nasal passages moist with saline spray",
+      "Use a humidifier in dry environments",
+      "Avoid picking or rubbing your nose",
+      "Trim fingernails short, especially in children",
+      "Manage allergies and treat nasal congestion properly"
+    ]
+  },
+  "searchTags": [
+    "nosebleed",
+    "epistaxis",
+    "nose bleeding",
+    "bloody nose",
+    "nasal bleeding",
+    "first aid",
+    "stop bleeding"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

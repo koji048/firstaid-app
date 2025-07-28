@@ -1,0 +1,73 @@
+{
+  "id": "anaphylaxis",
+  "title": "Anaphylaxis (Severe Allergic Reaction)",
+  "category": "medical_emergencies",
+  "severity": "critical",
+  "summary": "Life-threatening allergic reaction requiring immediate epinephrine injection and emergency medical care.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Anaphylaxis",
+        "description": "Look for: difficulty breathing, swelling of face/throat, rapid pulse, skin rash/hives, nausea/vomiting, feeling of doom. Can occur within minutes of exposure to allergen. Act immediately.",
+        "imageUrl": "guides/images/anaphylaxis_1.png",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Give Epinephrine Immediately",
+        "description": "Use epinephrine auto-injector (EpiPen) if available. Remove safety cap, press firmly into outer thigh through clothing, hold for 10 seconds. Note time given. Call 911 even if symptoms improve.",
+        "imageUrl": "guides/images/anaphylaxis_2.png",
+        "duration": 30
+      },
+      {
+        "order": 3,
+        "title": "Call 911",
+        "description": "Call 911 immediately after giving epinephrine. Tell dispatcher it's anaphylaxis. Person needs hospital monitoring even if improving - symptoms can return. Give second dose after 5-15 minutes if no improvement.",
+        "imageUrl": "guides/images/anaphylaxis_3.png",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "Position and Monitor",
+        "description": "Help person lie on back with legs elevated unless breathing is difficult - then let them sit up. Loosen tight clothing. Cover with blanket if cold. If vomiting, turn on side. Begin CPR if needed.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Continue Care",
+        "description": "Stay with person. Keep them calm. Note what triggered reaction for medical team. If prescribed, give antihistamine (Benadryl) after epinephrine, but never as substitute. Save used auto-injector for EMTs.",
+        "duration": 600
+      }
+    ],
+    "warnings": [
+      "Epinephrine is the ONLY first-line treatment - antihistamines alone won't stop anaphylaxis",
+      "Don't wait to see if symptoms get worse - give epinephrine immediately",
+      "A second reaction can occur hours later (biphasic reaction)"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 immediately for all anaphylaxis cases",
+      "Hospital monitoring required even if symptoms improve",
+      "Anyone using epinephrine must go to emergency room"
+    ],
+    "preventionTips": [
+      "Always carry two epinephrine auto-injectors if prescribed",
+      "Wear medical alert bracelet listing allergies",
+      "Read food labels carefully and ask about ingredients"
+    ]
+  },
+  "searchTags": [
+    "anaphylaxis",
+    "severe allergic reaction",
+    "epinephrine",
+    "epipen",
+    "allergy emergency",
+    "anaphylactic shock"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

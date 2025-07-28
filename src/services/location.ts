@@ -1,6 +1,6 @@
-import { Platform, PermissionsAndroid, Alert } from 'react-native';
+import { Alert, PermissionsAndroid, Platform } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
-import { captureException, addBreadcrumb } from './sentry';
+import { addBreadcrumb, captureException } from './sentry';
 
 export interface LocationCoordinates {
   latitude: number;
@@ -70,7 +70,7 @@ export class LocationService {
    * @param timeout - Timeout in milliseconds (default: 10000)
    * @returns Promise<LocationResult>
    */
-  static async getCurrentLocation(timeout: number = 10000): Promise<LocationResult> {
+  static async getCurrentLocation(timeout = 10000): Promise<LocationResult> {
     try {
       addBreadcrumb({
         message: 'Location request initiated',

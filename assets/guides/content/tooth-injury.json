@@ -1,0 +1,73 @@
+{
+  "id": "tooth-injury",
+  "title": "Tooth Injury",
+  "category": "medical_emergencies",
+  "severity": "medium",
+  "summary": "Managing knocked-out, broken, or loose teeth. Quick action within 30 minutes can often save a permanent tooth.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Control Bleeding",
+        "description": "Have person rinse mouth gently with warm water. Apply direct pressure to bleeding gums with clean gauze or cloth for 10-15 minutes. Have person bite down on gauze. If severe facial injury, seek immediate care.",
+        "imageUrl": "guides/images/tooth_injury_1.png",
+        "duration": 900
+      },
+      {
+        "order": 2,
+        "title": "For Knocked-Out Permanent Tooth",
+        "description": "Find tooth immediately. Pick up by crown (top), not root. If dirty, rinse briefly with milk or saline - NOT water. Do not scrub or remove tissue. Time is critical - act within 30 minutes.",
+        "imageUrl": "guides/images/tooth_injury_2.png",
+        "duration": 120
+      },
+      {
+        "order": 3,
+        "title": "Preserve the Tooth",
+        "description": "Best: Gently reinsert tooth into socket if possible. Have person bite on gauze to hold in place. Otherwise: Store in milk, saliva (in mouth), or tooth preservation kit. Do NOT store in water or let dry out.",
+        "imageUrl": "guides/images/tooth_injury_3.png",
+        "duration": 180
+      },
+      {
+        "order": 4,
+        "title": "For Broken or Chipped Tooth",
+        "description": "Rinse mouth with warm water. Save any pieces in milk. Apply cold compress to face to reduce swelling. Cover sharp edges with dental wax or sugar-free gum. Avoid hot/cold foods.",
+        "duration": 300
+      },
+      {
+        "order": 5,
+        "title": "Seek Dental Care",
+        "description": "See dentist immediately for knocked-out teeth (within 30 minutes best). Same-day care for broken teeth with exposed nerves (severe pain). Loose baby teeth usually don't need reimplantation but should be evaluated.",
+        "duration": 180
+      }
+    ],
+    "warnings": [
+      "Never touch the root of a knocked-out tooth",
+      "Do not reimplant baby teeth - this can damage permanent teeth below",
+      "Water damages tooth cells - use milk or saliva for storage"
+    ],
+    "whenToSeekHelp": [
+      "See dentist within 30 minutes for knocked-out permanent teeth",
+      "Seek immediate care for severe pain or nerve exposure",
+      "Get same-day evaluation for any tooth injury"
+    ],
+    "preventionTips": [
+      "Wear mouthguards during sports",
+      "Don't use teeth as tools",
+      "Childproof home to prevent falls"
+    ]
+  },
+  "searchTags": [
+    "tooth injury",
+    "knocked out tooth",
+    "dental emergency",
+    "broken tooth",
+    "avulsed tooth",
+    "dental trauma"
+  ],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-15T00:00:00Z",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}

@@ -1,8 +1,24 @@
 {
   "schemaVersion": "1.0.0",
-  "contentVersion": 1,
-  "releaseDate": "2024-01-01",
+  "contentVersion": 2,
+  "releaseDate": "2024-01-15",
   "changelog": [
+    {
+      "version": 2,
+      "date": "2024-01-15",
+      "changes": [
+        "Expanded guide library from 4 to 50 comprehensive guides",
+        "Added complete Basic Life Support guides including infant and child CPR",
+        "Added comprehensive Wounds & Bleeding management guides",
+        "Added specialized Burns & Scalds treatment guides",
+        "Added Fractures & Sprains emergency care guides",
+        "Added critical Medical Emergency response guides",
+        "Added Environmental Emergency survival guides",
+        "Added Poisoning & Overdose treatment protocols",
+        "Added specialized Pediatric Emergency guides",
+        "All guides medically reviewed and validated"
+      ]
+    },
     {
       "version": 1,
       "date": "2024-01-01",

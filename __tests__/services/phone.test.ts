@@ -92,7 +92,7 @@ describe('PhoneService', () => {
     it('should return error when cannot open URL', async () => {
       (Linking.canOpenURL as jest.Mock).mockResolvedValue(false);
       const phoneNumber = '555-123-4567';
-      
+
       const result = await PhoneService.makePhoneCall(phoneNumber);
 
       expect(result.success).toBe(false);
@@ -114,7 +114,7 @@ describe('PhoneService', () => {
         expect.objectContaining({
           context: 'phone_call',
           phoneNumber: '***-***-****',
-        })
+        }),
       );
     });
 
@@ -125,7 +125,7 @@ describe('PhoneService', () => {
       expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
         expect.objectContaining({
           data: { contactName: undefined, phoneNumber: '***-***-****' },
-        })
+        }),
       );
     });
   });
@@ -134,7 +134,7 @@ describe('PhoneService', () => {
     it('should check if device can make phone calls', async () => {
       (Linking.canOpenURL as jest.Mock).mockResolvedValue(true);
       const result = await PhoneService.canMakePhoneCalls();
-      
+
       expect(result).toBe(true);
       expect(Linking.canOpenURL).toHaveBeenCalledWith('tel:+1234567890');
     });
@@ -142,14 +142,14 @@ describe('PhoneService', () => {
     it('should return false when cannot make calls', async () => {
       (Linking.canOpenURL as jest.Mock).mockResolvedValue(false);
       const result = await PhoneService.canMakePhoneCalls();
-      
+
       expect(result).toBe(false);
     });
 
     it('should handle errors gracefully', async () => {
       (Linking.canOpenURL as jest.Mock).mockRejectedValue(new Error('Test error'));
       const result = await PhoneService.canMakePhoneCalls();
-      
+
       expect(result).toBe(false);
     });
   });
@@ -170,11 +170,9 @@ describe('PhoneService', () => {
     it('should handle invalid phone number error', () => {
       PhoneService.handleCallError('invalid phone number', 'John Doe');
 
-      expect(Alert.alert).toHaveBeenCalledWith(
-        'Call Failed',
-        'Invalid phone number for John Doe',
-        [{ text: 'OK' }],
-      );
+      expect(Alert.alert).toHaveBeenCalledWith('Call Failed', 'Invalid phone number for John Doe', [
+        { text: 'OK' },
+      ]);
     });
 
     it('should handle device cannot make calls error', () => {
@@ -190,11 +188,9 @@ describe('PhoneService', () => {
     it('should handle generic error', () => {
       PhoneService.handleCallError('Some other error');
 
-      expect(Alert.alert).toHaveBeenCalledWith(
-        'Call Failed',
-        'Unable to make phone call',
-        [{ text: 'OK' }],
-      );
+      expect(Alert.alert).toHaveBeenCalledWith('Call Failed', 'Unable to make phone call', [
+        { text: 'OK' },
+      ]);
     });
   });
 });
