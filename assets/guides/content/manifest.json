@@ -1,0 +1,56 @@
+{
+  "currentVersion": {
+    "version": 1,
+    "releaseDate": "2024-01-01",
+    "releaseNotes": "Initial release of first aid guides",
+    "minimumAppVersion": "1.0.0"
+  },
+  "guides": [
+    {
+      "id": "cpr-adult",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": ["cpr", "cardiac", "emergency", "life-saving"],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-01T00:00:00Z",
+      "contentHash": "a1b2c3d4",
+      "locale": "en-US"
+    },
+    {
+      "id": "choking-adult",
+      "version": 1,
+      "category": "basic_life_support",
+      "tags": ["choking", "airway", "heimlich", "emergency"],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Sarah Johnson, MD",
+      "lastReviewedAt": "2024-01-01T00:00:00Z",
+      "contentHash": "e5f6g7h8",
+      "locale": "en-US"
+    },
+    {
+      "id": "severe-bleeding",
+      "version": 1,
+      "category": "wounds_bleeding",
+      "tags": ["bleeding", "wound", "hemorrhage", "pressure"],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Michael Chen, MD",
+      "lastReviewedAt": "2024-01-01T00:00:00Z",
+      "contentHash": "i9j0k1l2",
+      "locale": "en-US"
+    },
+    {
+      "id": "burns-treatment",
+      "version": 1,
+      "category": "burns_scalds",
+      "tags": ["burns", "scalds", "thermal", "first-degree", "second-degree"],
+      "author": "First Aid Room Team",
+      "reviewedBy": "Dr. Emily Rodriguez, MD",
+      "lastReviewedAt": "2024-01-01T00:00:00Z",
+      "contentHash": "m3n4o5p6",
+      "locale": "en-US"
+    }
+  ],
+  "lastUpdated": "2024-01-01T00:00:00Z",
+  "totalGuides": 4
+}

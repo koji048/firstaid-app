@@ -6,7 +6,6 @@
  */
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { StoredEmergencyContacts } from '../../types';
 
 // Migration type definition
 export interface Migration {
@@ -61,6 +60,7 @@ class MigrationRunner {
 
     // Run migrations in sequence
     for (const migration of migrationsToRun) {
+      // eslint-disable-next-line no-console
       console.log(`Running migration v${migration.version}: ${migration.description}`);
 
       try {

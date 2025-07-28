@@ -20,6 +20,14 @@ const initialState: EmergencyContactsState = {
   isLoading: false,
   error: null,
   isInitialized: false,
+  searchQuery: '',
+  isEmergencyMode: false,
+  locationSharing: {
+    isEnabled: false,
+    currentLocation: null,
+    isTracking: false,
+    error: null,
+  },
 };
 
 /**
@@ -71,7 +79,7 @@ export const addContactWithStorage = createAsyncThunk(
     // Generate ID and timestamps
     const newContact: EmergencyContact = {
       ...contact,
-      id: `contact_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      id: `contact_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -248,8 +256,95 @@ const emergencyContactsSlice = createSlice({
     /**
      * Clear all contacts
      */
-    clearContacts: (state) => {
+    clearContacts: () => {
       return initialState;
+    },
+
+    /**
+     * Set search query
+     */
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload;
+    },
+
+    /**
+     * Set emergency mode state
+     */
+    setEmergencyMode: (state, action: PayloadAction<boolean>) => {
+      state.isEmergencyMode = action.payload;
+      // Clear search query when entering emergency mode
+      if (action.payload) {
+        state.searchQuery = '';
+      }
+    },
+
+    /**
+     * Toggle emergency mode state
+     */
+    toggleEmergencyMode: (state) => {
+      state.isEmergencyMode = !state.isEmergencyMode;
+      // Clear search query when entering emergency mode
+      if (state.isEmergencyMode) {
+        state.searchQuery = '';
+      }
+      // Reset location sharing when exiting emergency mode
+      if (!state.isEmergencyMode) {
+        state.locationSharing = {
+          isEnabled: false,
+          currentLocation: null,
+          isTracking: false,
+          error: null,
+        };
+      }
+    },
+
+    /**
+     * Set location sharing enabled state
+     */
+    setLocationSharingEnabled: (state, action: PayloadAction<boolean>) => {
+      state.locationSharing.isEnabled = action.payload;
+      if (!action.payload) {
+        state.locationSharing.isTracking = false;
+        state.locationSharing.error = null;
+      }
+    },
+
+    /**
+     * Set location tracking state
+     */
+    setLocationTracking: (state, action: PayloadAction<boolean>) => {
+      state.locationSharing.isTracking = action.payload;
+      if (!action.payload) {
+        state.locationSharing.error = null;
+      }
+    },
+
+    /**
+     * Update current location
+     */
+    updateCurrentLocation: (
+      state,
+      action: PayloadAction<{
+        latitude: number;
+        longitude: number;
+        accuracy?: number;
+        timestamp: number;
+      } | null>,
+    ) => {
+      state.locationSharing.currentLocation = action.payload;
+      if (action.payload) {
+        state.locationSharing.error = null;
+      }
+    },
+
+    /**
+     * Set location sharing error
+     */
+    setLocationSharingError: (state, action: PayloadAction<string | null>) => {
+      state.locationSharing.error = action.payload;
+      if (action.payload) {
+        state.locationSharing.isTracking = false;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -343,6 +438,13 @@ export const {
   setLoading,
   setError,
   clearContacts,
+  setSearchQuery,
+  setEmergencyMode,
+  toggleEmergencyMode,
+  setLocationSharingEnabled,
+  setLocationTracking,
+  updateCurrentLocation,
+  setLocationSharingError,
 } = emergencyContactsSlice.actions;
 
 /**
@@ -358,6 +460,17 @@ export const selectPrimaryContactId = (state: RootState) =>
 export const selectIsLoading = (state: RootState) => state.emergencyContacts.isLoading;
 export const selectError = (state: RootState) => state.emergencyContacts.error;
 export const selectIsInitialized = (state: RootState) => state.emergencyContacts.isInitialized;
+export const selectSearchQuery = (state: RootState) => state.emergencyContacts.searchQuery;
+export const selectIsEmergencyMode = (state: RootState) => state.emergencyContacts.isEmergencyMode;
+export const selectLocationSharing = (state: RootState) => state.emergencyContacts.locationSharing;
+export const selectLocationSharingEnabled = (state: RootState) =>
+  state.emergencyContacts.locationSharing.isEnabled;
+export const selectCurrentLocation = (state: RootState) =>
+  state.emergencyContacts.locationSharing.currentLocation;
+export const selectLocationTracking = (state: RootState) =>
+  state.emergencyContacts.locationSharing.isTracking;
+export const selectLocationSharingError = (state: RootState) =>
+  state.emergencyContacts.locationSharing.error;
 
 // Memoized selectors
 export const selectAllContacts = createSelector(
@@ -366,7 +479,7 @@ export const selectAllContacts = createSelector(
 );
 
 export const selectContactById = createSelector(
-  [selectContactsObject, (state: RootState, contactId: string) => contactId],
+  [selectContactsObject, (_state: RootState, contactId: string) => contactId],
   (contacts, contactId) => contacts[contactId] || null,
 );
 
@@ -376,7 +489,7 @@ export const selectPrimaryContact = createSelector(
 );
 
 export const selectContactsByCategory = createSelector(
-  [selectAllContacts, (state: RootState, category: ContactCategory) => category],
+  [selectAllContacts, (_state: RootState, category: ContactCategory) => category],
   (contacts, category) => contacts.filter((contact) => contact.category === category),
 );
 
@@ -385,6 +498,23 @@ export const selectContactsCount = createSelector([selectContactIds], (ids) => i
 export const selectHasPrimaryContact = createSelector(
   [selectPrimaryContactId],
   (primaryId) => primaryId !== null,
+);
+
+export const selectFilteredContacts = createSelector(
+  [selectAllContacts, selectSearchQuery],
+  (contacts, searchQuery) => {
+    if (!searchQuery.trim()) {
+      return contacts;
+    }
+
+    const query = searchQuery.toLowerCase();
+    return contacts.filter(
+      (contact) =>
+        contact.name.toLowerCase().includes(query) ||
+        contact.phone.includes(query) ||
+        (contact.notes && contact.notes.toLowerCase().includes(query)),
+    );
+  },
 );
 
 /**

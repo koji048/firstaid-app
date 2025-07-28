@@ -15,7 +15,6 @@ describe('Navigation', () => {
       </Provider>
     );
 
-    const { getByText } = render(component);
     // Since we're not authenticated, should show welcome screen
     expect(() => render(component)).not.toThrow();
   });

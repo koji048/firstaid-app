@@ -1,0 +1,68 @@
+{
+  "id": "burns-treatment",
+  "title": "Burns and Scalds Treatment",
+  "category": "burns_scalds",
+  "severity": "medium",
+  "summary": "First aid treatment for thermal burns and scalds, including assessment and immediate care.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Safety",
+        "description": "Remove the person from the heat source. Stop the burning process by removing hot clothing or jewelry unless stuck to the skin. Call 911 for severe burns.",
+        "duration": 30
+      },
+      {
+        "order": 2,
+        "title": "Cool the Burn",
+        "description": "Run cool (not ice cold) water over the burn for 10-20 minutes. This reduces pain, swelling, and the risk of scarring. Do not use ice, butter, or ointments.",
+        "imageUrl": "guides/images/burns_1.png",
+        "duration": 1200
+      },
+      {
+        "order": 3,
+        "title": "Remove Constrictive Items",
+        "description": "Gently remove rings, watches, belts, or tight clothing near the burned area before swelling begins. Do not remove anything stuck to the burn.",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "Cover the Burn",
+        "description": "After cooling, cover the burn loosely with a sterile, non-stick dressing or clean cloth. Do not use fluffy materials that may stick to the wound.",
+        "imageUrl": "guides/images/burns_2.png",
+        "duration": 60
+      },
+      {
+        "order": 5,
+        "title": "Manage Pain and Monitor",
+        "description": "Give over-the-counter pain medication if needed. Keep the person warm with blankets (avoid the burned area). Watch for signs of shock.",
+        "duration": 300
+      }
+    ],
+    "warnings": [
+      "Never use ice, butter, oil, or toothpaste on burns",
+      "Do not break blisters - they protect against infection",
+      "Do not remove clothing stuck to the burn",
+      "Avoid using adhesive bandages directly on burns"
+    ],
+    "whenToSeekHelp": [
+      "Burns larger than 3 inches or deep burns",
+      "Burns on face, hands, feet, genitals, or major joints",
+      "Chemical or electrical burns",
+      "Signs of infection: increased pain, redness, fever, swelling, or oozing"
+    ],
+    "preventionTips": [
+      "Set water heater below 120°F (48°C)",
+      "Keep hot liquids away from table edges",
+      "Use back burners when cooking and turn pot handles inward",
+      "Test bath water before entering"
+    ]
+  },
+  "searchTags": ["burns", "scalds", "thermal", "fire", "hot water", "first degree", "second degree", "burn treatment"],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-01T00:00:00Z",
+  "createdAt": "2024-01-01T00:00:00Z",
+  "updatedAt": "2024-01-01T00:00:00Z"
+}

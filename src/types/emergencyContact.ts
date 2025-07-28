@@ -105,4 +105,27 @@ export interface EmergencyContactsState {
 
   /** Whether data has been loaded from storage */
   isInitialized: boolean;
+
+  /** Current search query */
+  searchQuery: string;
+
+  /** Emergency mode state - enables one-tap calling and enlarged UI */
+  isEmergencyMode: boolean;
+
+  /** Location sharing state during emergency mode */
+  locationSharing: {
+    /** Whether location sharing is enabled */
+    isEnabled: boolean;
+    /** Current location coordinates */
+    currentLocation: {
+      latitude: number;
+      longitude: number;
+      accuracy?: number;
+      timestamp: number;
+    } | null;
+    /** Whether location is being actively tracked */
+    isTracking: boolean;
+    /** Last error when getting location */
+    error: string | null;
+  };
 }

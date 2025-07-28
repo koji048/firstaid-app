@@ -1,0 +1,67 @@
+{
+  "id": "severe-bleeding",
+  "title": "Severe Bleeding Control",
+  "category": "wounds_bleeding",
+  "severity": "high",
+  "summary": "How to control severe, life-threatening bleeding from wounds using direct pressure and other techniques.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Safety and Call for Help",
+        "description": "Put on gloves if available. Call 911 for severe bleeding. Have the injured person lie down and keep them calm.",
+        "duration": 10
+      },
+      {
+        "order": 2,
+        "title": "Apply Direct Pressure",
+        "description": "Use a clean cloth or sterile gauze to apply firm, continuous pressure directly on the wound. Do not remove the cloth if it becomes soaked - add more layers on top.",
+        "imageUrl": "guides/images/bleeding_1.png",
+        "duration": 300
+      },
+      {
+        "order": 3,
+        "title": "Elevate the Injured Area",
+        "description": "If possible, raise the injured body part above the level of the heart while maintaining pressure. This helps reduce blood flow to the area.",
+        "imageUrl": "guides/images/bleeding_2.png",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "Apply a Pressure Bandage",
+        "description": "Once bleeding slows, apply a firm bandage over the dressing. The bandage should be snug but not cut off circulation. Check for pulse beyond the bandage.",
+        "duration": 60
+      },
+      {
+        "order": 5,
+        "title": "Use a Tourniquet if Necessary",
+        "description": "Only for life-threatening limb bleeding that won't stop with direct pressure. Apply 2-3 inches above the wound, tighten until bleeding stops. Note the time and do not remove.",
+        "duration": 60
+      }
+    ],
+    "warnings": [
+      "Do not remove objects embedded in wounds - stabilize them in place",
+      "Do not apply tourniquet directly over a joint",
+      "Never use a tourniquet for more than 2 hours without medical supervision",
+      "Do not give the person anything to eat or drink"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 for any severe bleeding",
+      "Bleeding that won't stop after 10 minutes of direct pressure",
+      "Signs of shock: pale skin, rapid pulse, confusion",
+      "Large or deep wounds, or wounds on head, neck, chest, or abdomen"
+    ],
+    "preventionTips": [
+      "Keep first aid supplies readily available",
+      "Learn proper wound care techniques",
+      "Use protective equipment when using tools or machinery"
+    ]
+  },
+  "searchTags": ["bleeding", "hemorrhage", "wound", "pressure", "tourniquet", "blood loss", "trauma"],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-01T00:00:00Z",
+  "createdAt": "2024-01-01T00:00:00Z",
+  "updatedAt": "2024-01-01T00:00:00Z"
+}

@@ -49,7 +49,7 @@ const offlineSlice = createSlice({
       }
     },
     incrementRetryCount: (state, action: PayloadAction<string>) => {
-      const item = state.syncQueue.find((item) => item.id === action.payload);
+      const item = state.syncQueue.find((queueItem) => queueItem.id === action.payload);
       if (item) {
         item.retryCount = (item.retryCount || 0) + 1;
       }

@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { FirstAidGuide } from '../../types';
+import { GuideCategory } from '../../types/guideContent';
+import { SearchResult } from '../../utils/searchIndexer';
 
 interface GuidesState {
   guides: FirstAidGuide[];
@@ -9,7 +11,11 @@ interface GuidesState {
   isLoading: boolean;
   error: string | null;
   searchQuery: string;
-  selectedCategory: string | null;
+  selectedCategory: GuideCategory | null;
+  searchResults: SearchResult[];
+  categories: GuideCategory[];
+  guideVersions: Record<string, number>;
+  contentLoaded: boolean;
 }
 
 const initialState: GuidesState = {
@@ -21,6 +27,10 @@ const initialState: GuidesState = {
   error: null,
   searchQuery: '',
   selectedCategory: null,
+  searchResults: [],
+  categories: [],
+  guideVersions: {},
+  contentLoaded: false,
 };
 
 const guidesSlice = createSlice({
@@ -50,8 +60,49 @@ const guidesSlice = createSlice({
     setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
     },
-    setSelectedCategory: (state, action: PayloadAction<string | null>) => {
+    setSelectedCategory: (state, action: PayloadAction<GuideCategory | null>) => {
       state.selectedCategory = action.payload;
+    },
+    loadGuidesFromContent: (state, action: PayloadAction<{
+      guides: FirstAidGuide[];
+      categories: GuideCategory[];
+    }>) => {
+      state.guides = action.payload.guides;
+      state.categories = action.payload.categories;
+      state.contentLoaded = true;
+      state.error = null;
+      
+      // Update version info
+      const versions: Record<string, number> = {};
+      action.payload.guides.forEach((guide) => {
+        versions[guide.id] = guide.version;
+      });
+      state.guideVersions = versions;
+    },
+    updateGuideVersion: (state, action: PayloadAction<{
+      guideId: string;
+      version: number;
+      guide: FirstAidGuide;
+    }>) => {
+      const index = state.guides.findIndex((g) => g.id === action.payload.guideId);
+      if (index !== -1) {
+        state.guides[index] = action.payload.guide;
+        state.guideVersions[action.payload.guideId] = action.payload.version;
+      }
+    },
+    setGuideCategories: (state, action: PayloadAction<GuideCategory[]>) => {
+      state.categories = action.payload;
+    },
+    searchGuides: (state, action: PayloadAction<{
+      query: string;
+      results: SearchResult[];
+    }>) => {
+      state.searchQuery = action.payload.query;
+      state.searchResults = action.payload.results;
+    },
+    clearSearchResults: (state) => {
+      state.searchQuery = '';
+      state.searchResults = [];
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
@@ -73,6 +124,44 @@ export const {
   setSelectedCategory,
   setLoading,
   setError,
+  loadGuidesFromContent,
+  updateGuideVersion,
+  setGuideCategories,
+  searchGuides,
+  clearSearchResults,
 } = guidesSlice.actions;
+
+// Selectors
+export const selectGuidesByCategory = (state: { guides: GuidesState }, category: GuideCategory) => {
+  return state.guides.guides.filter((guide) => guide.category === category);
+};
+
+export const selectGuidesByVersion = (state: { guides: GuidesState }, minVersion: number) => {
+  return state.guides.guides.filter((guide) => guide.version >= minVersion);
+};
+
+export const selectSearchResults = (state: { guides: GuidesState }) => {
+  return state.guides.searchResults;
+};
+
+export const selectBookmarkedGuides = (state: { guides: GuidesState }) => {
+  return state.guides.guides.filter((guide) => 
+    state.guides.bookmarks.includes(guide.id)
+  );
+};
+
+export const selectDownloadedGuides = (state: { guides: GuidesState }) => {
+  return state.guides.guides.filter((guide) => 
+    state.guides.downloadedGuides.includes(guide.id)
+  );
+};
+
+export const selectGuideById = (state: { guides: GuidesState }, guideId: string) => {
+  return state.guides.guides.find((guide) => guide.id === guideId);
+};
+
+export const selectIsGuideBookmarked = (state: { guides: GuidesState }, guideId: string) => {
+  return state.guides.bookmarks.includes(guideId);
+};
 
 export default guidesSlice.reducer;

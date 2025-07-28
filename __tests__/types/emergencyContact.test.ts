@@ -29,18 +29,19 @@ describe('Emergency Contact Types', () => {
   });
 
   describe('Type Guards', () => {
-    const isValidEmergencyContact = (obj: any): obj is EmergencyContact => {
+    const isValidEmergencyContact = (obj: unknown): obj is EmergencyContact => {
+      const contact = obj as Record<string, unknown>;
       return (
-        typeof obj.id === 'string' &&
-        typeof obj.userId === 'string' &&
-        typeof obj.name === 'string' &&
-        typeof obj.phone === 'string' &&
-        Object.values(ContactRelationship).includes(obj.relationship) &&
-        Object.values(ContactCategory).includes(obj.category) &&
-        typeof obj.isPrimary === 'boolean' &&
-        (obj.notes === undefined || typeof obj.notes === 'string') &&
-        obj.createdAt instanceof Date &&
-        obj.updatedAt instanceof Date
+        typeof contact.id === 'string' &&
+        typeof contact.userId === 'string' &&
+        typeof contact.name === 'string' &&
+        typeof contact.phone === 'string' &&
+        Object.values(ContactRelationship).includes(contact.relationship as ContactRelationship) &&
+        Object.values(ContactCategory).includes(contact.category as ContactCategory) &&
+        typeof contact.isPrimary === 'boolean' &&
+        (contact.notes === undefined || typeof contact.notes === 'string') &&
+        contact.createdAt instanceof Date &&
+        contact.updatedAt instanceof Date
       );
     };
 

@@ -5,7 +5,7 @@
  * with Redux state and storage persistence
  */
 
-import { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../store/hooks';
 import {
@@ -36,6 +36,7 @@ export const useEmergencyContacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const isInitialized = useSelector(selectIsInitialized);
+  const [refreshing, setRefreshing] = React.useState(false);
 
   // Load contacts on mount if not initialized
   useEffect(() => {
@@ -44,11 +45,26 @@ export const useEmergencyContacts = () => {
     }
   }, [dispatch, isInitialized, userId]);
 
+  const refreshContacts = useCallback(async () => {
+    if (!userId) return;
+
+    setRefreshing(true);
+    try {
+      await dispatch(loadContactsFromStorage(userId)).unwrap();
+    } catch (error) {
+      console.error('Failed to refresh contacts:', error);
+    } finally {
+      setRefreshing(false);
+    }
+  }, [dispatch, userId]);
+
   return {
     contacts,
-    isLoading,
+    loading: isLoading,
+    refreshing,
     error,
     isInitialized,
+    refreshContacts,
   };
 };
 

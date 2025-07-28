@@ -1,0 +1,66 @@
+{
+  "id": "cpr-adult",
+  "title": "CPR for Adults",
+  "category": "basic_life_support",
+  "severity": "critical",
+  "summary": "Step-by-step guide for performing cardiopulmonary resuscitation (CPR) on adults who are unresponsive and not breathing normally.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Ensure Safety and Check Responsiveness",
+        "description": "Check the scene for safety. Tap the person's shoulders firmly and shout 'Are you okay?' If unresponsive, call 911 immediately or have someone else do it. Request an AED if available.",
+        "imageUrl": "guides/images/cpr_1.png",
+        "duration": 10
+      },
+      {
+        "order": 2,
+        "title": "Position the Person",
+        "description": "Place the person on their back on a firm, flat surface. Tilt their head back by lifting the chin to open the airway. Check for breathing for no more than 10 seconds.",
+        "imageUrl": "guides/images/cpr_2.png",
+        "duration": 10
+      },
+      {
+        "order": 3,
+        "title": "Perform Chest Compressions",
+        "description": "Place the heel of one hand on the center of the chest between the nipples. Place your other hand on top, interlacing fingers. Press hard and fast at least 2 inches deep at a rate of 100-120 compressions per minute. Allow complete chest recoil between compressions.",
+        "imageUrl": "guides/images/cpr_3.png",
+        "duration": 120
+      },
+      {
+        "order": 4,
+        "title": "Give Rescue Breaths",
+        "description": "After 30 compressions, open the airway using head-tilt, chin-lift. Pinch the nose closed and make a seal over their mouth. Give 2 breaths, each lasting 1 second, watching for chest rise.",
+        "duration": 5
+      },
+      {
+        "order": 5,
+        "title": "Continue CPR Cycles",
+        "description": "Continue with 30 chest compressions followed by 2 rescue breaths. Repeat until emergency services arrive or the person starts breathing normally. If an AED arrives, follow its voice prompts.",
+        "duration": 300
+      }
+    ],
+    "warnings": [
+      "Do not perform CPR if the person is conscious and breathing normally",
+      "CPR can cause rib fractures - this is normal and should not stop you from continuing",
+      "If you're untrained in rescue breaths, provide continuous chest compressions only"
+    ],
+    "whenToSeekHelp": [
+      "Always call 911 immediately when someone is unresponsive",
+      "Continue CPR until professional help arrives",
+      "If multiple rescuers are present, switch every 2 minutes to prevent fatigue"
+    ],
+    "preventionTips": [
+      "Learn to recognize signs of cardiac arrest early",
+      "Take a certified CPR course to improve your skills",
+      "Know the location of AEDs in your workplace and community"
+    ]
+  },
+  "searchTags": ["cpr", "cardiac arrest", "heart attack", "chest compressions", "rescue breathing", "emergency", "life support", "resuscitation"],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-01T00:00:00Z",
+  "createdAt": "2024-01-01T00:00:00Z",
+  "updatedAt": "2024-01-01T00:00:00Z"
+}

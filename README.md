@@ -8,11 +8,21 @@ A comprehensive mobile application providing instant access to first aid guidanc
 
 ## Features
 
+### Implemented
+
+- 📇 **Emergency Contacts Management**: Add, edit, and organize emergency contacts with categories (Family, Medical, Work)
+  - Search functionality with real-time filtering
+  - Primary contact designation
+  - Phone number formatting and validation
+  - Secure encrypted storage
+
+### Planned
+
 - 📚 **First Aid Guides**: Step-by-step instructions for common medical emergencies
 - 🚨 **Emergency Mode**: Quick access to emergency contacts and nearest hospitals
 - 👤 **Medical Profile**: Store important medical information securely
 - 📱 **Offline Support**: Access critical information without internet connection
-- 🌍 **Multi-language**: Support for multiple languages (coming soon)
+- 🌍 **Multi-language**: Support for multiple languages
 
 ## Tech Stack
 

@@ -29,6 +29,7 @@ jest.mock('react-native-keychain', () => ({
 
 // Mock react-native-gesture-handler
 jest.mock('react-native-gesture-handler', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const View = require('react-native').View;
   return {
     Swipeable: View,
@@ -62,7 +63,9 @@ jest.mock('react-native-gesture-handler', () => {
 
 // Mock react-native-reanimated
 jest.mock('react-native-reanimated', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const Reanimated = require('react-native-reanimated/mock');
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   Reanimated.default.call = () => {};
   return Reanimated;
 });

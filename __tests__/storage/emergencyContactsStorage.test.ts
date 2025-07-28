@@ -116,9 +116,9 @@ describe('EmergencyContactsStorage', () => {
       const contacts = await storage.loadContacts(userId);
 
       expect(contacts).toHaveLength(1);
-      expect(contacts![0].phone).toBe('+1234567890');
-      expect(contacts![0].notes).toBe('Test notes');
-      expect(contacts![0].createdAt).toBeInstanceOf(Date);
+      expect(contacts?.[0].phone).toBe('+1234567890');
+      expect(contacts?.[0].notes).toBe('Test notes');
+      expect(contacts?.[0].createdAt).toBeInstanceOf(Date);
     });
 
     it('should return null if no data exists', async () => {

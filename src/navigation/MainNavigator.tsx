@@ -37,7 +37,7 @@ const MainNavigator = () => {
         component={HomeNavigator}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: () => (
             // Placeholder icon - will be replaced with actual icon component
             <></>
           ),
@@ -48,7 +48,7 @@ const MainNavigator = () => {
         component={GuidesNavigator}
         options={{
           tabBarLabel: 'Guides',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: () => (
             // Placeholder icon - will be replaced with actual icon component
             <></>
           ),
@@ -59,7 +59,7 @@ const MainNavigator = () => {
         component={MedicalNavigator}
         options={{
           tabBarLabel: 'Medical',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: () => (
             // Placeholder icon - will be replaced with actual icon component
             <></>
           ),
@@ -70,7 +70,7 @@ const MainNavigator = () => {
         component={SettingsNavigator}
         options={{
           tabBarLabel: 'Settings',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: () => (
             // Placeholder icon - will be replaced with actual icon component
             <></>
           ),

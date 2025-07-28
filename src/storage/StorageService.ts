@@ -78,7 +78,7 @@ export class StorageService {
   static async getItem<T>(key: string): Promise<T | null> {
     try {
       const jsonValue = await AsyncStorage.getItem(key);
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
+      return jsonValue !== null ? JSON.parse(jsonValue) : null;
     } catch (error) {
       console.error('Error reading from AsyncStorage:', error);
       return null;

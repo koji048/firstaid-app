@@ -19,27 +19,27 @@ The Inquiry App follows IBM's minimal design philosophy, emphasizing clarity, fu
 
 ```css
 /* Primary Palette */
---ibm-blue: #0f62fe;          /* Primary actions, links */
---ibm-blue-hover: #0043ce;    /* Hover state for blue elements */
---ibm-text-primary: #161616;  /* Main content text */
---ibm-text-secondary: #525252;/* Secondary information */
---ibm-text-helper: #6f6f6f;   /* Helper text, captions */
+--ibm-blue: #0f62fe; /* Primary actions, links */
+--ibm-blue-hover: #0043ce; /* Hover state for blue elements */
+--ibm-text-primary: #161616; /* Main content text */
+--ibm-text-secondary: #525252; /* Secondary information */
+--ibm-text-helper: #6f6f6f; /* Helper text, captions */
 
 /* Background Colors */
---ibm-bg-primary: #ffffff;    /* Main background */
---ibm-bg-secondary: #f4f4f4;  /* Section backgrounds */
---ibm-bg-tertiary: #e0e0e0;   /* Subtle backgrounds */
+--ibm-bg-primary: #ffffff; /* Main background */
+--ibm-bg-secondary: #f4f4f4; /* Section backgrounds */
+--ibm-bg-tertiary: #e0e0e0; /* Subtle backgrounds */
 --ibm-bg-hover: rgba(0, 0, 0, 0.05);
 
 /* Status Colors */
---ibm-success: #24a148;       /* Success states */
---ibm-error: #da1e28;         /* Error states */
---ibm-warning: #f1c21b;       /* Warning states */
---ibm-orange: #f1620e;        /* Special highlights */
---ibm-purple: #8a3ffc;        /* Premium features */
+--ibm-success: #24a148; /* Success states */
+--ibm-error: #da1e28; /* Error states */
+--ibm-warning: #f1c21b; /* Warning states */
+--ibm-orange: #f1620e; /* Special highlights */
+--ibm-purple: #8a3ffc; /* Premium features */
 
 /* Borders */
---ibm-border: #e0e0e0;        /* Default borders */
+--ibm-border: #e0e0e0; /* Default borders */
 --ibm-border-subtle: #c6c6c6; /* Emphasized borders */
 ```
 
@@ -47,11 +47,11 @@ The Inquiry App follows IBM's minimal design philosophy, emphasizing clarity, fu
 
 ```css
 /* Dark Mode Adjustments */
---ibm-blue: #78a9ff;          /* Softer blue for dark */
---ibm-text-primary: #f4f4f4;  /* Light text on dark */
---ibm-text-secondary: #c6c6c6;/* Enhanced contrast */
---ibm-bg-primary: #161616;    /* Dark background */
---ibm-bg-secondary: #262626;  /* Elevated surfaces */
+--ibm-blue: #78a9ff; /* Softer blue for dark */
+--ibm-text-primary: #f4f4f4; /* Light text on dark */
+--ibm-text-secondary: #c6c6c6; /* Enhanced contrast */
+--ibm-bg-primary: #161616; /* Dark background */
+--ibm-bg-secondary: #262626; /* Elevated surfaces */
 ```
 
 ### Typography
@@ -81,15 +81,15 @@ The Inquiry App follows IBM's minimal design philosophy, emphasizing clarity, fu
 Based on 8px grid system:
 
 ```css
---ibm-spacing-01: 0.125rem;  /* 2px - Minimal spacing */
---ibm-spacing-02: 0.25rem;   /* 4px - Tight spacing */
---ibm-spacing-03: 0.5rem;    /* 8px - Base unit */
---ibm-spacing-04: 0.75rem;   /* 12px - Small padding */
---ibm-spacing-05: 1rem;      /* 16px - Default padding */
---ibm-spacing-06: 1.5rem;    /* 24px - Section spacing */
---ibm-spacing-07: 2rem;      /* 32px - Large spacing */
---ibm-spacing-08: 2.5rem;    /* 40px - Extra spacing */
---ibm-spacing-09: 3rem;      /* 48px - Maximum spacing */
+--ibm-spacing-01: 0.125rem; /* 2px - Minimal spacing */
+--ibm-spacing-02: 0.25rem; /* 4px - Tight spacing */
+--ibm-spacing-03: 0.5rem; /* 8px - Base unit */
+--ibm-spacing-04: 0.75rem; /* 12px - Small padding */
+--ibm-spacing-05: 1rem; /* 16px - Default padding */
+--ibm-spacing-06: 1.5rem; /* 24px - Section spacing */
+--ibm-spacing-07: 2rem; /* 32px - Large spacing */
+--ibm-spacing-08: 2.5rem; /* 40px - Extra spacing */
+--ibm-spacing-09: 3rem; /* 48px - Maximum spacing */
 ```
 
 ## Layout Guidelines
@@ -103,6 +103,7 @@ Based on 8px grid system:
 ```
 
 **Padding Guidelines:**
+
 - Mobile: `px-12 py-8` (48px horizontal, 32px vertical)
 - Desktop: `px-16 py-12` (64px horizontal, 48px vertical)
 - Sections: `mb-24` between major sections
@@ -130,27 +131,25 @@ xl: 1280px  /* Desktop */
 ### Buttons
 
 **Primary Button**
+
 ```tsx
-<button className="ibm-btn-primary">
-  Action
-</button>
+<button className="ibm-btn-primary">Action</button>
 ```
 
 **Secondary Button**
+
 ```tsx
-<button className="ibm-btn-secondary">
-  Alternative
-</button>
+<button className="ibm-btn-secondary">Alternative</button>
 ```
 
 **Ghost Button**
+
 ```tsx
-<button className="ibm-btn-ghost">
-  Subtle Action
-</button>
+<button className="ibm-btn-ghost">Subtle Action</button>
 ```
 
 **Button States:**
+
 - Default: Base color
 - Hover: Darker shade with transition
 - Active: Even darker shade
@@ -160,6 +159,7 @@ xl: 1280px  /* Desktop */
 ### Form Elements
 
 **Input Fields**
+
 ```tsx
 <div>
   <label className="ibm-label">Field Label</label>
@@ -169,6 +169,7 @@ xl: 1280px  /* Desktop */
 ```
 
 **Select Dropdowns**
+
 ```tsx
 <select className="ibm-select">
   <option>Option 1</option>
@@ -179,26 +180,21 @@ xl: 1280px  /* Desktop */
 ### Cards and Containers
 
 **Basic Card**
+
 ```tsx
-<div className="ibm-card">
-  {/* Content */}
-</div>
+<div className="ibm-card">{/* Content */}</div>
 ```
 
 **Metric Card**
+
 ```tsx
-<MetricCard
-  label="Response Time"
-  before={3.2}
-  after={0.8}
-  unit="s"
-  improvement={75}
-/>
+<MetricCard label="Response Time" before={3.2} after={0.8} unit="s" improvement={75} />
 ```
 
 ### Status Indicators
 
 **Tags**
+
 ```tsx
 <span className="ibm-tag">Default</span>
 <span className="ibm-tag-success">Success</span>
@@ -341,13 +337,9 @@ xl: 1280px  /* Desktop */
 
 ```tsx
 <MinimalLayout>
-  <h1 className="text-6xl font-light gradient-text mb-4">
-    Performance Analytics
-  </h1>
-  <p className="text-xl text-ibm-text-secondary mb-24">
-    Real-time system performance metrics
-  </p>
-  
+  <h1 className="text-6xl font-light gradient-text mb-4">Performance Analytics</h1>
+  <p className="text-xl text-ibm-text-secondary mb-24">Real-time system performance metrics</p>
+
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
     <MetricCard {...props} />
   </div>
@@ -358,10 +350,8 @@ xl: 1280px  /* Desktop */
 
 ```tsx
 <div className="max-w-2xl mx-auto">
-  <h2 className="text-2xl font-light mb-8">
-    Configuration Settings
-  </h2>
-  
+  <h2 className="text-2xl font-light mb-8">Configuration Settings</h2>
+
   <div className="space-y-6">
     <div>
       <label className="ibm-label">Setting Name</label>
@@ -429,5 +419,5 @@ xl: 1280px  /* Desktop */
 
 ---
 
-*Last Updated: 2025-07-27*
-*Version: 1.0*
+_Last Updated: 2025-07-27_
+_Version: 1.0_

@@ -1,0 +1,135 @@
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+
+export const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  modalContainer: {
+    backgroundColor: '#ffffff',
+    borderRadius: 16,
+    padding: 24,
+    width: Math.min(width - 40, 400),
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+    elevation: 20,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 20,
+    position: 'relative',
+  },
+  title: {
+    fontSize: 20,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#161616',
+    marginTop: 8,
+  },
+  countdownContainer: {
+    position: 'absolute',
+    top: -8,
+    right: -8,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#da1e28',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  countdownText: {
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '600',
+    color: '#ffffff',
+  },
+  contactInfo: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  contactName: {
+    fontSize: 24,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#161616',
+    marginBottom: 4,
+    textAlign: 'center',
+  },
+  relationship: {
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#525252',
+    marginBottom: 8,
+  },
+  phoneNumber: {
+    fontSize: 18,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#0f62fe',
+    textAlign: 'center',
+  },
+  autoConfirmInfo: {
+    backgroundColor: '#fff1f1',
+    borderWidth: 1,
+    borderColor: '#ffcdd2',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  autoConfirmText: {
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#da1e28',
+    textAlign: 'center',
+  },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  button: {
+    flex: 1,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cancelButton: {
+    backgroundColor: '#f4f4f4',
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+  },
+  confirmButton: {
+    backgroundColor: '#0f62fe',
+  },
+  buttonIcon: {
+    marginRight: 8,
+  },
+  cancelButtonText: {
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#161616',
+  },
+  confirmButtonText: {
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#ffffff',
+  },
+});

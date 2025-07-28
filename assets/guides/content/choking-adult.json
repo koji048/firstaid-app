@@ -1,0 +1,59 @@
+{
+  "id": "choking-adult",
+  "title": "Choking - Adult",
+  "category": "basic_life_support",
+  "severity": "critical",
+  "summary": "Emergency procedure for helping an adult who is choking and cannot cough, speak, or breathe.",
+  "content": {
+    "steps": [
+      {
+        "order": 1,
+        "title": "Recognize Choking Signs",
+        "description": "Look for universal choking sign - hands clutched to throat. Person cannot speak, cough, or breathe. Face may turn blue or red. Act immediately if these signs are present.",
+        "imageUrl": "guides/images/choking_1.png",
+        "duration": 5
+      },
+      {
+        "order": 2,
+        "title": "Position Yourself",
+        "description": "Stand behind the person. Wrap your arms around their waist. Make a fist with one hand and place it slightly above the navel, thumb side in.",
+        "imageUrl": "guides/images/choking_2.png",
+        "duration": 5
+      },
+      {
+        "order": 3,
+        "title": "Perform Abdominal Thrusts",
+        "description": "Grasp your fist with your other hand. Give quick, upward thrusts into the abdomen. Repeat until the object is expelled or the person becomes unconscious.",
+        "duration": 60
+      },
+      {
+        "order": 4,
+        "title": "If Person Becomes Unconscious",
+        "description": "Lower the person to the ground. Call 911 immediately. Begin CPR, starting with chest compressions. Before giving breaths, look in the mouth for the object and remove it if visible.",
+        "duration": 120
+      }
+    ],
+    "warnings": [
+      "Do not perform abdominal thrusts on pregnant women - use chest thrusts instead",
+      "Never perform a blind finger sweep in the mouth",
+      "For obese persons, perform chest thrusts if you cannot wrap arms around waist"
+    ],
+    "whenToSeekHelp": [
+      "Call 911 if the person becomes unconscious",
+      "Seek medical attention after successful removal of object",
+      "Get immediate help if abdominal thrusts are not working"
+    ],
+    "preventionTips": [
+      "Cut food into small pieces and chew thoroughly",
+      "Avoid talking or laughing while eating",
+      "Keep small objects away from young children"
+    ]
+  },
+  "searchTags": ["choking", "heimlich", "abdominal thrusts", "airway obstruction", "emergency", "breathing"],
+  "version": 1,
+  "isOfflineAvailable": true,
+  "viewCount": 0,
+  "lastReviewedAt": "2024-01-01T00:00:00Z",
+  "createdAt": "2024-01-01T00:00:00Z",
+  "updatedAt": "2024-01-01T00:00:00Z"
+}

@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
 const screens = {
@@ -36,8 +38,10 @@ Object.entries(screens).forEach(([folder, screenList]) => {
     const content = template(screenName);
     const filePath = path.join(__dirname, folder, `${screenName}.tsx`);
     fs.writeFileSync(filePath, content);
+    // eslint-disable-next-line no-console
     console.log(`Created ${filePath}`);
   });
 });
 
+// eslint-disable-next-line no-console
 console.log('All placeholder screens created!');

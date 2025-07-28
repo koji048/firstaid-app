@@ -7,7 +7,7 @@ export const initSentry = () => {
     environment: __DEV__ ? 'development' : 'production',
     tracesSampleRate: __DEV__ ? 1.0 : 0.1,
     integrations: [Sentry.reactNativeTracingIntegration()],
-    beforeSend: (event, hint) => {
+    beforeSend: (event) => {
       // Filter out sensitive information
       if (event.user) {
         delete event.user.email;

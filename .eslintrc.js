@@ -78,5 +78,14 @@ module.exports = {
         jest: true,
       },
     },
+    {
+      files: ['*.js'],
+      parserOptions: {
+        project: null,
+      },
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
   ],
 };

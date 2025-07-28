@@ -15,12 +15,7 @@ import emergencyContactsReducer, {
   selectContactsCount,
   selectHasPrimaryContact,
 } from '../../../src/store/slices/emergencyContactsSlice';
-import {
-  EmergencyContact,
-  ContactRelationship,
-  ContactCategory,
-  EmergencyContactsState,
-} from '../../../src/types';
+import { EmergencyContact, ContactRelationship, ContactCategory } from '../../../src/types';
 
 // Helper function to create a mock contact
 const createMockContact = (overrides?: Partial<EmergencyContact>): EmergencyContact => ({
