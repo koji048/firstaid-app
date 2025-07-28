@@ -5,6 +5,7 @@ import emergencyReducer from './slices/emergencySlice';
 import emergencyContactsReducer from './slices/emergencyContactsSlice';
 import medicalReducer from './slices/medicalSlice';
 import offlineReducer from './slices/offlineSlice';
+import navigationReducer from './slices/navigationSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     emergencyContacts: emergencyContactsReducer,
     medical: medicalReducer,
     offline: offlineReducer,
+    navigation: navigationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

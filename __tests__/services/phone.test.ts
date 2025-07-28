@@ -1,4 +1,4 @@
-import { Alert, Linking } from 'react-native';
+import { Alert, Linking, Platform } from 'react-native';
 import { PhoneService } from '../../src/services/phone';
 import * as sentry from '../../src/services/sentry';
 import { validatePhoneNumber } from '../../src/utils/phoneNumber';
@@ -11,6 +11,9 @@ jest.mock('react-native', () => ({
   },
   Alert: {
     alert: jest.fn(),
+  },
+  Platform: {
+    OS: 'ios',
   },
 }));
 
@@ -29,6 +32,8 @@ describe('PhoneService', () => {
     (Linking.canOpenURL as jest.Mock).mockResolvedValue(true);
     (Linking.openURL as jest.Mock).mockResolvedValue(undefined);
     (validatePhoneNumber as jest.Mock).mockReturnValue(true);
+    // Default to iOS for consistent testing
+    Platform.OS = 'ios';
   });
 
   describe('makePhoneCall', () => {
@@ -191,6 +196,141 @@ describe('PhoneService', () => {
       expect(Alert.alert).toHaveBeenCalledWith('Call Failed', 'Unable to make phone call', [
         { text: 'OK' },
       ]);
+    });
+  });
+
+  describe('makeEmergencyCall', () => {
+    it('should make emergency call successfully on iOS', async () => {
+      Platform.OS = 'ios';
+      (Linking.canOpenURL as jest.Mock).mockResolvedValue(true);
+      (Linking.openURL as jest.Mock).mockResolvedValue(undefined);
+
+      const result = await PhoneService.makeEmergencyCall('911');
+
+      expect(result.success).toBe(true);
+      expect(Linking.canOpenURL).toHaveBeenCalledWith('tel://911');
+      expect(Linking.openURL).toHaveBeenCalledWith('tel://911');
+      expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Emergency call initiated',
+          category: 'emergency',
+          level: 'critical',
+        }),
+      );
+    });
+
+    it('should make emergency call successfully on Android', async () => {
+      Platform.OS = 'android';
+      (Linking.canOpenURL as jest.Mock).mockResolvedValue(true);
+      (Linking.openURL as jest.Mock).mockResolvedValue(undefined);
+
+      const result = await PhoneService.makeEmergencyCall('911');
+
+      expect(result.success).toBe(true);
+      expect(Linking.canOpenURL).toHaveBeenCalledWith('tel:911');
+      expect(Linking.openURL).toHaveBeenCalledWith('tel:911');
+    });
+
+    it('should handle device that cannot make calls in dev mode', async () => {
+      (Linking.canOpenURL as jest.Mock).mockResolvedValue(false);
+      // @ts-ignore - accessing global __DEV__
+      global.__DEV__ = true;
+
+      const result = await PhoneService.makeEmergencyCall('911');
+
+      expect(result.success).toBe(true);
+      expect(Alert.alert).toHaveBeenCalledWith(
+        'Emergency Call (Dev Mode)',
+        'Would call 911 in production',
+        [{ text: 'OK' }],
+      );
+    });
+
+    it('should fail when device cannot make calls in production', async () => {
+      (Linking.canOpenURL as jest.Mock).mockResolvedValue(false);
+      // @ts-ignore - accessing global __DEV__
+      global.__DEV__ = false;
+
+      const result = await PhoneService.makeEmergencyCall('911');
+
+      expect(result.success).toBe(false);
+      expect(result.error).toBe('Device cannot make emergency calls');
+      expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Emergency call failed - device unsupported',
+          category: 'emergency',
+          level: 'error',
+        }),
+      );
+    });
+
+    it('should handle errors during emergency call', async () => {
+      const error = new Error('Network error');
+      (Linking.canOpenURL as jest.Mock).mockRejectedValue(error);
+
+      const result = await PhoneService.makeEmergencyCall('911');
+
+      expect(result.success).toBe(false);
+      expect(result.error).toBe('Network error');
+      expect(sentry.captureException).toHaveBeenCalledWith(
+        error,
+        expect.objectContaining({
+          context: 'emergency_call',
+          emergencyNumber: '911',
+          platform: 'ios',
+          severity: 'critical',
+        }),
+      );
+    });
+
+    it('should log breadcrumbs for successful emergency call', async () => {
+      (Linking.canOpenURL as jest.Mock).mockResolvedValue(true);
+      (Linking.openURL as jest.Mock).mockResolvedValue(undefined);
+
+      await PhoneService.makeEmergencyCall('911');
+
+      expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Emergency call completed',
+          category: 'emergency',
+          level: 'info',
+        }),
+      );
+    });
+
+    it('should use default emergency number if not provided', async () => {
+      (Linking.canOpenURL as jest.Mock).mockResolvedValue(true);
+      (Linking.openURL as jest.Mock).mockResolvedValue(undefined);
+
+      await PhoneService.makeEmergencyCall();
+
+      expect(Linking.openURL).toHaveBeenCalledWith('tel://911');
+    });
+  });
+
+  describe('getEmergencyNumber', () => {
+    it('should return correct emergency number for US', () => {
+      expect(PhoneService.getEmergencyNumber('US')).toBe('911');
+    });
+
+    it('should return correct emergency number for UK', () => {
+      expect(PhoneService.getEmergencyNumber('UK')).toBe('999');
+    });
+
+    it('should return correct emergency number for EU', () => {
+      expect(PhoneService.getEmergencyNumber('EU')).toBe('112');
+    });
+
+    it('should return correct emergency number for Australia', () => {
+      expect(PhoneService.getEmergencyNumber('AU')).toBe('000');
+    });
+
+    it('should return 911 as default for unknown country', () => {
+      expect(PhoneService.getEmergencyNumber('XX')).toBe('911');
+    });
+
+    it('should return 911 when no country code provided', () => {
+      expect(PhoneService.getEmergencyNumber()).toBe('911');
     });
   });
 });

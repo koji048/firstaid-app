@@ -1,9 +1,8 @@
 import React, { memo } from 'react';
-import { Alert, Linking, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Linking, Share, Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import Haptics from 'react-native-haptic-feedback';
 import Geolocation from '@react-native-community/geolocation';
-import Share from 'react-native-share';
 import { styles } from './QuickActionsBar.styles';
 
 export interface QuickActionsBarProps {
@@ -56,10 +55,9 @@ export const QuickActionsBar: React.FC<QuickActionsBarProps> = memo(
           const locationUrl = `https://maps.google.com/?q=${latitude},${longitude}`;
           const message = `Emergency! My location: ${locationUrl}`;
 
-          Share.open({
+          Share.share({
             message,
             title: 'Emergency Location',
-            subject: 'Emergency Location Share',
           }).catch((err) => {
             if (err && err.message !== 'User did not share') {
               Alert.alert('Error', 'Unable to share location');

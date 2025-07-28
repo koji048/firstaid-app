@@ -1,0 +1,193 @@
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#ffffff',
+    padding: 16,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  emergencyContainer: {
+    borderWidth: 2,
+    borderColor: '#da1e28',
+  },
+  loadingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+  },
+  loadingText: {
+    marginLeft: 12,
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#525252',
+  },
+  errorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+  },
+  errorIcon: {
+    marginRight: 12,
+  },
+  errorTextContainer: {
+    flex: 1,
+  },
+  errorText: {
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#da1e28',
+    marginBottom: 2,
+  },
+  errorDetail: {
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#6f6f6f',
+  },
+  retryButton: {
+    padding: 8,
+  },
+  fetchButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+  },
+  fetchButtonText: {
+    marginLeft: 8,
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#0f62fe',
+  },
+  locationHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  locationIconContainer: {
+    width: 40,
+    height: 40,
+    backgroundColor: '#f4f4f4',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+  locationTitle: {
+    fontSize: 18,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#161616',
+  },
+  emergencyTitle: {
+    color: '#da1e28',
+    fontWeight: '600',
+  },
+  locationContent: {
+    marginBottom: 16,
+  },
+  coordinatesContainer: {
+    marginBottom: 12,
+  },
+  coordinatesLabel: {
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#6f6f6f',
+    marginBottom: 4,
+  },
+  coordinatesText: {
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#161616',
+  },
+  addressContainer: {
+    marginBottom: 12,
+  },
+  addressLabel: {
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#6f6f6f',
+    marginBottom: 4,
+  },
+  addressText: {
+    fontSize: 16,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#161616',
+    lineHeight: 22,
+  },
+  accuracyContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  accuracyLabel: {
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#6f6f6f',
+    marginRight: 8,
+  },
+  accuracyBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f4f4f4',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+  },
+  accuracyIndicator: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginRight: 6,
+  },
+  accuracyText: {
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#525252',
+  },
+  updateTime: {
+    fontSize: 12,
+    fontFamily: 'IBMPlexSans-Regular',
+    fontWeight: '400',
+    color: '#6f6f6f',
+    fontStyle: 'italic',
+  },
+  actionButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderTopWidth: 1,
+    borderTopColor: '#e0e0e0',
+    paddingTop: 12,
+    marginTop: 8,
+  },
+  actionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  actionButtonText: {
+    marginLeft: 6,
+    fontSize: 14,
+    fontFamily: 'IBMPlexSans-Medium',
+    fontWeight: '500',
+    color: '#0f62fe',
+  },
+});

@@ -86,26 +86,74 @@ jest.mock('react-native-vector-icons/MaterialIcons', () => 'Icon');
 jest.mock('react-native-vector-icons/FontAwesome', () => 'Icon');
 jest.mock('react-native-vector-icons/Ionicons', () => 'Icon');
 
-// Mock react-native-haptic-feedback
-jest.mock('react-native-haptic-feedback', () => ({
-  trigger: jest.fn(),
+// Mock react-native-elements
+jest.mock('react-native-elements', () => ({
+  Icon: 'Icon',
+  Header: 'Header',
+  ListItem: 'ListItem',
+  Avatar: 'Avatar',
+  Badge: 'Badge',
+  Button: 'Button',
+  Card: 'Card',
+  CheckBox: 'CheckBox',
+  Divider: 'Divider',
+  Input: 'Input',
+  SearchBar: 'SearchBar',
+  Text: 'Text',
+  ThemeProvider: 'ThemeProvider',
+  colors: {
+    primary: '#007AFF',
+    secondary: '#5856D6',
+    success: '#4CD964',
+    warning: '#FF9500',
+    error: '#FF3B30',
+  },
 }));
+
+// Mock react-native-haptic-feedback
+jest.mock(
+  'react-native-haptic-feedback',
+  () => ({
+    trigger: jest.fn(),
+    HapticFeedbackTypes: {
+      selection: 'selection',
+      impactLight: 'impactLight',
+      impactMedium: 'impactMedium',
+      impactHeavy: 'impactHeavy',
+      notificationSuccess: 'notificationSuccess',
+      notificationWarning: 'notificationWarning',
+      notificationError: 'notificationError',
+    },
+  }),
+  { virtual: true },
+);
 
 // Mock @react-native-voice/voice
-jest.mock('@react-native-voice/voice', () => ({
-  start: jest.fn(),
-  stop: jest.fn(),
-  destroy: jest.fn().mockResolvedValue(undefined),
-  removeAllListeners: jest.fn(),
-  onSpeechStart: jest.fn(),
-  onSpeechEnd: jest.fn(),
-  onSpeechError: jest.fn(),
-  onSpeechResults: jest.fn(),
-}));
+jest.mock(
+  '@react-native-voice/voice',
+  () => ({
+    start: jest.fn(),
+    stop: jest.fn(),
+    destroy: jest.fn().mockResolvedValue(undefined),
+    removeAllListeners: jest.fn(),
+    onSpeechStart: jest.fn(),
+    onSpeechEnd: jest.fn(),
+    onSpeechError: jest.fn(),
+    onSpeechResults: jest.fn(),
+  }),
+  { virtual: true },
+);
 
-// Mock react-native-shake
-jest.mock('react-native-shake', () => ({
-  addListener: jest.fn(() => ({ remove: jest.fn() })),
+// Mock shake detection service
+jest.mock('./src/services/shakeDetection', () => ({
+  ShakeDetectionService: {
+    addListener: jest.fn(() => jest.fn()),
+    removeAllListeners: jest.fn(),
+    start: jest.fn(),
+    stop: jest.fn(),
+    isActive: jest.fn(() => false),
+    simulateShake: jest.fn(),
+  },
 }));
 
 // Mock @react-native-community/geolocation
@@ -113,12 +161,31 @@ jest.mock('@react-native-community/geolocation', () => ({
   getCurrentPosition: jest.fn(),
   watchPosition: jest.fn(),
   clearWatch: jest.fn(),
+  requestAuthorization: jest.fn(),
+}));
+
+// Mock @sentry/react-native
+jest.mock('@sentry/react-native', () => ({
+  init: jest.fn(),
+  captureException: jest.fn(),
+  captureMessage: jest.fn(),
+  addBreadcrumb: jest.fn(),
+  configureScope: jest.fn(),
+  withScope: jest.fn(),
+  setUser: jest.fn(),
+  setTag: jest.fn(),
+  setContext: jest.fn(),
 }));
 
 // Mock react-native-share
-jest.mock('react-native-share', () => ({
-  open: jest.fn(),
-}));
+jest.mock(
+  'react-native-share',
+  () => ({
+    open: jest.fn(),
+    share: jest.fn(),
+  }),
+  { virtual: true },
+);
 
 // Silence the warning: Animated: `useNativeDriver` is not supported
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');

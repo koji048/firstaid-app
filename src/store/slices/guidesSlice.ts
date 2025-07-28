@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import type { FirstAidGuide } from '../../types';
 import { GuideCategory } from '../../types/guideContent';
 import { SearchResult } from '../../utils/searchIndexer';
+import type { RootState } from '../store';
 
 interface GuidesState {
   guides: FirstAidGuide[];
@@ -188,41 +189,45 @@ export const {
 } = guidesSlice.actions;
 
 // Selectors
-export const selectGuidesByCategory = (state: { guides: GuidesState }, category: GuideCategory) => {
+export const selectGuidesByCategory = (state: RootState, category: GuideCategory) => {
   return state.guides.guides.filter((guide) => guide.category === category);
 };
 
-export const selectGuidesByVersion = (state: { guides: GuidesState }, minVersion: number) => {
+export const selectGuidesByVersion = (state: RootState, minVersion: number) => {
   return state.guides.guides.filter((guide) => guide.version >= minVersion);
 };
 
-export const selectSearchResults = (state: { guides: GuidesState }) => {
+export const selectSearchResults = (state: RootState) => {
   return state.guides.searchResults;
 };
 
-export const selectBookmarkedGuides = (state: { guides: GuidesState }) => {
+export const selectBookmarkedGuides = (state: RootState) => {
   return state.guides.guides.filter((guide) => state.guides.bookmarks.includes(guide.id));
 };
 
-export const selectDownloadedGuides = (state: { guides: GuidesState }) => {
+export const selectDownloadedGuides = (state: RootState) => {
   return state.guides.guides.filter((guide) => state.guides.downloadedGuides.includes(guide.id));
 };
 
-export const selectGuideById = (state: { guides: GuidesState }, guideId: string) => {
+export const selectGuideById = (state: RootState, guideId: string) => {
   return state.guides.guides.find((guide) => guide.id === guideId);
 };
 
-export const selectIsGuideBookmarked = (state: { guides: GuidesState }, guideId: string) => {
+export const selectIsGuideBookmarked = (state: RootState, guideId: string) => {
   return state.guides.bookmarks.includes(guideId);
 };
 
-export const selectRecentGuides = (state: { guides: GuidesState }) => {
+export const selectBookmarkedGuideIds = (state: RootState) => {
+  return state.guides.bookmarks;
+};
+
+export const selectRecentGuides = (state: RootState) => {
   return state.guides.recentGuides
     .map((id) => state.guides.guides.find((guide) => guide.id === id))
     .filter((guide): guide is FirstAidGuide => guide !== undefined);
 };
 
-export const selectFrequentlyAccessedGuides = (state: { guides: GuidesState }, limit = 5) => {
+export const selectFrequentlyAccessedGuides = (state: RootState, limit = 5) => {
   const guidesWithCounts = state.guides.guides.map((guide) => ({
     guide,
     viewCount: state.guides.guideViewCounts[guide.id] || guide.viewCount || 0,
@@ -235,11 +240,11 @@ export const selectFrequentlyAccessedGuides = (state: { guides: GuidesState }, l
     .filter((guide) => (state.guides.guideViewCounts[guide.id] || guide.viewCount) > 0);
 };
 
-export const selectRecentSearches = (state: { guides: GuidesState }) => {
+export const selectRecentSearches = (state: RootState) => {
   return state.guides.recentSearches;
 };
 
-export const selectGuideCategoriesWithCounts = (state: { guides: GuidesState }) => {
+export const selectGuideCategoriesWithCounts = (state: RootState) => {
   const categoryCounts: Record<string, number> = {};
 
   state.guides.guides.forEach((guide) => {

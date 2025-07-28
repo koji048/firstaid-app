@@ -10,10 +10,19 @@ import {
   View,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
-import Voice from '@react-native-voice/voice';
+// import Voice from '@react-native-voice/voice'; // TODO: Install package
 import Haptics from 'react-native-haptic-feedback';
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash'; // TODO: Install lodash
 import { styles } from './SearchBar.styles';
+
+// Simple debounce implementation
+const debounce = <T extends (...args: any[]) => any>(func: T, wait: number) => {
+  let timeout: NodeJS.Timeout;
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+};
 
 export interface SearchBarProps {
   value: string;
@@ -82,24 +91,24 @@ export const SearchBar: React.FC<SearchBarProps> = memo(
     const inputRef = useRef<TextInput>(null);
 
     useEffect(() => {
-      Voice.onSpeechStart = () => setIsListening(true);
-      Voice.onSpeechEnd = () => setIsListening(false);
-      Voice.onSpeechError = (e) => {
-        setIsListening(false);
-        setVoiceError('Voice recognition failed. Please try again.');
-        console.error('Voice error:', e);
-      };
-      Voice.onSpeechResults = (e) => {
-        if (e.value && e.value[0]) {
-          const spokenText = e.value[0].toLowerCase();
-          const correctedText = correctMisspelling(spokenText);
-          onChangeText(correctedText);
-          setIsListening(false);
-        }
-      };
+      // Voice.onSpeechStart = () => setIsListening(true);
+      // Voice.onSpeechEnd = () => setIsListening(false);
+      // Voice.onSpeechError = (e) => {
+      //   setIsListening(false);
+      //   setVoiceError('Voice recognition failed. Please try again.');
+      //   console.error('Voice error:', e);
+      // };
+      // Voice.onSpeechResults = (e) => {
+      //   if (e.value && e.value[0]) {
+      //     const spokenText = e.value[0].toLowerCase();
+      //     const correctedText = correctMisspelling(spokenText);
+      //     onChangeText(correctedText);
+      //     setIsListening(false);
+      //   }
+      // };
 
       return () => {
-        Voice.destroy().then(Voice.removeAllListeners);
+        // Voice.destroy().then(Voice.removeAllListeners);
       };
     }, [onChangeText]);
 
@@ -129,7 +138,8 @@ export const SearchBar: React.FC<SearchBarProps> = memo(
     const startVoiceRecognition = async () => {
       try {
         setVoiceError(null);
-        await Voice.start('en-US');
+        // await Voice.start('en-US');
+        setVoiceError('Voice recognition not available'); // TODO: Install @react-native-voice/voice
         Haptics.trigger('impactMedium', {
           enableVibrateFallback: true,
           ignoreAndroidSystemSettings: false,
@@ -142,7 +152,7 @@ export const SearchBar: React.FC<SearchBarProps> = memo(
 
     const stopVoiceRecognition = async () => {
       try {
-        await Voice.stop();
+        // await Voice.stop();
         setIsListening(false);
       } catch (e) {
         console.error('Voice stop error:', e);

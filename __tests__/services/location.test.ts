@@ -1,6 +1,6 @@
 import { Alert, PermissionsAndroid, Platform } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
-import { LocationService } from '../../src/services/location';
+import { LocationCoordinates, LocationService } from '../../src/services/location';
 import * as sentry from '../../src/services/sentry';
 
 // Mock dependencies
@@ -146,6 +146,47 @@ describe('LocationService', () => {
 
       expect(result.success).toBe(false);
       expect(result.error).toBe('Location request timed out');
+    });
+
+    it('should use cached location on timeout if available', async () => {
+      // First set a cached location
+      const cachedLocation: LocationCoordinates = {
+        latitude: 37.7749,
+        longitude: -122.4194,
+        accuracy: 15,
+        timestamp: Date.now() - 1000, // 1 second ago
+      };
+
+      // Set up first successful call to cache location
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementationOnce((success) =>
+        success({
+          coords: {
+            latitude: cachedLocation.latitude,
+            longitude: cachedLocation.longitude,
+            accuracy: cachedLocation.accuracy,
+          },
+          timestamp: cachedLocation.timestamp,
+        }),
+      );
+
+      await LocationService.getCurrentLocation();
+
+      // Now simulate timeout
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation(() => {
+        // Don't call callbacks to simulate timeout
+      });
+
+      const result = await LocationService.getCurrentLocation(100);
+
+      expect(result.success).toBe(true);
+      expect(result.location).toEqual(cachedLocation);
+      expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Location timeout - using cached location',
+          category: 'location',
+          level: 'warning',
+        }),
+      );
     });
 
     it('should handle permission denied error', async () => {
@@ -365,6 +406,194 @@ describe('LocationService', () => {
 
       expect(lastKnown).toBeNull();
       expect(Geolocation.clearWatch).not.toHaveBeenCalled(); // No watch was active
+    });
+  });
+
+  describe('getEmergencyLocation', () => {
+    it('should return recent cached location immediately', async () => {
+      const recentLocation: LocationCoordinates = {
+        latitude: 37.7749,
+        longitude: -122.4194,
+        accuracy: 10,
+        timestamp: Date.now() - 60000, // 1 minute ago
+      };
+
+      // Set up cached location
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementationOnce((success) =>
+        success({
+          coords: {
+            latitude: recentLocation.latitude,
+            longitude: recentLocation.longitude,
+            accuracy: recentLocation.accuracy,
+          },
+          timestamp: recentLocation.timestamp,
+        }),
+      );
+
+      await LocationService.getCurrentLocation();
+      jest.clearAllMocks();
+
+      const result = await LocationService.getEmergencyLocation();
+
+      expect(result.success).toBe(true);
+      expect(result.location).toEqual(recentLocation);
+      expect(Geolocation.getCurrentPosition).not.toHaveBeenCalled();
+      expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Using recent cached location for emergency',
+          category: 'emergency',
+          level: 'info',
+        }),
+      );
+    });
+
+    it('should fetch fresh location if cache is old', async () => {
+      const oldLocation: LocationCoordinates = {
+        latitude: 37.7749,
+        longitude: -122.4194,
+        accuracy: 10,
+        timestamp: Date.now() - 360000, // 6 minutes ago
+      };
+
+      // Set up old cached location
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementationOnce((success) =>
+        success({
+          coords: {
+            latitude: oldLocation.latitude,
+            longitude: oldLocation.longitude,
+            accuracy: oldLocation.accuracy,
+          },
+          timestamp: oldLocation.timestamp,
+        }),
+      );
+
+      await LocationService.getCurrentLocation();
+
+      // Mock fresh location
+      const freshLocation = {
+        coords: {
+          latitude: 37.785,
+          longitude: -122.4294,
+          accuracy: 5,
+        },
+        timestamp: Date.now(),
+      };
+
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((success) =>
+        success(freshLocation),
+      );
+
+      const result = await LocationService.getEmergencyLocation();
+
+      expect(result.success).toBe(true);
+      expect(result.location?.latitude).toBe(freshLocation.coords.latitude);
+      expect(Geolocation.getCurrentPosition).toHaveBeenCalled();
+    });
+
+    it('should use old cached location if fresh location fails', async () => {
+      const oldLocation: LocationCoordinates = {
+        latitude: 37.7749,
+        longitude: -122.4194,
+        accuracy: 10,
+        timestamp: Date.now() - 3600000, // 1 hour ago
+      };
+
+      // Set up old cached location
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementationOnce((success) =>
+        success({
+          coords: {
+            latitude: oldLocation.latitude,
+            longitude: oldLocation.longitude,
+            accuracy: oldLocation.accuracy,
+          },
+          timestamp: oldLocation.timestamp,
+        }),
+      );
+
+      await LocationService.getCurrentLocation();
+
+      // Mock location failure
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((_, error) =>
+        error({ code: 2, message: 'Position unavailable' }),
+      );
+
+      const result = await LocationService.getEmergencyLocation();
+
+      expect(result.success).toBe(true);
+      expect(result.location).toEqual(oldLocation);
+      expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Using older cached location for emergency',
+          category: 'emergency',
+          level: 'warning',
+        }),
+      );
+    });
+
+    it('should handle no cached location and fresh location failure', async () => {
+      // Ensure no cached location
+      LocationService.clearLocationData();
+
+      // Mock location failure
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation((_, error) =>
+        error({ code: 1, message: 'Permission denied' }),
+      );
+
+      const result = await LocationService.getEmergencyLocation();
+
+      expect(result.success).toBe(false);
+      expect(result.error).toBe('Location access was denied. Please enable location permissions.');
+    });
+
+    it('should log critical breadcrumb for emergency location', async () => {
+      await LocationService.getEmergencyLocation();
+
+      expect(sentry.addBreadcrumb).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: 'Emergency location request initiated',
+          category: 'emergency',
+          level: 'critical',
+        }),
+      );
+    });
+
+    it('should handle exceptions and return cached location', async () => {
+      const cachedLocation: LocationCoordinates = {
+        latitude: 37.7749,
+        longitude: -122.4194,
+        accuracy: 10,
+        timestamp: Date.now() - 60000,
+      };
+
+      // Set up cached location
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementationOnce((success) =>
+        success({
+          coords: {
+            latitude: cachedLocation.latitude,
+            longitude: cachedLocation.longitude,
+            accuracy: cachedLocation.accuracy,
+          },
+          timestamp: cachedLocation.timestamp,
+        }),
+      );
+
+      await LocationService.getCurrentLocation();
+
+      // Mock exception
+      (Geolocation.getCurrentPosition as jest.Mock).mockImplementation(() => {
+        throw new Error('Unexpected error');
+      });
+
+      const result = await LocationService.getEmergencyLocation();
+
+      expect(result.success).toBe(true);
+      expect(result.location).toEqual(cachedLocation);
+      expect(sentry.captureException).toHaveBeenCalledWith(
+        expect.any(Error),
+        expect.objectContaining({
+          context: 'location_get_current_sync_error',
+        }),
+      );
     });
   });
 });

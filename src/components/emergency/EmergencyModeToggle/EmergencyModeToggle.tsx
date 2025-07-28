@@ -1,27 +1,123 @@
-import React, { memo } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React, { memo, useEffect, useState } from 'react';
+import { Alert, Text, TouchableOpacity, View, Vibration } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { ShakeDetectionService } from '../../../services/shakeDetection';
 import { styles } from './EmergencyModeToggle.styles';
 
 export interface EmergencyModeToggleProps {
   isEmergencyMode: boolean;
   onToggle: (enabled: boolean) => void;
   disabled?: boolean;
+  enableShakeActivation?: boolean;
+  enableLongPressActivation?: boolean;
   testID?: string;
 }
 
 export const EmergencyModeToggle: React.FC<EmergencyModeToggleProps> = memo(
-  ({ isEmergencyMode, onToggle, disabled = false, testID = 'emergency-mode-toggle' }) => {
+  ({
+    isEmergencyMode,
+    onToggle,
+    disabled = false,
+    enableShakeActivation = true,
+    enableLongPressActivation = true,
+    testID = 'emergency-mode-toggle',
+  }) => {
+    const [longPressTimer, setLongPressTimer] = useState<NodeJS.Timeout | null>(null);
+    const [isLongPressing, setIsLongPressing] = useState(false);
+
+    // Set up shake detection
+    useEffect(() => {
+      if (!enableShakeActivation || disabled) {
+        return;
+      }
+
+      const unsubscribe = ShakeDetectionService.addListener(() => {
+        if (!isEmergencyMode) {
+          handleShakeActivation();
+        }
+      });
+
+      // Start shake detection if not already active
+      if (!ShakeDetectionService.isActive()) {
+        ShakeDetectionService.start({
+          threshold: 15,
+          minimumShakes: 3,
+          timeWindow: 1000,
+        });
+      }
+
+      return () => {
+        unsubscribe();
+      };
+    }, [enableShakeActivation, disabled, isEmergencyMode]);
+
     const handlePress = () => {
       if (!disabled) {
         onToggle(!isEmergencyMode);
       }
     };
 
+    const handleShakeActivation = () => {
+      Alert.alert(
+        'Shake Detected',
+        'Enable Emergency Mode for quick access to emergency services?',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          {
+            text: 'Enable',
+            style: 'default',
+            onPress: () => {
+              Vibration.vibrate([0, 100, 50, 100]);
+              onToggle(true);
+            },
+          },
+        ],
+      );
+    };
+
+    const handleLongPressStart = () => {
+      if (!enableLongPressActivation || disabled || isEmergencyMode) {
+        return;
+      }
+
+      setIsLongPressing(true);
+      Vibration.vibrate(50);
+
+      const timer = setTimeout(() => {
+        setIsLongPressing(false);
+        Alert.alert(
+          'Long Press Detected',
+          'Enable Emergency Mode for quick access to emergency services?',
+          [
+            { text: 'Cancel', style: 'cancel' },
+            {
+              text: 'Enable',
+              style: 'default',
+              onPress: () => {
+                Vibration.vibrate([0, 100, 50, 100]);
+                onToggle(true);
+              },
+            },
+          ],
+        );
+      }, 2000); // 2 second long press
+
+      setLongPressTimer(timer);
+    };
+
+    const handleLongPressEnd = () => {
+      if (longPressTimer) {
+        clearTimeout(longPressTimer);
+        setLongPressTimer(null);
+      }
+      setIsLongPressing(false);
+    };
+
     const buttonStyle = [
       styles.container,
       isEmergencyMode ? styles.emergencyActive : styles.emergencyInactive,
       disabled && styles.disabled,
+      isLongPressing && styles.longPressing,
     ];
 
     const iconColor = isEmergencyMode ? '#ffffff' : '#da1e28';
@@ -32,6 +128,8 @@ export const EmergencyModeToggle: React.FC<EmergencyModeToggleProps> = memo(
         <TouchableOpacity
           style={buttonStyle}
           onPress={handlePress}
+          onPressIn={handleLongPressStart}
+          onPressOut={handleLongPressEnd}
           disabled={disabled}
           activeOpacity={0.8}
           testID="emergency-toggle-button"
@@ -65,7 +163,11 @@ export const EmergencyModeToggle: React.FC<EmergencyModeToggleProps> = memo(
                   disabled && styles.descriptionDisabled,
                 ]}
               >
-                {isEmergencyMode ? 'One-tap calling enabled' : 'Tap to enable quick dial'}
+                {isLongPressing
+                  ? 'Hold to activate...'
+                  : isEmergencyMode
+                  ? 'One-tap calling enabled'
+                  : 'Tap, hold, or shake to enable'}
               </Text>
             </View>
 

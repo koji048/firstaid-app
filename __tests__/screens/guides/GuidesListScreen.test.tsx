@@ -3,7 +3,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import RNShake from 'react-native-shake';
+import { ShakeDetectionService } from '../../../src/services/shakeDetection';
 import { store } from '../../../src/store/store';
 import GuidesListScreen from '../../../src/screens/guides/GuidesListScreen';
 import { GuideContentService } from '../../../src/services/guideContentService';
@@ -14,8 +14,12 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
 }));
 
-jest.mock('react-native-shake', () => ({
-  addListener: jest.fn(),
+jest.mock('../../../src/services/shakeDetection', () => ({
+  ShakeDetectionService: {
+    addListener: jest.fn(() => jest.fn()),
+    start: jest.fn(),
+    isActive: jest.fn(() => false),
+  },
 }));
 
 jest.mock('../../../src/services/guideContentService', () => ({

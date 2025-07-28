@@ -32,6 +32,30 @@ export class LocationService {
    */
   static async requestLocationPermission(): Promise<boolean> {
     try {
+      // Try to use platform-specific permission handler
+      try {
+        const { LocationPermissions } = require('./locationPermissions');
+        
+        if (LocationPermissions) {
+          const result = await LocationPermissions.requestWithExplanation({
+            title: 'Location Permission Required',
+            message: 'First Aid Room needs access to your location to share it during emergencies and help emergency services find you quickly.',
+            buttonPositive: 'Allow',
+            buttonNegative: 'Cancel',
+          });
+          
+          return result.granted;
+        }
+      } catch (importError) {
+        // If platform-specific handler is not available, continue with standard implementation
+        addBreadcrumb({
+          message: 'Platform-specific location permissions not available, using standard implementation',
+          category: 'location',
+          level: 'info',
+        });
+      }
+
+      // Standard implementation (fallback)
       if (Platform.OS === 'ios') {
         // iOS permissions are handled in Info.plist
         // Request permission by attempting to get location
@@ -80,63 +104,186 @@ export class LocationService {
 
       return new Promise((resolve) => {
         const timeoutId = setTimeout(() => {
-          resolve({
-            success: false,
-            error: 'Location request timed out',
-          });
-        }, timeout);
-
-        Geolocation.getCurrentPosition(
-          (position) => {
-            clearTimeout(timeoutId);
-            const location: LocationCoordinates = {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              accuracy: position.coords.accuracy,
-              timestamp: position.timestamp,
-            };
-
-            this.lastKnownLocation = location;
-
+          // Return last known location on timeout if available
+          if (this.lastKnownLocation) {
             addBreadcrumb({
-              message: 'Location obtained successfully',
+              message: 'Location timeout - using cached location',
               category: 'location',
-              level: 'info',
-              data: { accuracy: position.coords.accuracy },
+              level: 'warning',
+              data: { cacheAge: Date.now() - this.lastKnownLocation.timestamp },
             });
 
             resolve({
               success: true,
-              location,
+              location: this.lastKnownLocation,
             });
-          },
-          (error) => {
-            clearTimeout(timeoutId);
-            const errorMessage = this.getLocationErrorMessage(error.code);
-
-            captureException(new Error(errorMessage), {
-              context: 'location_get_current',
-              errorCode: error.code,
-              errorMessage: error.message,
-            });
-
+          } else {
             resolve({
               success: false,
-              error: errorMessage,
+              error: 'Location request timed out',
             });
-          },
-          {
-            enableHighAccuracy: true,
-            timeout: timeout - 1000, // Leave 1 second buffer for our timeout
-            maximumAge: 30000, // Accept cached location up to 30 seconds old
-          },
-        );
+          }
+        }, timeout);
+
+        try {
+          Geolocation.getCurrentPosition(
+            (position) => {
+              clearTimeout(timeoutId);
+              const location: LocationCoordinates = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                accuracy: position.coords.accuracy,
+                timestamp: position.timestamp,
+              };
+
+              this.lastKnownLocation = location;
+
+              addBreadcrumb({
+                message: 'Location obtained successfully',
+                category: 'location',
+                level: 'info',
+                data: { accuracy: position.coords.accuracy },
+              });
+
+              resolve({
+                success: true,
+                location,
+              });
+            },
+            (error) => {
+              clearTimeout(timeoutId);
+              const errorMessage = this.getLocationErrorMessage(error.code);
+
+              captureException(new Error(errorMessage), {
+                context: 'location_get_current',
+                errorCode: error.code,
+                errorMessage: error.message,
+              });
+
+              resolve({
+                success: false,
+                error: errorMessage,
+              });
+            },
+            {
+              enableHighAccuracy: true,
+              timeout: timeout - 1000, // Leave 1 second buffer for our timeout
+              maximumAge: 30000, // Accept cached location up to 30 seconds old
+            },
+          );
+        } catch (error) {
+          clearTimeout(timeoutId);
+          const errorMessage = error instanceof Error ? error.message : 'Unknown location error';
+          captureException(error instanceof Error ? error : new Error(errorMessage), {
+            context: 'location_get_current_sync_error',
+          });
+          resolve({
+            success: false,
+            error: errorMessage,
+          });
+        }
       });
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown location error';
       return {
         success: false,
         error: errorMessage,
+      };
+    }
+  }
+
+  /**
+   * Get current location for emergency use
+   * Uses high accuracy mode with shorter timeout
+   * Falls back to cached location if available
+   * @returns Promise<LocationResult>
+   */
+  static async getEmergencyLocation(): Promise<LocationResult> {
+    try {
+      addBreadcrumb({
+        message: 'Emergency location request initiated',
+        category: 'emergency',
+        level: 'critical',
+        data: { timestamp: new Date().toISOString() },
+      });
+
+      // First check if we have a recent cached location (within 5 minutes)
+      if (this.lastKnownLocation) {
+        const cacheAge = Date.now() - this.lastKnownLocation.timestamp;
+        const fiveMinutes = 5 * 60 * 1000;
+
+        if (cacheAge < fiveMinutes) {
+          addBreadcrumb({
+            message: 'Using recent cached location for emergency',
+            category: 'emergency',
+            level: 'info',
+            data: { cacheAge: Math.round(cacheAge / 1000) },
+          });
+
+          return {
+            success: true,
+            location: this.lastKnownLocation,
+          };
+        }
+      }
+
+      // Try to get fresh location with 5 second timeout
+      let result: LocationResult;
+      try {
+        result = await this.getCurrentLocation(5000);
+      } catch (error) {
+        // Handle any exceptions during getCurrentLocation
+        captureException(
+          error instanceof Error ? error : new Error('Failed to get current location'),
+          {
+            context: 'emergency_location_getCurrentLocation',
+            severity: 'critical',
+          },
+        );
+
+        // Set result as failed
+        result = {
+          success: false,
+          error: 'Location request failed',
+        };
+      }
+
+      // If failed but we have any cached location, use it
+      if (!result.success && this.lastKnownLocation) {
+        addBreadcrumb({
+          message: 'Using older cached location for emergency',
+          category: 'emergency',
+          level: 'warning',
+          data: {
+            originalError: result.error,
+            cacheAge: Math.round((Date.now() - this.lastKnownLocation.timestamp) / 1000),
+          },
+        });
+
+        return {
+          success: true,
+          location: this.lastKnownLocation,
+        };
+      }
+
+      return result;
+    } catch (error) {
+      captureException(error instanceof Error ? error : new Error('Emergency location failed'), {
+        context: 'emergency_location',
+        severity: 'critical',
+      });
+
+      // Last resort - return cached location if available
+      if (this.lastKnownLocation) {
+        return {
+          success: true,
+          location: this.lastKnownLocation,
+        };
+      }
+
+      return {
+        success: false,
+        error: 'Unable to determine location',
       };
     }
   }

@@ -31,6 +31,11 @@ export const styles = StyleSheet.create({
   disabled: {
     opacity: 0.5,
   },
+  longPressing: {
+    backgroundColor: '#f1c21b',
+    borderColor: '#da1e28',
+    transform: [{ scale: 0.98 }],
+  },
   content: {
     flexDirection: 'row',
     alignItems: 'center',

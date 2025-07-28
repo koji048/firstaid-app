@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import RNShake from 'react-native-shake';
+import { ShakeDetectionService } from '../../services/shakeDetection';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   loadGuidesFromContent,
@@ -54,13 +54,16 @@ const GuidesListScreen: React.FC = () => {
     loadHighContrastSetting();
     loadGuidesContent();
 
-    const subscription = RNShake.addListener(() => {
+    const unsubscribe = ShakeDetectionService.addListener(() => {
       handleShakeReset();
     });
 
-    return () => {
-      subscription.remove();
-    };
+    // Start shake detection if not already active
+    if (!ShakeDetectionService.isActive()) {
+      ShakeDetectionService.start();
+    }
+
+    return unsubscribe;
   }, [handleShakeReset, loadGuidesContent]);
 
   const loadHighContrastSetting = async () => {
